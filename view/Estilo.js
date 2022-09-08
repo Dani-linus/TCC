@@ -80,28 +80,46 @@ const styles = StyleSheet.create({
         fontSize: 35,
         color: '#171219',
         left:121,
-        top:33
+        top:45
     },
     imgNarracao:{
      width:30,
      height:30,
      left:90,
-     top:66
+     top:70
     },
 
     imgSom:{
         width:30,
         height:30,
         left:88,
-
+        top:10
        },
-
 
     slider:{
         width: 300, 
         height: 30,
-        left:250,
+        left:330,
          
+    },
+    slider_som:{
+        width: 300, 
+        height: 0,
+        left:330,
+    },
+    buttonSair:{
+        margin: 10,
+        height: 30,
+        width: 30,
+        left: 740 ,
+        color: '#D3D3D3'
+    },
+    buttonVoltar:{
+        title:"VOLTAR AO MENU INICIAL",
+        fontFamily: 'PatrickHand',
+        fontSize: 35,
+        color: '#171219',
+        width:100
     }
 });
 
