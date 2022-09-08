@@ -114,13 +114,22 @@ const styles = StyleSheet.create({
         left: 740 ,
         color: '#D3D3D3'
     },
-    buttonVoltar:{
-        title:"VOLTAR AO MENU INICIAL",
+    txtVoltar:{
         fontFamily: 'PatrickHand',
-        fontSize: 35,
-        color: '#171219',
-        width:100
-    }
+        fontSize: 30,
+        color: '#FFFFFF',
+    },
+    viewVoltar: {
+        backgroundColor: "#56B2EB",
+        height: 45,
+        top: 15,
+        left: 300,
+        width: 300,
+        margin: 20,
+        marginLeft: 10,
+        borderRadius: 10,
+       
+    },
 });
 
 export default styles;

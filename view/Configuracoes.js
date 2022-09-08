@@ -69,6 +69,11 @@ export default class Configuracoes extends React.Component {
                             maximumTrackTintColor="#D9D9D9"
                             thumbTintColor="#56B2EB"
                         />
+                        <View  style={styles.viewVoltar}>
+                        <TouchableOpacity>
+                            <Text style={styles.txtVoltar}>VOLTAR AO MENU INICIAL</Text>
+                        </TouchableOpacity>
+                        </View>
                     </View>
                 </ImageBackground>
 
