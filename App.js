@@ -7,6 +7,8 @@ import Configuracoes from './view/Configuracoes'
 import Cena1 from './scenes/Cena1';
 import Loading from './view/Loading';
 import Cena2 from './scenes/Cena2';
+import TesteSom from './view/TesteSom';
+import Sobre from './view/Sobre'
 
 const Stack = createStackNavigator();
 
@@ -18,6 +20,7 @@ export default class App extends React.Component {
           <Stack.Screen name="Menu" component={Menu} />
           <Stack.Screen name="Loading" component={Loading}/>
           <Stack.Screen name="Configuracoes" component={Configuracoes}/>
+          <Stack.Screen name="TesteSom" component={TesteSom}/>
            <Stack.Screen name="Cena2" component={Cena2}/>
         </Stack.Navigator>
       </NavigationContainer>

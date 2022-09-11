@@ -5,7 +5,7 @@ import {
 import styles from '../view/Estilo';
 import Slider from '@react-native-community/slider';
 import * as Font from 'expo-font';
-
+import { Audio } from 'expo-av';
 
 let customFonts = {
     'PatrickHand': require('../fonts/PatrickHand-Regular.ttf')
@@ -21,9 +21,29 @@ export default class Configuracoes extends React.Component {
         this.setState({ fontsLoaded: true });
     }
 
-    componentDidMount() {
-        this._loadFontsAsync();
+   async componentDidMount() {
+    this._loadFontsAsync();
+        Audio.setAudioModeAsync({
+            allowsRecordingIOS: false,
+            interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DUCK_OTHERS,
+            shouldDuckAndroid: true,
+            staysActiveInBackground:true,
+            playsThroughEarpieceAndroid:true
+        });
+      
+        this.sound =  new Audio.Sound();
+
+        const status = {
+            shouldPlay : false
+        };
+    
+        this.sound.loadAsync(require('../sound/som_ambiente.mp3'), status, false);
     }
+    
+    playSound(){
+        this.sound.playAsync();
+    }
+
     render() {
         if (!this.state.fontsLoaded) {
             return null;
@@ -69,10 +89,10 @@ export default class Configuracoes extends React.Component {
                             maximumTrackTintColor="#D9D9D9"
                             thumbTintColor="#56B2EB"
                         />
-                        <View  style={styles.viewVoltar}>
-                        <TouchableOpacity>
-                            <Text style={styles.txtVoltar}>VOLTAR AO MENU INICIAL</Text>
-                        </TouchableOpacity>
+                        <View style={styles.viewVoltar}>
+                        
+                    <Button title="Play Sound" onPress={this.playSound.bind(this)} />
+               
                         </View>
                     </View>
                 </ImageBackground>

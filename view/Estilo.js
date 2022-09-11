@@ -1,8 +1,12 @@
 import { StyleSheet } from "react-native";
 
+
+//height - altura
+//width - largura
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        flexDirection : 'row'
     },
     splash: {
         flex: 2, justifyContent: 'center'
@@ -10,12 +14,12 @@ const styles = StyleSheet.create({
     buttonOpcoesStyle: {
         margin: 10,
         height: 30,
-        width: 40,
-        alignItems: 'flex-start',
+        width: 38,
     },
     capa: {
-        height: 500,
-        width: 900,
+        height: 480,
+        width: 920,
+        right:5,
         resizeMode: 'center',
     },
 
@@ -25,6 +29,14 @@ const styles = StyleSheet.create({
         height: 200,
         width: 200,
         resizeMode: 'center',
+    },
+
+    iconInf:{
+        height: 30,
+        width: 30,
+        margin : 10,
+        position: 'absolute',
+        left : 810
     },
     imageBackground: {
         flex: 1,
@@ -55,7 +67,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     buttonPlay: {
-        height: 550,
+        height: 530,
         width: 850,
         resizeMode: 'center'
     },
@@ -112,7 +124,7 @@ const styles = StyleSheet.create({
         height: 30,
         width: 30,
         left: 740 ,
-        color: '#D3D3D3'
+        //color: '#D3D3D3'
     },
     txtVoltar:{
         fontFamily: 'PatrickHand',
@@ -120,7 +132,7 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
     },
     viewVoltar: {
-        backgroundColor: "#56B2EB",
+       backgroundColor: "#56B2EB",
         height: 45,
         top: 15,
         left: 300,
