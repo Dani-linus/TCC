@@ -7,10 +7,8 @@ import Configuracoes from './view/Configuracoes'
 import Cena1 from './scenes/Cena1';
 import Loading from './view/Loading';
 import Cena2 from './scenes/Cena2';
-import TesteSom from './view/TesteSom';
 import Sobre from './view/Sobre';
 import * as Font from 'expo-font';
-import { Audio } from 'expo-av';
 
 
 const Stack = createStackNavigator();
@@ -48,7 +46,6 @@ async componentDidMount() {
           <Stack.Screen name="Menu" component={Menu} />
           <Stack.Screen name="Loading" component={Loading}/>
           <Stack.Screen name="Sobre" component={Sobre}/>
-          <Stack.Screen name="TesteSom" component={TesteSom}/>
           <Stack.Screen name="Cena1" component={Cena1}/>
         </Stack.Navigator>
       </NavigationContainer>

@@ -4,6 +4,7 @@ import { NavigationContainer, useNavigation, } from '@react-navigation/native'
 import LottieView from 'lottie-react-native';
 import styles from '../view/Estilo';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Audio } from 'expo-av';
 
 
 export default class Cena1 extends React.Component {
@@ -11,24 +12,6 @@ export default class Cena1 extends React.Component {
         super(props);
         this.startAnimation();
     }
-
-    pan = new Animated.ValueXY();
-    panResponder = PanResponder.create({
-        onMoveShouldSetPanResponder: () => true,
-        onPanResponderGrant: () => {
-            this.pan.setOffset({
-                x: this.pan.x._value,
-                y: this.pan.y._value
-            });
-        },
-        onPanResponderMove: Animated.event([
-            null,
-            { dx: this.pan.x, dy: this.pan.y }
-        ]),
-        onPanResponderRelease: () => {
-            this.pan.flattenOffset();
-        }
-    });
 
     state = {
         animation: new Animated.Value(0)
@@ -41,6 +24,35 @@ export default class Cena1 extends React.Component {
             useNativeDriver: true,
         }).start();
     }
+
+    async componentDidMount() {
+        Audio.setAudioModeAsync({
+            allowsRecordingIOS: false,
+            staysActiveInBackground: true,
+            interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DUCK_OTHERS,
+            shouldDuckAndroid: true,
+            staysActiveInBackground: true,
+            playsThroughEarpieceAndroid: true,
+            allowsRecordingIOS: true,
+            interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
+            playsInSilentModeIOS: true,
+        });
+
+        this.sound = new Audio.Sound();
+
+        const status = {
+            shouldPlay: false
+
+        };
+
+        this.sound.loadAsync(require('../sound/ronco_porco.mp3'), status, false);
+    }
+
+    //PLAY NO SOM
+    playSound() {
+        this.sound.playAsync();
+    }
+
 
     render() {
 
@@ -57,14 +69,14 @@ export default class Cena1 extends React.Component {
 
                         <View style={[styles.viewtxt]}>
                             <Text style={styles.txtHistoria}>
-                                Era uma vez três porquinhos que viviam com seus pais nos campos encantados.
+                                Era uma vez três porquinhos que viviam com seus pais nos campos encantados.{'\n'}
                             </Text>
                             <Text style={styles.txtHistoria}>
                                 Os porquinhos estavam muito felizes, e conforme cresciam, se tornaram{'\n'}
                                 cada vez mais independentes.
                             </Text>
                         </View>
-                        <TouchableWithoutFeedback onPress={this.irSobre} >
+                        <TouchableWithoutFeedback onPress={this.playSound.bind(this)} >
                             <View>
                                 <Image
                                     source={require('../assets/img/teste_porquinho.png')}
