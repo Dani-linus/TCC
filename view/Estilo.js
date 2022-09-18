@@ -163,6 +163,25 @@ const styles = StyleSheet.create({
         width: 300,
         left:270,
         top:50
+    },
+    viewtxt:{
+        backgroundColor: "#F5F5F5",
+        height: 100,
+        margintop: 5,
+        left: 300,
+        width: 400,
+        margin: 20,
+        marginLeft: 10,
+        borderRadius: 10,
+    },
+    txtHistoria:{
+        fontFamily: 'PatrickHand',
+        fontSize: 14,
+        left:10
+    },
+    imgCena1:{
+        height: 300,
+        width: 700,
     }
 });
 

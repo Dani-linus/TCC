@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import {
-    Text, View, TouchableOpacity, Image, SafeAreaView, ImageBackground, Button, StyleSheet, Switch
+    Text, View, TouchableOpacity, Image, SafeAreaView, ImageBackground, Button, StyleSheet, Switch, AppState
 } from 'react-native';
 import styles from '../view/Estilo';
 //import Slider from '@react-native-community/slider';
 import * as Font from 'expo-font';
 import { Audio } from 'expo-av';
-
+import App from '../App';
 
 let customFonts = {
     'PatrickHand': require('../fonts/PatrickHand-Regular.ttf')
@@ -16,67 +16,15 @@ export default class TesteSom extends React.Component {
 
     //ABAIXO CODIGO PARA INICIAR O COMPONENTE SWITCH  
     state = { switchValue: false };
-
     toggleSwitch = value => {
         this.setState({ switchValue: value });
         {
             this.state.switchValue ?
-                this.stopSound(this) : this.playSound(this)
+                AppState.this.stopSound(this) : App.this.playSound(this)
         }
-    };
-
-
-    //ABAIXO TRECHO DO CODIGO RESPONSAVEL POR CARRREGAR A FONTE  PATRICK-HAND
-    state = {
-        fontsLoaded: false,
-    };
-
-    async _loadFontsAsync() {
-        await Font.loadAsync(customFonts);
-        this.setState({ fontsLoaded: true });
     }
-
-    //CARREGANDO A FONTE E O AUDIO
-    async componentDidMount() {
-        this._loadFontsAsync();
-        Audio.setAudioModeAsync({
-            allowsRecordingIOS: false,
-            staysActiveInBackground: true,
-            interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DUCK_OTHERS,
-            shouldDuckAndroid: true,
-            staysActiveInBackground: true,
-            playsThroughEarpieceAndroid: true,
-            allowsRecordingIOS: true,
-            interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
-            playsInSilentModeIOS: true,
-        });
-
-        this.sound = new Audio.Sound();
-
-        const status = {
-            shouldPlay: false
-
-        };
-
-        this.sound.loadAsync(require('../sound/som_ambiente.mp3'), status, false);
-    }
-
-    //PLAY NO SOM
-    playSound() {
-        this.sound.playAsync();
-    }
-
-    //STOP NO SOM
-    stopSound() {
-        this.sound.pauseAsync();
-    }
-
-
     render() {
-        if (!this.state.fontsLoaded) {
-            return null;
-        }
-
+    
         return (
             <View style={styles.container}>
                 <ImageBackground

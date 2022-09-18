@@ -15,10 +15,10 @@ export default class Menu extends React.Component {
         this.irSobre = this.irSobre.bind(this);
     }
     irLoading() {
-        this.props.navigation.navigate('TesteToqueTela')
+        this.props.navigation.navigate('Cena1')
     }
     irConfig() {
-        this.props.navigation.navigate('Configuracoes')
+        this.props.navigation.navigate('TesteSom')
     }
 
     irSobre() {
