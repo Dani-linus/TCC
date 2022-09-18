@@ -1,6 +1,5 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, Image, SafeAreaView, ImageBackground } from 'react-native';
-import { StatusBar } from 'react-native-web';
+import { Text, View, TouchableOpacity, Image, SafeAreaView, ImageBackground, TouchableWithoutFeedback } from 'react-native';
 import styles from '../view/Estilo';
 import { useNavigation } from '@react-navigation/native';
 
@@ -16,7 +15,7 @@ export default class Menu extends React.Component {
         this.irSobre = this.irSobre.bind(this);
     }
     irLoading() {
-        this.props.navigation.navigate('Loading')
+        this.props.navigation.navigate('TesteToqueTela')
     }
     irConfig() {
         this.props.navigation.navigate('Configuracoes')
@@ -25,24 +24,13 @@ export default class Menu extends React.Component {
     irSobre() {
         this.props.navigation.navigate('Sobre')
     }
-
     render() {
         return (
             <View style={styles.container}>
                 <ImageBackground
                     source={require('../assets/img/capa.png')}
                     style={styles.capa}>
-                    <TouchableOpacity onPress={this.irSobre}
-                    >
-                        <View>
-                            <Image
-                                source={require('../assets/icones/inf.png')}
-                                style={styles.iconInf}>
-                            </Image>
-                        </View>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={this.irConfig}
+                    <TouchableWithoutFeedback onPress={this.irConfig}
                     >
                         <View>
                             <Image
@@ -50,9 +38,8 @@ export default class Menu extends React.Component {
                                 style={styles.buttonOpcoesStyle}>
                             </Image>
                         </View>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={this.irLoading}
+                    </TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback onPress={this.irLoading}
                     >
                         <View>
                             <Image
@@ -60,7 +47,17 @@ export default class Menu extends React.Component {
                                 style={styles.buttonPlay}>
                             </Image>
                         </View>
-                    </TouchableOpacity>
+                        </TouchableWithoutFeedback>
+
+                        <TouchableWithoutFeedback onPress={this.irSobre}>
+                        
+                            <Image
+                                source={require('../assets/icones/inf.png')}
+                                style={styles.iconInf}>
+                            </Image>
+                        
+                        </TouchableWithoutFeedback>
+                   
 
                 </ImageBackground>
             </View>

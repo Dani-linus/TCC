@@ -116,8 +116,8 @@ const styles = StyleSheet.create({
     },
     slider_som:{
         width: 300, 
-        height: 0,
-        left:330,
+        height: 10,
+        left:60,
     },
     buttonSair:{
         margin: 10,
@@ -142,6 +142,28 @@ const styles = StyleSheet.create({
         borderRadius: 10,
        
     },
+    txtTituloSobre:{
+        fontFamily: 'PatrickHand',
+        fontSize: 30,
+        left: 300,
+        marginTop:10,
+
+    },
+    txtSubsobre:{
+        fontSize: 20,
+        left: 270
+    },
+    txtDesenvolvidopor:{
+        fontSize: 10,
+        left: 560,
+        top :165
+    },
+    imgPorquinhos:{
+        height: 100,
+        width: 300,
+        left:270,
+        top:50
+    }
 });
 
 export default styles;

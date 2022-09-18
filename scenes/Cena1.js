@@ -13,19 +13,11 @@ export default class Cena1 extends React.Component {
 
     render() {
         return (
-            <View>
+            <View style={styles.container}>
                 <ImageBackground
                     source={require('../assets/img/cena1.png')}
                     style={{ width: 1000, height: 500 }}
                 />
-                <TouchableOpacity>
-                
-                    <LottieView
-                        source={require('../animation/abelha_teste.json')}
-                        autoPlay={false}
-                        loop={false}
-                    />
-                </TouchableOpacity>
             </View>
         )
     }
