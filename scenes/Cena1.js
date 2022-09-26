@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Text, View, ImageBackground, Touchable, Animated, PanResponder,TouchableWithoutFeedback, Image } from 'react-native';
+import { Text, View, ImageBackground, Touchable, Animated, PanResponder, TouchableWithoutFeedback, Image } from 'react-native';
 import { NavigationContainer, useNavigation, } from '@react-navigation/native'
 import LottieView from 'lottie-react-native';
 import styles from '../view/Estilo';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Audio } from 'expo-av';
-
+import * as Animatable from "react-native-animatable";
 
 export default class Cena1 extends React.Component {
     constructor(props) {
@@ -24,6 +24,7 @@ export default class Cena1 extends React.Component {
             useNativeDriver: true,
         }).start();
     }
+  
 
     async componentDidMount() {
         Audio.setAudioModeAsync({
@@ -52,7 +53,7 @@ export default class Cena1 extends React.Component {
     playSound() {
         this.sound.playAsync();
     }
-    
+
     render() {
 
         const animatedStyles = {
@@ -60,21 +61,23 @@ export default class Cena1 extends React.Component {
         }
         return (
             <View style={styles.container}>
-                <Animated.View style={[animatedStyles]}>
+                <ImageBackground
+                    source={require('../assets/scenes/CENA1.jpg')}
+                    style={{ width: 854, height: 500 }}>
 
-                    <ImageBackground
-                        source={require('../assets/scenes/CENA1.jpg')}
-                        style={{ width: 854, height: 500 }}>
-
-                        <View style={[styles.viewtxt]}>
-                            <Text style={styles.txtHistoria}>
+                        <Animatable.View 
+                         animation="fadeInLeft"
+                         duration={2000}
+                        style={[styles.viewtxt] }>
+                            
+                             <Animatable.Text
+                                animation="slideInLeft"
+                                duration={800}
+                                style={[styles.txtHistoria]}>
                                 Era uma vez três porquinhos que viviam com seus pais nos campos encantados.{'\n'}
-                            </Text>
-                            <Text style={styles.txtHistoria}>
-                                Os porquinhos estavam muito felizes, e conforme cresciam, se tornaram{'\n'}
-                                cada vez mais independentes.
-                            </Text>
-                        </View>
+                                Os porquinhos estavam muito felizes, e conforme cresciam, se tornaram cada vez mais independentes
+                            </Animatable.Text>
+                        </Animatable.View>
                         <TouchableWithoutFeedback onPress={this.playSound.bind(this)} >
                             <View>
                                 <Image
@@ -83,9 +86,8 @@ export default class Cena1 extends React.Component {
                                 </Image>
                             </View>
                         </TouchableWithoutFeedback>
-                    </ImageBackground>
-                </Animated.View>
-            </View>
+                </ImageBackground>
+            </View >
         )
     }
 }
