@@ -14,7 +14,7 @@ export default class Configuracoes extends React.Component {
     }
 
     btnVoltar() {
-        this.props.navigation.navigate('Menu')
+        this.props.navigation.goBack(null);
     }
     //ABAIXO CODIGO PARA INICIAR O COMPONENTE SWITCH  
     state = { switchValue: false };
@@ -28,26 +28,23 @@ export default class Configuracoes extends React.Component {
     };
     //CARREGANDO A FONTE E O AUDIO
     async componentDidMount() {
+    
         Audio.setAudioModeAsync({
-            allowsRecordingIOS: false,
             staysActiveInBackground: true,
-            interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DUCK_OTHERS,
             shouldDuckAndroid: true,
             staysActiveInBackground: true,
             playsThroughEarpieceAndroid: true,
-            allowsRecordingIOS: true,
-            interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
-            playsInSilentModeIOS: true,
         });
 
-        this.sound = new Audio.Sound();
+       
+ this.sound = new Audio.Sound();
 
-        const status = {
-            shouldPlay: false
+      const status = {
+     shouldPlay: false
 
-        };
+    };
 
-        this.sound.loadAsync(require('../sound/som_ambiente.mp3'), status, false);
+   this.sound.loadAsync(require('../sound/som_ambiente.mp3'), status, false);
     }
 
     //PLAY NO SOM
