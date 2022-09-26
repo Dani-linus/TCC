@@ -6,21 +6,30 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection : 'row'
+
     },
     splash: {
         flex: 2, justifyContent: 'center'
     },
+    fundocena_json:{
+      flex: 2,
+      alignItems: 'center'
+       
+    },
+    viewBotaoPlay:{
+       
+    },
+
     buttonOpcoesStyle: {
-        margin: 10,
         height: 30,
         width: 38,
+       marginEnd: 10,
+       position: 'absolute'
     },
     capa: {
-        height: 480,
+        height: 500,
         width: 920,
-        right:5,
-        resizeMode: 'center',
+       
     },
 
     buttonImageIconStyle: {
@@ -34,9 +43,9 @@ const styles = StyleSheet.create({
     iconInf:{
         height: 30,
         width: 30,
-        margin : 10,
+        margin : 5,
         position: 'absolute',
-        left : 810
+        left : 815
     },
     imageBackground: {
         flex: 1,
@@ -67,8 +76,9 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     buttonPlay: {
-        height: 530,
-        width: 850,
+        height: 50,
+        width: 40,
+        top:300,
         resizeMode: 'center'
     },
     configTextDefi: {
@@ -177,11 +187,43 @@ const styles = StyleSheet.create({
     txtHistoria:{
         fontFamily: 'PatrickHand',
         fontSize: 14,
-        left:10
+        left:10,
+        marginTop:20
     },
     imgCena1:{
         height: 300,
         width: 700,
+    },
+    animationPig:{
+        height: 300,
+        width: 500,
+    },
+    fundocenaMenu_json:{
+        width: 890, 
+        height: 500, 
+        right:10
+    },
+    txtInicio1:{
+        fontFamily: 'PatrickHand',
+        fontSize: 40,
+        color : '#F5F5F5',
+        lineHeight: 50
+    },
+
+    txtInicio2:{
+        fontFamily: 'PatrickHand',
+        fontSize: 70,
+        color : '#F5F5F5',
+        lineHeight: 75
+    },
+
+    txtView:{
+        alignItems :'center',
+        top:30
+    },
+    viewConfig:{
+    right:425,
+    bottom:120
     }
 });
 

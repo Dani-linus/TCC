@@ -1,20 +1,35 @@
-import React from 'react';
-import {Text, View} from 'react-native';
-import {NavigationContainer,useNavigation} from '@react-navigation/native'
+import React, { useRef } from 'react';
+import { Text, View, TouchableWithoutFeedback } from 'react-native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import LottieView from 'lottie-react-native';
 import styles from '../view/Estilo';
+import * as Animatable from "react-native-animatable";
+import { ViewPropTypes } from 'deprecated-react-native-prop-types';
 
-export default class Cena2 extends React.Component{
-     
-    render(){
-        return(
-            <View style={styles.splash}>
-                <LottieView
-                source={require('../animation/splash-abelha.json')}
-                autoPlay
-                loop={false}
-                />
+export default function Cena2() {
+
+    const lottieRef = useRef(null)
+
+    return (
+        <View style={styles.fundocena_json}>
+            <LottieView
+                source={require('../animation/CENA _1.json')}
+                autoPlay={true}
+                loop={true}>
+            </LottieView>
+
+            <TouchableWithoutFeedback onPress={() => {
+                lottieRef.current.play()
+            }}>
+            <View>
+                <LottieView style={styles.animationPig}
+                    source={require('../animation/pig.json')}
+                    ref={lottieRef}
+                  >
+                </LottieView>
             </View>
-        )
-}
+            </TouchableWithoutFeedback>
+        </View>
+    )
+
 }

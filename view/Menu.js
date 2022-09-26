@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, TouchableOpacity, Image, SafeAreaView, ImageBackground, TouchableWithoutFeedback } from 'react-native';
 import styles from '../view/Estilo';
 import { useNavigation } from '@react-navigation/native';
+import LottieView from 'lottie-react-native';
 
 const buttonPlay = () => {
     const navigation = useNavigation();
@@ -15,30 +16,46 @@ export default class Menu extends React.Component {
         this.irSobre = this.irSobre.bind(this);
     }
     irLoading() {
-        this.props.navigation.navigate('Cena1')
+        this.props.navigation.navigate('Cena2')
     }
     irConfig() {
-        this.props.navigation.navigate('TesteSom')
+        this.props.navigation.navigate('Configuracoes')
     }
 
     irSobre() {
         this.props.navigation.navigate('Sobre')
     }
+
     render() {
         return (
-            <View style={styles.container}>
-                <ImageBackground
-                    source={require('../assets/img/capa.png')}
-                    style={styles.capa}>
-                    <TouchableWithoutFeedback onPress={this.irConfig}
+            <View style={styles.container} >
+                <View style={styles.fundocena_json}>
+                    <LottieView
+                        source={require('../animation/CAPA.json')}
+                        autoPlay={true}
+                        loop={true}
                     >
-                        <View>
-                            <Image
-                                source={require('../assets/icones/menu.png')}
-                                style={styles.buttonOpcoesStyle}>
-                            </Image>
-                        </View>
-                    </TouchableWithoutFeedback>
+                    </LottieView>
+                    <View style={styles.txtView}>
+                        <Text style={styles.txtInicio1}> Os Três</Text>
+                        <Text style={styles.txtInicio2}> porquinhos</Text>
+                    </View>
+
+                    <View style={styles.viewConfig}>
+                        <TouchableWithoutFeedback onPress={this.irConfig}
+                        >
+                            <View>
+                                <Image
+                                    source={require('../assets/icones/menu.png')}
+                                    style={styles.buttonOpcoesStyle}>
+                                </Image>
+                            </View>
+
+
+                        </TouchableWithoutFeedback>
+                    </View>
+
+
                     <TouchableWithoutFeedback onPress={this.irLoading}
                     >
                         <View>
@@ -47,19 +64,18 @@ export default class Menu extends React.Component {
                                 style={styles.buttonPlay}>
                             </Image>
                         </View>
-                        </TouchableWithoutFeedback>
+                    </TouchableWithoutFeedback>
 
-                        <TouchableWithoutFeedback onPress={this.irSobre}>
-                        
-                            <Image
-                                source={require('../assets/icones/inf.png')}
-                                style={styles.iconInf}>
-                            </Image>
-                        
-                        </TouchableWithoutFeedback>
-                   
+                    <TouchableWithoutFeedback onPress={this.irSobre}>
 
-                </ImageBackground>
+                        <Image
+                            source={require('../assets/icones/inf.png')}
+                            style={styles.iconInf}>
+                        </Image>
+
+                    </TouchableWithoutFeedback>
+                </View>
+
             </View>
         );
     }
