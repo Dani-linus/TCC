@@ -52,8 +52,7 @@ export default class Cena1 extends React.Component {
     playSound() {
         this.sound.playAsync();
     }
-
-
+    
     render() {
 
         const animatedStyles = {
