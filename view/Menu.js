@@ -3,6 +3,8 @@ import { Text, View, TouchableOpacity, Image, SafeAreaView, ImageBackground, Tou
 import styles from '../view/Estilo';
 import { useNavigation } from '@react-navigation/native';
 import LottieView from 'lottie-react-native';
+import { Audio } from 'expo-av';
+
 
 const buttonPlay = () => {
     const navigation = useNavigation();
@@ -26,8 +28,46 @@ export default class Menu extends React.Component {
         this.props.navigation.navigate('Sobre')
     }
 
+    state = {
+        sound: null
+      };
+    
+
+  //CARREGANDO O AUDIO
+  async componentDidMount() {
+
+    Audio.setAudioModeAsync({
+      staysActiveInBackground: true,
+      shouldDuckAndroid: true,
+      staysActiveInBackground: true,
+      playsThroughEarpieceAndroid: true,
+    });
+
+    this.loadAudio();
+
+  }
+
+  async loadAudio() {
+    try {
+      const sound = new Audio.Sound();
+      const status = {
+        shouldPlay: true
+      };
+
+      await sound.loadAsync(require('../sound/som_ambiente.mp3'), status, false);
+      this.setState({
+        sound
+      });
+    } catch (e) {
+      console.log(e);
+    }
+
+  }
     render() {
+       
         return (
+
+
             <View style={styles.container} >
                 <View style={styles.fundocena_json}>
                     <LottieView

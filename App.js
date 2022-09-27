@@ -18,8 +18,7 @@ import Loading from './view/Loading';
 import Cena2 from './scenes/Cena2';
 import Sobre from './view/Sobre';
 import * as Font from 'expo-font';
-import {ViewPropTypes} from 'deprecated-react-native-prop-types';
-
+import { ViewPropTypes } from 'deprecated-react-native-prop-types';
 const Stack = createStackNavigator();
 
 let customFonts = {
@@ -40,10 +39,10 @@ export default class App extends React.Component {
     this.setState({ fontsLoaded: true });
   }
 
-  //CARREGANDO A FONTE E O AUDIO
-  async componentDidMount() {
-    this._loadFontsAsync();
-  }
+    //CARREGANDO A FONTE
+    async componentDidMount() {
+      this._loadFontsAsync();
+    }
 
   render() {
     if (!this.state.fontsLoaded) {
