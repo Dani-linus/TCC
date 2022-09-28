@@ -1,9 +1,12 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 
-// import { createStackNavigator } from '@react-navigation/stack'
+
+// import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack'
+
 
 // limpar código
+
 
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack'
 
