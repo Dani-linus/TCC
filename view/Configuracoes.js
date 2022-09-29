@@ -44,7 +44,7 @@ export default class Configuracoes extends React.Component {
 
     };
 
-   this.sound.loadAsync(require('../sound/som_ambiente.mp3'), status, false);
+   this.sound.loadAsync(require('../src/assets/sound/ambientSound/ambient_sound_one.mp3'), status, false);
     }
 
     //PLAY NO SOM

@@ -9,7 +9,7 @@ import { Audio } from 'expo-av';
 import App from '../App';
 
 let customFonts = {
-    'PatrickHand': require('../fonts/PatrickHand-Regular.ttf')
+    'PatrickHand': require('../src/assets/font/PatrickHand-Regular.ttf')
 };
 
 export default class TesteSom extends React.Component {

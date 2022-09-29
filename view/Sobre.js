@@ -23,7 +23,7 @@ export default class Sobre extends React.Component {
                     <TouchableWithoutFeedback onPress={this.btnVoltar} >
                             <View>
                                 <Image
-                                    source={require('../assets/icones/x.png')}
+                                    source={require('../src/assets/icons/x.png')}
                                     style={styles.buttonSair}>
                             </Image>
                             </View>
@@ -34,7 +34,7 @@ export default class Sobre extends React.Component {
                          source={require('../assets/img/porquinhos.png')}
                          style={styles.imgPorquinhos}>
                          </Image>
-                         <Text style={styles.txtDesenvolvidopor} >Desenvolvido por Daniele e Marina Savitzk (2022)</Text>
+                         <Text style={styles.txtDesenvolvidopor}>Desenvolvido por Daniele e Marina Savitzki (2022)</Text>
                     </View>
                 </ImageBackground>
 

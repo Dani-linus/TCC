@@ -30,52 +30,45 @@ export default class Menu extends React.Component {
         return (
             <View style={styles.container} >
                 <View style={styles.fundocena_json}>
+
                     <LottieView
-                        source={require('../animation/CAPA.json')}
+                        source={require('../src/assets/animation/cover.json')}
                         autoPlay={true}
-                        loop={true}
-                    >
+                        loop={true}>
                     </LottieView>
+
                     <View style={styles.txtView}>
                         <Text style={styles.txtInicio1}> Os Três</Text>
                         <Text style={styles.txtInicio2}> porquinhos</Text>
                     </View>
 
                     <View style={styles.viewConfig}>
-                        <TouchableWithoutFeedback onPress={this.irConfig}
-                        >
+                        <TouchableWithoutFeedback onPress={this.irConfig}>
                             <View>
                                 <Image
-                                    source={require('../assets/icones/menu.png')}
+                                    source={require('../src/assets/icons/options.png')}
                                     style={styles.buttonOpcoesStyle}>
                                 </Image>
                             </View>
-
-
                         </TouchableWithoutFeedback>
                     </View>
 
-
-                    <TouchableWithoutFeedback onPress={this.irLoading}
-                    >
+                    <TouchableWithoutFeedback onPress={this.irLoading}>
                         <View>
                             <Image
-                                source={require('../assets/icones/play.png')}
+                                source={require('../src/assets/icons/play.png')}
                                 style={styles.buttonPlay}>
                             </Image>
                         </View>
                     </TouchableWithoutFeedback>
 
                     <TouchableWithoutFeedback onPress={this.irSobre}>
-
                         <Image
-                            source={require('../assets/icones/inf.png')}
+                            source={require('../src/assets/icons/info.png')}
                             style={styles.iconInf}>
                         </Image>
-
                     </TouchableWithoutFeedback>
                 </View>
-
             </View>
         );
     }

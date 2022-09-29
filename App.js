@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack'
-import * as Font from 'expo-font';
+import Font from 'expo-font';
 
 import Menu from './view/Menu';
 import Configuracoes from './view/Configuracoes'
@@ -10,7 +10,7 @@ import Sobre from './view/Sobre';
 
 const Stack = createStackNavigator();
 
-let customFonts = {
+let PatrickHandCustomFont = {
   'PatrickHand': require('./src/assets/font/PatrickHand-Regular.ttf')
 };
 
@@ -24,11 +24,11 @@ export default class App extends React.Component {
   };
 
   async _loadFontsAsync() {
-    await Font.loadAsync(customFonts);
+    await Font.loadAsync(PatrickHandCustomFont);
     this.setState({ fontsLoaded: true });
   }
 
-  //CARREGANDO A FONTE E O AUDIO
+  //CARREGANDO A FONTE PERSONALIZADA E O SOM AMBIENTE
   async componentDidMount() {
     this._loadFontsAsync();
   }
