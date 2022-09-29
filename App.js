@@ -1,29 +1,17 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-
-
-// import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack'
-
-
-// limpar código
-
-
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack'
+import * as Font from 'expo-font';
 
 import Menu from './view/Menu';
-import Splash from './view/Splash';
 import Configuracoes from './view/Configuracoes'
-import Cena1 from './scenes/Cena1';
 import Loading from './view/Loading';
-import Cena2 from './scenes/Cena2';
 import Sobre from './view/Sobre';
-import * as Font from 'expo-font';
-import {ViewPropTypes} from 'deprecated-react-native-prop-types';
 
 const Stack = createStackNavigator();
 
 let customFonts = {
-  'PatrickHand': require('./fonts/PatrickHand-Regular.ttf')
+  'PatrickHand': require('./src/assets/font/PatrickHand-Regular.ttf')
 };
 
 export default class App extends React.Component {
