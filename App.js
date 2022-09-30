@@ -1,12 +1,13 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack'
-import Font from 'expo-font';
+import * as Font from 'expo-font';
 
 import Menu from './view/Menu';
 import Configuracoes from './view/Configuracoes'
 import Loading from './view/Loading';
 import Sobre from './view/Sobre';
+import { StatusBar } from 'expo-status-bar';
 
 const Stack = createStackNavigator();
 
@@ -39,7 +40,8 @@ export default class App extends React.Component {
     }
     return (
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{
+        <StatusBar hidden></StatusBar>
+        <Stack.Navigator  initialRouteName='Menu' screenOptions={{
           headerShown: false, gestureEnabled: true,
           gestureDirection: "horizontal",
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS

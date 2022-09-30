@@ -6,30 +6,38 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-
+        backgroundColor: "#000",
     },
     splash: {
         flex: 2, justifyContent: 'center'
     },
-    fundocena_json:{
-      flex: 2,
-      alignItems: 'center'
-       
-    },
-    viewBotaoPlay:{
-       
-    },
+    btn_options:{
+        width: 50,
+        height: 50,
+        marginTop: 10,
+        marginLeft: 25,
 
-    buttonOpcoesStyle: {
-        height: 30,
-        width: 38,
-       marginEnd: 10,
-       position: 'absolute'
+    },
+    btn_info:{
+        width: 50,
+        height: 50,
+        marginTop: 10,
+        marginRight: 25,
+
+    },
+    img_btn_options:{
+        resizeMode: "contain",
+        width: '100%',
+        height: '100%',
+    },
+    img_btn_play:{
+        resizeMode: "contain",
+        width: 100,
+        height: 100,
     },
     capa: {
         height: 500,
         width: 920,
-       
     },
 
     buttonImageIconStyle: {
