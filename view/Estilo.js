@@ -6,7 +6,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#000",
+        backgroundColor: "red",
     },
     splash: {
         flex: 2, justifyContent: 'center'
@@ -35,6 +35,13 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
     },
+    btn_play:{
+        width: 100,
+        height: 100,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 10,
+      },
     capa: {
         height: 500,
         width: 920,
@@ -223,11 +230,6 @@ const styles = StyleSheet.create({
         fontSize: 70,
         color : '#F5F5F5',
         lineHeight: 75
-    },
-
-    txtView:{
-        alignItems :'center',
-        top:30
     },
     viewConfig:{
     right:425,

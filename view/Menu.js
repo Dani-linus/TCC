@@ -16,7 +16,7 @@ export default class Menu extends React.Component {
         this.irSobre = this.irSobre.bind(this);
     }
     irLoading() {
-        this.props.navigation.navigate('Cena2')
+        this.props.navigation.navigate('Loading')
     }
     irConfig() {
         this.props.navigation.navigate('Configuracoes')
@@ -36,6 +36,7 @@ export default class Menu extends React.Component {
                         loop={true}>
                     </LottieView>
 
+                    {/* botões de opção e informação nos cantos superiores */}
                     <View style={{flexDirection: "row", justifyContent: 'space-between'}}>
                         <TouchableOpacity onPress={this.irConfig} style={styles.btn_options}>
                                 <Image
@@ -49,14 +50,16 @@ export default class Menu extends React.Component {
                         </TouchableOpacity>
                     </View>
 
-                    <View style={{justifyContent: 'center'}}>
-                    <View style={styles.txtView}>
+                    {/* titulo e botão de play */}
+                    <View style={{justifyContent: 'center', alignItems: 'center'}}>
+
+                    <View style={{alignItems: 'center'}}>
                         <Text style={styles.txtInicio1}> Os Três</Text>
                         <Text style={styles.txtInicio2}> porquinhos</Text>
-                    <TouchableOpacity style={styles.btn}>
+                    </View>
+                    <TouchableOpacity style={styles.btn_play} onPress={this.irLoading}>
                         <Image source={require('../src/assets/icons/play.png')} style={styles.img_btn_play}></Image>
                     </TouchableOpacity>
-                    </View>
                 </View>
             </View>
         );
