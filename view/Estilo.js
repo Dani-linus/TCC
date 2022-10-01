@@ -11,36 +11,21 @@ const styles = StyleSheet.create({
     splash: {
         flex: 2, justifyContent: 'center'
     },
-    btn_options:{
-        width: 50,
-        height: 50,
-        // marginTop: 10,
-        marginLeft: 25,
-
-    },
     btn_info:{
         width: 50,
         height: 50,
-        // marginTop: 10,
         marginRight: 25,
     },
-    img_btn_options:{
-        resizeMode: "contain",
-        width: '100%',
-        height: '100%',
-    },
-    img_btn_play:{
-        resizeMode: "contain",
-        width: 100,
-        height: 100,
+    btn_option:{
+        width: 50,
+        height: 50,
+        marginLeft: 25,
     },
     btn_play:{
-        // width: 100,
-        // height: 100,
         alignItems: 'center',
         justifyContent: 'center',
-        // marginTop: 10,
-      },
+        elevation: 1,
+    },
     capa: {
         height: 500,
         width: 920,
@@ -52,14 +37,6 @@ const styles = StyleSheet.create({
         height: 200,
         width: 200,
         resizeMode: 'center',
-    },
-
-    iconInf:{
-        height: 30,
-        width: 30,
-        margin : 5,
-        position: 'absolute',
-        left : 815
     },
     imageBackground: {
         flex: 1,
@@ -233,25 +210,12 @@ const styles = StyleSheet.create({
         fontSize: 70,
         lineHeight: 75,
     },
-    txtInicio1:{
-        fontSize: 40,
-        color : '#F5F5F5',
-        lineHeight: 50
-    },
-
-    txtInicio2:{
-        fontSize: 70,
-        color : '#F5F5F5',
-        lineHeight: 75
-    },
     viewConfig:{
     right:425,
     bottom:120
     },
     modal_view:{
         flex: 1,
-        // alignItems: 'center',
-        // justifyContent: 'center',
         backgroundColor: '#F1FFFA',
         margin: 10,
         borderRadius: 20,
@@ -260,10 +224,15 @@ const styles = StyleSheet.create({
     modal_content:{
         backgroundColor: 'red'
     },
-    text_modal:{
-        fontSize: 32,
+    text_modal_options:{
+        fontSize: 24,
         textTransform: 'uppercase',
         textAlign: 'center',
+    },
+    view_modals:{
+        flexDirection: "row", 
+        justifyContent: 'space-between', 
+        alignItems: 'center'
     },
 });
 

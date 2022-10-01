@@ -8,7 +8,7 @@ function ModalInfo(){
     const [modalVisible, setModalVisible] =  useState(false);
 
     return(
-        <View style={{justifyContent: 'center', alignItems: 'center', margin: 10,}}>           
+        <View style={{justifyContent: 'center', alignItems: 'center', backfaceVisibility: 'hidden'}}>           
             <Modal
                 animationType="fade"
                 transparent={false}
@@ -17,29 +17,17 @@ function ModalInfo(){
                 style={styles.modal_content}>
 
                 <View style={styles.modal_view}>
-                    <View style={{width: 32 ,backgroundColor: '#D3D3D3', borderRadius: 10, alignSelf: 'flex-end', elevation: 2}}>
+                    <View style={{borderWidth: 1, borderColor: 'blue',width: 32 ,backgroundColor: '#BBFEE6', borderRadius: 10, alignSelf: 'flex-end', elevation: 2}}>
                         <TouchableOpacity onPress={() => {setModalVisible(false)}}>
                             <Ionicons name='close' size={32} color='black'/>
                         </TouchableOpacity>
                     </View>
-                    <Text style={[styles.text_black, styles.text_modal]}>definições</Text>
-                    <View style={{borderWidth: 1,borderColor: 'red', flexDirection:'row' , alignItems: 'flex-start'}}>
-                        <Ionicons name='mic' size={32} color='black' style={{marginEnd: 10}}></Ionicons>
-                        <Text style={[styles.text_black, styles.text_modal]}>
-                            narração
-                        </Text>
-                        {/* adicionar componente de controle volume da narração */}
+                    <View style={{flex: 1, borderWidth: 1, borderColor: 'blue'}}>
+                        <Text>-adicionar instruções de uso</Text>
                     </View>
-                    <View style={{borderWidth: 1,borderColor: 'red', flexDirection:'row' , alignItems: 'center'}}>
-                        <Ionicons name='musical-notes' size={32} color='black' style={{marginEnd: 10}}></Ionicons>
-                        <Text style={[styles.text_black, styles.text_modal]}>
-                            som ambiente
-                        </Text>
-                        {/* adicionar componente de controle volume da narração */}
+                    <View style={{borderWidth: 1, borderColor: 'blue', alignSelf:'flex-end', alignContent: 'flex-end'}}>
+                        <Text style={styles.text_black}>Desenvolvido por{'\n'}Danieli & Marina{'\n'}2022 - Trabalho de conclusão de curso{'\n'}Ciência da Computação - IFSC - Lages-SC</Text>
                     </View>
-                    <TouchableOpacity style={{backgroundColor: '#56B2EB', borderRadius: 10, marginEnd: 50, marginStart:50, marginTop: 50}}>
-                        <Text style={[styles.text_black, styles.text_modal]}>Recomeçar</Text>
-                    </TouchableOpacity>
                 </View>
             </Modal>
 
