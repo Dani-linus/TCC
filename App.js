@@ -4,7 +4,6 @@ import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/
 import * as Font from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 
-import ModalInfo from './src/assets/components/ModalInfo';
 import ViewFrontCover from './src/assets/view/ViewFrontCover';
 
 const Stack = createStackNavigator();
@@ -47,7 +46,7 @@ export default class App extends React.Component {
             <Stack.Screen name="ViewFrontCover" component={ViewFrontCover} />
             {/* <Stack.Screen name="Menu" component={Menu} /> */}
             {/* <Stack.Screen name="Loading" component={Loading} /> */}
-            <Stack.Screen name="ModalInfo" component={ModalInfo} />
+            {/* <Stack.Screen name="ModalInfo" component={ModalInfo} /> */}
           </Stack.Navigator>
         </NavigationContainer>
     );
