@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Text, View, Button, Modal, TouchableOpacity, Image} from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
+// import Modal from "react-native-modal";
 
 import styles from "../styles/StyleViewFrontCover";
 
@@ -8,7 +9,7 @@ function ModalInfo(){
     const [modalVisible, setModalVisible] =  useState(false);
 
     return(
-        <View style={{justifyContent: 'center', alignItems: 'center'}}>           
+        <View style={styles.center}>           
             <Modal
                 animationType="fade"
                 transparent={false}

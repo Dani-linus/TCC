@@ -68,8 +68,11 @@ const styles = StyleSheet.create({
         shadowOpacity:0.7,
         shadowRadius:30,
         elevantion:10
-
-    }
+    },
+    center:{
+        justifyContent: 'center', 
+        alignItems: 'center'
+    },
 
 });
 
