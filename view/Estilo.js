@@ -6,7 +6,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "red",
+        backgroundColor: "white",
     },
     splash: {
         flex: 2, justifyContent: 'center'
@@ -14,16 +14,15 @@ const styles = StyleSheet.create({
     btn_options:{
         width: 50,
         height: 50,
-        marginTop: 10,
+        // marginTop: 10,
         marginLeft: 25,
 
     },
     btn_info:{
         width: 50,
         height: 50,
-        marginTop: 10,
+        // marginTop: 10,
         marginRight: 25,
-
     },
     img_btn_options:{
         resizeMode: "contain",
@@ -36,11 +35,11 @@ const styles = StyleSheet.create({
         height: 100,
     },
     btn_play:{
-        width: 100,
-        height: 100,
+        // width: 100,
+        // height: 100,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 10,
+        // marginTop: 10,
       },
     capa: {
         height: 500,
@@ -218,15 +217,29 @@ const styles = StyleSheet.create({
         height: 500, 
         right:10
     },
-    txtInicio1:{
+    text_white: {
+        color: "white",
         fontFamily: 'PatrickHand',
+    },
+    text_black: {
+        color: "black",
+        fontFamily: 'PatrickHand',
+    },
+    text_1:{
+        fontSize: 40,
+        lineHeight: 50,
+    },
+    text_2:{
+        fontSize: 70,
+        lineHeight: 75,
+    },
+    txtInicio1:{
         fontSize: 40,
         color : '#F5F5F5',
         lineHeight: 50
     },
 
     txtInicio2:{
-        fontFamily: 'PatrickHand',
         fontSize: 70,
         color : '#F5F5F5',
         lineHeight: 75
@@ -234,7 +247,24 @@ const styles = StyleSheet.create({
     viewConfig:{
     right:425,
     bottom:120
-    }
+    },
+    modal_view:{
+        flex: 1,
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        backgroundColor: '#F1FFFA',
+        margin: 10,
+        borderRadius: 20,
+        padding: 20,
+    },
+    modal_content:{
+        backgroundColor: 'red'
+    },
+    text_modal:{
+        fontSize: 32,
+        textTransform: 'uppercase',
+        textAlign: 'center',
+    },
 });
 
 export default styles;

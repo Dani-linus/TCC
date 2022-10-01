@@ -2,12 +2,13 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack'
 import * as Font from 'expo-font';
+import { StatusBar } from 'expo-status-bar';
 
 import Menu from './view/Menu';
 import Configuracoes from './view/Configuracoes'
 import Loading from './view/Loading';
 import Sobre from './view/Sobre';
-import { StatusBar } from 'expo-status-bar';
+import ModalInfo from './src/assets/components/ModalInfo';
 
 const Stack = createStackNavigator();
 
@@ -40,18 +41,19 @@ export default class App extends React.Component {
     }
     return (
       <NavigationContainer>
-        <StatusBar hidden></StatusBar>
-        <Stack.Navigator  initialRouteName='Menu' screenOptions={{
-          headerShown: false, gestureEnabled: true,
-          gestureDirection: "horizontal",
-          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
-        }}>
-          <Stack.Screen name="Menu" component={Menu} />
-          <Stack.Screen name="Loading" component={Loading} />
-          <Stack.Screen name="Sobre" component={Sobre} />
-          <Stack.Screen name="Configuracoes" component={Configuracoes} />
-        </Stack.Navigator>
-      </NavigationContainer>
+          <StatusBar hidden></StatusBar>
+          <Stack.Navigator  initialRouteName='Menu' screenOptions={{
+            headerShown: false, gestureEnabled: true,
+            gestureDirection: "horizontal",
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
+          }}>
+            <Stack.Screen name="Menu" component={Menu} />
+            <Stack.Screen name="Loading" component={Loading} />
+            <Stack.Screen name="Sobre" component={Sobre} />
+            <Stack.Screen name="Configuracoes" component={Configuracoes} />
+            <Stack.Screen name="ModalInfo" component={ModalInfo} />
+          </Stack.Navigator>
+        </NavigationContainer>
     );
   }
 }

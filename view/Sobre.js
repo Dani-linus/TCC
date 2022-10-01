@@ -3,6 +3,8 @@ import { Text, View ,ImageBackground,TouchableWithoutFeedback,Image} from 'react
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import styles from './Estilo';
 import * as Font from 'expo-font';
+import LegendCaptionArea from '../src/assets/components/LegendCaptionArea';
+import ModalInfo from '../src/assets/components/ModalInfo';
 
 export default class Sobre extends React.Component {
     constructor(props) {
@@ -16,7 +18,8 @@ export default class Sobre extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <ImageBackground
+                {/* <LegendCaptionArea text="Aqui vai o texto que a gente quiser colocar"></LegendCaptionArea> */}
+                {/* <ImageBackground
                     source={require('../assets/img/fundo.png')}
                     style={styles.capa}>
                     <View style={styles.retangulo}>
@@ -36,7 +39,7 @@ export default class Sobre extends React.Component {
                          </Image>
                          <Text style={styles.txtDesenvolvidopor}>Desenvolvido por Daniele e Marina Savitzki (2022)</Text>
                     </View>
-                </ImageBackground>
+                </ImageBackground> */}
 
             </View>
         );
