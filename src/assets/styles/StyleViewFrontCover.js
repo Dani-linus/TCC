@@ -56,6 +56,20 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between', 
         alignItems: 'center'
     },
+    wrap:{
+        padding:20,
+        margin:20,
+        borderradius:8,
+        backgroundcolor:"#2D3953",
+        shadowColor:"#4048BF",
+        shadowOffset:{
+            width:8.4, 
+            height:8.4},
+        shadowOpacity:0.7,
+        shadowRadius:30,
+        elevantion:10
+
+    }
 
 });
 
