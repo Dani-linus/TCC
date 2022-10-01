@@ -25,7 +25,6 @@ export default class Cena1 extends React.Component {
         }).start();
     }
   
-
     async componentDidMount() {
         Audio.setAudioModeAsync({
             allowsRecordingIOS: false,
