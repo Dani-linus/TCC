@@ -6,6 +6,7 @@ import { StatusBar } from 'expo-status-bar';
 
 import ModalInfo from './src/assets/components/ModalInfo';
 import ViewFrontCover from './src/assets/view/ViewFrontCover';
+import Cena1 from './scenes/Cena1';
 
 const Stack = createStackNavigator();
 
@@ -27,17 +28,10 @@ export default class App extends React.Component {
     this.setState({ fontsLoaded: true });
   }
 
-<<<<<<< HEAD
     //CARREGANDO A FONTE
     async componentDidMount() {
       this._loadFontsAsync();
     }
-=======
-  //CARREGANDO A FONTE PERSONALIZADA E O SOM AMBIENTE
-  async componentDidMount() {
-    this._loadFontsAsync();
-  }
->>>>>>> 7e4fb9a50b5a29c80887b90a0d0e59d9bb1e86f9
 
   render() {
     if (!this.state.fontsLoaded) {
@@ -46,12 +40,13 @@ export default class App extends React.Component {
     return (
       <NavigationContainer>
           <StatusBar hidden></StatusBar>
-          <Stack.Navigator  initialRouteName='ViewFrontCover' screenOptions={{
+          <Stack.Navigator  initialRouteName='Cena1' screenOptions={{
             headerShown: false, gestureEnabled: true,
             gestureDirection: "horizontal",
             cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
           }}>
             <Stack.Screen name="ViewFrontCover" component={ViewFrontCover} />
+            <Stack.Screen name="Cena1" component={Cena1} />
             {/* <Stack.Screen name="Menu" component={Menu} /> */}
             {/* <Stack.Screen name="Loading" component={Loading} /> */}
             <Stack.Screen name="ModalInfo" component={ModalInfo} />
