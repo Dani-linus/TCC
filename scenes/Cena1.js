@@ -5,7 +5,8 @@ import LottieView from 'lottie-react-native';
 import styles from '../view/Estilo';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Audio } from 'expo-av';
-import * as Animatable from "react-native-animatable";
+//import * as Animatable from "react-native-animatable";
+import LegendCaptionArea from '../src/assets/components/LegendCaptionArea';
 
 export default class Cena1 extends React.Component {
     constructor(props) {
@@ -25,29 +26,6 @@ export default class Cena1 extends React.Component {
         }).start();
     }
   
-    async componentDidMount() {
-        Audio.setAudioModeAsync({
-            allowsRecordingIOS: false,
-            staysActiveInBackground: true,
-            interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DUCK_OTHERS,
-            shouldDuckAndroid: true,
-            staysActiveInBackground: true,
-            playsThroughEarpieceAndroid: true,
-            allowsRecordingIOS: true,
-            interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
-            playsInSilentModeIOS: true,
-        });
-
-        this.sound = new Audio.Sound();
-
-        const status = {
-            shouldPlay: false
-
-        };
-
-        this.sound.loadAsync(require('../sound/ronco_porco.mp3'), status, false);
-    }
-
     //PLAY NO SOM
     playSound() {
         this.sound.playAsync();
@@ -63,28 +41,8 @@ export default class Cena1 extends React.Component {
                 <ImageBackground
                     source={require('../assets/scenes/CENA1.jpg')}
                     style={{ width: 854, height: 500 }}>
-
-                        <Animatable.View 
-                         animation="fadeInLeft"
-                         duration={2000}
-                        style={[styles.viewtxt] }>
-                            
-                             <Animatable.Text
-                                animation="slideInLeft"
-                                duration={800}
-                                style={[styles.txtHistoria]}>
-                                Era uma vez três porquinhos que viviam com seus pais nos campos encantados.{'\n'}
-                                Os porquinhos estavam muito felizes, e conforme cresciam, se tornaram cada vez mais independentes
-                            </Animatable.Text>
-                        </Animatable.View>
-                        <TouchableWithoutFeedback onPress={this.playSound.bind(this)} >
-                            <View>
-                                <Image
-                                    source={require('../assets/img/teste_porquinho.png')}
-                                    style={{ left: 714, marginTop: 212 }}>
-                                </Image>
-                            </View>
-                        </TouchableWithoutFeedback>
+                        <LegendCaptionArea text = 'testando 1.2.3'>
+                        </LegendCaptionArea>
                 </ImageBackground>
             </View >
         )

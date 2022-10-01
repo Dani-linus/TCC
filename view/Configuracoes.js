@@ -33,10 +33,30 @@ export default class Configuracoes extends React.Component {
     this.sound.playAsync();
   }
 
+<<<<<<< HEAD
   //STOP NO SOM
   stopSound() {
     this.sound.pauseAsync();
   }
+=======
+      const status = {
+     shouldPlay: false
+
+    };
+
+   this.sound.loadAsync(require('../src/assets/sound/ambientSound/ambient_sound_one.mp3'), status, false);
+    }
+
+    //PLAY NO SOM
+    playSound() {
+        this.sound.playAsync();
+    }
+
+    //STOP NO SOM
+    stopSound() {
+        this.sound.pauseAsync();
+    }
+>>>>>>> 7e4fb9a50b5a29c80887b90a0d0e59d9bb1e86f9
     render() {
 
         return (

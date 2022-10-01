@@ -10,7 +10,7 @@ export default class Splash extends React.Component{
         return(
             <View style={styles.splash}>
                 <LottieView
-                source={require('../animation/splash-abelha.json')}
+                source={require('../src/assets/animation/splash-abelha.json')}
                 autoPlay
                 loop={false}
                 onAnimationFinish={()=> this.props.navigation.navigate('Menu')}

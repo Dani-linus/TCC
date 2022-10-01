@@ -1,28 +1,16 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-
-
-// import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack'
-
-
-// limpar código
-
-
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack'
-
-import Menu from './view/Menu';
-import Splash from './view/Splash';
-import Configuracoes from './view/Configuracoes'
-import Cena1 from './scenes/Cena1';
-import Loading from './view/Loading';
-import Cena2 from './scenes/Cena2';
-import Sobre from './view/Sobre';
 import * as Font from 'expo-font';
-import { ViewPropTypes } from 'deprecated-react-native-prop-types';
+import { StatusBar } from 'expo-status-bar';
+
+import ModalInfo from './src/assets/components/ModalInfo';
+import ViewFrontCover from './src/assets/view/ViewFrontCover';
+
 const Stack = createStackNavigator();
 
-let customFonts = {
-  'PatrickHand': require('./fonts/PatrickHand-Regular.ttf')
+let PatrickHandCustomFont = {
+  'PatrickHand': require('./src/assets/font/PatrickHand-Regular.ttf')
 };
 
 export default class App extends React.Component {
@@ -35,14 +23,21 @@ export default class App extends React.Component {
   };
 
   async _loadFontsAsync() {
-    await Font.loadAsync(customFonts);
+    await Font.loadAsync(PatrickHandCustomFont);
     this.setState({ fontsLoaded: true });
   }
 
+<<<<<<< HEAD
     //CARREGANDO A FONTE
     async componentDidMount() {
       this._loadFontsAsync();
     }
+=======
+  //CARREGANDO A FONTE PERSONALIZADA E O SOM AMBIENTE
+  async componentDidMount() {
+    this._loadFontsAsync();
+  }
+>>>>>>> 7e4fb9a50b5a29c80887b90a0d0e59d9bb1e86f9
 
   render() {
     if (!this.state.fontsLoaded) {
@@ -50,17 +45,18 @@ export default class App extends React.Component {
     }
     return (
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{
-          headerShown: false, gestureEnabled: true,
-          gestureDirection: "horizontal",
-          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
-        }}>
-          <Stack.Screen name="Menu" component={Menu} />
-          <Stack.Screen name="Loading" component={Loading} />
-          <Stack.Screen name="Sobre" component={Sobre} />
-          <Stack.Screen name="Configuracoes" component={Configuracoes} />
-        </Stack.Navigator>
-      </NavigationContainer>
+          <StatusBar hidden></StatusBar>
+          <Stack.Navigator  initialRouteName='ViewFrontCover' screenOptions={{
+            headerShown: false, gestureEnabled: true,
+            gestureDirection: "horizontal",
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
+          }}>
+            <Stack.Screen name="ViewFrontCover" component={ViewFrontCover} />
+            {/* <Stack.Screen name="Menu" component={Menu} /> */}
+            {/* <Stack.Screen name="Loading" component={Loading} /> */}
+            <Stack.Screen name="ModalInfo" component={ModalInfo} />
+          </Stack.Navigator>
+        </NavigationContainer>
     );
   }
 }

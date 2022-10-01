@@ -6,30 +6,29 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-
+        backgroundColor: "white",
     },
     splash: {
         flex: 2, justifyContent: 'center'
     },
-    fundocena_json:{
-      flex: 2,
-      alignItems: 'center'
-       
+    btn_info:{
+        width: 50,
+        height: 50,
+        marginRight: 25,
     },
-    viewBotaoPlay:{
-       
+    btn_option:{
+        width: 50,
+        height: 50,
+        marginLeft: 25,
     },
-
-    buttonOpcoesStyle: {
-        height: 30,
-        width: 38,
-       marginEnd: 10,
-       position: 'absolute'
+    btn_play:{
+        alignItems: 'center',
+        justifyContent: 'center',
+        elevation: 1,
     },
     capa: {
         height: 500,
         width: 920,
-       
     },
 
     buttonImageIconStyle: {
@@ -38,14 +37,6 @@ const styles = StyleSheet.create({
         height: 200,
         width: 200,
         resizeMode: 'center',
-    },
-
-    iconInf:{
-        height: 30,
-        width: 30,
-        margin : 5,
-        position: 'absolute',
-        left : 815
     },
     imageBackground: {
         flex: 1,
@@ -203,28 +194,46 @@ const styles = StyleSheet.create({
         height: 500, 
         right:10
     },
-    txtInicio1:{
+    text_white: {
+        color: "white",
         fontFamily: 'PatrickHand',
+    },
+    text_black: {
+        color: "black",
+        fontFamily: 'PatrickHand',
+    },
+    text_1:{
         fontSize: 40,
-        color : '#F5F5F5',
-        lineHeight: 50
+        lineHeight: 50,
     },
-
-    txtInicio2:{
-        fontFamily: 'PatrickHand',
+    text_2:{
         fontSize: 70,
-        color : '#F5F5F5',
-        lineHeight: 75
-    },
-
-    txtView:{
-        alignItems :'center',
-        top:30
+        lineHeight: 75,
     },
     viewConfig:{
     right:425,
     bottom:120
-    }
+    },
+    modal_view:{
+        flex: 1,
+        backgroundColor: '#F1FFFA',
+        margin: 10,
+        borderRadius: 20,
+        padding: 20,
+    },
+    modal_content:{
+        backgroundColor: 'red'
+    },
+    text_modal_options:{
+        fontSize: 24,
+        textTransform: 'uppercase',
+        textAlign: 'center',
+    },
+    view_modals:{
+        flexDirection: "row", 
+        justifyContent: 'space-between', 
+        alignItems: 'center'
+    },
 });
 
 export default styles;
