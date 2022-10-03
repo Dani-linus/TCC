@@ -4,9 +4,9 @@
 import React from "react"
 import {Text} from "react-native"
 
-function LegendCaptionArea(props){
+function TextOfPage(props){
     return(
         <Text>{props.text}</Text>
     )
 }
-export default LegendCaptionArea;
+export default TextOfPage;

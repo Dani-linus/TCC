@@ -13,7 +13,7 @@ export default function HomeView(){
     return (
         <View style={styles.container}>
             <LottieView
-                source={require('../animation/cover.json')}
+                source={require('../animation/home.json')}
                 autoPlay={true}
                 loop={true}>
             </LottieView>
