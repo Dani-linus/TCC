@@ -3,14 +3,13 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, Image } from 'react-native';
 import LottieView from 'lottie-react-native';
-import { useNavigation } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-import styles from '../styles/StyleViewFrontCover';
+import styles from '../styles/HomeViewStyle';
 import ModalInfo from '../components/ModalInfo';
 import ModalOptions from '../components/ModalOptions';
 
-export default function ViewFrontCover(){
+export default function HomeView(){
     return (
         <View style={styles.container}>
             <LottieView

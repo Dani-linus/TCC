@@ -1,57 +1,34 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack'
-import * as Font from 'expo-font';
+import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
-
-import ModalInfo from './src/assets/components/ModalInfo';
-import ViewFrontCover from './src/assets/view/ViewFrontCover';
-import Cena1 from './scenes/Cena1';
+import HomeView from './src/assets/view/HomeView';
+import ViewPageOne from './src/assets/view/viewPages/ViewPageOne';
+import { Audio } from 'expo-av';
 
 const Stack = createStackNavigator();
 
-let PatrickHandCustomFont = {
-  'PatrickHand': require('./src/assets/font/PatrickHand-Regular.ttf')
-};
+export default function App () {
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
+  const [fontsLoaded] = useFonts({
+    'PatrickHand': require('./src/assets/font/PatrickHand-Regular.ttf'),
+  });
 
+  if(!fontsLoaded){
+    return null;
   }
-  state = {
-    fontsLoaded: false,
-  };
-
-  async _loadFontsAsync() {
-    await Font.loadAsync(PatrickHandCustomFont);
-    this.setState({ fontsLoaded: true });
-  }
-
-    //CARREGANDO A FONTE
-    async componentDidMount() {
-      this._loadFontsAsync();
-    }
-
-  render() {
-    if (!this.state.fontsLoaded) {
-      return null;
-    }
     return (
       <NavigationContainer>
-          <StatusBar hidden></StatusBar>
-          <Stack.Navigator  initialRouteName='Cena1' screenOptions={{
-            headerShown: false, gestureEnabled: true,
-            gestureDirection: "horizontal",
-            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
-          }}>
-            <Stack.Screen name="ViewFrontCover" component={ViewFrontCover} />
-            <Stack.Screen name="Cena1" component={Cena1} />
-            {/* <Stack.Screen name="Menu" component={Menu} /> */}
-            {/* <Stack.Screen name="Loading" component={Loading} /> */}
-            <Stack.Screen name="ModalInfo" component={ModalInfo} />
-          </Stack.Navigator>
-        </NavigationContainer>
+        <StatusBar hidden></StatusBar>
+        <Stack.Navigator initialRouteName='ViewPageOne' screenOptions={{
+          headerShown: false, gestureEnabled: true,
+          gestureDirection: "horizontal",
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
+        }}>
+          <Stack.Screen name="ViewPageOne" component={ViewPageOne} />
+          {/* <Stack.Screen name="ModalInfo" component={ModalInfo} /> */}
+        </Stack.Navigator>
+      </NavigationContainer>
     );
   }
-}

@@ -5,6 +5,10 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "white",
     },
+    btn_dimensoes:{
+        width: 50,
+        height: 50,
+    },
     btn_info:{
         width: 50,
         height: 50,
