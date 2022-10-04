@@ -1,13 +1,12 @@
 //Primeira tela - capa do livro e inicio da aplicação
 import React from 'react';
 import { Text, View, TouchableOpacity, Image } from 'react-native';
-import LottieView from 'lottie-react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
-
 import styles from '../styles/HomeViewStyle';
 import ModalInfo from '../components/ModalInfo';
 import ModalOptions from '../components/ModalOptions';
-import App from './../../../App';
+
+import LottieView from 'lottie-react-native';
 
 export default function HomeView(){
 

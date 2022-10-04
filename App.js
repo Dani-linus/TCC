@@ -4,8 +4,9 @@ import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/
 import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import HomeView from './src/assets/view/HomeView';
+import ModalInfo from './src/assets/components/ModalInfo'; 
+import ModalOptions from './src/assets/components/ModalOptions'; 
 import ViewPageOne from './src/assets/view/viewPages/ViewPageOne';
-import { Audio } from 'expo-av';
 
 const Stack = createStackNavigator();
 
@@ -21,13 +22,15 @@ export default function App () {
     return (
       <NavigationContainer>
         <StatusBar hidden></StatusBar>
-        <Stack.Navigator initialRouteName='ViewPageOne' screenOptions={{
+        <Stack.Navigator initialRouteName='HomeView' screenOptions={{
           headerShown: false, gestureEnabled: true,
           gestureDirection: "horizontal",
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
         }}>
+          <Stack.Screen name="HomeView" component={HomeView} />
           <Stack.Screen name="ViewPageOne" component={ViewPageOne} />
-          {/* <Stack.Screen name="ModalInfo" component={ModalInfo} /> */}
+          <Stack.Screen name="ModalInfo" component={ModalInfo}/>
+          <Stack.Screen name="ModalOptions" component={ModalOptions} />
         </Stack.Navigator>
       </NavigationContainer>
     );
