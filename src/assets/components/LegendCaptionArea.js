@@ -10,11 +10,11 @@ function LegendCaptionArea(props) {
     return (
         <Animatable.View
             animation="fadeInDown"
-            duration={2000}
+            duration={1000}
             style={[styles.viewtxt]}>
 
             <Animatable.Text
-                animation="slideInLeft"
+                animation="fadeInDown"
                 delay={1000}
                 style={[styles.txtHistoria]}>
                 {props.text}
