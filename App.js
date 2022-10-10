@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack'
 import { useFonts } from 'expo-font';
@@ -10,16 +10,17 @@ import ViewPageOne from './src/assets/view/viewPages/ViewPageOne';
 
 const Stack = createStackNavigator();
 
+
 export default function App () {
 
   const [fontsLoaded] = useFonts({
     'PatrickHand': require('./src/assets/font/PatrickHand-Regular.ttf'),
   });
-
   if(!fontsLoaded){
     return null;
   }
     return (
+   
       <NavigationContainer>
         <StatusBar hidden></StatusBar>
         <Stack.Navigator initialRouteName='HomeView' screenOptions={{
