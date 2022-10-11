@@ -5,6 +5,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "white",
-    }
+    },
+    touch_one_animation:{
+       position:'absolute' ,
+       right:10
+    },
+    touch_two_animation:{
+        position:'absolute' ,
+        right:10
+     }
 });
 export default styles;

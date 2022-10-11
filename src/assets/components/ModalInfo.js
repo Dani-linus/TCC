@@ -25,7 +25,7 @@ function ModalInfo(){
                         <Text>-adicionar instruções de uso</Text>
                     </View>
                     <View style={{borderWidth: 1, borderColor: 'blue', alignSelf:'flex-end', alignContent: 'flex-end'}}>
-                        <Text style={styles.text_black}>Desenvolvido por{'\n'}Danieli & Marina{'\n'}2022 - Trabalho de conclusão de curso{'\n'}Ciência da Computação - IFSC - Lages-SC</Text>
+                        <Text style={styles.text_black}>Desenvolvido por{'\n'}Daniele & Marina{'\n'}2022 - Trabalho de conclusão de curso{'\n'}Ciência da Computação - IFSC - Lages-SC</Text>
                     </View>
                 </View>
             </Modal>

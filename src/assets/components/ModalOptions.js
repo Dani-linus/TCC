@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { Text, View, Button, Modal, TouchableOpacity, Image } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 // import Modal from "react-native-modal";
-import HomeView from "../view/HomeView";
 import styles from "../styles/HomeViewStyle";
-
 
 function ModalInfo(props) {
     const [modalVisible, setModalVisible] = useState(false);

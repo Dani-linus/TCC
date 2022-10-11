@@ -5,25 +5,12 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import styles from '../styles/HomeViewStyle';
 import ModalInfo from '../components/ModalInfo';
 import ModalOptions from '../components/ModalOptions';
-import { Audio } from 'expo-av';
 import LottieView from 'lottie-react-native';
 
-export default function HomeView() {
-    const [sound, setSound] = React.useState();
-    async function playSound() {
-        console.log('Loading Sound');
-        const { sound } = await Audio.Sound.createAsync(require('../sound/ambientSound/ambient_sound_two.mp3')
-        );
-        setSound(sound);
 
-        console.log('Playing Sound');
-        await sound.playAsync();
-    }
+export default function HomeView({ navigation }) {
 
-    React.useEffect(() => {
-        playSound()
-    }, []);
-
+  
     return (
         <View style={styles.container}>
             <LottieView
@@ -34,8 +21,7 @@ export default function HomeView() {
 
             {/* botões de opção e informação nos cantos superiores da tela inicial*/}
             <View style={styles.view_modals}>
-                <ModalOptions som = {sound}/>
-                console.log(sound)
+                <ModalOptions/>
                 <ModalInfo />
             </View>
 
@@ -45,7 +31,7 @@ export default function HomeView() {
                     <Text style={[styles.text_white, styles.text_1]}> Os Três</Text>
                     <Text style={[styles.text_white, styles.text_2]}> porquinhos</Text>
                 </View>
-                <TouchableOpacity style={styles.btn_play}>
+                <TouchableOpacity style={styles.btn_play} onPress={() => navigation.navigate("ViewPageOne")}>
                     <Ionicons name='play' size={120} color='white' />
                 </TouchableOpacity>
             </View>
