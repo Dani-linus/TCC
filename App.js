@@ -6,8 +6,8 @@ import { StatusBar } from 'expo-status-bar';
 import HomeView from './src/assets/view/HomeView';
 import ModalInfo from './src/assets/components/ModalInfo'; 
 import ModalOptions from './src/assets/components/ModalOptions'; 
-import ViewPageOne from './src/assets/view/viewPages/ViewPageOne';
-import ViewPageTwo from './src/assets/view/viewPages/ViewPageTwo';
+import PageOne from './src/assets/view/pages/PageOne';
+// import ViewPageTwo from './src/assets/view/pages/ViewPageTwo';
 import {Audio} from 'expo-av';
 
 const Stack = createStackNavigator();
@@ -39,8 +39,8 @@ export default function App () {
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
         }}>
           <Stack.Screen name="HomeView" component={HomeView} />
-          <Stack.Screen name="ViewPageOne" component={ViewPageOne} />
-          <Stack.Screen name="ViewPageTwo" component={ViewPageTwo} />
+          <Stack.Screen name="PageOne" component={PageOne} />
+          {/* <Stack.Screen name="ViewPageTwo" component={ViewPageTwo} /> */}
           <Stack.Screen name="ModalInfo" component={ModalInfo}/>
           <Stack.Screen name="ModalOptions" component={ModalOptions} />
         </Stack.Navigator>

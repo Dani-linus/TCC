@@ -9,7 +9,6 @@ import LottieView from 'lottie-react-native';
 
 
 export default function HomeView({ navigation }) {
-
   
     return (
         <View style={styles.container}>
@@ -31,7 +30,7 @@ export default function HomeView({ navigation }) {
                     <Text style={[styles.text_white, styles.text_1]}> Os Três</Text>
                     <Text style={[styles.text_white, styles.text_2]}> porquinhos</Text>
                 </View>
-                <TouchableOpacity style={styles.btn_play} onPress={() => navigation.navigate("ViewPageOne")}>
+                <TouchableOpacity style={styles.btn_play} onPress={() => navigation.navigate("PageOne")}>
                     <Ionicons name='play' size={120} color='white' />
                 </TouchableOpacity>
             </View>
