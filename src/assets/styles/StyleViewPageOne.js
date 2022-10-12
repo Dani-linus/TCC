@@ -6,12 +6,12 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     a_pig_mom:{
-        width: '165%',
+        width: '160%',
         // borderWidth: 1,
         // borderColor: 'red',
     },
     a_pig_spleeping:{
-        width: '165%',
+        width: '96%',
         // borderWidth: 1,
         // borderColor: 'blue',
      },
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     },
     view_pig_sleepling:{
         left: 525,
-        top: 161,
+        top: 160,
     }
 });
 export default styles;

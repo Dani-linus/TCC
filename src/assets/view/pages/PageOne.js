@@ -25,12 +25,14 @@ export default function ViewPageOne() {
 
     // Inicia a animação do porco dormindo
     function startAnimationPigSleeping(){
+        //de 0 a 148 - pig dormindo, ou seja, estado zero (isso fica em looping até que seja interagido)
+        //de 148 a 300 - reação a interação, estado 1.
         animation_pig_spleeping.current?.play();
     }
     return (
         <View style={styles.container}>
             <LottieView
-                source={require('../../animation/scene1/page_1.json')}
+                source={require('../../animation/page1/page_1.json')}
                 autoPlay={true}
                 loop={true}>
             </LottieView>
@@ -42,7 +44,7 @@ export default function ViewPageOne() {
                         touchSoundDisabled={true}>
                         <LottieView
                             style={styles.a_pig_mom}
-                            source={require('../../animation/scene1/pig_mom.json')}
+                            source={require('../../animation/page1/pig_mom.json')}
                             ref={animation_pig_mom}>
                         </LottieView>
                     </TouchableNativeFeedback>
@@ -53,7 +55,7 @@ export default function ViewPageOne() {
                     <TouchableNativeFeedback onPress={startAnimationPigSleeping} >
                         <LottieView
                             style={styles.a_pig_spleeping}
-                            source={require('../../animation/scene1/pig_sleepling.json')}
+                            source={require('../../animation/page1/pig_sleepling.json')}
                             ref={animation_pig_spleeping}>
                         </LottieView>
                     </TouchableNativeFeedback>
