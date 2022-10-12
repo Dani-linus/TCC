@@ -4,15 +4,33 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "white",
     },
-    touch_one_animation:{
-       position:'absolute' ,
-       right:10
+    a_pig_mom:{
+        width: '165%',
+        // borderWidth: 1,
+        // borderColor: 'red',
     },
-    touch_two_animation:{
-        position:'absolute' ,
-        right:10
-     }
+    a_pig_spleeping:{
+        width: '165%',
+        // borderWidth: 1,
+        // borderColor: 'blue',
+     },
+     view_animation:{
+        position: 'absolute',
+        width: 110,
+        height: 130,
+        alignItems: 'center',
+        justifyContent: 'center',
+        // borderWidth: 1,
+        // borderColor: 'green',
+    },
+    view_pig_mom:{
+        left: 241,
+        top: 190,
+    },
+    view_pig_sleepling:{
+        left: 525,
+        top: 161,
+    }
 });
 export default styles;

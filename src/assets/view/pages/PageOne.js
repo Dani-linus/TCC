@@ -8,36 +8,57 @@ import LegendCaptionArea from '../../components/LegendTextArea';
 import LottieView from 'lottie-react-native';
 
 export default function ViewPageOne() {
-    let animation = React.createRef()
+    // Para cada animação, precisa de um ref distinto
+    let animation_pig_mom = React.createRef()
+    let animation_pig_spleeping = React.createRef()
 
-    //Iniciando Animação
-    function startAnimation() {
-        animation.current.play();
+    // //Iniciando Animação
+    // function startAnimation() {
+    //     animation.current.play();
+    // }
+    // Inicia a animação da mamãe porca
+    function startAnimationPigMom(){
+        // adicionar verificação de cliques
+        // Adicionar loop baseado nos frames (isso eu preciso verificar direito no viewer do Lottie files)
+        animation_pig_mom.current?.play();
+    }
+
+    // Inicia a animação do porco dormindo
+    function startAnimationPigSleeping(){
+        animation_pig_spleeping.current?.play();
     }
     return (
         <View style={styles.container}>
             <LottieView
-                source={require('../../animation/scene1/cena_1.json')}
+                source={require('../../animation/scene1/page_1.json')}
                 autoPlay={true}
                 loop={true}>
             </LottieView>
-            <TouchableNativeFeedback onPress={startAnimation}
-            touchSoundDisabled={true}
-            >
-                <LottieView style={styles.touch_one_animation}
-                    source={require('../../animation/scene1/mamae-porca-regando-as-flores.json')}
-                    ref={animation}
-                    duration={1000}
-                >
-                </LottieView>
-            </TouchableNativeFeedback>
-            <TouchableNativeFeedback onPress={startAnimation}>
-                <LottieView style={styles.touch_two_animation}
-                    source={require('../../animation/scene1/porco-2-dormindo-cena-1.json')}
-                    ref={animation}
-                >
-                </LottieView>
-            </TouchableNativeFeedback>
+            
+            {/* Elemento de interação 1 */}
+            <View style={[styles.view_animation, styles.view_pig_mom]}>
+
+                    <TouchableNativeFeedback onPress={startAnimationPigMom}
+                        touchSoundDisabled={true}>
+                        <LottieView
+                            style={styles.a_pig_mom}
+                            source={require('../../animation/scene1/pig_mom.json')}
+                            ref={animation_pig_mom}>
+                        </LottieView>
+                    </TouchableNativeFeedback>
+            </View>
+
+                {/* Elemento de interação 2 */}
+                <View style={[styles.view_animation, styles.view_pig_sleepling]}>
+                    <TouchableNativeFeedback onPress={startAnimationPigSleeping} >
+                        <LottieView
+                            style={styles.a_pig_spleeping}
+                            source={require('../../animation/scene1/pig_sleepling.json')}
+                            ref={animation_pig_spleeping}>
+                        </LottieView>
+                    </TouchableNativeFeedback>
+            </View>
+
             <LegendCaptionArea text={'Era uma vez três porquinhos que viviam com seus pais nos campos encantados.' + "\n" +
                 'Os porquinhos estavam muito felizes, mas conforme cresciam, se tornavam cada vez mais independentes...'}>
             </LegendCaptionArea>
