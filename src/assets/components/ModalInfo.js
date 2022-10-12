@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, Button, TouchableOpacity, Image} from "react-native";
+import { Text, View, TouchableOpacity} from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Modal from "react-native-modal";
 
@@ -32,7 +32,7 @@ function ModalInfo(){
 
             {/* botão para abrir a modal de informações, localizado na tela principal */}
             <TouchableOpacity style={styles.btn_info} onPress={toggleModal}>
-                <Ionicons name='information-circle' size={48} color='white'/>
+                <Ionicons name='information-circle' size={50} color='white'/>
             </TouchableOpacity>
         </View>
     )

@@ -1,20 +1,16 @@
 import React, { useState } from "react";
-import { Text, View, Button, Modal, TouchableOpacity, Image } from "react-native";
+import { Text, View, TouchableOpacity} from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
-// import Modal from "react-native-modal";
+import Modal from "react-native-modal";
+
 import styles from "../styles/HomeViewStyle";
 
-function ModalInfo(props) {
-    const [modalVisible, setModalVisible] = useState(false);
-    return (
-        <View style={styles.center}>
-            <Modal
-                animationType="fade"
-                transparent={false}
-                visible={modalVisible}
-                statusBarTranslucent={true}
-                style={styles.modal_content}>
+function ModalInfo(){
+    const [modalVisible, setModalVisible] =  useState(false);
 
+    return(
+        <View style={styles.center}>           
+            <Modal isVisible={modalVisible} statusBarTranslucent={true}>
                 <View style={styles.modal_view}>
                     <View style={{ width: 32, backgroundColor: '#D3D3D3', borderRadius: 10, alignSelf: 'flex-end', elevation: 2 }}>
                         <TouchableOpacity onPress={() => { setModalVisible(false) }}>
@@ -34,7 +30,7 @@ function ModalInfo(props) {
                         <Text style={[styles.text_black, styles.text_modal_options]}>
                             som ambiente
                         </Text>
-                        {/* adicionar componente de controle volume da narração */}
+                        {/* adicionar componente de controle volume do som ambiente */}
                     </View>
                     <TouchableOpacity style={{ backgroundColor: '#56B2EB', borderRadius: 10, marginEnd: 50, marginStart: 50, marginTop: 50 }}>
                         <Text style={[styles.text_black, styles.text_modal_options]}>Recomeçar</Text>
@@ -43,8 +39,8 @@ function ModalInfo(props) {
             </Modal>
 
             {/* botão para abrir a modal de informações, localizado na tela principal */}
-            <TouchableOpacity style={styles.btn_option} onPress={() => { setModalVisible(true) }}>
-                <Ionicons name='options' size={48} color='white' />
+            <TouchableOpacity style={styles.btn_option} onPress={() => {setModalVisible(true)}}>
+                <Ionicons name='menu' size={50} color='white'/>
             </TouchableOpacity>
         </View>
     )

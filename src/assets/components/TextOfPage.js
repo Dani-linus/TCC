@@ -13,13 +13,9 @@ function LegendCaptionArea(props) {
             duration={1000}
             style={[styles.viewtxt]}>
 
-            <Animatable.Text
-                animation="fadeInDown"
-                delay={1000}
-                style={[styles.txtHistoria]}>
-                {props.text}
-            </Animatable.Text>
-        </Animatable.View>
+function LegendCaptionArea(props){
+    return(
+        <Text>{props.text}</Text>
     )
 }
-export default LegendCaptionArea;
+export default TextOfPage;
