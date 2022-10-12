@@ -8,6 +8,7 @@ import ModalInfo from './src/assets/components/ModalInfo';
 import ModalOptions from './src/assets/components/ModalOptions'; 
 import PageOne from './src/assets/view/pages/PageOne';
 import {Audio} from 'expo-av';
+import { SafeAreaView } from 'react-native';
 
 const Stack = createStackNavigator();
 
@@ -31,18 +32,20 @@ export default function App () {
     return null;
   }
     return (
-      <NavigationContainer>
-          <StatusBar hidden></StatusBar>
-          <Stack.Navigator initialRouteName='HomeView' screenOptions={{
-            headerShown: false, gestureEnabled: true,
-            gestureDirection: "horizontal",
-            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
-          }}>
-            <Stack.Screen name="HomeView" component={HomeView} />
-            <Stack.Screen name="PageOne" component={PageOne} />
-            <Stack.Screen name="ModalInfo" component={ModalInfo}/>
-            <Stack.Screen name="ModalOptions" component={ModalOptions} />
-          </Stack.Navigator>
-      </NavigationContainer>
+      // <SafeAreaView style={{flex: 1}}>
+        <NavigationContainer>
+            <StatusBar hidden></StatusBar>
+            <Stack.Navigator initialRouteName='HomeView' screenOptions={{
+              headerShown: false, gestureEnabled: true,
+              gestureDirection: "horizontal",
+              cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
+            }}>
+              <Stack.Screen name="HomeView" component={HomeView} />
+              <Stack.Screen name="PageOne" component={PageOne} />
+              <Stack.Screen name="ModalInfo" component={ModalInfo}/>
+              <Stack.Screen name="ModalOptions" component={ModalOptions} />
+            </Stack.Navigator>
+        </NavigationContainer>
+      // </SafeAreaView>
     );
   }

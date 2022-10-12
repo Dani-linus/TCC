@@ -6,6 +6,9 @@
     "orientation": "landscape",
     "icon": "./src/assets/icons/icon.png",
     "userInterfaceStyle": "light",
+    "androidNavigationBar": {
+      "visible": "immersive"
+    },
     "splash": {
       "image": "./src/assets/icons/icon.png",
       "resizeMode": "contain",

@@ -15,7 +15,9 @@ export default function HomeView({ navigation }) {
             <LottieView
                 source={require('../animation/bookCover.json')}
                 autoPlay={true}
-                loop={true}>
+                loop={true}
+                // style para a animação de background ficar em fullScreen
+                style={{position:'absolute', width: '100%', bottom:0}}>
             </LottieView>
 
             {/* botões de opção e informação nos cantos superiores da tela inicial*/}

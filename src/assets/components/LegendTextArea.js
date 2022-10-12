@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
         padding: 8,
         borderRadius: 10,
         alignSelf: 'center',
-        margin: 10
+        margin: 10,
+        position: 'absolute'
     },
     text_black: {
         color: "black",

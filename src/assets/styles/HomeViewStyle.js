@@ -3,7 +3,9 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "white",
+        // backgroundColor: "black",
+        // padding: 5,
+        // borderWidth:2, borderColor:'gray'
     },
     btn_dimensoes:{
         width: 50,

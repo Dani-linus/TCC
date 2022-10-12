@@ -1,36 +1,34 @@
 // arquivo de estilo da página 1
-import { StyleSheet } from "react-native";
+import { Dimensions, PixelRatio, StyleSheet } from "react-native";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
+var deviceWidth = Dimensions.get('screen').width;
+var deviceHeight = Dimensions.get('screen').height;
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    a_pig_mom:{
-        width: '160%',
-        // borderWidth: 1,
-        // borderColor: 'red',
-    },
-    a_pig_spleeping:{
-        width: '96%',
-        // borderWidth: 1,
-        // borderColor: 'blue',
-     },
-     view_animation:{
+    view_animation_cover:{
         position: 'absolute',
-        width: 110,
-        height: 130,
-        alignItems: 'center',
-        justifyContent: 'center',
-        // borderWidth: 1,
-        // borderColor: 'green',
+        width: '100%',
+        bottom: 0,
+    },
+     view_animation:{
+        flex:1,
+        flexDirection: 'row',
     },
     view_pig_mom:{
-        left: 241,
-        top: 190,
+        position: 'relative',
+        width: wp(22),
+        left: 123,
+        top: 79.7,
     },
     view_pig_sleepling:{
-        left: 525,
-        top: 160,
+        position: 'absolute',
+        width: wp(10.5),
+        left: 307.3,
+        top: 70,
     }
 });
 export default styles;
