@@ -4,7 +4,7 @@ import { Text, View, ImageBackground, TouchableNativeFeedback, Animated, Image }
 import { NavigationContainer, useNavigation, } from '@react-navigation/native'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import styles from '../../styles/StyleViewPageOne';
-import LegendCaptionArea from '../../components/LegendCaptionArea';
+import LegendCaptionArea from '../../components/LegendTextArea';
 import LottieView from 'lottie-react-native';
 
 export default function ViewPageOne() {
@@ -38,7 +38,7 @@ export default function ViewPageOne() {
                 >
                 </LottieView>
             </TouchableNativeFeedback>
-            <LegendCaptionArea text={'Era uma vez três porquinhos que viviam com seus pais nos campos encantados' + "\n" +
+            <LegendCaptionArea text={'Era uma vez três porquinhos que viviam com seus pais nos campos encantados.' + "\n" +
                 'Os porquinhos estavam muito felizes, e conforme cresciam, se tornaram cada vez mais independentes '}>
             </LegendCaptionArea>
         </View >
