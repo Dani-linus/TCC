@@ -6,16 +6,14 @@ import { Text } from "react-native"
 import * as Animatable from "react-native-animatable";
 import styles from '../../../view/Estilo';
 
-function LegendCaptionArea(props) {
+function LegendTextArea(props) {
     return (
         <Animatable.View
             animation="fadeInDown"
             duration={1000}
             style={[styles.viewtxt]}>
-
-function LegendCaptionArea(props){
-    return(
-        <Text>{props.text}</Text>
+            <Text>{props.text}</Text>
+        </Animatable.View>
     )
 }
-export default TextOfPage;
+export default LegendTextArea;
