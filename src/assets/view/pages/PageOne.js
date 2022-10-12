@@ -62,7 +62,7 @@ export default function ViewPageOne() {
             </View>
 
             <LegendCaptionArea text={'Era uma vez três porquinhos que viviam com seus pais nos campos encantados.' + "\n" +
-                'Os porquinhos estavam muito felizes, mas conforme cresciam, se tornavam cada vez mais independentes...'}>
+                'Os porquinhos estavam muito felizes, mas conforme cresciam,'+ '\n '+' se tornavam cada vez mais independentes...'}>
             </LegendCaptionArea>
         </View >
     )
