@@ -5,7 +5,7 @@ import {
 import styles from '../view/Estilo';
 import { Audio } from 'expo-av';
 
-
+//so pra apagar a branch
 export default class Configuracoes extends React.Component {
     constructor(props) {
         super(props);
