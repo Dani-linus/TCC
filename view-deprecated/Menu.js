@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, Image, Button, Modal } from 'react-native';
-import styles from '../view/Estilo';
+import styles from './Estilo';
 import { useNavigation } from '@react-navigation/native';
 import LottieView from 'lottie-react-native';
 <<<<<<< HEAD
