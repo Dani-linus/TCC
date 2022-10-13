@@ -1,23 +1,31 @@
 import React, { useState } from "react";
-import { Text, View, TouchableOpacity} from "react-native";
+import { Text, View, TouchableOpacity,Switch} from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Modal from "react-native-modal";
 
 import styles from "../styles/HomeViewStyle";
 
-function ModalInfo(){
+function ModalInfo(props){
     const [modalVisible, setModalVisible] =  useState(false);
+    const [switchOn,setSwitchOn] = useState(true);
 
+    const toggleSwitch = () =>{
+    setSwitchOn(previousState => !previousState)
+    props.setSom();
+}
+
+//if(props.som != null)
+ // alert(props.som);
     return(
-        <View style={styles.center}>           
+        <View style={{ justifyContent: 'center', alignItems: 'center'}}>           
             <Modal isVisible={modalVisible} statusBarTranslucent={true}>
-                <View style={styles.modal_view}>
+                <View style={{flex: 1, backgroundColor: '#F1FFFA', margin: 10, borderRadius: 20, padding: 20}}>
                     <View style={{ width: 32, backgroundColor: '#D3D3D3', borderRadius: 10, alignSelf: 'flex-end', elevation: 2 }}>
                         <TouchableOpacity onPress={() => { setModalVisible(false) }}>
                             <Ionicons name='close' size={32} color='black' />
                         </TouchableOpacity>
                     </View>
-                    <Text style={[styles.text_black, styles.text_modal_options]}>definições</Text>
+                    <Text style={[styles.text_black, styles.text_modal_options]}>Definições</Text>
                     <View style={{ borderWidth: 1, borderColor: 'red', flexDirection: 'row', alignItems: 'flex-start' }}>
                         <Ionicons name='mic' size={32} color='black' style={{ marginEnd: 10 }}></Ionicons>
                         <Text style={[styles.text_black, styles.text_modal_options]}>
@@ -31,6 +39,12 @@ function ModalInfo(){
                             som ambiente
                         </Text>
                         {/* adicionar componente de controle volume do som ambiente */}
+                        <Switch
+                            trackColor={{false: "#767577" , true:"#81b0ff"}}
+                            thumColor={switchOn ? "#f5dd4b" : "#f4f3f4"}
+                            onValueChange={toggleSwitch}
+                            value={switchOn}>
+                        </Switch>
                     </View>
                     <TouchableOpacity style={{ backgroundColor: '#56B2EB', borderRadius: 10, marginEnd: 50, marginStart: 50, marginTop: 50 }}>
                         <Text style={[styles.text_black, styles.text_modal_options]}>Recomeçar</Text>

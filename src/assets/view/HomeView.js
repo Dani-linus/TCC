@@ -1,15 +1,31 @@
 //Primeira tela - capa do livro e inicio da aplicação
-import React from 'react';
+import React, {useState } from 'react';
 import { Text, View, TouchableOpacity, Image } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styles from '../styles/HomeViewStyle';
 import ModalInfo from '../components/ModalInfo';
 import ModalOptions from '../components/ModalOptions';
 import LottieView from 'lottie-react-native';
-
+import {Audio} from 'expo-av';
 
 export default function HomeView({ navigation }) {
-  
+    const [som, setSom] = useState();
+
+    const getSom = () => {
+        setSom(previousState => !previousState)
+    }
+    
+    async function playSound() {
+        const { sound } = await Audio.Sound.createAsync( require('./../sound/ambientSound/ambient_sound_two.mp3')
+        );
+        await sound.playAsync();
+      //  setSom(sound);
+      } 
+
+      React.useEffect(() => {
+       playSound();
+    });
+
     return (
         <View style={styles.container}>
             <LottieView
@@ -22,8 +38,8 @@ export default function HomeView({ navigation }) {
 
             {/* botões de opção e informação nos cantos superiores da tela inicial*/}
             <View style={styles.view_modals}>
-                <ModalOptions/>
-                <ModalInfo />
+                <ModalOptions setSom={getSom} som={som}/>
+                <ModalInfo/>
             </View>
 
             {/* titulo e botão de play */}
@@ -32,9 +48,10 @@ export default function HomeView({ navigation }) {
                     <Text style={[styles.text_white, styles.text_1]}> Os Três</Text>
                     <Text style={[styles.text_white, styles.text_2]}> porquinhos</Text>
                 </View>
-                <TouchableOpacity style={styles.btn_play} onPress={() => navigation.navigate("PageOne")}>
-                    <Ionicons name='play' size={120} color='white' />
-                </TouchableOpacity>
+            {  /* <TouchableOpacity style={styles.btn_play} onPress={() => navigation.navigate("PageOne")}>
+            <Ionicons name='play' size={120} color='white' />
+                </TouchableOpacity>*/}  
+    
             </View>
         </View>
     );
