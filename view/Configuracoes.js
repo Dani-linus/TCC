@@ -3,7 +3,6 @@ import {
     Text, View, TouchableOpacity, Image, SafeAreaView, ImageBackground, Button, StyleSheet, Switch, TouchableWithoutFeedback
 } from 'react-native';
 import styles from '../view/Estilo';
-//import Slider from '@react-native-community/slider';
 import { Audio } from 'expo-av';
 
 //so pra apagar a branch
@@ -11,55 +10,34 @@ export default class Configuracoes extends React.Component {
     constructor(props) {
         super(props);
         this.btnVoltar = this.btnVoltar.bind(this);
+        
     }
-
+  
     btnVoltar() {
-        this.props.navigation.navigate('Menu')
+        this.props.navigation.goBack(null);
     }
     //ABAIXO CODIGO PARA INICIAR O COMPONENTE SWITCH  
     state = { switchValue: false };
 
-    toggleSwitch = value => {
+    toggleSwitch2 = value => {
         this.setState({ switchValue: value });
         {
             this.state.switchValue ?
                 this.stopSound(this) : this.playSound(this)
         }
     };
-    //CARREGANDO A FONTE E O AUDIO
-    async componentDidMount() {
-        Audio.setAudioModeAsync({
-            allowsRecordingIOS: false,
-            staysActiveInBackground: true,
-            interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DUCK_OTHERS,
-            shouldDuckAndroid: true,
-            staysActiveInBackground: true,
-            playsThroughEarpieceAndroid: true,
-            allowsRecordingIOS: true,
-            interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
-            playsInSilentModeIOS: true,
-        });
+  
+  //PLAY NO SOM
+  playSound() {
+    this.sound.playAsync();
+  }
 
-        this.sound = new Audio.Sound();
+  stopSound(){
+    this.sound.pauseAsync();
+  }
 
-        const status = {
-            shouldPlay: false
+  render() {
 
-        };
-
-        this.sound.loadAsync(require('../sound/som_ambiente.mp3'), status, false);
-    }
-
-    //PLAY NO SOM
-    playSound() {
-        this.sound.playAsync();
-    }
-
-    //STOP NO SOM
-    stopSound() {
-        this.sound.pauseAsync();
-    }
-    render() {
         return (
             <View style={styles.container}>
                 <ImageBackground
@@ -82,7 +60,7 @@ export default class Configuracoes extends React.Component {
                         <Text style={styles.configText}>Narração</Text>
                         <Switch
                             style={styles.slider_som}
-                            onValueChange={this.toggleSwitch}
+                            onValueChange={this.toggleSwitch1}
                             value={this.state.switchValue}
                             trackColor={{ false: '#D9D9D9', true: '#56B2EB' }}
                             thumbColor={this.toggleSwitch ? "#56B2EB" : "#f4f3f4"}
@@ -97,7 +75,7 @@ export default class Configuracoes extends React.Component {
                             <Switch
                                 style={styles.slider_som}
                                 onValueChange={this.toggleSwitch}
-                                value={this.state.switchValue}
+                                value={this.state.switchValue2}
                                 trackColor={{ false: '#D9D9D9', true: '#56B2EB' }}
                                 thumbColor={this.toggleSwitch ? "#56B2EB" : "#f4f3f4"}
                             />

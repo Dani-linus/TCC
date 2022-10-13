@@ -1,56 +1,51 @@
-import React from 'react'
+import React ,{useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
-
-// limpar código
-import Menu from './view/Menu';
-import Splash from './view/Splash';
-import Configuracoes from './view/Configuracoes'
-import Cena1 from './scenes/Cena1';
-import Loading from './view/Loading';
-import Cena2 from './scenes/Cena2';
-import Sobre from './view/Sobre';
-import * as Font from 'expo-font';
-
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack'
+import { useFonts } from 'expo-font';
+import { StatusBar } from 'expo-status-bar';
+import HomeView from './src/assets/view/HomeView';
+import ModalInfo from './src/assets/components/ModalInfo'; 
+import ModalOptions from './src/assets/components/ModalOptions'; 
+import PageOne from './src/assets/view/pages/PageOne';
+import {Audio} from 'expo-av';
+import { SafeAreaView } from 'react-native';
 
 const Stack = createStackNavigator();
 
-let customFonts = {
-  'PatrickHand': require('./fonts/PatrickHand-Regular.ttf')
-};
+export default function App () {
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    
-}
-  state = {
-    fontsLoaded: false,
-};
+  const [sound, setSound] = useState();
 
-async _loadFontsAsync() {
-    await Font.loadAsync(customFonts);
-    this.setState({ fontsLoaded: true });
-}
+  const [fontsLoaded] = useFonts({
+    'PatrickHand': require('./src/assets/font/PatrickHand-Regular.ttf'),
+    'FuzzyBubbles-Bold' : require('./src/assets/font/FuzzyBubbles-Bold.ttf'),
+  });
 
-//CARREGANDO A FONTE E O AUDIO
-async componentDidMount() {
-  this._loadFontsAsync();
-}
+  async function playSound() {
+    const { sound } = await Audio.Sound.createAsync( require('./src/assets/sound/ambientSound/ambient_sound_two.mp3')
+    );
+    setSound(sound);
+    await sound.playAsync();
+  } 
 
-  render() {
-    if (!this.state.fontsLoaded) {
-      return null;
-    }
+  if(!fontsLoaded){
+    return null;
+  }
     return (
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Menu" component={Menu} />
-          <Stack.Screen name="Loading" component={Loading}/>
-          <Stack.Screen name="Sobre" component={Sobre}/>
-          <Stack.Screen name="Cena1" component={Cena1}/>
-        </Stack.Navigator>
-      </NavigationContainer>
+      // <SafeAreaView style={{flex: 1}}>
+        <NavigationContainer>
+            <StatusBar hidden></StatusBar>
+            <Stack.Navigator initialRouteName='HomeView' screenOptions={{
+              headerShown: false, gestureEnabled: true,
+              gestureDirection: "horizontal",
+              cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
+            }}>
+              <Stack.Screen name="HomeView" component={HomeView} />
+              <Stack.Screen name="PageOne" component={PageOne} />
+              <Stack.Screen name="ModalInfo" component={ModalInfo}/>
+              <Stack.Screen name="ModalOptions" component={ModalOptions} />
+            </Stack.Navigator>
+        </NavigationContainer>
+      // </SafeAreaView>
     );
   }
-}
