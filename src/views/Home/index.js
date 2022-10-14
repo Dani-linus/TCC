@@ -2,7 +2,7 @@
 import React, { useState, useContext } from 'react';
 import { Text, View, TouchableOpacity, Image, Alert } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import styles from '../styles/HomeViewStyle';
+import styles from './style';
 import ModalInfo from '../components/ModalInfo';
 import ModalOptions from '../components/ModalOptions';
 import LottieView from 'lottie-react-native';
