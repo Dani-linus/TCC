@@ -11,7 +11,7 @@ import { SoundContext } from "../contexts/sound";
 
 export default function HomeView({ navigation }) {
 
-    const { initSound } = useContext(SoundContext);
+    const { initSound  } = useContext(SoundContext);
 
     initSound();
 

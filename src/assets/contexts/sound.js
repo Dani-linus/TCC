@@ -6,39 +6,43 @@ export const SoundContext = createContext({});
 
 function SoundProvider({children}){
 
-    const [sound, setSound] = useState(null);
+    const audio = new Audio.Sound();
+
+    const [sound, setSound] = useState(false);
     const [soundStatus, setSoundStatus] = useState({
         status: null,
         isPlaying: false,
     });
+    
 
-    async function playSound(){
-        if (soundStatus.status?.isLoaded && !soundStatus.isPlaying) {
-            const status = await sound.playAsync();
-            setSoundStatus({ status: status, isPlaying: true});
-        }
+    const playSound =  async () => {
+        // play sound
+        await audio.replayAsync();
+        // if (soundStatus.status?.isLoaded && !soundStatus.isPlaying) {
+        //     // setSoundStatus({ status: status, isPlaying: true});
+        // }
     }
 
-    async function pauseSound(){
+    const stopSound = async () => {
+        await audio.stopAsync();
         // pause audio
-        if (soundStatus.status?.isLoaded && soundStatus.isPlaying) {
-            const status = await sound.pauseAsync();
-            setSoundStatus({ status: status, isPlaying: false});
-        }
+        // if (soundStatus.status?.isLoaded && soundStatus.isPlaying) {
+        //     // setSoundStatus({ status: status, isPlaying: false});
+        // }
     }
     async function initSound(){
         // quando abre a aplicação pela primeira vez
         if (soundStatus.status === null) {
-            const { sound, status } = await Audio.Sound.createAsync
+            audio.loadAsync
               (require('./../sound/ambientSound/ambient_sound_two.mp3'),
               { shouldPlay: true }
             );
-            setSoundStatus({ status: status, isPlaying: true });
+            // setSoundStatus({ status: status, isPlaying: true });
         }
     }
 
     return(
-        <SoundContext.Provider value={{statusSound: false, playSound, pauseSound, initSound}}>
+        <SoundContext.Provider value={{playSound, stopSound, initSound, soundStatus}}>
             {children}
         </SoundContext.Provider>
     )

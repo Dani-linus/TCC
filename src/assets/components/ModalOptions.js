@@ -4,21 +4,19 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 import { SoundContext } from "../contexts/sound";
 
-function ModalOptions(props) {
+function ModalOptions() {
 
     // consumir o contexto criado
-    // const {} = useContext()
-
-
+    const { playSound, stopSound } = useContext(SoundContext);
 
     const [modalVisible, setModalVisible] = useState(false);
-    // const [switchValue, setSwitchOn] = useState(true);
+    const [switchValue, setSwitchOn] = useState(false);
 
-    // const toggleSwitch = () => {
-    //   setSwitchOn(previousState => !previousState);
-    // //   props.playPause();
-    // //   props.statusOnOffSound(false);
-    // }
+    const toggleSwitch = () => {
+      setSwitchOn(previousState => !previousState);
+      console.log(switchValue);
+      switchValue ? playSound() : stopSound();
+    }
     return (
         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
             <Modal
@@ -45,12 +43,12 @@ function ModalOptions(props) {
                             som ambiente
                         </Text>
                         {/* adicionar componente de controle volume do som ambiente */}
-                        {/* <Switch
+                        <Switch
                             trackColor={{ false: "#767577", true: "#81b0ff" }}
                             thumColor={switchValue ? "#aaa" : "#f4f3f4"}
-                            onValueChange={null}
-                            value={null}>
-                        </Switch> */}
+                            onValueChange={toggleSwitch}
+                            value={switchValue}>
+                        </Switch>
                     </View>
                     <TouchableOpacity style={[styles.btn,styles.btn_restart]}>
                         <Text style={[styles.text_black, styles.text_modal_options]}>Recomeçar história</Text>
