@@ -1,16 +1,13 @@
 # TCC
 Aplicativo interativo para estímulo da leitura infantil
 
-```
-git clone <link do repositorio>
-```
-
-
-Instalar o expo cli, caso não tenha instalado em sua máquina
+## Instruções
+Clone o repositório e atualize as dependências
 
 ```
-npm install -g expo-cli
+npm install
 ```
+
 
 Para executar o projeto
 
