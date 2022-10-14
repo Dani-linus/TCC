@@ -5,7 +5,7 @@ Aplicativo interativo para estímulo da leitura infantil
 Clone o repositório e atualize as dependências
 
 ```
-npm install -g expo-cli
+npm install
 ```
 Para instalar o expo caso precise
 
