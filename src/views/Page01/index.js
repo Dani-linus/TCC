@@ -31,7 +31,7 @@ export default function PageOne() {
     return (
         <View style={styles.container}>
                 <LottieView
-                    source={require('../../animation/page1/page_1.json')}
+                    source={require('../../../assets/animations/page1/page_1.json')}
                     autoPlay={true}
                     loop={true}
                     style={styles.view_animation_cover}
@@ -44,7 +44,7 @@ export default function PageOne() {
                             touchSoundDisabled={true}>
                             <LottieView
                                 style={styles.view_pig_mom}
-                                source={require('../../animation/page1/pig_mom.json')}
+                                source={require('../../../assets/animations/page1/pig_mom.json')}
                                 ref={animation_pig_mom}>
                             </LottieView>
                         </TouchableNativeFeedback>
@@ -53,7 +53,7 @@ export default function PageOne() {
                         <TouchableNativeFeedback onPress={startAnimationPigSleeping} >
                             <LottieView
                                 style={[styles.view_pig_sleepling]}
-                                source={require('../../animation/page1/pig_sleepling.json')}
+                                source={require('../../../assets/animations/page1/pig_sleepling.json')}
                                 ref={animation_pig_spleeping}>
                             </LottieView>
                         </TouchableNativeFeedback>
