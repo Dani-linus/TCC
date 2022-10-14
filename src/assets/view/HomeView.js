@@ -1,45 +1,67 @@
 //Primeira tela - capa do livro e inicio da aplicação
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, Image } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styles from '../styles/HomeViewStyle';
 import ModalInfo from '../components/ModalInfo';
 import ModalOptions from '../components/ModalOptions';
 import LottieView from 'lottie-react-native';
-import {Audio} from 'expo-av';
+import { Audio } from 'expo-av';
+
 
 export default function HomeView({ navigation }) {
-    const [som, setSom] = useState();
+
+    const [sound, setSound] = useState(null);
+    const [soundStatus, setSoundStatus] = useState({
+        status: null,
+        isPlaying: false,
+    });
 
     const getSom = () => {
-        setSom(previousState => !previousState)
+        setSoundStatus(previousState => !previousState)
     }
+    async function handleAudio() {
+        // playing audio for the first time
+        if (soundStatus.status === null) {
+          const { sound, status } = await Audio.Sound.createAsync
+            (require('./../sound/ambientSound/ambient_sound_two.mp3'),
+            { shouldPlay: true }
+          );
+          setSound(sound);
+          setSoundStatus({ status: status, isPlaying: true, icon: 'pausecircle' });
+        }
     
-    async function playSound() {
-        const { sound } = await Audio.Sound.createAsync( require('./../sound/ambientSound/ambient_sound_two.mp3')
-        );
-        await sound.playAsync();
-      //  setSom(sound);
-      } 
-
-      React.useEffect(() => {
-       playSound();
+        // pause audio
+        if (soundStatus.status.isLoaded && soundStatus.isPlaying) {
+          const status = await sound.pauseAsync();
+          setSoundStatus({ status: status, isPlaying: false, icon: 'play' });
+        }
+    
+        // resuming audio
+        if (soundStatus.status.isLoaded && !soundStatus.isPlaying) {
+          const status = await sound.playAsync();
+          setSoundStatus({ status: status, isPlaying: true, icon: 'pausecircle' });
+        }
+      }
+    React.useEffect(() => {
+        handleAudio();
+            ///pauseSound();
     });
 
     return (
         <View style={styles.container}>
             <LottieView
-                source={require('../animation/bookCover.json')}
+                source={require('../animation/bookHomePage.json')}
                 autoPlay={true}
                 loop={true}
                 // style para a animação de background ficar em fullScreen
-                style={{position:'absolute', width: '100%', bottom:0}}>
+                style={{ position: 'absolute', width: '100%', bottom: 0 }}>
             </LottieView>
 
             {/* botões de opção e informação nos cantos superiores da tela inicial*/}
             <View style={styles.view_modals}>
-                <ModalOptions setSom={getSom} som={som}/>
-                <ModalInfo/>
+                <ModalOptions playPause={handleAudio} />
+                <ModalInfo />
             </View>
 
             {/* titulo e botão de play */}
@@ -48,10 +70,10 @@ export default function HomeView({ navigation }) {
                     <Text style={[styles.text_white, styles.text_1]}> Os Três</Text>
                     <Text style={[styles.text_white, styles.text_2]}> porquinhos</Text>
                 </View>
-            {  /* <TouchableOpacity style={styles.btn_play} onPress={() => navigation.navigate("PageOne")}>
+                 <TouchableOpacity style={styles.btn_play} onPress={() => navigation.navigate("PageOne")}>
             <Ionicons name='play' size={120} color='white' />
-                </TouchableOpacity>*/}  
-    
+                </TouchableOpacity>
+
             </View>
         </View>
     );
