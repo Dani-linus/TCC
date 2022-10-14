@@ -34,7 +34,7 @@ function SoundProvider({children}){
         // quando abre a aplicação pela primeira vez
         if (soundStatus.status === null) {
             audio.loadAsync
-              (require('./../sound/ambientSound/ambient_sound_two.mp3'),
+              (require('../../assets/sound/ambientSound/ambient_sound_two.mp3'),
               { shouldPlay: true }
             );
             // setSoundStatus({ status: status, isPlaying: true });

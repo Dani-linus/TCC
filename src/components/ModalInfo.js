@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Text, View, TouchableOpacity, Modal, StyleSheet} from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-// import styles from "../../../view-deprecated/Estilo";
 
 function ModalInfo(){
     const [modalVisible, setModalVisible] =  useState(false);

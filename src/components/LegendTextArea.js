@@ -3,8 +3,7 @@
 
 import React from "react"
 import * as Animatable from "react-native-animatable";
-// import styles from '../../../view/Estilo';
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 
 function LegendTextArea(props) {
     return (

@@ -1,4 +1,4 @@
-//página 3 do livro
+//Página 2 do livro
 import React from 'react';
 import { View } from 'react-native';
 import styles from '../../styles/StyleViewPageOne';
@@ -13,7 +13,7 @@ export default function PageOne() {
         <View style={styles.container}>
                 {/* animação de background */}
                 <LottieView
-                    source={require('../../animation/page1/page_1.json')}
+                    source={require('')}
                     autoPlay={true}
                     loop={true}
                     style={styles.view_animation_cover}>

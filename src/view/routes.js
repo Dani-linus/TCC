@@ -1,10 +1,10 @@
 import React from "react";
 import { createStackNavigator,  CardStyleInterpolators} from "@react-navigation/stack";
 
-import HomeView from './assets/view/HomeView';
-import ModalInfo from './assets/components/ModalInfo'; 
-import ModalOptions from './assets/components/ModalOptions'; 
-import PageOne from './assets/view/pages/PageOne';
+import HomeView from './HomeView';
+import ModalInfo from '../components/ModalInfo';
+import ModalOptions from '../components/ModalOptions'; 
+import PageOne from './pages/PageOne';
 
 const Stack = createStackNavigator();
 

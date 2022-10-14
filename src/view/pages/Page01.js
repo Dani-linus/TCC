@@ -1,7 +1,6 @@
 //Página 1 do livro
 import React, { useState, useRef, useEffect } from 'react';
 import { Text, View, ImageBackground, TouchableNativeFeedback, Animated, Image } from 'react-native';
-import { NavigationContainer, useNavigation, } from '@react-navigation/native'
 import styles from '../../styles/StyleViewPageOne';
 import LegendCaptionArea from '../../components/LegendTextArea';
 import LottieView from 'lottie-react-native';

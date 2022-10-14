@@ -1,16 +1,16 @@
 {
   "expo": {
-    "name": "projeto",
-    "slug": "projeto",
+    "name": "bookApp_littlePigs",
+    "slug": "bookApp_littlePigs",
     "version": "1.0.0",
     "orientation": "landscape",
-    "icon": "./src/assets/icons/icon.png",
+    "icon": "./assets/icons/icon.png",
     "userInterfaceStyle": "light",
     "androidNavigationBar": {
       "visible": "immersive"
     },
     "splash": {
-      "image": "./src/assets/icons/icon.png",
+      "image": "./assets/icons/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -25,12 +25,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/icons/adaptive-icon.png",
+        "foregroundImage": "./assets/icons/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "./src/assets/icons/favicon.png"
+      "favicon": "./assets/icons/favicon.png"
     }
   }
 }
