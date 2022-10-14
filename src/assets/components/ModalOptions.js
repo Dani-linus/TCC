@@ -1,36 +1,37 @@
 import React, { useState } from "react";
-import { Text, View, TouchableOpacity, Switch } from "react-native";
+import { Text, View, TouchableOpacity, Switch, Modal, StyleSheet } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
-import Modal from "react-native-modal";
 
-import styles from "../styles/HomeViewStyle";
-
-function ModalInfo(props) {
+function ModalOptions(props) {
     const [modalVisible, setModalVisible] = useState(false);
     const [switchValue, setSwitchOn] = useState(true);
 
     const toggleSwitch = () => {
       setSwitchOn(previousState => !previousState);
-      props.playPause();
+    //   props.playPause();
+    //   props.statusOnOffSound(false);
     }
     return (
         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-            <Modal isVisible={modalVisible} statusBarTranslucent={true}>
-                <View style={{ flex: 1, backgroundColor: '#F1FFFA', margin: 10, borderRadius: 20, padding: 20 }}>
-                    <View style={{ width: 32, backgroundColor: '#D3D3D3', borderRadius: 10, alignSelf: 'flex-end', elevation: 2 }}>
+            <Modal
+                onRequestClose={() => setModalVisible(false)}
+                transparent
+                visible={modalVisible}>
+                <View style={styles.modal_view}>
+                    <View style={[styles.btn,styles.btn_close]}>
                         <TouchableOpacity onPress={() => { setModalVisible(false) }}>
                             <Ionicons name='close' size={32} color='black' />
                         </TouchableOpacity>
                     </View>
                     <Text style={[styles.text_black, styles.text_modal_options]}>Definições</Text>
-                    <View style={{ borderWidth: 1, borderColor: 'red', flexDirection: 'row', alignItems: 'flex-start' }}>
+                    <View style={{flexDirection: 'row', alignItems: 'flex-start', marginTop: '5%'}}>
                         <Ionicons name='mic' size={32} color='black' style={{ marginEnd: 10 }}></Ionicons>
                         <Text style={[styles.text_black, styles.text_modal_options]}>
                             narração
                         </Text>
                         {/* adicionar componente de controle volume da narração */}
                     </View>
-                    <View style={{ borderWidth: 1, borderColor: 'red', flexDirection: 'row', alignItems: 'center' }}>
+                    <View style={{flexDirection: 'row', alignItems: 'center' }}>
                         <Ionicons name='musical-notes' size={32} color='black' style={{ marginEnd: 10 }}></Ionicons>
                         <Text style={[styles.text_black, styles.text_modal_options]}>
                             som ambiente
@@ -38,13 +39,13 @@ function ModalInfo(props) {
                         {/* adicionar componente de controle volume do som ambiente */}
                         <Switch
                             trackColor={{ false: "#767577", true: "#81b0ff" }}
-                            thumColor={switchValue ? "#f5dd4b" : "#f4f3f4"}
+                            thumColor={switchValue ? "#aaa" : "#f4f3f4"}
                             onValueChange={toggleSwitch}
                             value={switchValue}>
                         </Switch>
                     </View>
-                    <TouchableOpacity style={{ backgroundColor: '#56B2EB', borderRadius: 10, marginEnd: 50, marginStart: 50, marginTop: 50 }}>
-                        <Text style={[styles.text_black, styles.text_modal_options]}>Recomeçar</Text>
+                    <TouchableOpacity style={[styles.btn,styles.btn_restart]}>
+                        <Text style={[styles.text_black, styles.text_modal_options]}>Recomeçar história</Text>
                     </TouchableOpacity>
                 </View>
             </Modal>
@@ -56,4 +57,45 @@ function ModalInfo(props) {
         </View>
     )
 }
-export default ModalInfo;
+export default ModalOptions;
+
+const styles = StyleSheet.create({
+    modal_view:{
+        flex: 1,
+        backgroundColor: '#F1FFFA',
+        margin: 10,
+        borderRadius: 20,
+        padding: 20,
+    },
+    btn_option:{
+        width: 50,
+        height: 50,
+        marginLeft: 25,
+    },
+    btn:{
+        backgroundColor: '#A8D7F5',
+        borderRadius: 10,
+    },
+    btn_close: {
+        width: 32,
+        alignSelf: 'flex-end',
+        elevation: 2
+    },
+    btn_restart:{
+        marginHorizontal: 80,
+        marginTop: 50,
+        padding: 10,
+    },
+    text_black: {
+        color: "black",
+        fontFamily: 'PatrickHand',
+    },
+    text_modal_options:{
+        fontSize: 24,
+        textTransform: 'uppercase',
+        textAlign: 'center',
+        
+    },
+
+
+});

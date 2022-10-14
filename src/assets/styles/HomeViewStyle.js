@@ -11,16 +11,6 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50,
     },
-    btn_info:{
-        width: 50,
-        height: 50,
-        marginRight: 25,
-    },
-    btn_option:{
-        width: 50,
-        height: 50,
-        marginLeft: 25,
-    },
     btn_play:{
         alignItems: 'center',
         justifyContent: 'center',
@@ -41,21 +31,6 @@ const styles = StyleSheet.create({
     text_2:{
         fontSize: 70,
         lineHeight: 75,
-    },
-    modal_view:{
-        flex: 1,
-        backgroundColor: '#F1FFFA',
-        margin: 10,
-        borderRadius: 20,
-        padding: 20,
-    },
-    modal_content:{
-        backgroundColor: 'red'
-    },
-    text_modal_options:{
-        fontSize: 24,
-        textTransform: 'uppercase',
-        textAlign: 'center',
     },
     view_modals:{
         flexDirection: "row", 
@@ -81,6 +56,5 @@ const styles = StyleSheet.create({
     },
 
 });
-
 
 export default styles;
