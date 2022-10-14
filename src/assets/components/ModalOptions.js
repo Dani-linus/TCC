@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Text, View, TouchableOpacity, Switch, Modal, StyleSheet } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-function ModalOptions(props) {
-    const [modalVisible, setModalVisible] = useState(false);
-    const [switchValue, setSwitchOn] = useState(true);
+import { SoundContext } from "../contexts/sound";
 
-    const toggleSwitch = () => {
-      setSwitchOn(previousState => !previousState);
-    //   props.playPause();
-    //   props.statusOnOffSound(false);
-    }
+function ModalOptions(props) {
+
+    // consumir o contexto criado
+    // const {} = useContext()
+
+
+
+    const [modalVisible, setModalVisible] = useState(false);
+    // const [switchValue, setSwitchOn] = useState(true);
+
+    // const toggleSwitch = () => {
+    //   setSwitchOn(previousState => !previousState);
+    // //   props.playPause();
+    // //   props.statusOnOffSound(false);
+    // }
     return (
         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
             <Modal
@@ -37,12 +45,12 @@ function ModalOptions(props) {
                             som ambiente
                         </Text>
                         {/* adicionar componente de controle volume do som ambiente */}
-                        <Switch
+                        {/* <Switch
                             trackColor={{ false: "#767577", true: "#81b0ff" }}
                             thumColor={switchValue ? "#aaa" : "#f4f3f4"}
-                            onValueChange={toggleSwitch}
-                            value={switchValue}>
-                        </Switch>
+                            onValueChange={null}
+                            value={null}>
+                        </Switch> */}
                     </View>
                     <TouchableOpacity style={[styles.btn,styles.btn_restart]}>
                         <Text style={[styles.text_black, styles.text_modal_options]}>Recomeçar história</Text>

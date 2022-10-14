@@ -1,15 +1,10 @@
-import React ,{useEffect, useState } from 'react'
+import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack'
 import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
-import HomeView from './src/assets/view/HomeView';
-import ModalInfo from './src/assets/components/ModalInfo'; 
-import ModalOptions from './src/assets/components/ModalOptions'; 
-import PageOne from './src/assets/view/pages/PageOne';
-import { SafeAreaView } from 'react-native';
+import Routes from './src/routes';
+import SoundProvider from './src/assets/contexts/sound';
 
-const Stack = createStackNavigator();
 
 export default function App () {
 
@@ -22,19 +17,11 @@ export default function App () {
     return null;
   }
     return (
-      // <SafeAreaView style={{flex: 1}}>
         <NavigationContainer>
-            <StatusBar hidden></StatusBar>
-            <Stack.Navigator initialRouteName='HomeView' screenOptions={{
-              headerShown: false, gestureEnabled: true,
-              gestureDirection: "horizontal",
-              cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}}>
-              <Stack.Screen name="HomeView" component={HomeView} />
-              <Stack.Screen name="PageOne" component={PageOne} />
-              <Stack.Screen name="ModalInfo" component={ModalInfo}/>
-              <Stack.Screen name="ModalOptions" component={ModalOptions} />
-            </Stack.Navigator>
+          <StatusBar hidden></StatusBar>
+          <SoundProvider>
+            <Routes />
+          </SoundProvider>
         </NavigationContainer>
-      // </SafeAreaView>
     );
   }

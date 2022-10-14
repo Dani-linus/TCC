@@ -1,61 +1,19 @@
 //Primeira tela - capa do livro e inicio da aplicação
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Text, View, TouchableOpacity, Image, Alert } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styles from '../styles/HomeViewStyle';
 import ModalInfo from '../components/ModalInfo';
 import ModalOptions from '../components/ModalOptions';
 import LottieView from 'lottie-react-native';
-import { Audio } from 'expo-av';
 
+import { SoundContext } from "../contexts/sound";
 
 export default function HomeView({ navigation }) {
 
-    const [sound, setSound] = useState(null);
-    const [soundStatus, setSoundStatus] = useState({
-        status: null,
-        isPlaying: false,
-    });
+    const { initSound } = useContext(SoundContext);
 
-    function setSoundOption(){
-        setSound(false)
-    }
-
-    async function handleAudio() {
-        // playing audio for the first time
-        try {
-            if (soundStatus.status === null) {
-                const { sound, status } = await Audio.Sound.createAsync
-                  (require('./../sound/ambientSound/ambient_sound_two.mp3'),
-                  { shouldPlay: true }
-                );
-                setSound(sound);
-                setSoundStatus({ status: status, isPlaying: true, icon: 'pausecircle' });
-              }
-          
-              // pause audio
-              if (soundStatus.status?.isLoaded && soundStatus.isPlaying) {
-                const status = await sound.pauseAsync();
-                setSoundStatus({ status: status, isPlaying: false});
-              }
-          
-              // resuming audio
-              if (soundStatus.status?.isLoaded && !soundStatus.isPlaying) {
-                const status = await sound.playAsync();
-                setSoundStatus({ status: status, isPlaying: true});
-              }
-            
-        } catch (error) {
-            Alert("erro")
-        }
-        
-      }
-
-    React.useEffect(() => {
-        // if( === false){
-        //     // handleAudio();
-        // }
-    });
+    initSound();
 
     return (
         <View style={styles.container}>
@@ -69,7 +27,7 @@ export default function HomeView({ navigation }) {
 
             {/* botões de opção e informação nos cantos superiores da tela inicial*/}
             <View style={styles.view_modals}>
-                <ModalOptions playPause={handleAudio} statusOnOffSound={setSoundOption}/>
+                <ModalOptions/>
                 <ModalInfo />
             </View>
 
