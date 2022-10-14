@@ -1,0 +1,1 @@
+// Arquivo de style da página 6 (screen 6)

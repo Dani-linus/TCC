@@ -1,4 +1,4 @@
-//Página 2 do livro
+//página 4 do livro
 import React from 'react';
 import { View } from 'react-native';
 import styles from '../../styles/StyleViewPageOne';
@@ -6,7 +6,7 @@ import LegendCaptionArea from '../../components/LegendTextArea';
 import LottieView from 'lottie-react-native';
 import LayoutPages from '../../components/LayoutPages';
 
-export default function PageOne() {
+export default function PageFour() {
     // Para cada animação, precisa de um ref distinto
 
     return (
@@ -27,4 +27,3 @@ export default function PageOne() {
         </View >
     )
 }
-

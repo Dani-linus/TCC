@@ -1,0 +1,1 @@
+// Arquivo de style da capa do livro (screen Home)
