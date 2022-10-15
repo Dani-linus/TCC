@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         fontFamily: 'FuzzyBubbles-Bold',
     },
     text_modal_options:{
-        fontSize: 14,
+        fontSize: 12,
         textTransform: 'uppercase',
         textAlign: 'center',
     }
