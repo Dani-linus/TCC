@@ -1,7 +1,7 @@
 //Página 1 do livro
 import React, { useState, useRef, useEffect } from 'react';
 import { Text, View, ImageBackground, TouchableNativeFeedback, Animated, Image } from 'react-native';
-import styles from '../../styles/StyleViewPageOne';
+import styles from '../Page01/style';
 import LegendCaptionArea from '../../components/LegendTextArea';
 import LottieView from 'lottie-react-native';
 import LayoutPages from '../../components/LayoutPages';
@@ -29,38 +29,37 @@ export default function PageOne() {
         animation_pig_spleeping.current?.play();
     }
     return (
-        <View style={styles.container}>
+    //    <View style={styles.container}>
+             <View style={{flex:1}}>
                 <LottieView
+                    style={{flex:1, width: undefined,height: undefined}}
                     source={require('../../../assets/animations/page1/page_1.json')}
                     autoPlay={true}
                     loop={true}
-                    style={styles.view_animation_cover}
+                   // style={styles.view_animation_cover}
                     >
                 </LottieView>
-                
                     <LayoutPages>
                     {/* Elemento de interação 1 */}
-                        <TouchableNativeFeedback onPress={startAnimationPigMom}
-                            touchSoundDisabled={true}>
+                        <TouchableNativeFeedback onPress={startAnimationPigMom}>
                             <LottieView
                                 style={styles.view_pig_mom}
                                 source={require('../../../assets/animations/page1/pig_mom.json')}
                                 ref={animation_pig_mom}>
                             </LottieView>
                         </TouchableNativeFeedback>
-
                     {/* Elemento de interação 2 */}
-                        <TouchableNativeFeedback onPress={startAnimationPigSleeping} >
-                            <LottieView
-                                style={[styles.view_pig_sleepling]}
+                    <View style={styles.view_pig_sleepling }>
+                        <TouchableNativeFeedback  onPress={startAnimationPigSleeping} >
+                            <LottieView style={styles.animation_view_pig_sleepling}
                                 source={require('../../../assets/animations/page1/pig_sleepling.json')}
                                 ref={animation_pig_spleeping}>
                             </LottieView>
                         </TouchableNativeFeedback>
-
-                <LegendCaptionArea text={'Era uma vez três porquinhos que viviam com seus pais nos campos encantados.' + "\n" +
+                        </View>
+                  {/*<LegendCaptionArea text={'Era uma vez três porquinhos que viviam com seus pais nos campos encantados.' + "\n" +
                     'Os porquinhos estavam muito felizes, mas conforme cresciam,'+ '\n '+' se tornavam cada vez mais independentes...'}>
-                </LegendCaptionArea>
+                </LegendCaptionArea>*/}
         </LayoutPages>
             </View >
     )
