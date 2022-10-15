@@ -10,12 +10,12 @@ function ModalOptions() {
     const { playSound, stopSound } = useContext(SoundContext);
 
     const [modalVisible, setModalVisible] = useState(false);
-    const [switchValue, setSwitchOn] = useState(false);
+    const [switchValue, setSwitchOn] = useState(true);
 
     const toggleSwitch = () => {
       setSwitchOn(previousState => !previousState);
       console.log(switchValue);
-      switchValue ? playSound() : stopSound();
+      switchValue ? stopSound() : playSound();
     }
     return (
         <View style={{ justifyContent: 'center', alignItems: 'center' }}>

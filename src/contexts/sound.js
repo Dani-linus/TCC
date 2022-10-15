@@ -14,7 +14,6 @@ function SoundProvider({children}){
         isPlaying: false,
     });
     const playSound =  async () => {
-        // play sound
         await audio.replayAsync();
               
         // if (soundStatus.status?.isLoaded && !soundStatus.isPlaying) {
@@ -22,9 +21,9 @@ function SoundProvider({children}){
         // }
     }
 
+    // pause audio
     const stopSound = async () => {
         await audio.stopAsync();
-        // pause audio
         // if (soundStatus.status?.isLoaded && soundStatus.isPlaying) {
         //     // setSoundStatus({ status: status, isPlaying: false});
         // }
