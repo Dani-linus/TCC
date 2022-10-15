@@ -11,12 +11,16 @@ function ModalOptions() {
 
     const [modalVisible, setModalVisible] = useState(false);
     const [switchValue, setSwitchOn] = useState(true);
+    const [switchValueNarration, setSwitchOnNarration] = useState(true);
 
     const toggleSwitch = () => {
       setSwitchOn(previousState => !previousState);
-      console.log(switchValue);
       switchValue ? stopSound() : playSound();
     }
+
+    const toggleSwitchNarration = () => {
+        setSwitchOnNarration(previousState => !previousState);
+      }
     return (
         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
             <Modal
@@ -36,6 +40,12 @@ function ModalOptions() {
                             narração
                         </Text>
                         {/* adicionar componente de controle volume da narração */}
+                        <Switch
+                            trackColor={{ false: '#f4f3f4', true: '#56B2EB' }}
+                            thumbColor={switchValueNarration? "#56B2EB" : "#56B2EB"}
+                            onValueChange={toggleSwitchNarration}
+                            value={switchValueNarration}>
+                        </Switch>
                     </View>
                     <View style={{flexDirection: 'row', alignItems: 'center' }}>
                         <Ionicons name='musical-notes' size={32} color='black' style={{ marginEnd: 10 }}></Ionicons>
@@ -44,8 +54,8 @@ function ModalOptions() {
                         </Text>
                         {/* adicionar componente de controle volume do som ambiente */}
                         <Switch
-                            trackColor={{ false: "#767577", true: "#81b0ff" }}
-                            thumColor={switchValue ? "#aaa" : "#f4f3f4"}
+                            trackColor={{ false: '#f4f3f4', true: '#56B2EB' }}
+                            thumbColor={switchValue? "#56B2EB" : "#56B2EB"}
                             onValueChange={toggleSwitch}
                             value={switchValue}>
                         </Switch>

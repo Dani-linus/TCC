@@ -7,17 +7,14 @@ export const SoundContext = createContext({});
 function SoundProvider({children}){
 
     const audio = new Audio.Sound();
-
     const [sound, setSound] = useState(false);
     const [soundStatus, setSoundStatus] = useState({
         status: null,
         isPlaying: false,
     });
-    
-
-    // play sound
-    const playSound =  async () => {
+    const playSound = async () => {
         await audio.replayAsync();
+              
         // if (soundStatus.status?.isLoaded && !soundStatus.isPlaying) {
         //     // setSoundStatus({ status: status, isPlaying: true});
         // }
