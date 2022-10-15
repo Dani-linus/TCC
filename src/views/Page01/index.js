@@ -29,25 +29,25 @@ export default function PageOne() {
         animation_pig_spleeping.current?.play();
     }
     return (
-    //    <View style={styles.container}>
-             <View style={{flex:1}}>
+       <View style={styles.container}>
                 <LottieView
-                    style={{flex:1, width: undefined,height: undefined}}
                     source={require('../../../assets/animations/page1/page_1.json')}
                     autoPlay={true}
                     loop={true}
-                   // style={styles.view_animation_cover}
+                    style={styles.view_animation_cover}
                     >
                 </LottieView>
                     <LayoutPages>
                     {/* Elemento de interação 1 */}
+                    <View style={styles.view_pig_mom }>
                         <TouchableNativeFeedback onPress={startAnimationPigMom}>
                             <LottieView
-                                style={styles.view_pig_mom}
+                               style={styles.animation_view_pig_mom}
                                 source={require('../../../assets/animations/page1/pig_mom.json')}
                                 ref={animation_pig_mom}>
                             </LottieView>
                         </TouchableNativeFeedback>
+                        </View>
                     {/* Elemento de interação 2 */}
                     <View style={styles.view_pig_sleepling }>
                         <TouchableNativeFeedback  onPress={startAnimationPigSleeping} >
