@@ -38,7 +38,7 @@ export default function PageOne() {
                     >
                 </LottieView>
                 
-                        <LayoutPages>
+                    <LayoutPages>
                     {/* Elemento de interação 1 */}
                         <TouchableNativeFeedback onPress={startAnimationPigMom}
                             touchSoundDisabled={true}>

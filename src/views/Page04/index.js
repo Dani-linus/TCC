@@ -22,8 +22,8 @@ export default function PageFour() {
                 <LayoutPages>
                     {/* add elementos de interação */}
 
-                <LegendCaptionArea text={'texto'} />
+                    <LegendCaptionArea text={'texto'} />
                 </LayoutPages>
-        </View >
+        </View>
     )
 }
