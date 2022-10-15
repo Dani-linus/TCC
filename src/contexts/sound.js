@@ -13,8 +13,8 @@ function SoundProvider({children}){
         isPlaying: false,
     });
     const playSound = async () => {
-        await audio.replayAsync();
-              
+       // await audio.replayAsync();
+       await audio.replayAsync();
         // if (soundStatus.status?.isLoaded && !soundStatus.isPlaying) {
         //     // setSoundStatus({ status: status, isPlaying: true});
         // }
@@ -27,6 +27,7 @@ function SoundProvider({children}){
         //     // setSoundStatus({ status: status, isPlaying: false});
         // }
     }
+
     async function initSound(){
         // quando abre a aplicação pela primeira vez
         if (soundStatus.status === null) {
@@ -34,6 +35,7 @@ function SoundProvider({children}){
               (require('../../assets/sound/ambientSound/ambient_sound_two.mp3'),
               { shouldPlay: true }
             );
+           // audio.setIsLoopingAsync(true);
             // setSoundStatus({ status: status, isPlaying: true });
         }
     }
