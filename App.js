@@ -4,8 +4,6 @@ import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import Routes from './src/views/routes';
 import SoundProvider from './src/contexts/sound';
-
-
 export default function App () {
 
   const [fontsLoaded] = useFonts({
@@ -20,7 +18,7 @@ export default function App () {
         <NavigationContainer>
           <StatusBar hidden></StatusBar>
           <SoundProvider>
-            <Routes />
+            <Routes/>
           </SoundProvider>
         </NavigationContainer>
     );

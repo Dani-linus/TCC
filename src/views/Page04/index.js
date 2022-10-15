@@ -1,27 +1,25 @@
 //página 4 do livro
 import React from 'react';
 import { View } from 'react-native';
-import styles from '../../styles/StyleViewPageOne';
+import styles from '../../views/Page04/style';
 import LegendCaptionArea from '../../components/LegendTextArea';
 import LottieView from 'lottie-react-native';
 import LayoutPages from '../../components/LayoutPages';
 
 export default function PageFour() {
-    // Para cada animação, precisa de um ref distinto
-
+  
     return (
         <View style={styles.container}>
-                {/* animação de background */}
+           
                 <LottieView
-                    source={require('')}
+                    source={require('../../../assets/animations/page4/page_4.json')}
                     autoPlay={true}
                     loop={true}
                     style={styles.view_animation_cover}>
                 </LottieView>
                 
                 <LayoutPages>
-                    {/* add elementos de interação */}
-
+                  
                     <LegendCaptionArea text={'texto'} />
                 </LayoutPages>
         </View>
