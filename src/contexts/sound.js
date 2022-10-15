@@ -13,11 +13,10 @@ function SoundProvider({children}){
         status: null,
         isPlaying: false,
     });
-    
-
     const playSound =  async () => {
         // play sound
         await audio.replayAsync();
+              
         // if (soundStatus.status?.isLoaded && !soundStatus.isPlaying) {
         //     // setSoundStatus({ status: status, isPlaying: true});
         // }
