@@ -57,9 +57,9 @@ export default function PageOne() {
                             </LottieView>
                         </TouchableNativeFeedback>
                         </View>
-                  {/*<LegendCaptionArea text={'Era uma vez três porquinhos que viviam com seus pais nos campos encantados.' + "\n" +
+                  <LegendCaptionArea text={'Era uma vez três porquinhos que viviam com seus pais nos campos encantados.' + "\n" +
                     'Os porquinhos estavam muito felizes, mas conforme cresciam,'+ '\n '+' se tornavam cada vez mais independentes...'}>
-                </LegendCaptionArea>*/}
+                </LegendCaptionArea>
         </LayoutPages>
             </View >
     )
