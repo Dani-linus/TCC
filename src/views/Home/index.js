@@ -13,7 +13,7 @@ export default function HomeView({ navigation }) {
 
     const { initSound  } = useContext(SoundContext);
 
-    initSound();
+        initSound();
 
     return (
         <View style={styles.container}>
