@@ -12,12 +12,11 @@ function ModalOptions() {
     const [modalVisible, setModalVisible] = useState(false);
     const [switchValue, setSwitchOn] = useState(true);
     const [switchValueNarration, setSwitchOnNarration] = useState(true);
-
+  
     const toggleSwitch = () => {
       setSwitchOn(previousState => !previousState);
       switchValue ? stopSound() : playSound();
     }
-
     const toggleSwitchNarration = () => {
         setSwitchOnNarration(previousState => !previousState);
       }

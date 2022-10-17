@@ -8,9 +8,6 @@ import LayoutPages from '../../components/LayoutPages';
 
 export default function PageOne() {
     // Para cada animação, precisa de um ref distinto
-    let animation_pig_mom = React.createRef()
-    let animation_pig_spleeping = React.createRef()
-
     // //Iniciando Animação
     // function startAnimation() {
     //     animation.current.play();

@@ -15,6 +15,12 @@ const styles = StyleSheet.create({
     view_animation: {
         flex: 1,
         flexDirection: 'row',
+    },
+    img_frontStructure:{
+        width:60,
+        height:40,
+        top:60,
+        left:500
     }
 });
 export default styles;

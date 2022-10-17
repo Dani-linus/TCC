@@ -12,6 +12,7 @@ function SoundProvider({children}){
         status: null,
         isPlaying: false,
     });
+
     const playSound = async () => {
        // await audio.replayAsync();
        await audio.replayAsync();

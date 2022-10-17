@@ -6,14 +6,13 @@ import styles from './style';
 import ModalInfo from '../../components/ModalInfo';
 import ModalOptions from '../../components/ModalOptions';
 import LottieView from 'lottie-react-native';
-
 import { SoundContext } from "../../contexts/sound";
 
 export default function HomeView({ navigation }) {
 
     const { initSound  } = useContext(SoundContext);
 
-        initSound();
+    initSound();
 
     return (
         <View style={styles.container}>
@@ -22,7 +21,8 @@ export default function HomeView({ navigation }) {
                 autoPlay={true}
                 loop={true}
                 // style para a animação de background ficar em fullScreen
-                style={{ position: 'absolute', width: '100%', bottom: 0 }}>
+               //</View> style={{ position: 'absolute', width: '100%', bottom: 0 }
+               >
             </LottieView>
 
             {/* botões de opção e informação nos cantos superiores da tela inicial*/}

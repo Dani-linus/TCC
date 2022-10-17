@@ -15,6 +15,18 @@ const styles = StyleSheet.create({
     view_animation: {
         flex: 1,
         flexDirection: 'row',
-    }
+    },
+    img_door:{
+    resizeMode: 'cover',
+    width:60,
+    },
+    pointStyle: {
+        height: 22,
+        width: 22,
+        marginTop: 5,
+        position: 'absolute',
+        borderRadius: 14,
+        backgroundColor: '#00FF30',
+    },
 });
 export default styles;
