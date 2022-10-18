@@ -23,7 +23,18 @@ function Routes(){
           <Stack.Screen name="PageOne" component={PageOne} />
           <Stack.Screen name="PageTwo" component={PageTwo} />
           <Stack.Screen name="PageThree" component={PageThree} />
-          <Stack.Screen name="PageFour" component={PageFour} />
+          {/* <Stack.Screen name="PageFour" component={PageFour} />
+          <Stack.Screen name="PageFive" component={PageFive} />
+          <Stack.Screen name="PageSix" component={PageFive} />
+          <Stack.Screen name="PageSeven" component={PageFive} />
+          <Stack.Screen name="PageEigth" component={PageFive} />
+          <Stack.Screen name="PageNine" component={PageFive} />
+          <Stack.Screen name="PageTen" component={PageFive} />
+          <Stack.Screen name="PageFive" component={PageFive} />
+          <Stack.Screen name="PageFive" component={PageFive} />
+          <Stack.Screen name="PageFive" component={PageFive} />
+          <Stack.Screen name="PageFive" component={PageFive} />
+          <Stack.Screen name="PageFive" component={PageFive} /> */}
         </Stack.Navigator>
     )
 }

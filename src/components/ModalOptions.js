@@ -4,7 +4,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 import { SoundContext } from "../contexts/sound";
 
-function ModalOptions() {
+function ModalOptions({navigation}) {
 
     // consumir o contexto criado
     const { playSound, stopSound } = useContext(SoundContext);
@@ -33,7 +33,7 @@ function ModalOptions() {
                         </TouchableOpacity>
                     </View>
                     <Text style={[styles.text_black, styles.text_modal_options]}>Definições</Text>
-                    <View style={{flexDirection: 'row', alignItems: 'flex-start', marginTop: '5%'}}>
+                    <View style={styles.viewNarration}>
                         <Ionicons name='mic' size={32} color='black' style={{ marginEnd: 10 }}></Ionicons>
                         <Text style={[styles.text_black, styles.text_modal_options]}>
                             narração
@@ -41,7 +41,7 @@ function ModalOptions() {
                         {/* adicionar componente de controle volume da narração */}
                         <Switch
                             trackColor={{ false: '#f4f3f4', true: '#56B2EB' }}
-                            thumbColor={switchValueNarration? "#56B2EB" : "#56B2EB"}
+                            thumbColor={switchValueNarration? "#56B2EB" : "#ddd"}
                             onValueChange={toggleSwitchNarration}
                             value={switchValueNarration}>
                         </Switch>
@@ -54,12 +54,15 @@ function ModalOptions() {
                         {/* adicionar componente de controle volume do som ambiente */}
                         <Switch
                             trackColor={{ false: '#f4f3f4', true: '#56B2EB' }}
-                            thumbColor={switchValue? "#56B2EB" : "#56B2EB"}
+                            thumbColor={switchValue? "#56B2EB" : "#ddd"}
                             onValueChange={toggleSwitch}
-                            value={switchValue}>
+                            value={switchValue}
+                            style={styles.switchStyle}>
                         </Switch>
                     </View>
-                    <TouchableOpacity style={[styles.btn,styles.btn_restart]}>
+                    <TouchableOpacity style={[styles.btn,styles.btn_restart]}
+                        // adicionar navegação a home, fechar a modal e resetar todas as variaveis envolvidas.
+                    >
                         <Text style={[styles.text_black, styles.text_modal_options]}>Recomeçar história</Text>
                     </TouchableOpacity>
                 </View>
@@ -111,6 +114,15 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         
     },
+    viewNarration: {
+        flexDirection: 'row', 
+        alignItems: 'flex-start', 
+        alignItems: 'center',
+        marginTop: '5%'
+    },
+    switchStyle:{
+        marginLeft: 10,
+    }
 
 
 });

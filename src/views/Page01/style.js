@@ -1,19 +1,17 @@
 // Arquivo de styles da página 1 (screen 1)
-import { Dimensions, PixelRatio, StyleSheet } from "react-native";
-//import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { Dimensions, StyleSheet } from "react-native";
 
-//var deviceWidth = Dimensions.get('screen').width;
-//var deviceHeight = Dimensions.get('screen').height;
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        background: 'green'
     },
     view_animation_cover: {
-        position: 'absolute',
-        width: '100%',
-       bottom: 0,
-        flex:1
+        // position: 'absolute',
+        // width: '100%',
+        // bottom: 0,
+        // flex:1
    },
     view_animation: {
         flex: 1,
@@ -23,12 +21,12 @@ const styles = StyleSheet.create({
         position: 'absolute',
         width: Dimensions.get("window").width * 0.3,
         height: Dimensions.get("window").height * 1.0,
-        left: Dimensions.get("window").width * 0.24,
-        top: Dimensions.get("window").height * 0.28,
+        left: Dimensions.get("window").width * 0.31,
+        top: Dimensions.get("window").height * 0.367,
     },
     animation_view_pig_mom:{
-        width:'104%',
-        height:'73%',
+        width:'86%',
+        // height:'70%',
         position: 'absolute',
     },
     view_pig_sleepling: {

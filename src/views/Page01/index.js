@@ -1,6 +1,6 @@
 //Página 1 do livro
 import React, { useState, useRef, useEffect } from 'react';
-import { Text, View, ImageBackground, TouchableNativeFeedback, Animated, Image } from 'react-native';
+import {View, Dimensions, TouchableNativeFeedback} from 'react-native';
 import styles from '../Page01/style';
 import LegendCaptionArea from '../../components/LegendTextArea';
 import LottieView from 'lottie-react-native';
@@ -8,6 +8,10 @@ import LayoutPages from '../../components/LayoutPages';
 
 export default function PageOne() {
     // Para cada animação, precisa de um ref distinto
+
+    const animation_pig_mom = useRef();
+    const animation_pig_spleeping = useRef();
+
     // //Iniciando Animação
     // function startAnimation() {
     //     animation.current.play();
@@ -27,13 +31,15 @@ export default function PageOne() {
     }
     return (
        <View style={styles.container}>
-                <LottieView
-                    source={require('../../../assets/animations/page1/page_1.json')}
-                    autoPlay={true}
-                    loop={true}
-                    style={styles.view_animation_cover}
-                    >
-                </LottieView>
+                <View style={{ alignSelf: 'center',width: Dimensions.get("window").width, height: '100%'}}>
+                    <LottieView
+                        source={require('../../../assets/animations/page1/page_1.json')}
+                        autoPlay={true}
+                        loop={true}
+                        style={styles.view_animation_cover}
+                        >
+                    </LottieView>
+                </View>
                     <LayoutPages>
                     {/* Elemento de interação 1 */}
                     <View style={styles.view_pig_mom }>
