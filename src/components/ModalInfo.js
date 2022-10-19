@@ -11,6 +11,7 @@ function ModalInfo(){
             <Modal 
                 onRequestClose={() => setModalVisible(false)}
                 transparent
+                supportedOrientations={['portrait', 'landscape']}
                 visible={modalVisible}>
 
                 <View style={styles.modal_view}>
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
     btn_info:{
         width: 50,
         height: 50,
-        marginRight: 25,
+        marginRight: "2%",
     },
     text_black: {
         color: "black",

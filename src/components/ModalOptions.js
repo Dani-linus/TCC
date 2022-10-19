@@ -1,10 +1,12 @@
 import React, { useState, useContext } from "react";
 import { Text, View, TouchableOpacity, Switch, Modal, StyleSheet } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 
 import { SoundContext } from "../contexts/sound";
 
-function ModalOptions({navigation}) {
+function ModalOptions() {
+    const navigation = useNavigation();
 
     // consumir o contexto criado
     const { playSound, stopSound } = useContext(SoundContext);
@@ -19,12 +21,20 @@ function ModalOptions({navigation}) {
     }
     const toggleSwitchNarration = () => {
         setSwitchOnNarration(previousState => !previousState);
-      }
+    }
+
+    // função do botão recomeçar história
+    const goBack = () => {
+        setModalVisible(false)
+        navigation.popToTop()
+    }
+
     return (
         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
             <Modal
                 onRequestClose={() => setModalVisible(false)}
                 transparent
+                supportedOrientations={['portrait', 'landscape']}
                 visible={modalVisible}>
                 <View style={styles.modal_view}>
                     <View style={[styles.btn,styles.btn_close]}>
@@ -33,6 +43,7 @@ function ModalOptions({navigation}) {
                         </TouchableOpacity>
                     </View>
                     <Text style={[styles.text_black, styles.text_modal_options]}>Definições</Text>
+                    <View style={{justifyContent: 'center', alignItems: 'center'}}>
                     <View style={styles.viewNarration}>
                         <Ionicons name='mic' size={32} color='black' style={{ marginEnd: 10 }}></Ionicons>
                         <Text style={[styles.text_black, styles.text_modal_options]}>
@@ -43,7 +54,8 @@ function ModalOptions({navigation}) {
                             trackColor={{ false: '#f4f3f4', true: '#56B2EB' }}
                             thumbColor={switchValueNarration? "#56B2EB" : "#ddd"}
                             onValueChange={toggleSwitchNarration}
-                            value={switchValueNarration}>
+                            value={switchValueNarration}
+                            style={{marginLeft: 40}}>
                         </Switch>
                     </View>
                     <View style={{flexDirection: 'row', alignItems: 'center' }}>
@@ -60,15 +72,14 @@ function ModalOptions({navigation}) {
                             style={styles.switchStyle}>
                         </Switch>
                     </View>
-                    <TouchableOpacity style={[styles.btn,styles.btn_restart]}
-                        // adicionar navegação a home, fechar a modal e resetar todas as variaveis envolvidas.
-                    >
+                    </View>
+                    <TouchableOpacity style={[styles.btn,styles.btn_restart]} onPress={goBack}>
                         <Text style={[styles.text_black, styles.text_modal_options]}>Recomeçar história</Text>
                     </TouchableOpacity>
                 </View>
             </Modal>
 
-            {/* botão para abrir a modal de informações, localizado na tela principal */}
+            {/* botão para abrir a modal de definições */}
             <TouchableOpacity style={styles.btn_option} onPress={() => { setModalVisible(true) }}>
                 <Ionicons name='menu' size={50} color='white' />
             </TouchableOpacity>
@@ -88,7 +99,7 @@ const styles = StyleSheet.create({
     btn_option:{
         width: 50,
         height: 50,
-        marginLeft: 25,
+        marginLeft: "3%",
     },
     btn:{
         backgroundColor: '#A8D7F5',
@@ -100,7 +111,7 @@ const styles = StyleSheet.create({
         elevation: 2
     },
     btn_restart:{
-        marginHorizontal: 80,
+        marginHorizontal: 120,
         marginTop: 50,
         padding: 10,
     },

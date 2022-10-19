@@ -11,11 +11,13 @@ function LegendTextArea(props) {
             animation="zoomIn"
             delay={1000}
             easing={'ease-in'}
+            duration={500}
             style={[styles.viewtxt]}>
                 <Animatable.Text
                     animation="zoomIn"
                     easing={'ease-in-out'}
                     delay={2000}
+                    duration={500}
                     style={[styles.text_black, styles.text_modal_options]}>
                     {/* prop varia conforme o texto de onde o componente for chamado */}
                     {props.text}
@@ -39,7 +41,7 @@ const styles = StyleSheet.create({
         fontFamily: 'FuzzyBubbles-Bold',
     },
     text_modal_options:{
-        fontSize: 12,
+        fontSize: 14,
         textTransform: 'uppercase',
         textAlign: 'center',
     }
