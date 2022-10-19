@@ -9,7 +9,7 @@ export default function LayoutPages(props){
         <>
             <View style={styles.view_modals}>
                 <ModalOptions goBackRoute="HomeView"/>
-                {/* <ModalInfo/> */}
+                <ModalInfo/>
             </View>
 
             {/* childrens */}
