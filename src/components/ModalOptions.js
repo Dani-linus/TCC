@@ -3,7 +3,7 @@ import { Text, View, TouchableOpacity, Switch, Modal, StyleSheet } from "react-n
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 
-import { SoundContext } from "../contexts/sound";
+import { SoundContext } from "../contextAPI/sound";
 
 function ModalOptions() {
     const navigation = useNavigation();
