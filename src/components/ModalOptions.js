@@ -14,14 +14,20 @@ function ModalOptions() {
     const [modalVisible, setModalVisible] = useState(false);
     const [switchValue, setSwitchOn] = useState(true);
     const [switchValueNarration, setSwitchOnNarration] = useState(true);
+    const [icon, setIcon] = useState("volume-high");
   
     const toggleSwitch = () => {
       setSwitchOn(previousState => !previousState);
       switchValue ? stopSound() : playSound();
+      if(switchValue === true){
+        setIcon("volume-mute");
+      }else{
+        setIcon("volume-high")
+      }
     }
     const toggleSwitchNarration = () => {
         setSwitchOnNarration(previousState => !previousState);
-    }
+    }   
 
     // função do botão recomeçar história
     const goBack = () => {
@@ -59,7 +65,7 @@ function ModalOptions() {
                         </Switch>
                     </View>
                     <View style={{flexDirection: 'row', alignItems: 'center' }}>
-                        <Ionicons name='musical-notes' size={32} color='black' style={{ marginEnd: 10 }}></Ionicons>
+                        <Ionicons name={icon} size={32} color='black' style={{ marginEnd: 10 }}></Ionicons>
                         <Text style={[styles.text_black, styles.text_modal_options]}>
                             som ambiente
                         </Text>
