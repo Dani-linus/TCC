@@ -6,7 +6,7 @@ import LegendCaptionArea from '../../components/LegendTextArea';
 import LottieView from 'lottie-react-native';
 import LayoutPages from '../../components/LayoutPages';
 
-export default function PageOne() {
+export default function PageFive({navigation}) {
     // Para cada animação, precisa de um ref distinto
 
     return (
@@ -23,6 +23,7 @@ export default function PageOne() {
                     {/* add elementos de interação */}
 
                 <LegendCaptionArea text={'texto'} />
+                <ButtonNavigation  proxRoute="PageSix" navigation={navigation}/>
                 </LayoutPages>
         </View >
     )

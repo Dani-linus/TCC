@@ -4,7 +4,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // backgroundColor: "black",
+        backgroundColor: "#56B2EB",
         // padding: 5,
         // borderWidth:2, borderColor:'gray'
     },
@@ -25,6 +25,11 @@ const styles = StyleSheet.create({
     btn_play:{
         alignItems: 'center',
         justifyContent: 'center',
+        elevation: 1,
+    },
+    btn_exitIOS:{
+        alignItems: 'center',
+        justifyContent: 'flex-end',
         elevation: 1,
     },
     text_white: {

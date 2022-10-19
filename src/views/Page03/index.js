@@ -5,8 +5,9 @@ import styles from '../../views/Page03/style';
 import LegendCaptionArea from '../../components/LegendTextArea';
 import LottieView from 'lottie-react-native';
 import LayoutPages from '../../components/LayoutPages';
+import ButtonNavigation from '../../components/ButtonNavigation';
 
-export default function PageThree() {
+export default function PageThree({navigation}) {
 
     const pan = useRef(new Animated.ValueXY(0, 0)).current;
     const [locationX, setLocationX] = useState(0);
@@ -52,20 +53,25 @@ export default function PageThree() {
                 loop={true}
                 style={styles.view_animation_cover}>
             </LottieView>
+
+            <LayoutPages>
+
             <Animated.View style={{
                 transform: [{ translateX: pan.x }, { translateY: pan.y }],
             }}
-                {...panResponder.panHandlers}
+            {...panResponder.panHandlers}
             >
                 <Image
                     style={styles.img_door}
                     source={require('./../../../assets/img/strawHouse/door/door.png')}
-                />
+                    />
                 <Text>
 
                     X: {locationX}, Y: {locationY}
                 </Text>
             </Animated.View>
+                <ButtonNavigation proxRoute="PageFour" navigation={navigation}/>
+            </LayoutPages>
         </View>
     )
 }
