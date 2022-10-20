@@ -18,19 +18,22 @@ export default function PageTwo({navigation}) {
     }
     return (
         <View style={styles.container}>
-            <LottieView
-                source={sceneBackgroundJSON}
-                autoPlay={true}
-                loop={true}
-                style={styles.view_animation_cover}>
-            </LottieView>
+            {/* <View style={styles.viewAnimationBackground}> */}
+                <LottieView
+                    source={sceneBackgroundJSON}
+                    autoPlay={true}
+                    loop={true}>
+                </LottieView>
+            {/* </View> */}
 
             <LayoutPages>
                 <View style={styles.view_pig_father_pig_mom}>
                     <TouchableNativeFeedback onPress={startAnimationPigFatherPigMom}>
                         <LottieView
                             source={pigMomPigFatherJSON}
-                            ref={animation_pig_father_pig_mom}>
+                            ref={animation_pig_father_pig_mom}
+                            // style={styles.view_pig_father_pig_mom}
+                            >
                         </LottieView>
                     </TouchableNativeFeedback>
                 </View>

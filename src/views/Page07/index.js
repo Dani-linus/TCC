@@ -1,16 +1,9 @@
-import React from "react";
-import LayoutPages from "../../components/LayoutPages";
+import React from 'react';
+import { View } from 'react-native';
 
-export default function PageSeven(){
-    return(
+export default function PageOne({navigation}) {
+    return (
         <View>
-            <LottieView>
-                {/* a animação de fundo */}
-            </LottieView>
-            <LayoutPages>
-                {/* todos os outros componentes filhos*/}
-                {/* ex: as interações */}
-            </LayoutPages>
-        </View>
+        </View >
     )
 }

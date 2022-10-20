@@ -14,27 +14,34 @@ function ModalOptions() {
     const [modalVisible, setModalVisible] = useState(false);
     const [switchValue, setSwitchOn] = useState(true);
     const [switchValueNarration, setSwitchOnNarration] = useState(true);
-    const [icon, setIcon] = useState("volume-high");
+    const [iconSound, setIconSound] = useState("volume-high");
+    const [iconNarration, setIconNarration] = useState("mic");
   
     const toggleSwitch = () => {
       setSwitchOn(previousState => !previousState);
       switchValue ? stopSound() : playSound();
       if(switchValue === true){
-        setIcon("volume-mute");
+        setIconSound("volume-mute");
       }else{
-        setIcon("volume-high")
+        setIconSound("volume-high")
       }
     }
     const toggleSwitchNarration = () => {
         setSwitchOnNarration(previousState => !previousState);
+        if(switchValue === true){
+            setIconNarration("mic-off");
+          }else{
+            setIconNarration("mic")
+          }
     }   
 
-    // função do botão recomeçar história
+    // função do botão recomeçar história 
     const goBack = () => {
         setModalVisible(false)
         navigation.popToTop()
     }
 
+    // adicionar função de botão condicional na página inicial
     return (
         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
             <Modal
@@ -51,7 +58,7 @@ function ModalOptions() {
                     <Text style={[styles.text_black, styles.text_modal_options]}>Definições</Text>
                     <View style={{justifyContent: 'center', alignItems: 'center'}}>
                     <View style={styles.viewNarration}>
-                        <Ionicons name='mic' size={32} color='black' style={{ marginEnd: 10 }}></Ionicons>
+                        <Ionicons name={iconNarration} size={32} color='black' style={{ marginEnd: 10 }}></Ionicons>
                         <Text style={[styles.text_black, styles.text_modal_options]}>
                             narração
                         </Text>
@@ -65,7 +72,7 @@ function ModalOptions() {
                         </Switch>
                     </View>
                     <View style={{flexDirection: 'row', alignItems: 'center' }}>
-                        <Ionicons name={icon} size={32} color='black' style={{ marginEnd: 10 }}></Ionicons>
+                        <Ionicons name={iconSound} size={32} color='black' style={{ marginEnd: 10 }}></Ionicons>
                         <Text style={[styles.text_black, styles.text_modal_options]}>
                             som ambiente
                         </Text>

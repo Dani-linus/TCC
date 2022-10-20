@@ -1,10 +1,9 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { SafeAreaView } from 'react-native'
 import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import Routes from './src/views/routes';
-import SoundProvider from './src/contexts/sound';
+import SoundProvider from './src/contextAPI/sound';
 export default function App () {
 
   const [fontsLoaded] = useFonts({
@@ -16,13 +15,11 @@ export default function App () {
     return null;
   }
     return (
-      // <SafeAreaView>
         <NavigationContainer>
           <StatusBar hidden></StatusBar>
           <SoundProvider>
             <Routes/>
           </SoundProvider>
         </NavigationContainer>
-      // </SafeAreaView>
     );
   }

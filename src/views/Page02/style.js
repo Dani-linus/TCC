@@ -18,11 +18,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     view_pig_father_pig_mom: {
-        position: 'absolute',
-        width: Dimensions.get("window").width * 0.24,
-        height: Dimensions.get("window").height * 1,
-        left: Dimensions.get("window").width * 0.13,
-        top: Dimensions.get("window").height * 0.05,
+        // position: 'absolute',
+        width: Dimensions.get('window').width / Dimensions.get('window').scale,
+        height: Dimensions.get('window').height / Dimensions.get('window').scale,
+        left: '7%',
+        top: '14%',
+        borderWidth: 1,
     },
     // animation_view_pig_father_pig_mom: {
     //     width: '104%',

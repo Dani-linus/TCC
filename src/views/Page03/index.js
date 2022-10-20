@@ -1,6 +1,6 @@
 //página 3 do livro
 import React, { useRef, useState } from 'react';
-import { View, Image, PanResponder, Animated, Text, Alert, Easing, } from 'react-native';
+import { View, Image, PanResponder, Animated, Text, Alert, Easing, useWindowDimensions } from 'react-native';
 import styles from '../../views/Page03/style';
 import LegendCaptionArea from '../../components/LegendTextArea';
 import LottieView from 'lottie-react-native';
@@ -8,6 +8,8 @@ import LayoutPages from '../../components/LayoutPages';
 import ButtonNavigation from '../../components/ButtonNavigation';
 
 export default function PageThree({navigation}) {
+
+    const { height, width } = useWindowDimensions();
 
     const pan = useRef(new Animated.ValueXY(0, 0)).current;
     const [locationX, setLocationX] = useState(0);
@@ -51,7 +53,7 @@ export default function PageThree({navigation}) {
                 source={require('../../../assets/animations/page3/page_3.json')}
                 autoPlay={true}
                 loop={true}
-                style={styles.view_animation_cover}>
+                >
             </LottieView>
 
             <LayoutPages>

@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         alignSelf: 'center',
         margin: 10,
+        marginHorizontal: 20,
         position: 'absolute'
     },
     text_black: {
