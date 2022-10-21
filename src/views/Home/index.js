@@ -14,8 +14,10 @@ export default function HomeView({ navigation }) {
 
     const { initSound  } = useContext(SoundContext);
     
-    // fazer tratamento de erro disso 
-    // initSound();
+    // 3000  = 3 segundos
+    setTimeout(() => {
+        initSound();
+    }, 3000);
 
     function isIOSorOther(){
         if(Platform.OS === "ios"){
