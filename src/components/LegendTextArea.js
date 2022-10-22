@@ -3,7 +3,7 @@
 
 import React from "react"
 import * as Animatable from "react-native-animatable";
-import { StyleSheet } from "react-native";
+import { StyleSheet, PixelRatio } from "react-native";
 
 function LegendTextArea(props) {
     return (
@@ -30,11 +30,11 @@ export default LegendTextArea;
 const styles = StyleSheet.create({
     viewtxt:{
         backgroundColor: "#F5F5F5",
-        padding: 8,
+        padding: 5,
         borderRadius: 10,
         alignSelf: 'center',
         margin: 10,
-        marginHorizontal: 20,
+        marginHorizontal: '10%',
         position: 'absolute'
     },
     text_black: {
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         fontFamily: 'FuzzyBubbles-Bold',
     },
     text_modal_options:{
-        fontSize: 14,
+        fontSize: 14 * PixelRatio.getFontScale(),
         textTransform: 'uppercase',
         textAlign: 'center',
     }

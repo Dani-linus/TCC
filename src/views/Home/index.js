@@ -1,6 +1,6 @@
 //Primeira tela - capa do livro e inicio da aplicação
 import React, { useContext, useState } from 'react';
-import { Text, View, TouchableOpacity, Platform, BackHandler } from 'react-native';
+import { Text, View, TouchableOpacity, Platform, BackHandler, Image, Dimensions, PixelRatio} from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styles from './style';
 import ModalInfo from '../../components/ModalInfo';
@@ -8,16 +8,20 @@ import ModalOptions from '../../components/ModalOptions';
 import LottieView from 'lottie-react-native';
 import { SoundContext } from "../../contextAPI/sound";
 
-const sceneBackgroundJSON = require('../../../assets/animations/bookHomePage.json')
+const fileJSON = require('../../../assets/animations/bookHomePage.json')
+// const file = require('../../../test/1920x1080.png')
+
+const { height, width } = Dimensions.get('window')
 
 export default function HomeView({ navigation }) {
 
     const { initSound  } = useContext(SoundContext);
+
     
     // 3000  = 3 segundos
-    setTimeout(() => {
-        initSound();
-    }, 3000);
+    // setTimeout(() => {
+    //     initSound();
+    // }, 3000);
 
     function isIOSorOther(){
         if(Platform.OS === "ios"){
@@ -29,15 +33,17 @@ export default function HomeView({ navigation }) {
         }
     }
 
+
     return (
         <View style={styles.container}>
+            {/* <Image source={file} style={{width: width , height: height, alignSelf:'center' }}/> */}
             <LottieView
-                source={sceneBackgroundJSON}
+                source={fileJSON}
                 autoPlay={true}
                 loop={true}
-                // style para a animação de background ficar em fullScreen
-               style={{ flex: 1, width: undefined, height: undefined}}>
-            </LottieView>
+                // style={{width: width}}
+                resizeMode='cover'
+               ></LottieView>
 
             {/* botões de opção e informação nos cantos superiores da tela inicial*/}
             <View style={styles.view_modals}>

@@ -1,6 +1,18 @@
-// Arquivo de styles da página 1 (screen 1)
-import { Dimensions, StyleSheet } from "react-native";
+import { Dimensions, StyleSheet,  PixelRatio } from "react-native";
 
+let Width = Dimensions.get('window').width;
+let Height = Dimensions.get('window').height;
+
+const wp = widthPercent => {
+  const elemWidth = typeof widthPercent === "number" ? widthPercent : parseFloat(widthPercent);
+  return PixelRatio.roundToNearestPixel(Width * elemWidth / 100);
+};
+
+const hp = heightPercent => {
+  const elemHeight = typeof heightPercent === "number" ? heightPercent : parseFloat(heightPercent);
+
+  return PixelRatio.roundToNearestPixel(Height * elemHeight / 100);
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -9,39 +21,22 @@ const styles = StyleSheet.create({
     },
     view_animation_cover: {
         position: 'absolute',
-        // width: '90%',
-        // bottom: 0,
-        // flex:1
    },
-    // view_animation: {
-    //     flex: 1,
-    //     flexDirection: 'row',
-    // },
-    // view_pig_mom: {
-    //     position: 'absolute',
-    //     width: Dimensions.get("window").width * 0.27,
-    //     height: Dimensions.get("window").height * 1,
-    //     left: Dimensions.get("window").width * 0.14,
-    //     top: Dimensions.get("window").height * 0.07,
-    // },
-    // animation_view_pig_mom:{
-    //     width:'86%',
-    //     height:'70%',
-    //     // position: 'absolute',
-    // },
+    view_pig_mom: {
+        position: 'absolute',
+        width: wp(32),
+        height: hp(62),
+        marginLeft: wp(22),
+        marginTop: wp(18),
+    },
     view_pig_sleepling: {
         position: 'absolute',
-        flex:1,
-        // width: Dimensions.get("window").width * 0.1,
-        // height: Dimensions.get("window").height * 1,
-        left: Dimensions.get("window").width * 0.73,
-        top: Dimensions.get("window").height * 0.12,
+        width: wp(40),
+        height: hp(60),
+        marginTop: wp(13),
+        left: wp(60),
+        borderWidth: 1
     },
-    // animation_view_pig_sleepling:{
-    //     width:'102%',
-    //     height:'46%',
-    //     position: 'absolute',
-    // }
 
 });
 export default styles;

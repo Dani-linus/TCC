@@ -1,7 +1,7 @@
 //Página 1 do livro
 import React, { useRef } from 'react';
 import {View, TouchableNativeFeedback} from 'react-native';
-import styles from '../Page01/style';
+import styles from './style';
 import LegendCaptionArea from '../../components/LegendTextArea';
 import LottieView from 'lottie-react-native';
 import LayoutPages from '../../components/LayoutPages';
@@ -9,9 +9,9 @@ import ButtonNavigation from '../../components/ButtonNavigation';
 
 // imports das animações em JSON
 const pigMomJSON = require('../../../assets/animations/page1/pig_mom.json');
-const pigSleepingJSON = require('../../../assets/animations/page1/pig_sleepling.json') ;
-// const sceneJSON = require('../../../assets/animations/page1/page_1.json');
-const sceneJSON = require('../../../assets/animations/page1/pageOneScene.json');
+const pigSleepingJSON = require('../../../assets/animations/page1/pig_2.json') ;
+const fileJSON = require('../../../assets/animations/page1/page_1.json');
+// const sceneJSON = require('../../../assets/animations/page1/pageOneScene.json');
 
 export default function PageOne({navigation}) {
     // Para cada animação, precisa de um ref distinto
@@ -36,25 +36,30 @@ export default function PageOne({navigation}) {
         //de 148 a 300 - reação a interação, estado 1.
         animation_pig_spleeping.current?.play();
     }
+
+
+
     return (
        <View style={styles.container}>
             <LottieView
-                source={sceneJSON}
+                source={fileJSON}
                 autoPlay={true}
                 loop={true}
-                style={styles.view_animation_cover} 
+                // style={styles.view_animation_cover} 
+                resizeMode='cover'
                 />
             <LayoutPages navigation={navigation}>
                 {/* Elemento de interação 1 */}
-                    {/* <View style={styles.view_pig_mom}>
-                    <TouchableNativeFeedback onPress={startAnimationPigMom}>
-                        <LottieView
-                            style={styles.view_pig_mom}
-                            source={pigMomJSON}
-                            ref={animation_pig_mom}>
-                        </LottieView>
-                    </TouchableNativeFeedback>
-                    </View> */}
+                    <View style={styles.view_pig_mom}>
+                        <TouchableNativeFeedback onPress={startAnimationPigMom}>
+                            <LottieView
+                                // style={styles.view_pig_mom}
+                                source={pigMomJSON}
+                                ref={animation_pig_mom}
+                                >
+                            </LottieView>
+                        </TouchableNativeFeedback>
+                    </View>
 
                 {/* Elemento de interação 2 */}
             <View style={styles.view_pig_sleepling }>
@@ -67,8 +72,7 @@ export default function PageOne({navigation}) {
             </View>
 
             {/* legenda da historia desta pagina */}
-            <LegendCaptionArea text={'Era uma vez três porquinhos que viviam com seus pais nos campos encantados.' + "\n" +
-                'Os porquinhos estavam muito felizes, mas conforme cresciam,'+ '\n '+' se tornavam cada vez mais independentes...'}>
+            <LegendCaptionArea text={'Era uma vez três porquinhos que viviam com seus pais nos campos encantados. Os porquinhos estavam muito felizes, mas conforme cresciam, se tornavam cada vez mais independentes...'}>
             </LegendCaptionArea>
             
             {/* botao para navegação entre as páginas */}
