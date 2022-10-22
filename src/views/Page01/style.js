@@ -31,10 +31,10 @@ const styles = StyleSheet.create({
     },
     view_pig_sleepling: {
         position: 'absolute',
-        width: wp(40),
-        height: hp(60),
-        marginTop: wp(13),
-        left: wp(60),
+        width: wp(30),
+        height: hp(50),
+        top: wp(13),
+        left: wp(64),
         borderWidth: 1
     },
 

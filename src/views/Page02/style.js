@@ -1,37 +1,36 @@
-// Arquivo de styles da página 2 (screen 2)
+import { Dimensions, StyleSheet,  PixelRatio } from "react-native";
 
-import { Dimensions, StyleSheet } from "react-native";
+let Width = Dimensions.get('window').width;
+let Height = Dimensions.get('window').height;
+
+const wp = widthPercent => {
+  const elemWidth = typeof widthPercent === "number" ? widthPercent : parseFloat(widthPercent);
+  return PixelRatio.roundToNearestPixel(Width * elemWidth / 100);
+};
+
+const hp = heightPercent => {
+  const elemHeight = typeof heightPercent === "number" ? heightPercent : parseFloat(heightPercent);
+
+  return PixelRatio.roundToNearestPixel(Height * elemHeight / 100);
+};
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#56B2EB'
     },
-    // view_animation_cover: {
-    //     position: 'absolute',
-    //     width: '100%',
-    //     bottom: 0,
-    //     flex: 1
-    // },
     view_animation: {
         flex: 1,
         flexDirection: 'row',
     },
     view_pig_father_pig_mom: {
         position: 'absolute',
-        // width: Dimensions.get('window').width / Dimensions.get('window').scale,
-        // height: Dimensions.get('window').height / Dimensions.get('window').scale,
-        width: 50,
-        // height: 100,
-        left: 20,
-        top: '14%',
+        width: wp(50),
+        height: hp(55),
+        top: wp(14),
+        left: wp(-8),
         borderWidth: 1,
     },
-    // animation_view_pig_father_pig_mom: {
-    //     width: '104%',
-    //     height: '74%',
-    //     position: 'absolute',
-    // },
 
 });
 export default styles;

@@ -18,27 +18,22 @@ export default function PageTwo({navigation}) {
     }
     return (
         <View style={styles.container}>
-            {/* <View style={styles.viewAnimationBackground}> */}
                 <LottieView
                     source={sceneBackgroundJSON}
                     autoPlay={true}
-                    loop={true}>
-                </LottieView>
-            {/* </View> */}
-
+                    loop={true}
+                    resizeMode='cover'
+                ></LottieView>
             <LayoutPages>
                 <View style={styles.view_pig_father_pig_mom}>
                     <TouchableNativeFeedback onPress={startAnimationPigFatherPigMom}>
                         <LottieView
                             source={pigMomPigFatherJSON}
                             ref={animation_pig_father_pig_mom}
-                            // style={styles.view_pig_father_pig_mom}
-                            >
-                        </LottieView>
+                            ></LottieView>
                     </TouchableNativeFeedback>
                 </View>
-                <LegendCaptionArea text={'Então chegou o dia em que saíram da casa de seus pais para morar sozinhos.' + "\n" +
-                    'Os três porquinhos partiram para o bosque em busca' + '\n' + 'de um bom lugar para construir, cada um, a sua casa.'} />
+                <LegendCaptionArea text={'Então chegou o dia em que saíram da casa de seus pais para morar sozinhos. Os três porquinhos partiram para o bosque em busca de um bom lugar para construir, cada um, a sua casa.'} />
                 <ButtonNavigation proxRoute="PageThree" navigation={navigation}/>                                    
             </LayoutPages>
         </View >

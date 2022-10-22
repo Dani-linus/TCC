@@ -28,7 +28,7 @@ function ModalOptions() {
     }
     const toggleSwitchNarration = () => {
         setSwitchOnNarration(previousState => !previousState);
-        if(switchValue === true){
+        if(switchValueNarration === true){
             setIconNarration("mic-off");
           }else{
             setIconNarration("mic")

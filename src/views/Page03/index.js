@@ -7,6 +7,9 @@ import LottieView from 'lottie-react-native';
 import LayoutPages from '../../components/LayoutPages';
 import ButtonNavigation from '../../components/ButtonNavigation';
 
+// adicionar os imports dos arquivos aqui
+const filePigJSON =  require('../../../assets/animations/page3/presentation_pig_tuca.json');
+
 export default function PageThree({navigation}) {
 
     const { height, width } = useWindowDimensions();
@@ -53,10 +56,17 @@ export default function PageThree({navigation}) {
                 source={require('../../../assets/animations/page3/page_3.json')}
                 autoPlay={true}
                 loop={true}
-                >
-            </LottieView>
+                resizeMode='cover'
+            ></LottieView>
 
             <LayoutPages>
+                <LottieView 
+                    source={filePigJSON}
+                    autoPlay
+                    loop={false}
+                    style={{ position: 'absolute', left: -220, bottom: -50}}
+                ></LottieView>
+
 
             <Animated.View style={{
                 transform: [{ translateX: pan.x }, { translateY: pan.y }],
@@ -72,6 +82,7 @@ export default function PageThree({navigation}) {
                     X: {locationX}, Y: {locationY}
                 </Text>
             </Animated.View>
+
                 <ButtonNavigation proxRoute="PageFour" navigation={navigation}/>
             </LayoutPages>
         </View>

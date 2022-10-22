@@ -1,6 +1,6 @@
 //Página 1 do livro
 import React, { useRef } from 'react';
-import {View, TouchableNativeFeedback} from 'react-native';
+import {View, TouchableNativeFeedback, Text, TouchableOpacity} from 'react-native';
 import styles from './style';
 import LegendCaptionArea from '../../components/LegendTextArea';
 import LottieView from 'lottie-react-native';
@@ -14,15 +14,14 @@ const fileJSON = require('../../../assets/animations/page1/page_1.json');
 // const sceneJSON = require('../../../assets/animations/page1/pageOneScene.json');
 
 export default function PageOne({navigation}) {
-    // Para cada animação, precisa de um ref distinto
 
     const animation_pig_mom = useRef();
     const animation_pig_spleeping = useRef();
 
-    // //Iniciando Animação
-    // function startAnimation() {
-    //     animation.current.play();
-    // }
+    // //Iniciando o estado 0 das animações
+    animation_pig_spleeping.current?.play(0,148);
+    animation_pig_mom.current?.play(0, 48);
+
     // Inicia a animação da mamãe porca
     function startAnimationPigMom(){
         // adicionar verificação de cliques
@@ -34,10 +33,8 @@ export default function PageOne({navigation}) {
     function startAnimationPigSleeping(){
         //de 0 a 148 - pig dormindo, ou seja, estado zero (isso fica em looping até que seja interagido)
         //de 148 a 300 - reação a interação, estado 1.
-        animation_pig_spleeping.current?.play();
+        animation_pig_spleeping.current?.play(148, 300);
     }
-
-
 
     return (
        <View style={styles.container}>
@@ -45,7 +42,6 @@ export default function PageOne({navigation}) {
                 source={fileJSON}
                 autoPlay={true}
                 loop={true}
-                // style={styles.view_animation_cover} 
                 resizeMode='cover'
                 />
             <LayoutPages navigation={navigation}>
@@ -62,8 +58,8 @@ export default function PageOne({navigation}) {
                     </View>
 
                 {/* Elemento de interação 2 */}
-            <View style={styles.view_pig_sleepling }>
-                <TouchableNativeFeedback  onPress={startAnimationPigSleeping} >
+            <View style={styles.view_pig_sleepling}>
+                <TouchableNativeFeedback onPress={startAnimationPigSleeping}>
                     <LottieView
                         source={pigSleepingJSON}
                         ref={animation_pig_spleeping}>

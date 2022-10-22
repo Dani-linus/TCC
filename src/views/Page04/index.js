@@ -16,8 +16,9 @@ export default function PageFour({navigation}) {
                 source={require('../../../assets/animations/page4/page_4.json')}
                 autoPlay={true}
                 loop={true}
-                style={styles.view_animation_cover}>
-            </LottieView>
+                resizeMode='cover'
+                style={styles.view_animation_cover}
+                ></LottieView>
             <LayoutPages>
 
                 <LegendCaptionArea text={'texto'} />
