@@ -27,13 +27,18 @@ export default function PageOne({navigation}) {
     //Parando o som ambiente
     stopSound();
 
-
     useEffect(() => {
+     navigation.addListener('focus', ()=> initNarrationSound(soundCena1));
+    }
+    );
 
     //Iniciando narração
     initNarrationSound(soundCena1);
      
-      })
+     
+      
+
+      
    
     const animation_pig_mom = useRef();
     const animation_pig_spleeping = useRef();
