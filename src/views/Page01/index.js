@@ -1,20 +1,40 @@
 //Página 1 do livro
-import React, { useRef } from 'react';
+import React, { useRef , useContext , useEffect } from 'react';
 import {View, TouchableNativeFeedback, Text, TouchableOpacity} from 'react-native';
 import styles from './style';
 import LegendCaptionArea from '../../components/LegendTextArea';
 import LottieView from 'lottie-react-native';
 import LayoutPages from '../../components/LayoutPages';
 import ButtonNavigation from '../../components/ButtonNavigation';
+import { SoundNarrationContext } from "../../contextAPI/soundNarration";
+import { SoundContext } from "../../contextAPI/sound";
 
 // imports das animações em JSON
 const pigMomJSON = require('../../../assets/animations/page1/pig_mom.json');
 const pigSleepingJSON = require('../../../assets/animations/page1/pig_2.json') ;
 const fileJSON = require('../../../assets/animations/page1/page_1.json');
+
 // const sceneJSON = require('../../../assets/animations/page1/pageOneScene.json');
+
+//Narração primeira cena
+const soundCena1 =  require('../../../assets/sound/narration/Page01.mp3');
 
 export default function PageOne({navigation}) {
 
+    const {initNarrationSound, playSound} = useContext(SoundNarrationContext);
+    const {stopSound}  = useContext(SoundContext);
+
+    //Parando o som ambiente
+    stopSound();
+
+
+    useEffect(() => {
+
+    //Iniciando narração
+    initNarrationSound(soundCena1);
+     
+      })
+   
     const animation_pig_mom = useRef();
     const animation_pig_spleeping = useRef();
 
@@ -35,7 +55,6 @@ export default function PageOne({navigation}) {
         //de 148 a 300 - reação a interação, estado 1.
         animation_pig_spleeping.current?.play(148, 300);
     }
-
     return (
        <View style={styles.container}>
             <LottieView
@@ -68,9 +87,8 @@ export default function PageOne({navigation}) {
             </View>
 
             {/* legenda da historia desta pagina */}
-            <LegendCaptionArea text={'Era uma vez três porquinhos que viviam com seus pais nos campos encantados. Os porquinhos estavam muito felizes, mas conforme cresciam, se tornavam cada vez mais independentes...'}>
+            <LegendCaptionArea text={'Era uma vez três porquinhos que viviam com seus pais nos campos encantados. Os porquinhos estavam muito felizes, e conforme cresciam, se tornavam cada vez mais independentes...'}>
             </LegendCaptionArea>
-            
             {/* botao para navegação entre as páginas */}
             <ButtonNavigation proxRoute="PageTwo" navigation={navigation}/>
             </LayoutPages>

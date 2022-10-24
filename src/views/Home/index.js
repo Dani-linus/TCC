@@ -9,6 +9,7 @@ import LottieView from 'lottie-react-native';
 import { SoundContext } from "../../contextAPI/sound";
 
 const fileJSON = require('../../../assets/animations/bookHomePage.json')
+
 // const file = require('../../../test/1920x1080.png')
 
 const { height, width } = Dimensions.get('window')
@@ -16,7 +17,7 @@ const { height, width } = Dimensions.get('window')
 export default function HomeView({ navigation }) {
 
     const { initSound  } = useContext(SoundContext);
-
+       initSound();
     
     // 3000  = 3 segundos
     // setTimeout(() => {

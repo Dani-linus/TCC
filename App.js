@@ -4,22 +4,25 @@ import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import Routes from './src/views/routes';
 import SoundProvider from './src/contextAPI/sound';
-export default function App () {
+import SoundNarrationProvider from './src/contextAPI/soundNarration'
+export default function App() {
 
   const [fontsLoaded] = useFonts({
     'PatrickHand': require('./assets/font/PatrickHand-Regular.ttf'),
-    'FuzzyBubbles-Bold' : require('./assets/font/FuzzyBubbles-Bold.ttf'),
+    'FuzzyBubbles-Bold': require('./assets/font/FuzzyBubbles-Bold.ttf'),
   });
 
-  if(!fontsLoaded){
+  if (!fontsLoaded) {
     return null;
   }
-    return (
-        <NavigationContainer>
-          <StatusBar hidden></StatusBar>
-          <SoundProvider>
-            <Routes/>
-          </SoundProvider>
-        </NavigationContainer>
-    );
-  }
+  return (
+    <NavigationContainer>
+      <StatusBar hidden></StatusBar>
+      <SoundProvider>
+        <SoundNarrationProvider>
+          <Routes />
+        </SoundNarrationProvider>
+      </SoundProvider>
+    </NavigationContainer>
+  );
+}
