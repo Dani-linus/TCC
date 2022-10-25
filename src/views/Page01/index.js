@@ -17,7 +17,7 @@ const fileJSON = require('../../../assets/animations/page1/page_1.json');
 // const sceneJSON = require('../../../assets/animations/page1/pageOneScene.json');
 
 //Narração primeira cena
-const soundCena1 =  require('../../../assets/sound/narration/Page01.mp3');
+const soundCena1 =  require('../../../assets/sound/narration/Page01/Page1.mp4');
 
 export default function PageOne({navigation}) {
 
@@ -31,15 +31,7 @@ export default function PageOne({navigation}) {
      navigation.addListener('focus', ()=> initNarrationSound(soundCena1));
     }
     );
-
-    //Iniciando narração
-    initNarrationSound(soundCena1);
-     
-     
-      
-
-      
-   
+    
     const animation_pig_mom = useRef();
     const animation_pig_spleeping = useRef();
 

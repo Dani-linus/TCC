@@ -20,12 +20,17 @@ function SoundNarrationProvider({children}){
         await audio.stopAsync();
     }
     async function initNarrationSound(som){
-        if (sound === true) {
-            setTimeout(() => {
-            audio.loadAsync((som) , { shouldPlay: true });
-        }, 4000);
-    }
-    await audio.unloadAsync();
+        try {
+            if (sound === true) {
+                setTimeout(() => {
+                audio.loadAsync((som) , { shouldPlay: true });
+            }, 4000);
+              await audio.unloadAsync();
+        }
+        } catch (error) {
+            
+        }
+    
     }
     return(
         <SoundNarrationContext.Provider value={{playSound, stopSound, initNarrationSound, sound,setSound}}>
