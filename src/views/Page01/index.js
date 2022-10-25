@@ -1,17 +1,16 @@
-//Página 1 do livro
 import React, { useRef } from 'react';
 import {View, TouchableNativeFeedback, Text, TouchableOpacity} from 'react-native';
 import styles from './style';
+import * as Animatable from 'react-native-animatable';
 import LegendCaptionArea from '../../components/LegendTextArea';
 import LottieView from 'lottie-react-native';
 import LayoutPages from '../../components/LayoutPages';
 import ButtonNavigation from '../../components/ButtonNavigation';
 
 // imports das animações em JSON
-const pigMomJSON = require('../../../assets/animations/page1/pig_mom.json');
-const pigSleepingJSON = require('../../../assets/animations/page1/pig_2.json') ;
+const pigMomJSON = require('../../../assets/animations/page1/pigMom.json');
+const pigSleepingJSON = require('../../../assets/animations/page1/pigSleeping.json') ;
 const fileJSON = require('../../../assets/animations/page1/page_1.json');
-// const sceneJSON = require('../../../assets/animations/page1/pageOneScene.json');
 
 export default function PageOne({navigation}) {
 
@@ -43,36 +42,43 @@ export default function PageOne({navigation}) {
                 autoPlay={true}
                 loop={true}
                 resizeMode='cover'
+                style={{flexGrow: 1}}
                 />
             <LayoutPages navigation={navigation}>
                 {/* Elemento de interação 1 */}
-                    <View style={styles.view_pig_mom}>
-                        <TouchableNativeFeedback onPress={startAnimationPigMom}>
-                            <LottieView
-                                // style={styles.view_pig_mom}
-                                source={pigMomJSON}
-                                ref={animation_pig_mom}
-                                >
-                            </LottieView>
-                        </TouchableNativeFeedback>
-                    </View>
+                <View style={styles.view_pig_mom}>
+                    <TouchableNativeFeedback onPress={startAnimationPigMom}>
+                        <LottieView
+                            // style={styles.view_pig_mom}
+                            source={pigMomJSON}
+                            ref={animation_pig_mom}
+                            >
+                        </LottieView>
+                    </TouchableNativeFeedback>
+                </View>
+
+                <Animatable.View style={[styles.toggleView, styles.togglePigMom]}
+                    animation="pulse" easing="linear" iterationCount="infinite"/>
 
                 {/* Elemento de interação 2 */}
-            <View style={styles.view_pig_sleepling}>
-                <TouchableNativeFeedback onPress={startAnimationPigSleeping}>
-                    <LottieView
-                        source={pigSleepingJSON}
-                        ref={animation_pig_spleeping}>
-                    </LottieView>
-                </TouchableNativeFeedback>
-            </View>
+                <View style={styles.view_pig_sleepling}>
+                    <TouchableNativeFeedback onPress={startAnimationPigSleeping}>
+                        <LottieView
+                            source={pigSleepingJSON}
+                            ref={animation_pig_spleeping}>
+                        </LottieView>
+                    </TouchableNativeFeedback>
+                </View>
 
-            {/* legenda da historia desta pagina */}
-            <LegendCaptionArea text={'Era uma vez três porquinhos que viviam com seus pais nos campos encantados. Os porquinhos estavam muito felizes, mas conforme cresciam, se tornavam cada vez mais independentes...'}>
-            </LegendCaptionArea>
+                <Animatable.View style={[styles.toggleView, styles.togglePigSleeping]}
+                    animation="pulse" easing="ease" iterationCount="infinite"/>
+
+                {/* legenda da historia desta pagina */}
+                <LegendCaptionArea text={'Era uma vez três porquinhos que viviam com seus pais nos campos encantados. Os porquinhos estavam muito felizes, mas conforme cresciam, se tornavam cada vez mais independentes...'}>
+                </LegendCaptionArea>
             
-            {/* botao para navegação entre as páginas */}
-            <ButtonNavigation proxRoute="PageTwo" navigation={navigation}/>
+                {/* botao para navegação entre as páginas */}
+                <ButtonNavigation proxRoute="PageTwo" navigation={navigation}/>
             </LayoutPages>
         </View >
     )

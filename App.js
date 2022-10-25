@@ -16,7 +16,7 @@ export default function App () {
   }
     return (
         <NavigationContainer>
-          <StatusBar hidden></StatusBar>
+          <StatusBar hidden />
           <SoundProvider>
             <Routes/>
           </SoundProvider>
