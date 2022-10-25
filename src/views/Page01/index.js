@@ -6,14 +6,30 @@ import LegendCaptionArea from '../../components/LegendTextArea';
 import LottieView from 'lottie-react-native';
 import LayoutPages from '../../components/LayoutPages';
 import ButtonNavigation from '../../components/ButtonNavigation';
+import { SoundNarrationContext } from "../../contextAPI/soundNarration";
+import { SoundContext } from "../../contextAPI/sound";
 
 // imports das animações em JSON
 const pigMomJSON = require('../../../assets/animations/page1/pigMom.json');
 const pigSleepingJSON = require('../../../assets/animations/page1/pigSleeping.json') ;
 const fileJSON = require('../../../assets/animations/page1/page_1.json');
 
+//Narração primeira cena
+const soundCena1 =  require('../../../assets/sound/narration/Page01/Page1.mp4');
+
 export default function PageOne({navigation}) {
 
+    const {initNarrationSound, playSound} = useContext(SoundNarrationContext);
+    const {stopSound}  = useContext(SoundContext);
+
+    //Parando o som ambiente
+    stopSound();
+
+    useEffect(() => {
+     navigation.addListener('focus', ()=> initNarrationSound(soundCena1));
+    }
+    );
+    
     const animation_pig_mom = useRef();
     const animation_pig_spleeping = useRef();
 
@@ -34,7 +50,6 @@ export default function PageOne({navigation}) {
         //de 148 a 300 - reação a interação, estado 1.
         animation_pig_spleeping.current?.play(148, 300);
     }
-
     return (
        <View style={styles.container}>
             <LottieView

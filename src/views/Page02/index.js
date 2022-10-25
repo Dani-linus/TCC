@@ -1,17 +1,25 @@
 //Página 2 do livro
-import React from 'react';
+import React ,{useContext, useEffect} from 'react';
 import { View, TouchableNativeFeedback } from 'react-native';
 import styles from '../../views/Page02/style';
 import LegendCaptionArea from '../../components/LegendTextArea';
 import LottieView from 'lottie-react-native';
 import LayoutPages from '../../components/LayoutPages';
 import ButtonNavigation from '../../components/ButtonNavigation'
+import { SoundNarrationContext } from "../../contextAPI/soundNarration";
 
-const pigMomPigFatherJSON = require('../../../assets/animations/page2/pig_father_pig_mom.json')
-const sceneBackgroundJSON = require('../../../assets/animations/page2/page_2.json')
+const pigMomPigFatherJSON = require('../../../assets/animations/page2/pig_father_pig_mom.json');
+const sceneBackgroundJSON = require('../../../assets/animations/page2/page_2.json');
+const soundCena2 =  require('../../../assets/sound/narration/Page02/Page2.mp4');
 
 export default function PageTwo({navigation}) {
-    let animation_pig_father_pig_mom = React.createRef()
+    let animation_pig_father_pig_mom = React.createRef();
+    const {initNarrationSound,stopSound} = useContext(SoundNarrationContext);
+
+    useEffect(() => {
+        navigation.addListener('focus', ()=> initNarrationSound(soundCena2));
+       }
+       );
 
     function startAnimationPigFatherPigMom() {
         animation_pig_father_pig_mom.current?.play();

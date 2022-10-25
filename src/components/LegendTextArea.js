@@ -1,9 +1,10 @@
 //Componente para renderizar as legendas da história em cada página,
 // basta chamar o componente e passar o texto desejado para a props text
 
-import React from "react"
+import React , {useContext}from "react"
 import * as Animatable from "react-native-animatable";
 import { StyleSheet, PixelRatio } from "react-native";
+import { SoundNarrationContext } from "../../src/contextAPI/soundNarration";
 
 function LegendTextArea(props) {
     return (
@@ -21,8 +22,11 @@ function LegendTextArea(props) {
                     style={[styles.text_black, styles.text_modal_options]}>
                     {/* prop varia conforme o texto de onde o componente for chamado */}
                     {props.text}
+                    
+
                 </Animatable.Text>
         </Animatable.View>
+        
     )
 }
 export default LegendTextArea;

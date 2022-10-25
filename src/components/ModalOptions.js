@@ -4,12 +4,14 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 
 import { SoundContext } from "../contextAPI/sound";
+import { SoundNarrationContext } from "../contextAPI/soundNarration";
 
 function ModalOptions() {
     const navigation = useNavigation();
 
     // consumir o contexto criado
-    const { playSound, stopSound } = useContext(SoundContext);
+    const { playSound, stopSound} = useContext(SoundContext);
+    const {setSound, sound} = useContext(SoundNarrationContext);
 
     const [modalVisible, setModalVisible] = useState(false);
     const [switchValue, setSwitchOn] = useState(true);
@@ -28,6 +30,8 @@ function ModalOptions() {
     }
     const toggleSwitchNarration = () => {
         setSwitchOnNarration(previousState => !previousState);
+        switchValueNarration ? setSound(false) : setSound(true);
+        
         if(switchValueNarration === true){
             setIconNarration("mic-off");
           }else{
