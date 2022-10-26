@@ -6,7 +6,7 @@ import LottieView from 'lottie-react-native';
 import { scene5JSON } from '../constsImportFiles'
 import LayoutPages from '../../components/LayoutPages';
 
-export default function PageOne({navigation}) {
+export default function PageFive({navigation}) {
     return (
         <View style={styles.container}>
             <LottieView

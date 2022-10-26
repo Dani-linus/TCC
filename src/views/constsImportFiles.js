@@ -1,3 +1,6 @@
+// página inicial
+export const homePageJSON = require('../../assets/animations/bookHomePage.json');
+
 // cena 1
 export const pigMomJSON = require('../../assets/animations/page1/pig_mom.json');
 export const pigSleepingJSON = require('../../assets/animations/page1/pig_2.json');
@@ -26,11 +29,28 @@ export const scene5JSON =  require('../../assets/animations/page5/page_5.json');
 export const scene6JSON = require('../../assets/animations/page6/page_6.json');
 
 // cena 7
+export const scene7JSON = require('');
+
 // cena 8
+export const scene8JSON = require('');
+
 // cena 9
+export const scene9JSON = require('');
+
 // cena 10
+export const scene10JSON = require('');
+
 // cena 11
+export const scene11JSON = require('');
+
 // cena 12
+export const scene12JSON = require('');
+
 // cena 13
+export const scene13JSON = require('');
+
 // cena 14
+export const scene14JSON = require('');
+
 // cena 15
+export const scene15JSON = require('');

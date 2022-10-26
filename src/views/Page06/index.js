@@ -5,7 +5,7 @@ import styles from './style';
 import { scene6JSON } from '../constsImportFiles';
 import { textScene6 } from '../legendTextFile';
 
-export default function PageOne({navigation}) {
+export default function PageSix({navigation}) {
     return (
         <View style={styles.container}>
             <LottieView

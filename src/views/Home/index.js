@@ -8,9 +8,7 @@ import ModalOptions from '../../components/ModalOptions';
 import LottieView from 'lottie-react-native';
 import { SoundContext } from "../../contextAPI/sound";
 
-const fileJSON = require('../../../assets/animations/bookHomePage.json')
-
-// const file = require('../../../test/1920x1080.png')
+import { homePageJSON } from '../constsImportFiles'
 
 const { height, width } = Dimensions.get('window')
 
@@ -24,6 +22,7 @@ export default function HomeView({ navigation }) {
     //     initSound();
     // }, 3000);
 
+    // adiciona um botão em SOs IOS para sair da aplicação
     function isIOSorOther(){
         if(Platform.OS === "ios"){
             return(
@@ -34,12 +33,11 @@ export default function HomeView({ navigation }) {
         }
     }
 
-
     return (
         <View style={styles.container}>
             {/* <Image source={file} style={{width: width , height: height, alignSelf:'center' }}/> */}
             <LottieView
-                source={fileJSON}
+                source={homePageJSON}
                 autoPlay={true}
                 loop={true}
                 // style={{width: width}}
