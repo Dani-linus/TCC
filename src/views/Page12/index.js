@@ -1,22 +1,22 @@
 import React from 'react';
 import { View } from 'react-native';
 import LottieView from 'lottie-react-native';
+import styles from './style';
 import LegendCaptionArea from '../../components/LegendTextArea';
 import ButtonNavigation from '../../components/ButtonNavigation';
 import LayoutPages from '../../components/LayoutPages';
 
-import { scene12JSON } from '../constsImportFiles';
 import { textScene12 } from '../legendTextFile';
 
 export default function PageTwelve({navigation}) {
     return (
         <View style={styles.container}>
-            <LottieView
+            {/* <LottieView
                 source={scene12JSON}
                 autoPlay={true}
                 loop={true}
                 resizeMode='cover'
-                />
+                /> */}
 
             <LayoutPages>
                 {/* ... */}

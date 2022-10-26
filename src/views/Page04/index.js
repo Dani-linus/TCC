@@ -7,6 +7,7 @@ import LottieView from 'lottie-react-native';
 import LayoutPages from 'components/LayoutPages';
 import ButtonNavigation from 'components/ButtonNavigation';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
+import { textScene4 } from 'views/legendTextFile';
 
 const scene4JSON = require('../../../assets/animations/page4/page_4.json');
 const narrationScene4 =  require('../../../assets/sound/narration/Page04/Page4.mp4');
@@ -14,10 +15,10 @@ const narrationScene4 =  require('../../../assets/sound/narration/Page04/Page4.m
 export default function PageFour({navigation}) {
 
     const {initNarrationSound, playSound} = useContext(SoundNarrationContext);
-    //useEffect(() => {
-      //  navigation.addListener('focus', ()=> initNarrationSound(narrationScene4));
-       //}
-       //);
+    useEffect(() => {
+       navigation.addListener('focus', ()=> initNarrationSound(narrationScene4));
+       }
+    ); // Acho que tem um problema com o arquivo aqui
 
     return (
         <View style={styles.container}>
@@ -32,7 +33,7 @@ export default function PageFour({navigation}) {
 
             <LayoutPages>
 
-                <LegendCaptionArea text={'...'} />
+                <LegendCaptionArea text={textScene4} />
                 
                 <ButtonNavigation  proxRoute="PageFive" navigation={navigation}/>
 

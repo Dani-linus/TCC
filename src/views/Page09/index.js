@@ -5,18 +5,17 @@ import LegendCaptionArea from '../../components/LegendTextArea';
 import ButtonNavigation from '../../components/ButtonNavigation';
 import LayoutPages from '../../components/LayoutPages';
 
-import { scene9JSON } from '../constsImportFiles';
 import { textScene9 } from '../legendTextFile';
 
 export default function PageNine({navigation}) {
     return (
         <View style={styles.container}>
-            <LottieView
+            {/* <LottieView
                 source={scene9JSON}
                 autoPlay={true}
                 loop={true}
                 resizeMode='cover'
-                />
+                /> */}
 
             <LayoutPages>
                 {/* ... */}

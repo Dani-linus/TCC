@@ -9,6 +9,7 @@ import LayoutPages from 'components/LayoutPages';
 import ButtonNavigation from 'components/ButtonNavigation';
 import { SoundContext } from 'contextAPI/sound';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
+import { textScene1 } from 'views/legendTextFile';
 
 // imports dos arquivos JSON das animações
 const pigMomJSON = require('../../../assets/animations/page1/pigMom.json');

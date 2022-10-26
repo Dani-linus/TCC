@@ -10,7 +10,7 @@ import PageFour from './Page04';
 import PageFive from './Page05';
 import PageSix from './Page06';
 import PageSeven from './Page07';
-import PageEigth from './Page08';
+import PageEight from './Page08';
 import PageNine from './Page09';
 import PageTen from './Page10';
 import PageEleven from './Page11';
@@ -42,7 +42,7 @@ function Routes(){
           <Stack.Screen name="PageFive" component={PageFive} />
           <Stack.Screen name="PageSix" component={PageSix} />
           <Stack.Screen name="PageSeven" component={PageSeven} />
-          <Stack.Screen name="PageEigth" component={PageEigth} />
+          <Stack.Screen name="PageEight" component={PageEight} />
           <Stack.Screen name="PageNine" component={PageNine} />
           <Stack.Screen name="PageTen" component={PageTen} />
           <Stack.Screen name="PageEleven" component={PageEleven} />
