@@ -13,12 +13,12 @@ const scene5JSON =  require('../../../assets/animations/page5/page_5.json');
 export default function PageFive({navigation}) {
     return (
         <View style={styles.container}>
-            {/* <LottieView
+            <LottieView
                 source={scene5JSON}
                 autoPlay={true}
                 loop={true}
                 resizeMode='cover'
-                /> */}
+                />
 
             <LayoutPages>
                 {/* ... */}
