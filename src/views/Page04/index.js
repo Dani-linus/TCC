@@ -8,14 +8,13 @@ import LayoutPages from '../../components/LayoutPages';
 import ButtonNavigation from '../../components/ButtonNavigation';
 import { SoundNarrationContext } from "../../contextAPI/soundNarration";
 
-//Narração quarta cena
-const soundCena4 =  require('../../../assets/sound/narration/Page04/Page4.mp4');
+import { scene4JSON, narrationScene4 } from '../constsImportFiles';
 
 export default function PageFour({navigation}) {
 
     const {initNarrationSound, playSound} = useContext(SoundNarrationContext);
     //useEffect(() => {
-      //  navigation.addListener('focus', ()=> initNarrationSound(soundCena4));
+      //  navigation.addListener('focus', ()=> initNarrationSound(narrationScene4));
        //}
        //);
 
@@ -23,15 +22,19 @@ export default function PageFour({navigation}) {
         <View style={styles.container}>
 
             <LottieView
-                source={require('../../../assets/animations/page4/page_4.json')}
+                source={scene4JSON}
                 autoPlay={true}
                 loop={true}
                 resizeMode='cover'
                 style={styles.view_animation_cover}
                 ></LottieView>
+
             <LayoutPages>
-                <LegendCaptionArea text={'O segundo porquinho se chamava Kako, gostava de muito dormir e não querendo fazer muito esforço, construiu uma casa de madeira, porque achava que era mais prática e resistente.'} />
+
+                <LegendCaptionArea text={'...'} />
+                
                 <ButtonNavigation  proxRoute="PageFive" navigation={navigation}/>
+
             </LayoutPages>
         </View>
     )

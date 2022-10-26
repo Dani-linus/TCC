@@ -1,33 +1,32 @@
-import React, { useRef } from 'react';
-import {View, TouchableNativeFeedback, Text, TouchableOpacity} from 'react-native';
+//Página 1 do livro
+import React, { useRef , useContext , useEffect } from 'react';
+import {View, TouchableNativeFeedback} from 'react-native';
 import styles from './style';
 import * as Animatable from 'react-native-animatable';
 import LegendCaptionArea from '../../components/LegendTextArea';
 import LottieView from 'lottie-react-native';
 import LayoutPages from '../../components/LayoutPages';
 import ButtonNavigation from '../../components/ButtonNavigation';
-import { SoundNarrationContext } from "../../contextAPI/soundNarration";
 import { SoundContext } from "../../contextAPI/sound";
+import { SoundNarrationContext } from "../../contextAPI/soundNarration";
 
-// imports das animações em JSON
-const pigMomJSON = require('../../../assets/animations/page1/pigMom.json');
-const pigSleepingJSON = require('../../../assets/animations/page1/pigSleeping.json') ;
-const fileJSON = require('../../../assets/animations/page1/page_1.json');
+// imports dos arquivos JSON das animações
+import { pigMomJSON, pigSleepingJSON, scene1JSON, narrationScene1 } from '../constsImportFiles';
+import { textScene1 } from '../legendTextFile';
 
 //Narração primeira cena
-const soundCena1 =  require('../../../assets/sound/narration/Page01/Page1.mp4');
 
 export default function PageOne({navigation}) {
 
-    const {initNarrationSound, playSound} = useContext(SoundNarrationContext);
+    const {initNarrationSound} = useContext(SoundNarrationContext);
     const {stopSound}  = useContext(SoundContext);
 
     //Parando o som ambiente
     stopSound();
 
     useEffect(() => {
-     navigation.addListener('focus', ()=> initNarrationSound(soundCena1));
-    }
+        navigation.addListener('focus', ()=> initNarrationSound(narrationScene1));
+        }
     );
     
     const animation_pig_mom = useRef();
@@ -52,25 +51,26 @@ export default function PageOne({navigation}) {
     }
     return (
        <View style={styles.container}>
+            {/* animação de fundo */}
             <LottieView
-                source={fileJSON}
+                source={scene1JSON}
                 autoPlay={true}
                 loop={true}
                 resizeMode='cover'
                 style={{flexGrow: 1}}
                 />
+
             <LayoutPages navigation={navigation}>
                 {/* Elemento de interação 1 */}
-                <View style={styles.view_pig_mom}>
-                    <TouchableNativeFeedback onPress={startAnimationPigMom}>
-                        <LottieView
-                            // style={styles.view_pig_mom}
-                            source={pigMomJSON}
-                            ref={animation_pig_mom}
-                            >
-                        </LottieView>
-                    </TouchableNativeFeedback>
-                </View>
+                    <View style={styles.view_pig_mom}>
+                        <TouchableNativeFeedback onPress={startAnimationPigMom}>
+                            <LottieView
+                                source={pigMomJSON}
+                                ref={animation_pig_mom}
+                                >
+                            </LottieView>
+                        </TouchableNativeFeedback>
+                    </View>
 
                 <Animatable.View style={[styles.toggleView, styles.togglePigMom]}
                     animation="pulse" easing="linear" iterationCount="infinite"/>
@@ -85,13 +85,9 @@ export default function PageOne({navigation}) {
                     </TouchableNativeFeedback>
                 </View>
 
-                <Animatable.View style={[styles.toggleView, styles.togglePigSleeping]}
-                    animation="pulse" easing="ease" iterationCount="infinite"/>
-
                 {/* legenda da historia desta pagina */}
-                <LegendCaptionArea text={'Era uma vez três porquinhos que viviam com seus pais nos campos encantados. Os porquinhos estavam muito felizes, mas conforme cresciam, se tornavam cada vez mais independentes...'}>
-                </LegendCaptionArea>
-            
+                <LegendCaptionArea text={textScene1} />
+
                 {/* botao para navegação entre as páginas */}
                 <ButtonNavigation proxRoute="PageTwo" navigation={navigation}/>
             </LayoutPages>

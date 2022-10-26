@@ -8,25 +8,21 @@ import LayoutPages from '../../components/LayoutPages';
 import ButtonNavigation from '../../components/ButtonNavigation';
 import { SoundNarrationContext } from "../../contextAPI/soundNarration";
 
-// adicionar os imports dos arquivos aqui
-const filePigJSON =  require('../../../assets/animations/page3/presentation_pig_tuca.json');
-//Narração terceira cena
-const soundCena3 =  require('../../../assets/sound/narration/Page03/Page3.mp4');
+import { narrationScene3, presentationPigJSON, scene3JSON, imgDoor } from '../constsImportFiles';
 
 export default function PageThree({navigation}) {
 
-    const { height, width } = useWindowDimensions();
+    const { height, width } = useWindowDimensions(); // Vai usar?
 
     const pan = useRef(new Animated.ValueXY(0, 0)).current;
     const [locationX, setLocationX] = useState(0);
     const [locationY, setLocationY] = useState(0);
-
     
-    const {initNarrationSound, playSound} = useContext(SoundNarrationContext);
+    const { initNarrationSound } = useContext(SoundNarrationContext);
+    
     useEffect(() => {
-        navigation.addListener('focus', ()=> initNarrationSound(soundCena3));
-       }
-       );
+        navigation.addListener('focus', ()=> initNarrationSound(narrationScene3));
+    });
 
     const panResponder = useRef(
         PanResponder.create({
@@ -63,7 +59,7 @@ export default function PageThree({navigation}) {
     return (
         <View style={styles.container}>
             <LottieView
-                source={require('../../../assets/animations/page3/page_3.json')}
+                source={scene3JSON}
                 autoPlay={true}
                 loop={true}
                 resizeMode='cover'
@@ -71,29 +67,31 @@ export default function PageThree({navigation}) {
 
             <LayoutPages>
                 <LottieView 
-                    source={filePigJSON}
+                    source={presentationPigJSON}
                     autoPlay
                     loop={false}
                     style={{ position: 'absolute', left: -220, bottom: -50}}
                 ></LottieView>
 
+                <Animated.View style={{
+                    transform: [{ translateX: pan.x }, { translateY: pan.y }],
+                }}
+                {...panResponder.panHandlers}
+                >
+                    <Image
+                        style={styles.img_door}
+                        source={imgDoor}
+                        />
+                    <Text>
 
-            <Animated.View style={{
-                transform: [{ translateX: pan.x }, { translateY: pan.y }],
-            }}
-            {...panResponder.panHandlers}
-            >
-                <Image
-                    style={styles.img_door}
-                    source={require('./../../../assets/img/strawHouse/door/door.png')}
-                    />
-                <Text>
+                        X: {locationX}, Y: {locationY}
+                    </Text>
+                </Animated.View>
 
-                    X: {locationX}, Y: {locationY}
-                </Text>
-            </Animated.View>
-            <LegendCaptionArea text={'O primeiro porquinho se chamava Tuca, era o mais preguiçoso dos três, gostava muito de brincar e contar piadas, mas nem um pouco de trabalhar. Então pegou a palha que viu pela sua frente e em pouco tempo construiu sua casinha, mesmo seus irmãos dizendo que não era segura.'} />
+                <LegendCaptionArea text={'O primeiro porquinho se chamava Tuca, era o mais preguiçoso dos três, gostava muito de brincar e contar piadas, mas nem um pouco de trabalhar. Então pegou a palha que viu pela sua frente e em pouco tempo construiu sua casinha, mesmo seus irmãos dizendo que não era segura.'} />
+                
                 <ButtonNavigation proxRoute="PageFour" navigation={navigation}/>
+
             </LayoutPages>
         </View>
     )
