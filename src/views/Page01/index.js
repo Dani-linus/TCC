@@ -3,18 +3,18 @@ import React, { useRef , useContext , useEffect } from 'react';
 import {View, TouchableNativeFeedback} from 'react-native';
 import styles from './style';
 import * as Animatable from 'react-native-animatable';
-import LegendCaptionArea from '@app/components/LegendTextArea';
+import LegendCaptionArea from 'components/LegendTextArea';
 import LottieView from 'lottie-react-native';
-import LayoutPages from '@app/components/LayoutPages';
-import ButtonNavigation from '@app/components/ButtonNavigation';
-import { SoundContext } from "@app/contextAPI/sound";
-import { SoundNarrationContext } from "@app/contextAPI/soundNarration";
+import LayoutPages from 'components/LayoutPages';
+import ButtonNavigation from 'components/ButtonNavigation';
+import { SoundContext } from 'contextAPI/sound';
+import { SoundNarrationContext } from "contextAPI/soundNarration";
 
 // imports dos arquivos JSON das animações
-const pigMomJSON = require('@app/../assets/animations/page1/pigMom.json');
-const pigSleepingJSON = require('@app/../assets/animations/page1/pigSleeping.json');
-const scene1JSON = require('@app/../assets/animations/page1/page_1.json');
-const narrationScene1 =  require('@app/../assets/sound/narration/Page01/Page1.mp4');
+const pigMomJSON = require('../../../assets/animations/page1/pigMom.json');
+const pigSleepingJSON = require('../../../assets/animations/page1/pigSleeping.json');
+const scene1JSON = require('../../../assets/animations/page1/page_1.json');
+const narrationScene1 =  require('../../../assets/sound/narration/Page01/Page1.mp4');
 
 export default function PageOne({navigation}) {
 

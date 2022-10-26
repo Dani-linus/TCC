@@ -2,14 +2,14 @@
 import React ,{useContext, useEffect} from 'react';
 import { View, Image } from 'react-native';
 import styles from './style';
-import LegendCaptionArea from '@app/components/LegendTextArea';
+import LegendCaptionArea from 'components/LegendTextArea';
 import LottieView from 'lottie-react-native';
-import LayoutPages from '@app/components/LayoutPages';
-import ButtonNavigation from '@app/components/ButtonNavigation';
-import { SoundNarrationContext } from "@app/contextAPI/soundNarration";
+import LayoutPages from 'components/LayoutPages';
+import ButtonNavigation from 'components/ButtonNavigation';
+import { SoundNarrationContext } from "contextAPI/soundNarration";
 
-const scene4JSON = require('@app/../assets/animations/page4/page_4.json');
-const narrationScene4 =  require('@app/../assets/sound/narration/Page04/Page4.mp4');
+const scene4JSON = require('../../../assets/animations/page4/page_4.json');
+const narrationScene4 =  require('../../../assets/sound/narration/Page04/Page4.mp4');
 
 export default function PageFour({navigation}) {
 

@@ -3,12 +3,12 @@ import React, { useContext, useState } from 'react';
 import { Text, View, TouchableOpacity, Platform, BackHandler, Image, Dimensions, PixelRatio} from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styles from './style';
-import ModalInfo from '@app/components/ModalInfo';
-import ModalOptions from '@app/components/ModalOptions';
+import ModalInfo from 'components/ModalInfo';
+import ModalOptions from 'components/ModalOptions';
 import LottieView from 'lottie-react-native';
-import { SoundContext } from "@app/contextAPI/sound";
+import { SoundContext } from 'contextAPI/sound';
 
-const homePageJSON = require('@app/../assets/animations/bookHomePage.json');
+const homePageJSON = require('../../../assets/animations/bookHomePage.json');
 
 const { height, width } = Dimensions.get('window')
 

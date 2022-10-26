@@ -2,16 +2,16 @@
 import React, { useRef, useState , useContext, useEffect } from 'react';
 import { View, Image, PanResponder, Animated, Text, Alert, Easing, useWindowDimensions } from 'react-native';
 import styles from './style';
-import LegendCaptionArea from '@app/components/LegendTextArea';
 import LottieView from 'lottie-react-native';
-import LayoutPages from '@app/components/LayoutPages';
-import ButtonNavigation from '@app/components/ButtonNavigation';
-import { SoundNarrationContext } from "@app/contextAPI/soundNarration";
+import LegendCaptionArea from 'components/LegendTextArea';
+import LayoutPages from 'components/LayoutPages';
+import ButtonNavigation from 'components/ButtonNavigation';
+import { SoundNarrationContext } from "contextAPI/soundNarration";
 
-const presentationPigJSON =  require('@app/../assets/animations/page3/presentation_pig_tuca.json');
-const scene3JSON = require('@app/../assets/animations/page3/page_3.json');
-const imgDoor =  require('@app/../assets/img/strawHouse/door/door.png');
-const narrationScene3 =  require('@app/../assets/sound/narration/Page03/Page3.mp4');
+const presentationPigJSON =  require('../../../assets/animations/page3/presentation_pig_tuca.json');
+const scene3JSON = require('../../../assets/animations/page3/page_3.json');
+const imgDoor =  require('../../../assets/img/strawHouse/door/door.png');
+const narrationScene3 =  require('../../../assets/sound/narration/Page03/Page3.mp4');
 
 
 export default function PageThree({navigation}) {

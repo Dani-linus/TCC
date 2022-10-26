@@ -1,11 +1,11 @@
 import React from 'react';
 import { View } from 'react-native';
 import styles from './style';
-import LayoutPages from '@app/components/LayoutPages';
-import LegendCaptionArea from '@app/components/LegendTextArea';
-import ButtonNavigation from '@app/components/ButtonNavigation';
+import LayoutPages from 'components/LayoutPages';
+import LegendCaptionArea from 'components/LegendTextArea';
+import ButtonNavigation from 'components/ButtonNavigation';
 
-import { scene6JSON } from '../constsImportFiles';
+// import { scene6JSON } from '../constsImportFiles';
 import { textScene6 } from '../legendTextFile';
 
 export default function PageSix({navigation}) {

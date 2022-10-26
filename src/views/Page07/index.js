@@ -1,8 +1,8 @@
 import React from 'react';
 import { View } from 'react-native';
 import LottieView from 'lottie-react-native';
-import LegendCaptionArea from '../../components/LegendTextArea';
-import ButtonNavigation from '../../components/ButtonNavigation';
+import LegendCaptionArea from 'components/LegendTextArea';
+import ButtonNavigation from 'components/ButtonNavigation';
 import LayoutPages from '../../components/LayoutPages';
 
 import { scene7JSON } from '../constsImportFiles';
