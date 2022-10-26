@@ -1,14 +1,16 @@
 //Página 2 do livro
 import React ,{useContext, useEffect} from 'react';
 import { View, TouchableNativeFeedback } from 'react-native';
-import styles from '../../views/Page02/style';
-import LegendCaptionArea from '../../components/LegendTextArea';
+import styles from './style';
+import LegendCaptionArea from '@app/components/LegendTextArea';
 import LottieView from 'lottie-react-native';
-import LayoutPages from '../../components/LayoutPages';
-import ButtonNavigation from '../../components/ButtonNavigation'
-import { SoundNarrationContext } from "../../contextAPI/soundNarration";
+import LayoutPages from '@app/components/LayoutPages';
+import ButtonNavigation from '@app/components/ButtonNavigation'
+import { SoundNarrationContext } from "@app/contextAPI/soundNarration";
 
-import { narrationScene2, pigMomPigFatherJSON, scene2JSON } from '../consts';
+const pigMomPigFatherJSON = require('@app/../assets/animations/page2/pig_father_pig_mom.json');
+const scene2JSON = require('@app/../assets/animations/page2/page_2.json');
+const narrationScene2 =  require('@app/../assets/sound/narration/Page02/Page2.mp4');
 
 
 export default function PageTwo({navigation}) {

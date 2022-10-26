@@ -3,19 +3,19 @@ import React, { useContext, useState } from 'react';
 import { Text, View, TouchableOpacity, Platform, BackHandler, Image, Dimensions, PixelRatio} from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styles from './style';
-import ModalInfo from '../../components/ModalInfo';
-import ModalOptions from '../../components/ModalOptions';
+import ModalInfo from '@app/components/ModalInfo';
+import ModalOptions from '@app/components/ModalOptions';
 import LottieView from 'lottie-react-native';
-import { SoundContext } from "../../contextAPI/sound";
+import { SoundContext } from "@app/contextAPI/sound";
 
-import { homePageJSON } from '../constsImportFiles'
+const homePageJSON = require('@app/../assets/animations/bookHomePage.json');
 
 const { height, width } = Dimensions.get('window')
 
 export default function HomeView({ navigation }) {
 
     const { initSound  } = useContext(SoundContext);
-       initSound();
+    initSound();
     
     // 3000  = 3 segundos
     // setTimeout(() => {

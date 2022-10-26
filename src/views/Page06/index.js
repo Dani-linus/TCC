@@ -1,6 +1,9 @@
 import React from 'react';
 import { View } from 'react-native';
 import styles from './style';
+import LayoutPages from '@app/components/LayoutPages';
+import LegendCaptionArea from '@app/components/LegendTextArea';
+import ButtonNavigation from '@app/components/ButtonNavigation';
 
 import { scene6JSON } from '../constsImportFiles';
 import { textScene6 } from '../legendTextFile';

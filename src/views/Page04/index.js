@@ -1,14 +1,15 @@
 //página 4 do livro
 import React ,{useContext, useEffect} from 'react';
 import { View, Image } from 'react-native';
-import styles from '../../views/Page04/style';
-import LegendCaptionArea from '../../components/LegendTextArea';
+import styles from './style';
+import LegendCaptionArea from '@app/components/LegendTextArea';
 import LottieView from 'lottie-react-native';
-import LayoutPages from '../../components/LayoutPages';
-import ButtonNavigation from '../../components/ButtonNavigation';
-import { SoundNarrationContext } from "../../contextAPI/soundNarration";
+import LayoutPages from '@app/components/LayoutPages';
+import ButtonNavigation from '@app/components/ButtonNavigation';
+import { SoundNarrationContext } from "@app/contextAPI/soundNarration";
 
-import { scene4JSON, narrationScene4 } from '../constsImportFiles';
+const scene4JSON = require('@app/../assets/animations/page4/page_4.json');
+const narrationScene4 =  require('@app/../assets/sound/narration/Page04/Page4.mp4');
 
 export default function PageFour({navigation}) {
 

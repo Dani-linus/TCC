@@ -1,6 +1,7 @@
 // Contexto do som ambiente
 import React, { createContext, useState} from "react";
 import { Audio } from 'expo-av';
+import { useEffect } from "react/cjs/react.production.min";
 
 export const SoundContext = createContext({});
 
@@ -40,6 +41,12 @@ function SoundProvider({children}){
             // setSoundStatus({ status: status, isPlaying: true });
         }
     }
+
+    console.log(audio._loaded)
+
+    // useEffect(() => {
+
+    //   });
 
     return(
         <SoundContext.Provider value={{playSound, stopSound, initSound, soundStatus}}>
