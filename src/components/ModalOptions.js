@@ -14,7 +14,7 @@ function ModalOptions() {
     const {setSound, sound} = useContext(SoundNarrationContext);
 
     const [modalVisible, setModalVisible] = useState(false);
-    const [switchValue, setSwitchOn] = useState(soundStatus);
+    const [switchValue, setSwitchOn] = useState(true);
     const [switchValueNarration, setSwitchOnNarration] = useState(true);
     const [iconSound, setIconSound] = useState("volume-high");
     const [iconNarration, setIconNarration] = useState("mic");
@@ -25,10 +25,8 @@ function ModalOptions() {
             switchValue ? stopSound() : playSound();
             if(switchValue === true){
               setIconSound("volume-mute");
-              setSoundStatus(false);
             }else{
               setIconSound("volume-high")
-              setSoundStatus(true)
             }
         }
     }
