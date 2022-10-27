@@ -10,23 +10,27 @@ function ModalOptions() {
     const navigation = useNavigation();
 
     // consumir o contexto criado
-    const { playSound, stopSound} = useContext(SoundContext);
+    const { playSound, stopSound, soundStatus, setSoundStatus} = useContext(SoundContext);
     const {setSound, sound} = useContext(SoundNarrationContext);
 
     const [modalVisible, setModalVisible] = useState(false);
-    const [switchValue, setSwitchOn] = useState(true);
+    const [switchValue, setSwitchOn] = useState(soundStatus);
     const [switchValueNarration, setSwitchOnNarration] = useState(true);
     const [iconSound, setIconSound] = useState("volume-high");
     const [iconNarration, setIconNarration] = useState("mic");
   
-    const toggleSwitch = () => {
-      setSwitchOn(previousState => !previousState);
-      switchValue ? stopSound() : playSound();
-      if(switchValue === true){
-        setIconSound("volume-mute");
-      }else{
-        setIconSound("volume-high")
-      }
+    const toggleSwitchSound = () => {
+        if(soundStatus){
+            setSwitchOn(previousState => !previousState);
+            switchValue ? stopSound() : playSound();
+            if(switchValue === true){
+              setIconSound("volume-mute");
+              setSoundStatus(false);
+            }else{
+              setIconSound("volume-high")
+              setSoundStatus(true)
+            }
+        }
     }
     const toggleSwitchNarration = () => {
         setSwitchOnNarration(previousState => !previousState);
@@ -84,7 +88,7 @@ function ModalOptions() {
                         <Switch
                             trackColor={{ false: '#f4f3f4', true: '#56B2EB' }}
                             thumbColor={switchValue? "#56B2EB" : "#ddd"}
-                            onValueChange={toggleSwitch}
+                            onValueChange={toggleSwitchSound}
                             value={switchValue}
                             style={styles.switchStyle}>
                         </Switch>
