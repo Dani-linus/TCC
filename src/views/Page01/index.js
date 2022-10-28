@@ -22,6 +22,7 @@ export default function PageOne({navigation}) {
     const {initNarrationSound} = useContext(SoundNarrationContext);
     const {stopSound}  = useContext(SoundContext);
 
+
     //Parando o som ambiente
     // stopSound();
 
