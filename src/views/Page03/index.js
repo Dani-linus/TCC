@@ -7,6 +7,7 @@ import LegendCaptionArea from 'components/LegendTextArea';
 import LayoutPages from 'components/LayoutPages';
 import ButtonNavigation from 'components/ButtonNavigation';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
+import { textScene3 } from 'views/legendTextFile';
 
 const presentationPigJSON =  require('../../../assets/animations/page3/presentation_pig_tuca.json');
 const scene3JSON = require('../../../assets/animations/page3/page_3.json');
@@ -69,13 +70,13 @@ export default function PageThree({navigation}) {
                 resizeMode='cover'
             ></LottieView>
 
-            <LayoutPages>
                 <LottieView 
                     source={presentationPigJSON}
                     autoPlay
                     loop={false}
                     style={{ position: 'absolute', left: -220, bottom: -50}}
                 ></LottieView>
+            <LayoutPages>
 
                 <Animated.View style={{
                     transform: [{ translateX: pan.x }, { translateY: pan.y }],
@@ -92,7 +93,7 @@ export default function PageThree({navigation}) {
                     </Text>
                 </Animated.View>
 
-                <LegendCaptionArea text={'O primeiro porquinho se chamava Tuca, era o mais preguiçoso dos três, gostava muito de brincar e contar piadas, mas nem um pouco de trabalhar. Então pegou a palha que viu pela sua frente e em pouco tempo construiu sua casinha, mesmo seus irmãos dizendo que não era segura.'} />
+                <LegendCaptionArea text={textScene3}/>
                 
                 <ButtonNavigation proxRoute="PageFour" navigation={navigation}/>
 

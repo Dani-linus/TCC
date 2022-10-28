@@ -7,6 +7,7 @@ import LegendCaptionArea from 'components/LegendTextArea';
 import LayoutPages from 'components/LayoutPages';
 import ButtonNavigation from 'components/ButtonNavigation'
 import { SoundNarrationContext } from "contextAPI/soundNarration";
+import { textScene2 } from 'views/legendTextFile';
 
 const pigMomPigFatherJSON = require('../../../assets/animations/page2/pig_father_pig_mom.json');
 const scene2JSON = require('../../../assets/animations/page2/page_2.json');
@@ -46,7 +47,7 @@ export default function PageTwo({navigation}) {
                     </TouchableNativeFeedback>
                 </View>
 
-                <LegendCaptionArea text={'Então chegou o dia em que saíram da casa de seus pais para morar sozinhos. Os três porquinhos partiram para o bosque em busca de um bom lugar para construir, cada um, a sua casa.'} />
+                <LegendCaptionArea text={textScene2} />
                 
                 <ButtonNavigation proxRoute="PageThree" navigation={navigation}/>                                    
             </LayoutPages>

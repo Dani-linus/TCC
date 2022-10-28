@@ -23,7 +23,7 @@ export default function PageOne({navigation}) {
     const {stopSound}  = useContext(SoundContext);
 
     //Parando o som ambiente
-    stopSound();
+    // stopSound();
 
     useEffect(() => {
         navigation.addListener('focus', ()=> initNarrationSound(narrationScene1));

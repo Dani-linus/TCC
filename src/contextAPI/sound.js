@@ -6,43 +6,60 @@ export const SoundContext = createContext({});
 
 function SoundProvider({children}){
 
-    // const audio = new Audio.Sound();
-    const [sound, setSound] = useState(new Audio.Sound());
+    const audioFILE = new Audio.Sound();
     const [soundStatus, setSoundStatus] = useState(false);
-
+    
     const playSound = async () => {
-       await sound.replayAsync();
-       setSoundStatus(true);
+        console.log('>>>playSound');
+        try {
+            if(soundStatus === false && audioFILE._loaded !== false){
+                console.log(audioFILE._loaded)
+                await audioFILE.playAsync();
+                setSoundStatus(true);
+            }
+            
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     // pause audio
     const stopSound = async () => {
-        if(sound.isPlaying === true){
-            await sound.stopAsync();
-            setSoundStatus(false);
-            // descarregar o audio da memoria
-            sound.unloadAsync();
+        console.log('>>>stopSound');
+        try {
+            if(soundStatus == true){
+                await audioFILE.pauseAsync();
+                console.log('tentou pausar o audio');
+                
+                setSoundStatus(false);
+            }
+        } catch (error) {
+            console.log('Não foi possivel pausar o audio:', error)
         }
+
     }
 
-    // quando abre a aplicação pela primeira vez
     async function initSound(){
-        sound.loadAsync(require('../../assets/sound/ambientSound/ambient_sound_two.mp3'));
-        setSound(sound);
-        playSound();
-    }
+        console.log('>>>initSound');
+        console.log(audioFILE._loaded)
+        try {
+            if(audioFILE._loaded === false && soundStatus === false){
+                await audioFILE.loadAsync(require('../../assets/sound/ambientSound/ambient_sound_two.mp3'))
+                await audioFILE.setIsLoopingAsync(true);
+                setSoundStatus(true);
+                playSound();
+            }
+            
+            console.log(audioFILE._loaded)
+            console.log('initSound > soundStatus:', soundStatus)
 
-    useEffect(() => {
-        if(soundStatus){
-            playSound();
-            console.log('Status do audio:', soundStatus)
-        }else{
-            stopSound();
+        } catch (error) {
+            console.log('O som já está carregado');
         }
-      }, [soundStatus]);
+    }
 
     return(
-        <SoundContext.Provider value={{playSound, stopSound, initSound, soundStatus, setSoundStatus}}>
+        <SoundContext.Provider value={{playSound, stopSound, initSound, soundStatus}}>
             {children}
         </SoundContext.Provider>
     )

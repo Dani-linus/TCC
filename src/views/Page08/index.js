@@ -8,17 +8,17 @@ import LayoutPages from '../../components/LayoutPages';
 
 import { textScene8 } from '../legendTextFile';
 
-// const scene8JSON = require('');
+const scene8JSON = require('../../../assets/animations/page8/page_8.json');
 
 export default function PageEight({navigation}) {
     return (
         <View style={styles.container}>
-            {/* <LottieView
+            <LottieView
                 source={scene8JSON}
                 autoPlay={true}
                 loop={true}
                 resizeMode='cover'
-                /> */}
+                />
 
             <LayoutPages>
                 {/* ... */}
