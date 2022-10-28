@@ -6,7 +6,7 @@ export const SoundContext = createContext({});
 
 function SoundProvider({children}){
     
-    const audioFILE = new Audio.Sound();
+    const audioObject = new Audio.Sound();
     const [soundStatus, setSoundStatus] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -16,7 +16,7 @@ function SoundProvider({children}){
         if(isLoaded === true){
             if(isPlaying === false){
                 try {
-                    await audioFILE.playAsync();
+                    await audioObject.playAsync();
                     setSoundStatus(true);
                     setIsPlaying(true);
                         
@@ -33,8 +33,8 @@ function SoundProvider({children}){
         if(isLoaded === true){
             if(isPlaying === true){
                 try {
-                    await audioFILE.pauseAsync();
-                    console.log('tentou pausar o audio');
+                    await audioObject.stopAsync();
+                    console.log('pausou o audio');
                     setSoundStatus(false);
                     setIsPlaying(false);
                 } catch (error) {
@@ -48,16 +48,19 @@ function SoundProvider({children}){
     async function initSound(){
         if(isLoaded === false){
             try {
-                await audioFILE.loadAsync(require('../../assets/sound/ambientSound/ambient_sound_two.mp3'), {shouldPlay: true, isLooping: true, volume: 1});
+                await audioObject.loadAsync(require('../../assets/sound/ambientSound/ambient_sound_two.mp3'), {shouldPlay: true, isLooping: true, volume: 1});
+                const statusAudio = await audioObject.playAsync();
                 setIsLoaded(true);
                 setIsPlaying(true);
+                setTimeout(() => {
+                    audioObject.unloadAsync()
+                }, statusAudio.playableDurationMillis);
             } catch (error) {
                 console.log('O som já está carregado');
             }
-        }else{
-            console.log(audioFILE)
         }
     }
+    
 
     return(
         <SoundContext.Provider value={{playSound, stopSound, initSound, soundStatus}}>
