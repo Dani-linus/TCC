@@ -11,11 +11,11 @@ function ModalOptions(props) {
 
     // consumir o contexto criado
     const { playSound, stopSound, soundStatus, isPlaying } = useContext(SoundContext);
-    const { setSound, sound } = useContext(SoundNarrationContext);
+    const { setSound, sound,stopSoundNarration } = useContext(SoundNarrationContext);
 
     const [modalVisible, setModalVisible] = useState(false);
     const [switchValue, setSwitchOn] = useState(soundStatus);
-    const [switchValueNarration, setSwitchOnNarration] = useState(true);
+    const [switchValueNarration, setSwitchOnNarration] = useState(sound);
     const [iconSound, setIconSound] = useState("volume-high");
     const [iconNarration, setIconNarration] = useState("mic");
 
@@ -33,7 +33,7 @@ function ModalOptions(props) {
     }
     const toggleSwitchNarration = () => {
         setSwitchOnNarration(previousState => !previousState);
-        switchValueNarration ? setSound(false) : setSound(true);
+        switchValueNarration ? setSound(false)  : setSound(true);
 
         if (switchValueNarration === true) {
             setIconNarration("mic-off");

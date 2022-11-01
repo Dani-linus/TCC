@@ -19,9 +19,10 @@ export default function PageTwo({navigation}) {
     const {initNarrationSound,stopSound} = useContext(SoundNarrationContext);
 
     useEffect(() => {
-        navigation.addListener('focus', ()=> initNarrationSound(narrationScene2));
-       }
-       );
+        //navigation.addListener('focus', ()=> initNarrationSound(narrationScene1));
+        initNarrationSound(narrationScene2);
+        descarregarSound();
+    }, []);
 
     function startAnimationPigFatherPigMom() {
         animation_pig_father_pig_mom.current?.play();

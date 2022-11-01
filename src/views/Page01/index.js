@@ -19,17 +19,15 @@ const narrationScene1 =  require('../../../assets/sound/narration/Page01/Page1.m
 
 export default function PageOne({navigation}) {
 
-    const {initNarrationSound} = useContext(SoundNarrationContext);
+    const {initNarrationSound,descarregarSound} = useContext(SoundNarrationContext);
     const {stopSound}  = useContext(SoundContext);
 
 
-    //Parando o som ambiente
-    // stopSound();
-
     useEffect(() => {
-        navigation.addListener('focus', ()=> initNarrationSound(narrationScene1));
-        }
-    );
+        //navigation.addListener('focus', ()=> initNarrationSound(narrationScene1));
+        initNarrationSound(narrationScene1);
+        descarregarSound();
+    }, []);
     
     const animation_pig_mom = useRef();
     const animation_pig_spleeping = useRef();

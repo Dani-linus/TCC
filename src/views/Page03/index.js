@@ -24,11 +24,12 @@ export default function PageThree({navigation}) {
     const [locationY, setLocationY] = useState(0);
     
     const { initNarrationSound } = useContext(SoundNarrationContext);
-    
+  
     useEffect(() => {
-        navigation.addListener('focus', ()=> initNarrationSound(narrationScene3));
-    });
-
+        //navigation.addListener('focus', ()=> initNarrationSound(narrationScene1));
+        initNarrationSound(narrationScene3);
+        descarregarSound();
+    }, []);
     const panResponder = useRef(
         PanResponder.create({
             onMoveShouldSetPanResponder: () => true,
@@ -47,18 +48,23 @@ export default function PageThree({navigation}) {
                 pan.flattenOffset();
                 //  setLocationX(event.nativeEvent.locationX.toFixed(2));
                 //  setLocationY(event.nativeEvent.locationY.toFixed(2));
+                moveImageXY();
             },
         })
     ).current;
 
     function moveImageXY() {
-        pan.setValue({ x: 0 , y: 0});
 
-        Animated.timing(pan, {
-            toValue: 150,
-            duration: 2000,
-            useNativeDriver: false,
-        }).start();
+        if(locationX == 48.39){
+            pan.setValue({ x: 0 , y: 0});
+            Animated.timing(pan, {
+                toValue: 150,
+                duration: 2000,
+                useNativeDriver: false,
+            }).start();
+        }
+
+      
     };
 
     return (
