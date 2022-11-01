@@ -32,12 +32,12 @@ function Routes(){
             // gestureDirection: "horizontal",
             cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
           }}>
+          <Stack.Screen name="ModalOptions" component={ModalOptions} />
+          <Stack.Screen name="ModalInfo" component={ModalInfo}/>
           <Stack.Screen name="HomeView" component={HomeView} />
           <Stack.Screen name="PageOne" component={PageOne} />
           <Stack.Screen name="PageTwo" component={PageTwo} />
           <Stack.Screen name="PageThree" component={PageThree} />
-          <Stack.Screen name="ModalOptions" component={ModalOptions} />
-          <Stack.Screen name="ModalInfo" component={ModalInfo}/>
           <Stack.Screen name="PageFour" component={PageFour} />
           <Stack.Screen name="PageFive" component={PageFive} />
           <Stack.Screen name="PageSix" component={PageSix} />

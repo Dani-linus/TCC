@@ -1,5 +1,5 @@
 //Primeira tela - capa do livro e inicio da aplicação
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState} from 'react';
 import { Text, View, TouchableOpacity, Platform, BackHandler, Image, Dimensions, PixelRatio} from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styles from './style';
@@ -12,19 +12,12 @@ const homePageJSON = require('../../../assets/animations/bookHomePage.json');
 
 const { height, width } = Dimensions.get('window')
 
-
-
 export default function HomeView({ navigation }) {
 
-
-
     const [showComponent, setShowComponent] = useState(false)
-
-
     // inicia o som ambiente
     const { initSound  } = useContext(SoundContext);
-    //initSound();
-
+    initSound();
 
 
     // adiciona um botão em SOs IOS para sair da aplicação

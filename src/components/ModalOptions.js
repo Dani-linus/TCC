@@ -1,8 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect} from 'react';
 import { Text, View, TouchableOpacity, Switch, Modal, StyleSheet } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
-//import { Page01} from '../views/Page01/index'
 import { SoundContext } from "../contextAPI/sound";
 import { SoundNarrationContext } from "../contextAPI/soundNarration";
 
@@ -11,29 +10,32 @@ function ModalOptions(props) {
 
     // consumir o contexto criado
     const { playSound, stopSound, soundStatus, isPlaying } = useContext(SoundContext);
-    const { setSound, sound,stopSoundNarration } = useContext(SoundNarrationContext);
+    const { setSound, sound } = useContext(SoundNarrationContext);
 
     const [modalVisible, setModalVisible] = useState(false);
     const [switchValue, setSwitchOn] = useState(soundStatus);
-    const [switchValueNarration, setSwitchOnNarration] = useState(sound);
+    const [switchValueNarration, setSwitchOnNarration] = useState(true);
     const [iconSound, setIconSound] = useState("volume-high");
-    const [iconNarration, setIconNarration] = useState("mic");
+    const [iconNarration, setIconNarration] = useState("mic-off");
+
+    useEffect(() =>{
+        setSwitchSoundValue(soundStatus);
+        if(switchSoundValue === false){
+            setIconSound("volume-mute");
+        }
+    })
 
     const toggleSwitchSound = () => {
-        if (isPlaying) {
-            console.log('Modal:', isPlaying)
-            setSwitchOn(previousState => !previousState);
-            switchValue ? stopSound() : playSound();
-            if (switchValue === true) {
-                setIconSound("volume-mute");
-            } else {
-                setIconSound("volume-high")
-            }
-        }
+        console.log('soundStatus na Modal:', soundStatus)
+            setSwitchSoundValue(previousState => !previousState);
+            switchSoundValue ? stopSound() : playSound();
+            switchSoundValue ? setIconSound("volume-mute") : setIconSound("volume-high");
     }
     const toggleSwitchNarration = () => {
         setSwitchOnNarration(previousState => !previousState);
-        switchValueNarration ? setSound(false)  : setSound(true);
+
+        // assim nunca vai funcionar rsrsrs
+        switchValueNarration ? setSound(false) : setSound(true);
 
         if (switchValueNarration === true) {
             setIconNarration("mic-off");
@@ -48,17 +50,13 @@ function ModalOptions(props) {
         navigation.popToTop()
     }
 
-
     //função para definir quando o botão de recomeçar a história será apresentada.
     const showComponentButton = props.showComponent? (
-
-            <TouchableOpacity style={[styles.btn, styles.btn_restart]} onPress={goBack}>
+        <TouchableOpacity style={[styles.btn, styles.btn_restart]} onPress={goBack}>
             <Text style={[styles.text_black, styles.text_modal_options]}>Recomeçar história</Text>
         </TouchableOpacity>
-        
     ): null;
     
-// adicionar função de botão condicional na página inicial
 return (
     <View style={{ justifyContent: 'center', alignItems: 'center' }}>
         <Modal
@@ -96,9 +94,9 @@ return (
                         {/* adicionar componente de controle volume do som ambiente */}
                         <Switch
                             trackColor={{ false: '#f4f3f4', true: '#56B2EB' }}
-                            thumbColor={switchValue ? "#56B2EB" : "#ddd"}
+                            thumbColor={switchSoundValue ? "#56B2EB" : "#ddd"}
                             onValueChange={toggleSwitchSound}
-                            value={switchValue}
+                            value={switchSoundValue}
                             style={styles.switchStyle}>
                         </Switch>
                     </View>
