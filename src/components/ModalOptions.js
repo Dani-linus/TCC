@@ -23,17 +23,16 @@ function ModalOptions(props) {
 
     useEffect(() =>{
         setSwitchSoundValue(soundStatus);
+        if(switchSoundValue === false){
+            setIconSound("volume-mute");
+        }
     })
 
     const toggleSwitchSound = () => {
         console.log('soundStatus na Modal:', soundStatus)
             setSwitchSoundValue(previousState => !previousState);
             switchSoundValue ? stopSound() : playSound();
-            if (switchSoundValue === true) {
-                setIconSound("volume-mute");
-            } else {
-                setIconSound("volume-high")
-            }
+            switchSoundValue ? setIconSound("volume-mute") : setIconSound("volume-high");
     }
     const toggleSwitchNarration = () => {
         setSwitchOnNarration(previousState => !previousState);
