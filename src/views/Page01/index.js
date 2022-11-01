@@ -20,11 +20,6 @@ const narrationScene1 =  require('../../../assets/sound/narration/Page01/Page1.m
 export default function PageOne({navigation}) {
 
     const {initNarrationSound} = useContext(SoundNarrationContext);
-    const {stopSound}  = useContext(SoundContext);
-
-
-    //Parando o som ambiente
-    // stopSound();
 
     useEffect(() => {
         navigation.addListener('focus', ()=> initNarrationSound(narrationScene1));
@@ -63,29 +58,33 @@ export default function PageOne({navigation}) {
                 />
 
             <LayoutPages navigation={navigation}>
-                {/* Elemento de interação 1 */}
-                    <View style={styles.view_pig_mom}>
-                        <TouchableNativeFeedback onPress={startAnimationPigMom}>
-                            <LottieView
-                                source={pigMomJSON}
-                                ref={animation_pig_mom}
-                                >
-                            </LottieView>
-                        </TouchableNativeFeedback>
-                    </View>
 
-                <Animatable.View style={[styles.toggleView, styles.togglePigMom]}
-                    animation="pulse" easing="linear" iterationCount="infinite"/>
+                {/* Elemento de interação 1 */}
+                <View style={styles.view_pig_mom}>
+                    <LottieView
+                        source={pigMomJSON}
+                        ref={animation_pig_mom}>
+                    </LottieView>
+                </View>
+
+                {/* controle de animação 1 */}
+                <TouchableNativeFeedback onPress={startAnimationPigMom}>
+                    <Animatable.View style={[styles.toggleView, styles.togglePigMom]} animation="pulse" easing="linear" iterationCount="infinite"/>
+                </TouchableNativeFeedback>
 
                 {/* Elemento de interação 2 */}
                 <View style={styles.view_pig_sleepling}>
-                    <TouchableNativeFeedback onPress={startAnimationPigSleeping}>
-                        <LottieView
-                            source={pigSleepingJSON}
-                            ref={animation_pig_spleeping}>
-                        </LottieView>
-                    </TouchableNativeFeedback>
+                    <LottieView
+                        source={pigSleepingJSON}
+                        ref={animation_pig_spleeping}>
+                    </LottieView>
                 </View>
+
+                {/* controle de animação do item 2 */}
+                    <TouchableNativeFeedback onPress={startAnimationPigSleeping}>
+                    <Animatable.View style={[styles.toggleView, styles.togglePigSleeping]} animation="pulse" easing="linear" iterationCount="infinite"/>
+                </TouchableNativeFeedback>
+
 
                 {/* legenda da historia desta pagina */}
                 <LegendCaptionArea text={textScene1} />
