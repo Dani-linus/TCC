@@ -10,7 +10,7 @@ import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { textScene4 } from 'views/legendTextFile';
 
 const scene4JSON = require('../../../assets/animations/page4/page_4.json');
-const narrationScene4 =  require('../../../assets/sound/narration/Page04/Page4.mp4');
+const narrationScene4 =  require('../../../assets/sound/narration/Page04/Page4.mp3');
 
 export default function PageFour({navigation}) {
 

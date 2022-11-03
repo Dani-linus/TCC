@@ -12,7 +12,7 @@ import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
 const presentationPigJSON =  require('../../../assets/animations/page3/presentation_pig_tuca.json');
 const scene3JSON = require('../../../assets/animations/page3/page_3.json');
-const narrationScene3 =  require('../../../assets/sound/narration/Page03/Page3.mp4');
+const narrationScene3 =  require('../../../assets/sound/narration/Page03/Page3.mp3');
 const imgCasaTeste = require('../../../assets/img/straw-house.png');
 
 

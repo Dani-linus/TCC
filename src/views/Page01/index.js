@@ -15,16 +15,17 @@ import { textScene1 } from 'views/legendTextFile';
 const pigMomJSON = require('../../../assets/animations/page1/pigMom.json');
 const pigSleepingJSON = require('../../../assets/animations/page1/pigSleeping.json');
 const scene1JSON = require('../../../assets/animations/page1/page_1.json');
-const narrationScene1 =  require('../../../assets/sound/narration/Page01/Page1.mp4');
+const narrationScene1 =  require('../../../assets/sound/narration/Page01/Page1.mp3');
 
 export default function PageOne({navigation}) {
 
     const {initNarrationSound} = useContext(SoundNarrationContext);
+    const {updateVolumSound} = useContext(SoundContext);
 
     useEffect(() => {
         //navigation.addListener('focus', ()=> initNarrationSound(narrationScene1));
         initNarrationSound(narrationScene1);
-        descarregarSound();
+        updateVolumSound();
     }, []);
     
     const animation_pig_mom = useRef();

@@ -17,6 +17,7 @@ function ModalOptions(props) {
     const [switchValueNarration, setSwitchOnNarration] = useState(true);
     const [iconSound, setIconSound] = useState("volume-high");
     const [iconNarration, setIconNarration] = useState("mic-off");
+    const [switchSoundValue,setSwitchSoundValue] = useState();
 
     useEffect(() =>{
         setSwitchSoundValue(soundStatus);

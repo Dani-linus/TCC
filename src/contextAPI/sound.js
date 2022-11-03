@@ -24,6 +24,10 @@ function SoundProvider({children}){
         }
     }
 
+    async function updateVolumSound(){
+        audioObject.current.setVolumeAsync(0.1);
+    }
+
     // pause audio
     async function stopSound (){
         try {
@@ -54,7 +58,7 @@ function SoundProvider({children}){
       }, []);
 
     return(
-        <SoundContext.Provider value={{playSound, stopSound, initSound, soundStatus}}>
+        <SoundContext.Provider value={{playSound, stopSound, initSound, soundStatus,updateVolumSound}}>
             {children}
         </SoundContext.Provider>
     )
