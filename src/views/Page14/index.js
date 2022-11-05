@@ -23,7 +23,7 @@ export default function PageFourteen({navigation}) {
 
                 <LegendCaptionArea text={textScene14} />
                 
-                <ButtonNavigation  proxRoute="PageFifteen" navigation={navigation}/>
+                <ButtonNavigation  proxRoute="PageFifteen" navigation={navigation}showComponent={true}/>
 
             </LayoutPages>
         </View >

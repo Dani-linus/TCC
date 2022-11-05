@@ -1,5 +1,5 @@
 //Página 1 do livro
-import React, { useRef , useContext , useEffect } from 'react';
+import React, { useRef , useContext , useEffect} from 'react';
 import {View, TouchableNativeFeedback} from 'react-native';
 import styles from './style';
 import * as Animatable from 'react-native-animatable';
@@ -15,21 +15,18 @@ import { textScene1 } from 'views/legendTextFile';
 const pigMomJSON = require('../../../assets/animations/page1/pigMom.json');
 const pigSleepingJSON = require('../../../assets/animations/page1/pigSleeping.json');
 const scene1JSON = require('../../../assets/animations/page1/page_1.json');
-const narrationScene1 =  require('../../../assets/sound/narration/Page01/Page1.mp4');
+const narrationScene1 =  require('../../../assets/sound/narration/Page01/Page1.mp3');
 
 export default function PageOne({navigation}) {
 
-    const {initNarrationSound} = useContext(SoundNarrationContext);
-    const {stopSound}  = useContext(SoundContext);
-
-
-    //Parando o som ambiente
-    // stopSound();
+    const {initNarrationSound,stopSoundNarration,setIsLoaded} = useContext(SoundNarrationContext);
+    const {updateVolumSound} = useContext(SoundContext);
+    
 
     useEffect(() => {
         navigation.addListener('focus', ()=> initNarrationSound(narrationScene1));
-        }
-    );
+        updateVolumSound();
+    }, []);
     
     const animation_pig_mom = useRef();
     const animation_pig_spleeping = useRef();
@@ -63,35 +60,39 @@ export default function PageOne({navigation}) {
                 />
 
             <LayoutPages navigation={navigation}>
-                {/* Elemento de interação 1 */}
-                    <View style={styles.view_pig_mom}>
-                        <TouchableNativeFeedback onPress={startAnimationPigMom}>
-                            <LottieView
-                                source={pigMomJSON}
-                                ref={animation_pig_mom}
-                                >
-                            </LottieView>
-                        </TouchableNativeFeedback>
-                    </View>
 
-                <Animatable.View style={[styles.toggleView, styles.togglePigMom]}
-                    animation="pulse" easing="linear" iterationCount="infinite"/>
+                {/* Elemento de interação 1 */}
+                <View style={styles.view_pig_mom}>
+                    <LottieView
+                        source={pigMomJSON}
+                        ref={animation_pig_mom}>
+                    </LottieView>
+                </View>
+
+                {/* controle de animação 1 */}
+                <TouchableNativeFeedback onPress={startAnimationPigMom}>
+                    <Animatable.View style={[styles.toggleView, styles.togglePigMom]} animation="pulse" easing="linear" iterationCount="infinite"/>
+                </TouchableNativeFeedback>
 
                 {/* Elemento de interação 2 */}
                 <View style={styles.view_pig_sleepling}>
-                    <TouchableNativeFeedback onPress={startAnimationPigSleeping}>
-                        <LottieView
-                            source={pigSleepingJSON}
-                            ref={animation_pig_spleeping}>
-                        </LottieView>
-                    </TouchableNativeFeedback>
+                    <LottieView
+                        source={pigSleepingJSON}
+                        ref={animation_pig_spleeping}>
+                    </LottieView>
                 </View>
+
+                {/* controle de animação do item 2 */}
+                    <TouchableNativeFeedback onPress={startAnimationPigSleeping}>
+                    <Animatable.View style={[styles.toggleView, styles.togglePigSleeping]} animation="pulse" easing="linear" iterationCount="infinite"/>
+                </TouchableNativeFeedback>
+
 
                 {/* legenda da historia desta pagina */}
                 <LegendCaptionArea text={textScene1} />
 
                 {/* botao para navegação entre as páginas */}
-                <ButtonNavigation proxRoute="PageTwo" navigation={navigation}/>
+                <ButtonNavigation proxRoute="PageTwo" navigation={navigation} showComponent={false}/>
             </LayoutPages>
         </View >
     )

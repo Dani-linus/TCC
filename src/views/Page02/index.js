@@ -11,18 +11,18 @@ import { textScene2 } from 'views/legendTextFile';
 
 const pigMomPigFatherJSON = require('../../../assets/animations/page2/pig_father_pig_mom.json');
 const scene2JSON = require('../../../assets/animations/page2/page_2.json');
-const narrationScene2 =  require('../../../assets/sound/narration/Page02/Page2.mp4');
+const narrationScene2 =  require('../../../assets/sound/narration/Page02/Page2.mp3');
 
 
 export default function PageTwo({navigation}) {
     let animation_pig_father_pig_mom = React.createRef();
-    const {initNarrationSound,stopSound} = useContext(SoundNarrationContext);
+    const {initNarrationSound,stopSound,stopSoundNarration,setIsLoaded} = useContext(SoundNarrationContext);
+    
 
     useEffect(() => {
         navigation.addListener('focus', ()=> initNarrationSound(narrationScene2));
-       }
-       );
-
+    }, []);
+    
     function startAnimationPigFatherPigMom() {
         animation_pig_father_pig_mom.current?.play();
     }
@@ -49,7 +49,7 @@ export default function PageTwo({navigation}) {
 
                 <LegendCaptionArea text={textScene2} />
                 
-                <ButtonNavigation proxRoute="PageThree" navigation={navigation}/>                                    
+                <ButtonNavigation proxRoute="PageThree" navigation={navigation}  showComponent={true}/>                                    
             </LayoutPages>
         </View >
     )

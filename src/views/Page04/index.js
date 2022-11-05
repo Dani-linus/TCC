@@ -10,15 +10,15 @@ import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { textScene4 } from 'views/legendTextFile';
 
 const scene4JSON = require('../../../assets/animations/page4/page_4.json');
-const narrationScene4 =  require('../../../assets/sound/narration/Page04/Page4.mp4');
+const narrationScene4 =  require('../../../assets/sound/narration/Page04/Page4.mp3');
 
 export default function PageFour({navigation}) {
 
-    const {initNarrationSound, playSound} = useContext(SoundNarrationContext);
-    useEffect(() => {
-       navigation.addListener('focus', ()=> initNarrationSound(narrationScene4));
-       }
-    ); // Acho que tem um problema com o arquivo aqui
+   // const {initNarrationSound, playSound} = useContext(SoundNarrationContext);
+  //  useEffect(() => {
+    //   navigation.addListener('focus', ()=> initNarrationSound(narrationScene4));
+    //   }
+  //  ); // Acho que tem um problema com o arquivo aqui
 
     return (
         <View style={styles.container}>
@@ -35,7 +35,7 @@ export default function PageFour({navigation}) {
 
                 <LegendCaptionArea text={textScene4} />
                 
-                <ButtonNavigation  proxRoute="PageFive" navigation={navigation}/>
+                <ButtonNavigation  proxRoute="PageFive" navigation={navigation} showComponent={true}/>
 
             </LayoutPages>
         </View>

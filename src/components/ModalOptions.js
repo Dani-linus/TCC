@@ -1,8 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from 'react';
 import { Text, View, TouchableOpacity, Switch, Modal, StyleSheet } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
-//import { Page01} from '../views/Page01/index'
 import { SoundContext } from "../contextAPI/sound";
 import { SoundNarrationContext } from "../contextAPI/soundNarration";
 
@@ -14,23 +13,29 @@ function ModalOptions(props) {
     const { setSound, sound } = useContext(SoundNarrationContext);
 
     const [modalVisible, setModalVisible] = useState(false);
-    const [switchValue, setSwitchOn] = useState(true);
-    const [switchValueNarration, setSwitchOnNarration] = useState(true);
+    const [switchValue, setSwitchOn] = useState(soundStatus);
+    const [switchValueNarration, setSwitchOnNarration] = useState(sound);
     const [iconSound, setIconSound] = useState("volume-high");
-    const [iconNarration, setIconNarration] = useState("mic");
+    const [iconNarration, setIconNarration] = useState("mic-off");
+    const [switchSoundValue, setSwitchSoundValue] = useState();
+
+    useEffect(() => {
+        setSwitchSoundValue(soundStatus);
+        if (switchSoundValue === false) {
+            setIconSound("volume-mute");
+        }
+    })
 
     const toggleSwitchSound = () => {
-        console.log('Modal:', isPlaying)
-        setSwitchOn(previousState => !previousState);
-        switchValue ? stopSound() : playSound();
-        if (switchValue === true) {
-            setIconSound("volume-mute");
-        } else {
-            setIconSound("volume-high")
-        }
-}
+        console.log('soundStatus na Modal:', soundStatus)
+        setSwitchSoundValue(previousState => !previousState);
+        switchSoundValue ? stopSound() : playSound();
+        switchSoundValue ? setIconSound("volume-mute") : setIconSound("volume-high");
+    }
     const toggleSwitchNarration = () => {
         setSwitchOnNarration(previousState => !previousState);
+
+        // assim nunca vai funcionar rsrsrs
         switchValueNarration ? setSound(false) : setSound(true);
 
         if (switchValueNarration === true) {
@@ -43,74 +48,82 @@ function ModalOptions(props) {
     // função do botão recomeçar história 
     const goBack = () => {
         setModalVisible(false)
+        navigation.navigate('PageOne')
+    }
+    // função do botão menu principal
+    const goMenu= ()=>{
+        setModalVisible(false)
         navigation.popToTop()
     }
 
 
-    //função para definir quando o botão de recomeçar a história será apresentada.
-    const showComponentButton = props.showComponent? (
+    //função para definir quando o botão de recomeçar e menu serão apresentados.
+    const showComponentButton = props.showComponent ? (
+        <View>
+            <TouchableOpacity style={[styles.btn, styles.btn_menu]} onPress={goMenu}>
+                <Text style={[styles.text_black, styles.text_modal_options]}>Menu Principal</Text>
+            </TouchableOpacity>
 
             <TouchableOpacity style={[styles.btn, styles.btn_restart]} onPress={goBack}>
-            <Text style={[styles.text_black, styles.text_modal_options]}>Recomeçar história</Text>
-        </TouchableOpacity>
-        
-    ): null;
-    
-// adicionar função de botão condicional na página inicial
-return (
-    <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-        <Modal
-            onRequestClose={() => setModalVisible(false)}
-            transparent
-            supportedOrientations={['portrait', 'landscape']}
-            visible={modalVisible}>
-            <View style={styles.modal_view}>
-                <View style={[styles.btn, styles.btn_close]}>
-                    <TouchableOpacity onPress={() => { setModalVisible(false) }}>
-                        <Ionicons name='close' size={32} color='black' />
-                    </TouchableOpacity>
-                </View>
-                <Text style={[styles.text_black, styles.text_modal_options]}>Definições</Text>
-                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                    <View style={styles.viewNarration}>
-                        <Ionicons name={iconNarration} size={32} color='black' style={{ marginEnd: 10 }}></Ionicons>
-                        <Text style={[styles.text_black, styles.text_modal_options]}>
-                            narração
-                        </Text>
-                        {/* adicionar componente de controle volume da narração */}
-                        <Switch
-                            trackColor={{ false: '#f4f3f4', true: '#56B2EB' }}
-                            thumbColor={switchValueNarration ? "#56B2EB" : "#ddd"}
-                            onValueChange={toggleSwitchNarration}
-                            value={switchValueNarration}
-                            style={{ marginLeft: 40 }}>
-                        </Switch>
-                    </View>
-                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                        <Ionicons name={iconSound} size={32} color='black' style={{ marginEnd: 10 }}></Ionicons>
-                        <Text style={[styles.text_black, styles.text_modal_options]}>
-                            som ambiente
-                        </Text>
-                        {/* adicionar componente de controle volume do som ambiente */}
-                        <Switch
-                            trackColor={{ false: '#f4f3f4', true: '#56B2EB' }}
-                            thumbColor={switchValue ? "#56B2EB" : "#ddd"}
-                            onValueChange={toggleSwitchSound}
-                            value={switchValue}
-                            style={styles.switchStyle}>
-                        </Switch>
-                    </View>
-                </View>
-                {showComponentButton}
-            </View>
-        </Modal>
+                <Text style={[styles.text_black, styles.text_modal_options]}>Recomeçar história</Text>
+            </TouchableOpacity>
+        </View>
+    ) : null;
 
-        {/* botão para abrir a modal de definições */}
-        <TouchableOpacity style={styles.btn_option} onPress={() => { setModalVisible(true) }}>
-            <Ionicons name='menu' size={50} color='white' />
-        </TouchableOpacity>
-    </View>
-)
+    return (
+        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+            <Modal
+                onRequestClose={() => setModalVisible(false)}
+                transparent
+                supportedOrientations={['portrait', 'landscape']}
+                visible={modalVisible}>
+                <View style={styles.modal_view}>
+                    <View style={[styles.btn, styles.btn_close]}>
+                        <TouchableOpacity onPress={() => { setModalVisible(false) }}>
+                            <Ionicons name='close' size={32} color='black' />
+                        </TouchableOpacity>
+                    </View>
+                    <Text style={[styles.text_black, styles.text_modal_options]}>Definições</Text>
+                    <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                        <View style={styles.viewNarration}>
+                            <Ionicons name={iconNarration} size={32} color='black' style={{ marginEnd: 10 }}></Ionicons>
+                            <Text style={[styles.text_black, styles.text_modal_options]}>
+                                narração
+                            </Text>
+                            {/* adicionar componente de controle volume da narração */}
+                            <Switch
+                                trackColor={{ false: '#f4f3f4', true: '#56B2EB' }}
+                                thumbColor={switchValueNarration ? "#56B2EB" : "#ddd"}
+                                onValueChange={toggleSwitchNarration}
+                                value={switchValueNarration}
+                                style={{ marginLeft: 40 }}>
+                            </Switch>
+                        </View>
+                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                            <Ionicons name={iconSound} size={32} color='black' style={{ marginEnd: 10 }}></Ionicons>
+                            <Text style={[styles.text_black, styles.text_modal_options]}>
+                                som ambiente
+                            </Text>
+                            {/* adicionar componente de controle volume do som ambiente */}
+                            <Switch
+                                trackColor={{ false: '#f4f3f4', true: '#56B2EB' }}
+                                thumbColor={switchSoundValue ? "#56B2EB" : "#ddd"}
+                                onValueChange={toggleSwitchSound}
+                                value={switchSoundValue}
+                                style={styles.switchStyle}>
+                            </Switch>
+                        </View>
+                    </View>
+                    {showComponentButton}
+                </View>
+            </Modal>
+
+            {/* botão para abrir a modal de definições */}
+            <TouchableOpacity style={styles.btn_option} onPress={() => { setModalVisible(true) }}>
+                <Ionicons name='menu' size={50} color='white' />
+            </TouchableOpacity>
+        </View>
+    )
 }
 export default ModalOptions;
 
@@ -137,9 +150,9 @@ const styles = StyleSheet.create({
         elevation: 2
     },
     btn_restart: {
-        marginHorizontal: 120,
-        marginTop: 50,
-        padding: 10,
+        marginHorizontal: 170,
+        marginTop: 10,
+        padding: 3,
     },
     text_black: {
         color: "black",
@@ -159,7 +172,11 @@ const styles = StyleSheet.create({
     },
     switchStyle: {
         marginLeft: 10,
-    }
-
+    },
+    btn_menu: {
+        marginHorizontal: 170,
+        marginTop: 20,
+        padding: 3,
+    },
 
 });
