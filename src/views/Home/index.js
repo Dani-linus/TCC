@@ -12,20 +12,14 @@ const homePageJSON = require('../../../assets/animations/bookHomePage.json');
 
 const { height, width } = Dimensions.get('window')
 
-
-
 export default function HomeView({ navigation }) {
-
-
 
     const [showComponent, setShowComponent] = useState(false)
 
 
     // inicia o som ambiente
     const { initSound  } = useContext(SoundContext);
-    //initSound();
-
-
+    initSound();
 
     // adiciona um botão em SOs IOS para sair da aplicação
     function isIOSorOther(){
