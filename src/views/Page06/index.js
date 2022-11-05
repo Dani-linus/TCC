@@ -26,7 +26,7 @@ export default function PageSix({navigation}) {
 
                 <LegendCaptionArea text={textScene6} />
                 
-                <ButtonNavigation  proxRoute="PageSeven" navigation={navigation}/>
+                <ButtonNavigation  proxRoute="PageSeven" navigation={navigation} showComponent={true}/>
 
             </LayoutPages>
         </View >

@@ -43,7 +43,6 @@ function SoundProvider({children}){
         if(isLoaded === false){
             try {
                 await audioObject.current.loadAsync(require('../../assets/sound/ambientSound/ambient_sound_two.mp3'), {shouldPlay: true, isLooping: true, volume: 1});
-                console.log('')
                 setIsLoaded(true);
                 setIsPlaying(true);
                 setSoundStatus(true)

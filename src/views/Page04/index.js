@@ -14,11 +14,11 @@ const narrationScene4 =  require('../../../assets/sound/narration/Page04/Page4.m
 
 export default function PageFour({navigation}) {
 
-    const {initNarrationSound, playSound} = useContext(SoundNarrationContext);
-    useEffect(() => {
-       navigation.addListener('focus', ()=> initNarrationSound(narrationScene4));
-       }
-    ); // Acho que tem um problema com o arquivo aqui
+   // const {initNarrationSound, playSound} = useContext(SoundNarrationContext);
+  //  useEffect(() => {
+    //   navigation.addListener('focus', ()=> initNarrationSound(narrationScene4));
+    //   }
+  //  ); // Acho que tem um problema com o arquivo aqui
 
     return (
         <View style={styles.container}>
@@ -35,7 +35,7 @@ export default function PageFour({navigation}) {
 
                 <LegendCaptionArea text={textScene4} />
                 
-                <ButtonNavigation  proxRoute="PageFive" navigation={navigation}/>
+                <ButtonNavigation  proxRoute="PageFive" navigation={navigation} showComponent={true}/>
 
             </LayoutPages>
         </View>

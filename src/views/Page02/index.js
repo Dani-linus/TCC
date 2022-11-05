@@ -16,13 +16,13 @@ const narrationScene2 =  require('../../../assets/sound/narration/Page02/Page2.m
 
 export default function PageTwo({navigation}) {
     let animation_pig_father_pig_mom = React.createRef();
-    const {initNarrationSound,stopSound} = useContext(SoundNarrationContext);
+    const {initNarrationSound,stopSound,stopSoundNarration,setIsLoaded} = useContext(SoundNarrationContext);
+    
 
     useEffect(() => {
-        //navigation.addListener('focus', ()=> initNarrationSound(narrationScene1));
-        initNarrationSound(narrationScene2);
+        navigation.addListener('focus', ()=> initNarrationSound(narrationScene2));
     }, []);
-
+    
     function startAnimationPigFatherPigMom() {
         animation_pig_father_pig_mom.current?.play();
     }
@@ -49,7 +49,7 @@ export default function PageTwo({navigation}) {
 
                 <LegendCaptionArea text={textScene2} />
                 
-                <ButtonNavigation proxRoute="PageThree" navigation={navigation}/>                                    
+                <ButtonNavigation proxRoute="PageThree" navigation={navigation}  showComponent={true}/>                                    
             </LayoutPages>
         </View >
     )

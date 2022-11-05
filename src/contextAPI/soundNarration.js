@@ -1,56 +1,61 @@
 // Contexto do som ambiente
-import React, { createContext, useState , useRef, useEffect} from "react";
+import React, { createContext, useState, useRef, useEffect } from "react";
 import { Audio } from 'expo-av';
 
 export const SoundNarrationContext = createContext({});
 
 function SoundNarrationProvider({ children }) {
 
-   // const audio = new Audio.Sound();
-    const audio = (new Audio.Sound());
-    const [sound, setSound] = useState(true);
-    const [isLoaded, setIsLoaded] = useState(false);
+  // const audio = new Audio.Sound();
+  const audio = useRef(new Audio.Sound());
+  const [sound, setSound] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [soundObject, setObject] = useState(null);
+
+  const playSound = async () => {
+    await audio.playAsync();
+  }
+  const stopSoundNarration = async () => {
+    let statusSom = await audio.current.getStatusAsync();
+    try {
+      if (statusSom.isLoaded == true) {
+        await audio.current.stopAsync()
+        await audio.current.unloadAsync();
+        statusSom.isLoaded == false;
+      }
+    } catch (error) {
+      console.log('Erro ao pausar o audio', error)
+    }
+  }
+
+  async function initNarrationSound(som) {
+    const checkLoading = await audio.current.getStatusAsync();
     
-    const playSound = async () => {
-        await audio.playAsync();
+    audio.current.unloadAsync();
+
+    try {
+      if (sound === true) {
+        setTimeout(() => {
+          audio.current.loadAsync((som), { volume: 1, shouldPlay: true });
+        }, 4000);
+        setIsLoaded(true);
+      }
+
+      else if(sound === false && isLoaded === true){
+        audio.current.stopAsync();
+        audio.current.unloadAsync();
+        setIsLoaded(false);
+      }
+    } catch (error) {
+      console.log('Erro ao executar audio:', error)
     }
-    const stopSoundNarration = async () => {
-        await audio.stopAsync();
-        await audio.unloadAsync();
-    }
+  }
 
-    useEffect(() => {
-        return () => audio.unloadAsync();
-      }, []);
+  return (
+    <SoundNarrationContext.Provider value={{ playSound, stopSoundNarration, initNarrationSound, sound, setSound , setIsLoaded}}>
+      {children}
+    </SoundNarrationContext.Provider>
+  )
+}
 
-    async function initNarrationSound(som) {
-       
-          try{
-            if (sound === true) {
-                setTimeout(() => {
-                    audio.loadAsync((som), { shouldPlay: true, volume: 1 });
-                     console.log(audio)
-                }, 4000);
-              //  await audioObject.playAsync();
-              ///  audio.setOnPlaybackStatusUpdate(null);
-                setIsLoaded(true);
-              //  await audio.current.unloadAsync();
-          
-            }else if( sound == false){
-                await audio.stopAsync();
-                setIsLoaded(false);
-              ///  await audio.current.unloadAsync();
-            }
-        }catch(error){
-            console.log('Erro ao executar audio:', error)
-        }
-        }
-
-        return (
-            <SoundNarrationContext.Provider value={{ playSound, stopSoundNarration, initNarrationSound, sound, setSound }}>
-                {children}
-            </SoundNarrationContext.Provider>
-        )
-    }
-
-    export default SoundNarrationProvider;
+export default SoundNarrationProvider;

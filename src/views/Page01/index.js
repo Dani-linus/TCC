@@ -1,5 +1,5 @@
 //Página 1 do livro
-import React, { useRef , useContext , useEffect } from 'react';
+import React, { useRef , useContext , useEffect} from 'react';
 import {View, TouchableNativeFeedback} from 'react-native';
 import styles from './style';
 import * as Animatable from 'react-native-animatable';
@@ -19,12 +19,12 @@ const narrationScene1 =  require('../../../assets/sound/narration/Page01/Page1.m
 
 export default function PageOne({navigation}) {
 
-    const {initNarrationSound} = useContext(SoundNarrationContext);
+    const {initNarrationSound,stopSoundNarration,setIsLoaded} = useContext(SoundNarrationContext);
     const {updateVolumSound} = useContext(SoundContext);
+    
 
     useEffect(() => {
-        //navigation.addListener('focus', ()=> initNarrationSound(narrationScene1));
-        initNarrationSound(narrationScene1);
+        navigation.addListener('focus', ()=> initNarrationSound(narrationScene1));
         updateVolumSound();
     }, []);
     
@@ -92,7 +92,7 @@ export default function PageOne({navigation}) {
                 <LegendCaptionArea text={textScene1} />
 
                 {/* botao para navegação entre as páginas */}
-                <ButtonNavigation proxRoute="PageTwo" navigation={navigation}/>
+                <ButtonNavigation proxRoute="PageTwo" navigation={navigation} showComponent={false}/>
             </LayoutPages>
         </View >
     )

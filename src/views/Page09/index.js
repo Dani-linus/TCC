@@ -22,7 +22,7 @@ export default function PageNine({navigation}) {
 
                 <LegendCaptionArea text={textScene9} />
                 
-                <ButtonNavigation  proxRoute="PageTen" navigation={navigation}/>
+                <ButtonNavigation  proxRoute="PageTen" navigation={navigation} showComponent={true}/>
 
             </LayoutPages>
         </View >

@@ -28,7 +28,7 @@ function Routes(){
         <Stack.Navigator initialRouteName='HomeView' 
           screenOptions={{
             headerShown: false, 
-            // gestureEnabled: true,
+             gestureEnabled: false,
             // gestureDirection: "horizontal",
             cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
           }}>

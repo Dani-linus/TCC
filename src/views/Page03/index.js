@@ -25,38 +25,6 @@ export default function PageThree({navigation}) {
         navigation.addListener('focus', ()=> initNarrationSound(narrationScene3));
     });
 
-    const panResponder = useRef(
-        PanResponder.create({
-            onMoveShouldSetPanResponder: () => true,
-            onPanResponderGrant: () => {
-                pan.setOffset({
-                    x: pan.x._value,
-                    y: pan.y._value,
-                });
-            },
-            onPanResponderMove: Animated.event([null, { dx: pan.x, dy: pan.y }],
-                { useNativeDriver: false }
-            ),
-            onPanResponderRelease: (event, gestureState) => {
-                setLocationX(event.nativeEvent.locationX.toFixed(2));
-                setLocationY(event.nativeEvent.locationY.toFixed(2));
-                pan.flattenOffset();
-                //  setLocationX(event.nativeEvent.locationX.toFixed(2));
-                //  setLocationY(event.nativeEvent.locationY.toFixed(2));
-            },
-        })
-    ).current;
-
-    function moveImageXY() {
-        pan.setValue({ x: 0 , y: 0});
-
-        Animated.timing(pan, {
-            toValue: 150,
-            duration: 2000,
-            useNativeDriver: false,
-        }).start();
-    };
-
     return (
         <View style={styles.container}>
             <LottieView
@@ -80,8 +48,7 @@ export default function PageThree({navigation}) {
 
                 <LegendCaptionArea text={textScene3}/>
                 
-                <ButtonNavigation proxRoute="PageFour" navigation={navigation}/>
-
+                <ButtonNavigation proxRoute="PageFour" navigation={navigation} showComponent={true}/>
             </LayoutPages>
         </View>
     )
