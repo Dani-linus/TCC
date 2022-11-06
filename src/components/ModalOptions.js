@@ -10,23 +10,22 @@ function ModalOptions(props) {
 
     // consumir o contexto criado
     const { stopSound, playSound, soundStatus } = useContext(SoundContext);
-    const { setSound, sound, stopSoundNarration } = useContext(SoundNarrationContext);
+    const { setSound, sound, stopSoundNarration,soundStatusNarration } = useContext(SoundNarrationContext);
 
     const [modalVisible, setModalVisible] = useState(false);
     const [switchValue, setSwitchOn] = useState(soundStatus);
-    const [switchValueNarration, setSwitchOnNarration] = useState(sound);
+    const [switchValueNarration, setSwitchOnNarration] = useState(soundStatusNarration.current);
     const [iconSound, setIconSound] = useState("volume-high");
     const [iconNarration, setIconNarration] = useState("mic");
     const [switchSoundValue, setSwitchSoundValue] = useState(soundStatus);
 
     useEffect(() => {
         setSwitchSoundValue(soundStatus);
-        setSwitchOnNarration(sound);
+        setSwitchOnNarration(soundStatusNarration.current);
+        if(soundStatusNarration.current === false){
+            stopSoundNarration();
+        }
     })
-
-    if(sound === false){
-        stopSoundNarration();
-    }
     const toggleSwitchSound = () => {
         setSwitchSoundValue(previousState => !previousState);
         switchSoundValue ? stopSound() : playSound();
@@ -35,7 +34,7 @@ function ModalOptions(props) {
     const toggleSwitchNarration = () => {
         setSwitchOnNarration(previousState => !previousState);
         // assim nunca vai funcionar rsrsrs
-        switchValueNarration ? setSound(false) : setSound(true);
+        switchValueNarration ? soundStatusNarration.current = false : soundStatusNarration.current = true;
         switchValueNarration ? setIconNarration("mic-off") : setIconNarration("mic");
     }
 

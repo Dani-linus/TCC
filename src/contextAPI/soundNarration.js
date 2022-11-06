@@ -9,8 +9,9 @@ function SoundNarrationProvider({ children }) {
   // const audio = new Audio.Sound();
   const audio = useRef(new Audio.Sound());
   const [sound, setSound] = useState(true);
-  const soundStatusNarration = useRef();
+  const soundStatusNarration = useRef(true);
   const [isLoaded, setIsLoaded] = useState(false);
+
 
   const playSound = async () => {
     await audio.playAsync();
@@ -30,9 +31,6 @@ function SoundNarrationProvider({ children }) {
   async function initNarrationSound(som) {
     
     audio.current.unloadAsync();
- //   console.log('STATUS SOM ',sound)
-
- soundStatusNarration.current = sound;
     try {
       if (soundStatusNarration.current === true) {
         setTimeout(() => {
