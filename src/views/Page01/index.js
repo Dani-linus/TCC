@@ -19,11 +19,10 @@ const narrationScene1 =  require('../../../assets/sound/narration/Page01/Page1.m
 
 export default function PageOne({navigation}) {
 
-    const {initNarrationSound,stopSoundNarration,setIsLoaded} = useContext(SoundNarrationContext);
+    const {initNarrationSound, sound} = useContext(SoundNarrationContext);
     const {updateVolumSound} = useContext(SoundContext);
-    
-
-    useEffect(() => {
+  
+   useEffect(() => {
         navigation.addListener('focus', ()=> initNarrationSound(narrationScene1));
         updateVolumSound();
     }, []);

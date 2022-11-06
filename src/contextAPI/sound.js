@@ -7,7 +7,7 @@ export const SoundContext = createContext({});
 function SoundProvider({children}){
     
     const audioObject = useRef(new Audio.Sound());
-    const [soundStatus, setSoundStatus] = useState(false);
+    const [soundStatus, setSoundStatus] = useState(true);
     const [isLoaded, setIsLoaded] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     

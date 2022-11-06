@@ -16,7 +16,7 @@ const narrationScene2 =  require('../../../assets/sound/narration/Page02/Page2.m
 
 export default function PageTwo({navigation}) {
     let animation_pig_father_pig_mom = React.createRef();
-    const {initNarrationSound,stopSound,stopSoundNarration,setIsLoaded} = useContext(SoundNarrationContext);
+    const {initNarrationSound} = useContext(SoundNarrationContext);
     
 
     useEffect(() => {

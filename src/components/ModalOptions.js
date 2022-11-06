@@ -9,40 +9,34 @@ function ModalOptions(props) {
     const navigation = useNavigation();
 
     // consumir o contexto criado
-    const { stopSound, playSound } = useContext(SoundContext);
-    const { setSound, sound } = useContext(SoundNarrationContext);
+    const { stopSound, playSound, soundStatus } = useContext(SoundContext);
+    const { setSound, sound, stopSoundNarration } = useContext(SoundNarrationContext);
 
     const [modalVisible, setModalVisible] = useState(false);
     const [switchValue, setSwitchOn] = useState(soundStatus);
     const [switchValueNarration, setSwitchOnNarration] = useState(sound);
     const [iconSound, setIconSound] = useState("volume-high");
-    const [iconNarration, setIconNarration] = useState("mic-off");
-    const [switchSoundValue, setSwitchSoundValue] = useState();
+    const [iconNarration, setIconNarration] = useState("mic");
+    const [switchSoundValue, setSwitchSoundValue] = useState(soundStatus);
 
     useEffect(() => {
         setSwitchSoundValue(soundStatus);
-        if (switchSoundValue === false) {
-            setIconSound("volume-mute");
-        }
+        setSwitchOnNarration(sound);
     })
 
+    if(sound === false){
+        stopSoundNarration();
+    }
     const toggleSwitchSound = () => {
-        console.log('soundStatus na Modal:', soundStatus)
         setSwitchSoundValue(previousState => !previousState);
         switchSoundValue ? stopSound() : playSound();
         switchSoundValue ? setIconSound("volume-mute") : setIconSound("volume-high");
     }
     const toggleSwitchNarration = () => {
         setSwitchOnNarration(previousState => !previousState);
-
         // assim nunca vai funcionar rsrsrs
         switchValueNarration ? setSound(false) : setSound(true);
-
-        if (switchValueNarration === true) {
-            setIconNarration("mic-off");
-        } else {
-            setIconNarration("mic")
-        }
+        switchValueNarration ? setIconNarration("mic-off") : setIconNarration("mic");
     }
 
     // função do botão recomeçar história 
@@ -55,7 +49,6 @@ function ModalOptions(props) {
         setModalVisible(false)
         navigation.popToTop()
     }
-
 
     //função para definir quando o botão de recomeçar e menu serão apresentados.
     const showComponentButton = props.showComponent ? (

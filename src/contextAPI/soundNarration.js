@@ -9,8 +9,8 @@ function SoundNarrationProvider({ children }) {
   // const audio = new Audio.Sound();
   const audio = useRef(new Audio.Sound());
   const [sound, setSound] = useState(true);
+  const soundStatusNarration = useRef();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [soundObject, setObject] = useState(null);
 
   const playSound = async () => {
     await audio.playAsync();
@@ -21,7 +21,6 @@ function SoundNarrationProvider({ children }) {
       if (statusSom.isLoaded == true) {
         await audio.current.stopAsync()
         await audio.current.unloadAsync();
-        statusSom.isLoaded == false;
       }
     } catch (error) {
       console.log('Erro ao pausar o audio', error)
@@ -29,22 +28,16 @@ function SoundNarrationProvider({ children }) {
   }
 
   async function initNarrationSound(som) {
-    const checkLoading = await audio.current.getStatusAsync();
     
     audio.current.unloadAsync();
+ //   console.log('STATUS SOM ',sound)
 
+ soundStatusNarration.current = sound;
     try {
-      if (sound === true) {
+      if (soundStatusNarration.current === true) {
         setTimeout(() => {
           audio.current.loadAsync((som), { volume: 1, shouldPlay: true });
         }, 4000);
-        setIsLoaded(true);
-      }
-
-      else if(sound === false && isLoaded === true){
-        audio.current.stopAsync();
-        audio.current.unloadAsync();
-        setIsLoaded(false);
       }
     } catch (error) {
       console.log('Erro ao executar audio:', error)
@@ -52,7 +45,7 @@ function SoundNarrationProvider({ children }) {
   }
 
   return (
-    <SoundNarrationContext.Provider value={{ playSound, stopSoundNarration, initNarrationSound, sound, setSound , setIsLoaded}}>
+    <SoundNarrationContext.Provider value={{ playSound, stopSoundNarration, initNarrationSound, sound, setSound,soundStatusNarration}}>
       {children}
     </SoundNarrationContext.Provider>
   )

@@ -19,9 +19,7 @@ import PageThirteen from './Page13';
 import PageFourteen from './Page14';
 import PageFifteen from './Page15';
 
-
 const Stack = createStackNavigator();
-
 function Routes(){
 
     return(
