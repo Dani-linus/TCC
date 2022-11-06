@@ -24,7 +24,6 @@ export default function PageOne({navigation}) {
   
    useEffect(() => {
         navigation.addListener('focus', ()=> initNarrationSound(narrationScene1));
-        updateVolumSound();
     }, []);
     
     const animation_pig_mom = useRef();
