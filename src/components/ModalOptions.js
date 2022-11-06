@@ -47,7 +47,8 @@ function ModalOptions(props) {
     // função do botão menu principal
     const goMenu= ()=>{
         setModalVisible(false)
-        navigation.popToTop()
+        navigation.popToTop();
+        stopSoundNarration();
     }
 
     //função para definir quando o botão de recomeçar e menu serão apresentados.
