@@ -9,7 +9,7 @@ import LayoutPages from '../../components/LayoutPages';
 import { textScene12 } from '../legendTextFile';
 
 const wolfPage12 = require('../../../assets/animations/page12/wolf_page_12.json');
-const scene12JSON = require('')
+// const scene12JSON = require('')
 
 export default function PageTwelve({navigation}) {
 

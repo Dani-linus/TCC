@@ -43,22 +43,19 @@ function SoundProvider({children}){
     async function initSound(){
         if(isLoaded === false){
             try {
+                audioObject.current.unloadAsync();
                 await audioObject.current.loadAsync(require('../../assets/sound/ambientSound/ambient_sound_two.mp3'), {shouldPlay: false, isLooping: true, volume: 1});
                 setIsLoaded(true);
                 setIsPlaying(false);
                 setSoundStatus(false)
             } catch (error) {
-                console.log(error);
+                console.log('Não é possível concluir a operação porque o som não está carregado');
             }
         }
     }
-    
-    useEffect(() => {
-        return () => audioObject.current.unloadAsync();
-      }, []);
 
     return(
-        <SoundContext.Provider value={{playSound, stopSound, initSound, soundStatus, updateVolumSound}}>
+        <SoundContext.Provider value={{playSound, stopSound, initSound, soundStatus, updateVolumSound, isLoaded}}>
             {children}
         </SoundContext.Provider>
     )

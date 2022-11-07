@@ -18,18 +18,20 @@ import PageTwelve from './Page12';
 import PageThirteen from './Page13';
 import PageFourteen from './Page14';
 import PageFifteen from './Page15';
+import SplashScreen from "./Splash";
 
 const Stack = createStackNavigator();
 function Routes(){
 
     return(
-        <Stack.Navigator initialRouteName='HomeView' 
+        <Stack.Navigator initialRouteName='SplashScreen' 
           screenOptions={{
             headerShown: false, 
              gestureEnabled: false,
             // gestureDirection: "horizontal",
             cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
           }}>
+            <Stack.Screen name="SplashScreen" component={SplashScreen}/>
           <Stack.Screen name="ModalOptions" component={ModalOptions} />
           <Stack.Screen name="ModalInfo" component={ModalInfo}/>
           <Stack.Screen name="HomeView" component={HomeView} />
