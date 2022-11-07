@@ -1,6 +1,6 @@
 //Página 1 do livro
-import React, { useRef , useContext , useEffect} from 'react';
-import {View, TouchableNativeFeedback} from 'react-native';
+import React, { useRef, useContext, useEffect , useState} from 'react';
+import { View, TouchableNativeFeedback } from 'react-native';
 import styles from './style';
 import * as Animatable from 'react-native-animatable';
 import LegendCaptionArea from 'components/LegendTextArea';
@@ -15,47 +15,62 @@ import { textScene1 } from 'views/legendTextFile';
 const pigMomJSON = require('../../../assets/animations/page1/pigMom.json');
 const pigSleepingJSON = require('../../../assets/animations/page1/pigSleeping.json');
 const scene1JSON = require('../../../assets/animations/page1/page_1.json');
-const narrationScene1 =  require('../../../assets/sound/narration/Page01/Page1.mp3');
+const narrationScene1 = require('../../../assets/sound/narration/Page01/Page1.mp3');
 
-export default function PageOne({navigation}) {
+export default function PageOne({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
-    const {updateVolumSound} = useContext(SoundContext);
-  
-  useEffect(() => {
-       navigation.addListener('focus', ()=> initNarrationSound(narrationScene1));
+    const { updateVolumSound } = useContext(SoundContext);
+    const [loadingButtonNavigation, setloadingButton] = useState(false);
+
+    useEffect(() => {
+        //Iniciando a narração da página
+        navigation.addListener('focus', () => initNarrationSound(narrationScene1));
     }, []);
+
     
+    useEffect(() => {
+        //Timeout para apresentar o button de navegação
+        let timer = setTimeout(() => {
+            setloadingButton(true);
+        }, 3500);
+        return () => {
+            clearTimeout(timer);
+        };
+    }, []);
+
+
     const animation_pig_mom = useRef();
     const animation_pig_spleeping = useRef();
 
     // //Iniciando o estado 0 das animações
-    animation_pig_spleeping.current?.play(0,148);
+    animation_pig_spleeping.current?.play(0, 148);
     animation_pig_mom.current?.play(0, 48);
 
     // Inicia a animação da mamãe porca
-    function startAnimationPigMom(){
+    function startAnimationPigMom() {
         // adicionar verificação de cliques
         // Adicionar loop baseado nos frames (isso eu preciso verificar direito no viewer do Lottie files)
         animation_pig_mom.current?.play();
     }
 
     // Inicia a animação do porco dormindo
-    function startAnimationPigSleeping(){
+    function startAnimationPigSleeping() {
         //de 0 a 148 - pig dormindo, ou seja, estado zero (isso fica em looping até que seja interagido)
         //de 148 a 300 - reação a interação, estado 1.
         animation_pig_spleeping.current?.play(148, 300);
     }
     return (
-       <View style={styles.container}>
+
+        <View style={styles.container}>
             {/* animação de fundo */}
             <LottieView
                 source={scene1JSON}
                 autoPlay={true}
                 loop={true}
                 resizeMode='cover'
-                style={{flexGrow: 1}}
-                />
+                style={{ flexGrow: 1 }}
+            />
 
             <LayoutPages navigation={navigation}>
 
@@ -69,7 +84,7 @@ export default function PageOne({navigation}) {
 
                 {/* controle de animação 1 */}
                 <TouchableNativeFeedback onPress={startAnimationPigMom}>
-                    <Animatable.View style={[styles.toggleView, styles.togglePigMom]} animation="pulse" easing="linear" iterationCount="infinite"/>
+                    <Animatable.View style={[styles.toggleView, styles.togglePigMom]} animation="pulse" easing="linear" iterationCount="infinite" />
                 </TouchableNativeFeedback>
 
                 {/* Elemento de interação 2 */}
@@ -81,8 +96,8 @@ export default function PageOne({navigation}) {
                 </View>
 
                 {/* controle de animação do item 2 */}
-                    <TouchableNativeFeedback onPress={startAnimationPigSleeping}>
-                    <Animatable.View style={[styles.toggleView, styles.togglePigSleeping]} animation="pulse" easing="linear" iterationCount="infinite"/>
+                <TouchableNativeFeedback onPress={startAnimationPigSleeping}>
+                    <Animatable.View style={[styles.toggleView, styles.togglePigSleeping]} animation="pulse" easing="linear" iterationCount="infinite" />
                 </TouchableNativeFeedback>
 
 
@@ -90,7 +105,7 @@ export default function PageOne({navigation}) {
                 <LegendCaptionArea text={textScene1} />
 
                 {/* botao para navegação entre as páginas */}
-                <ButtonNavigation proxRoute="PageTwo" navigation={navigation} showComponent={false}/>
+                {loadingButtonNavigation && <ButtonNavigation proxRoute="PageTwo" navigation={navigation} showComponent={false} />}
             </LayoutPages>
         </View >
     )

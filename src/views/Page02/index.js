@@ -1,5 +1,5 @@
 //Página 2 do livro
-import React ,{useContext, useEffect, useRef} from 'react';
+import React ,{useContext, useEffect, useRef, useState} from 'react';
 import { View, TouchableNativeFeedback } from 'react-native';
 import styles from './style';
 import LottieView from 'lottie-react-native';
@@ -17,11 +17,22 @@ const narrationScene2 =  require('../../../assets/sound/narration/Page02/Page2.m
 export default function PageTwo({navigation}) {
     const animation_pig_father_pig_mom = useRef();
     const {initNarrationSound} = useContext(SoundNarrationContext);
+    const [loadingButtonNavigation, setloadingButton] = useState(false);
+
     
    useEffect(() => {
         navigation.addListener('focus', ()=> initNarrationSound(narrationScene2));
     }, []);
     
+    useEffect(() => {
+        let timer = setTimeout(() => {
+            setloadingButton(true);
+        }, 3500);
+        return () => {
+            clearTimeout(timer);
+        };
+    }, []);
+
     function startAnimationPigFatherPigMom() {
         animation_pig_father_pig_mom.current?.play();
     }
@@ -48,7 +59,7 @@ export default function PageTwo({navigation}) {
 
                 <LegendCaptionArea text={textScene2} />
                 
-                <ButtonNavigation proxRoute="PageThree" navigation={navigation}  showComponent={true}/>                                    
+                {loadingButtonNavigation && <ButtonNavigation proxRoute="PageThree" navigation={navigation}  showComponent={true}/> }                                   
             </LayoutPages>
         </View >
     )

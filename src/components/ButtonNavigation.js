@@ -1,5 +1,5 @@
 
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import { View, TouchableOpacity, Navi } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 
@@ -14,10 +14,12 @@ export default function ButtonNavigation(props) {
             </TouchableOpacity>
         </View>
     ) : null;
-
+    
     return (
+    
         <View style={{ flex: 1, flexDirection: 'row' }}>
-                 {showComponentButtonVoltar}
+
+            {showComponentButtonVoltar}
             <View style={{ flex: 1, alignItems: 'flex-end', justifyContent: 'flex-end', marginRight: 5, marginBottom: 20 }}>
 
                 <TouchableOpacity onPress={() => props.navigation.navigate(props.proxRoute)}>

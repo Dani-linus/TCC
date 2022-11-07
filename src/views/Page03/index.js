@@ -20,10 +20,20 @@ export default function PageThree({navigation}) {
     
     const { initNarrationSound } = useContext(SoundNarrationContext);
     const [viewImage, setViewImage] =  useState(false);
-    
+    const [loadingButtonNavigation, setloadingButton] = useState(false);
+
     useEffect(() => {
         navigation.addListener('focus', ()=> initNarrationSound(narrationScene3));
     });
+
+    useEffect(() => {
+        let timer = setTimeout(() => {
+            setloadingButton(true);
+        }, 3500);
+        return () => {
+            clearTimeout(timer);
+        };
+    }, []);
 
     return (
         <View style={styles.container}>
@@ -48,7 +58,7 @@ export default function PageThree({navigation}) {
 
                 <LegendCaptionArea text={textScene3}/>
                 
-                <ButtonNavigation proxRoute="PageFour" navigation={navigation} showComponent={true}/>
+                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageFour" navigation={navigation} showComponent={true}/>}
             </LayoutPages>
         </View>
     )

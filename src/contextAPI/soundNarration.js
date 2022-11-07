@@ -40,7 +40,7 @@ function SoundNarrationProvider({ children }) {
         setTimeout(() => {
           audio.current.loadAsync((som), { volume: 1, shouldPlay: true });
         }, 4000);
-        audio.current.unloadAsync();
+        //audio.current.unloadAsync();
       }
     } catch (error) {
       console.log('Erro ao executar audio:', error)
