@@ -7,8 +7,8 @@ import ButtonNavigation from '../../components/ButtonNavigation';
 import LayoutPages from '../../components/LayoutPages';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { textScene15 } from '../legendTextFile';
-const narrationScene15 = require('../../../assets/sound/narration/Page15/Page15.mp3');
 
+const narrationScene15 = require('../../../assets/sound/narration/Page15/Page15.mp3');
 export default function PageFifteen({navigation}) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
