@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
         height: hp(55),
         top: wp(14),
         left: wp(-8),
-        borderWidth: 1,
     },
 
 });

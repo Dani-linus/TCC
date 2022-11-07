@@ -22,7 +22,6 @@ export default function PageFour({ navigation }) {
     
     return (
         <View style={styles.container}>
-            <LayoutPages>
                 <LottieView
                     source={scene4JSON}
                     autoPlay={true}
@@ -30,6 +29,10 @@ export default function PageFour({ navigation }) {
                     resizeMode='cover'
                     style={styles.view_animation_cover}
                 ></LottieView>
+
+            <LayoutPages>
+                {/* interatividade da casa de madeira */}
+                
                 <LegendCaptionArea text={textScene4} />
 
                 <ButtonNavigation proxRoute="PageFive" navigation={navigation} showComponent={true} />

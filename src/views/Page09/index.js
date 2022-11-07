@@ -4,6 +4,7 @@ import LottieView from 'lottie-react-native';
 import LegendCaptionArea from '../../components/LegendTextArea';
 import ButtonNavigation from '../../components/ButtonNavigation';
 import LayoutPages from '../../components/LayoutPages';
+import styles from './style';
 
 import { textScene9 } from '../legendTextFile';
 
