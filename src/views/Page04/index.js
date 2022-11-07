@@ -1,5 +1,5 @@
 //página 4 do livro
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect , useState} from 'react';
 import { View, Image } from 'react-native';
 import styles from './style';
 import LegendCaptionArea from 'components/LegendTextArea';
@@ -15,11 +15,22 @@ const narrationScene4 = require('../../../assets/sound/narration/Page04/Page4.mp
 export default function PageFour({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
+    const [loadingButtonNavigation, setloadingButton] = useState(false);
       
     useEffect(() => {
         navigation.addListener('focus', ()=> initNarrationSound(narrationScene4));
     }, []);
+
     
+    useEffect(() => {
+        let timer = setTimeout(() => {
+            setloadingButton(true);
+        }, 3500);
+        return () => {
+            clearTimeout(timer);
+        };
+    }, []);
+
     return (
         <View style={styles.container}>
                 <LottieView
@@ -35,7 +46,7 @@ export default function PageFour({ navigation }) {
                 
                 <LegendCaptionArea text={textScene4} />
 
-                <ButtonNavigation proxRoute="PageFive" navigation={navigation} showComponent={true} />
+                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageFive" navigation={navigation} showComponent={true} />}
 
             </LayoutPages>
         </View>

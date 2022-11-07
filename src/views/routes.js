@@ -24,14 +24,14 @@ const Stack = createStackNavigator();
 function Routes(){
 
     return(
-        <Stack.Navigator initialRouteName='SplashScreen' 
+        <Stack.Navigator initialRouteName='HomeView' 
           screenOptions={{
             headerShown: false, 
              gestureEnabled: false,
             // gestureDirection: "horizontal",
             cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
           }}>
-            <Stack.Screen name="SplashScreen" component={SplashScreen}/>
+          <Stack.Screen name="SplashScreen" component={SplashScreen}/>
           <Stack.Screen name="ModalOptions" component={ModalOptions} />
           <Stack.Screen name="ModalInfo" component={ModalInfo}/>
           <Stack.Screen name="HomeView" component={HomeView} />

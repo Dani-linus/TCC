@@ -10,7 +10,7 @@ function ModalOptions(props) {
 
     // consumir o contexto criado
     const { stopSound, playSound, soundStatus } = useContext(SoundContext);
-    const { setSound, sound, stopSoundNarration,soundStatusNarration } = useContext(SoundNarrationContext);
+    const { stopSoundNarration,soundStatusNarration ,playSoundNarration} = useContext(SoundNarrationContext);
 
     const [modalVisible, setModalVisible] = useState(false);
     const [switchValue, setSwitchOn] = useState(soundStatus);
