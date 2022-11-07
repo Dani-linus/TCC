@@ -18,8 +18,7 @@ export default function PageTwo({navigation}) {
     let animation_pig_father_pig_mom = React.createRef();
     const {initNarrationSound} = useContext(SoundNarrationContext);
     
-
-    useEffect(() => {
+   useEffect(() => {
         navigation.addListener('focus', ()=> initNarrationSound(narrationScene2));
     }, []);
     

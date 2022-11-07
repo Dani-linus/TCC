@@ -22,9 +22,9 @@ export default function PageOne({navigation}) {
     const {initNarrationSound, sound} = useContext(SoundNarrationContext);
     const {updateVolumSound} = useContext(SoundContext);
   
-   useEffect(() => {
-        navigation.addListener('focus', ()=> initNarrationSound(narrationScene1));
-    }, []);
+  useEffect(() => {
+       navigation.addListener('focus', ()=> initNarrationSound(narrationScene1));
+ }, []);
     
     const animation_pig_mom = useRef();
     const animation_pig_spleeping = useRef();

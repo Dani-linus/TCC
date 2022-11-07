@@ -6,12 +6,10 @@ export const SoundNarrationContext = createContext({});
 
 function SoundNarrationProvider({ children }) {
 
-  // const audio = new Audio.Sound();
   const audio = useRef(new Audio.Sound());
   const [sound, setSound] = useState(true);
   const soundStatusNarration = useRef(true);
   const [isLoaded, setIsLoaded] = useState(false);
-
 
   const playSound = async () => {
     await audio.playAsync();
@@ -28,14 +26,21 @@ function SoundNarrationProvider({ children }) {
     }
   }
 
+  useEffect(() => {
+    return () => audio.current.unloadAsync();
+  }, [])
+
+
+  //Revendo este metodo pois se mudar de pagina bem rapido ainda está sobreescrevendo
   async function initNarrationSound(som) {
-    
+
     audio.current.unloadAsync();
     try {
       if (soundStatusNarration.current === true) {
         setTimeout(() => {
           audio.current.loadAsync((som), { volume: 1, shouldPlay: true });
         }, 4000);
+        audio.current.unloadAsync();
       }
     } catch (error) {
       console.log('Erro ao executar audio:', error)
@@ -43,7 +48,7 @@ function SoundNarrationProvider({ children }) {
   }
 
   return (
-    <SoundNarrationContext.Provider value={{ playSound, stopSoundNarration, initNarrationSound, sound, setSound,soundStatusNarration}}>
+    <SoundNarrationContext.Provider value={{ playSound, stopSoundNarration, initNarrationSound, sound, setSound, soundStatusNarration }}>
       {children}
     </SoundNarrationContext.Provider>
   )
