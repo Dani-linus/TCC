@@ -17,6 +17,7 @@ function SoundProvider({children}){
                 await audioObject.current.playAsync();
                 setSoundStatus(true);
                 setIsPlaying(true);
+                setSoundStatus(true);
                     
             } catch (error) {
                 console.log(error)
@@ -42,12 +43,12 @@ function SoundProvider({children}){
     async function initSound(){
         if(isLoaded === false){
             try {
-                await audioObject.current.loadAsync(require('../../assets/sound/ambientSound/ambient_sound_two.mp3'), {shouldPlay: true, isLooping: true, volume: 1});
+                await audioObject.current.loadAsync(require('../../assets/sound/ambientSound/ambient_sound_two.mp3'), {shouldPlay: false, isLooping: true, volume: 1});
                 setIsLoaded(true);
-                setIsPlaying(true);
-                setSoundStatus(true)
+                setIsPlaying(false);
+                setSoundStatus(false)
             } catch (error) {
-                console.log('O som já está carregado');
+                console.log(error);
             }
         }
     }
@@ -57,7 +58,7 @@ function SoundProvider({children}){
       }, []);
 
     return(
-        <SoundContext.Provider value={{playSound, stopSound, initSound, soundStatus,updateVolumSound}}>
+        <SoundContext.Provider value={{playSound, stopSound, initSound, soundStatus, updateVolumSound}}>
             {children}
         </SoundContext.Provider>
     )

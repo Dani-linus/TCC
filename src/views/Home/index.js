@@ -15,9 +15,9 @@ const { height, width } = Dimensions.get('window')
 export default function HomeView({ navigation }) {
 
     const [showComponent, setShowComponent] = useState(false)
-    // inicia o som ambiente
-    const { initSound } = useContext(SoundContext);
-    initSound();
+
+    const { playSound } = useContext(SoundContext);
+    playSound();
 
     // adiciona um botão em SOs IOS para sair da aplicação
     function isIOSorOther() {
