@@ -8,15 +8,17 @@ import LayoutPages from '../../components/LayoutPages';
 
 import { textScene10 } from '../legendTextFile';
 
+const scene10JSON = require('../../../assets/animations/page10/page_10.json');
+
 export default function PageTen({navigation}) {
     return (
         <View style={styles.container}>
-            {/* <LottieView
+            <LottieView
                 source={scene10JSON}
                 autoPlay={true}
                 loop={true}
                 resizeMode='cover'
-                /> */}
+                />
 
             <LayoutPages>
                 {/* ... */}

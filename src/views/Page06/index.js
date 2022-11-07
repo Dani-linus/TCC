@@ -8,7 +8,6 @@ import ButtonNavigation from 'components/ButtonNavigation';
 
 import { textScene6 } from '../legendTextFile';
 
-// JSON com problemas
 const scene6JSON = require('../../../assets/animations/page6/page_6.json')
 
 export default function PageSix({navigation}) {

@@ -1,5 +1,5 @@
 //Página 2 do livro
-import React ,{useContext, useEffect} from 'react';
+import React ,{useContext, useEffect, useRef} from 'react';
 import { View, TouchableNativeFeedback } from 'react-native';
 import styles from './style';
 import LottieView from 'lottie-react-native';
@@ -15,7 +15,7 @@ const narrationScene2 =  require('../../../assets/sound/narration/Page02/Page2.m
 
 
 export default function PageTwo({navigation}) {
-    let animation_pig_father_pig_mom = React.createRef();
+    const animation_pig_father_pig_mom = useRef();
     const {initNarrationSound} = useContext(SoundNarrationContext);
     
    useEffect(() => {

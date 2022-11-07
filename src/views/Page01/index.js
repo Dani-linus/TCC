@@ -19,12 +19,12 @@ const narrationScene1 =  require('../../../assets/sound/narration/Page01/Page1.m
 
 export default function PageOne({navigation}) {
 
-    const {initNarrationSound, sound} = useContext(SoundNarrationContext);
+    const { initNarrationSound } = useContext(SoundNarrationContext);
     const {updateVolumSound} = useContext(SoundContext);
   
   useEffect(() => {
        navigation.addListener('focus', ()=> initNarrationSound(narrationScene1));
- }, []);
+    }, []);
     
     const animation_pig_mom = useRef();
     const animation_pig_spleeping = useRef();

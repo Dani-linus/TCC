@@ -1,6 +1,6 @@
 //página 3 do livro
 import React, { useRef, useState , useContext, useEffect } from 'react';
-import { View, Image, PanResponder, Animated, Text} from 'react-native';
+import { View, Image} from 'react-native';
 import styles from './style';
 import LottieView from 'lottie-react-native';
 import LegendCaptionArea from 'components/LegendTextArea';

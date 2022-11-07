@@ -14,7 +14,7 @@ const narrationScene4 = require('../../../assets/sound/narration/Page04/Page4.mp
 
 export default function PageFour({ navigation }) {
 
-    const {initNarrationSound, playSound} = useContext(SoundNarrationContext);
+    const { initNarrationSound } = useContext(SoundNarrationContext);
       
     useEffect(() => {
         navigation.addListener('focus', ()=> initNarrationSound(narrationScene4));

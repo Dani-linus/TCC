@@ -8,7 +8,21 @@ import LayoutPages from '../../components/LayoutPages';
 
 import { textScene12 } from '../legendTextFile';
 
+const wolfPage12 = require('../../../assets/animations/page12/wolf_page_12.json');
+const scene12JSON = require('')
+
 export default function PageTwelve({navigation}) {
+
+    const animation_wolf = React.createRef();
+
+    function wolfMotionControl(){
+        // lobo sobra tres vezes a casa até cansar
+        for ( var i=0; i < 3; i++){
+            animation_wolf.current?.play(0,300);
+        }
+        animation_wolf.current?.play();
+
+    }
     return (
         <View style={styles.container}>
             {/* <LottieView
@@ -20,6 +34,14 @@ export default function PageTwelve({navigation}) {
 
             <LayoutPages>
                 {/* ... */}
+
+                {/* adicionar um botão em volta da animação e chamar esta função wolfMotionControl*/}
+                <LottieView
+                    source={wolfPage12}
+                // autoPlay={true}
+                // loop={true}
+                // resizeMode='cover'
+                />
 
                 <LegendCaptionArea text={textScene12} />
                 

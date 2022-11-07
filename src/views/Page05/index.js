@@ -7,8 +7,8 @@ import LegendCaptionArea from 'components/LegendTextArea';
 import ButtonNavigation from 'components/ButtonNavigation';
 import { textScene5 } from 'views/legendTextFile';
 
-// JSON com problema
 const scene5JSON =  require('../../../assets/animations/page5/page_5.json');
+// narração da cena?
 
 export default function PageFive({navigation}) {
     return (
