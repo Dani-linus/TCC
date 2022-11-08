@@ -9,6 +9,7 @@ import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { textScene15 } from '../legendTextFile';
 
 const narrationScene15 = require('../../../assets/sound/narration/Page15/Page15.mp3');
+
 export default function PageFifteen({navigation}) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
@@ -30,19 +31,9 @@ export default function PageFifteen({navigation}) {
 
     return (
         <View style={styles.container}>
-            {/* <LottieView
-                source={scene15JSON}
-                autoPlay={true}
-                loop={true}
-                resizeMode='cover'
-                /> */}
-
             <LayoutPages>
-                {/* ... */}
-
                 <LegendCaptionArea text={textScene15} />
-                
-                {/* <ButtonNavigation  navigation={navigation}/> showComponent={true} */}
+                <ButtonNavigation  proxRoute="PageEnd" navigation={navigation}/> showComponent={true} 
             </LayoutPages>
         </View >
     )

@@ -29,6 +29,12 @@ export default function PageSix({navigation}) {
         };
     }, []);
 
+    /**
+     * LOBO APARECENDO NO BOSQUE
+     * inicia em loop em 0-32
+     * ao tocar vai de 32-99
+     * fica em loop 45-72
+     */
     return (
         <View style={styles.container}>
             <LottieView

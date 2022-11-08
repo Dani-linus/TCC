@@ -32,6 +32,15 @@ export default function PageFourteen({navigation}) {
 
     */
 
+
+    // frames do caldeirão
+    /*
+    1- não fica em loop
+    2 - inicia em 0-150
+    3 - interação pra acender o fogo e o lobo descer - 150-300
+    4 -  volta em loop no fogo 150-200
+    */
+
     return (
         <View style={styles.container}>
             {/* <LottieView

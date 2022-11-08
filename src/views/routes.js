@@ -19,6 +19,7 @@ import PageThirteen from './Page13';
 import PageFourteen from './Page14';
 import PageFifteen from './Page15';
 import SplashScreen from "./Splash";
+import PageEnd from './PageEnd';
 
 const Stack = createStackNavigator();
 function Routes(){
@@ -50,6 +51,7 @@ function Routes(){
           <Stack.Screen name="PageThirteen" component={PageThirteen} />
           <Stack.Screen name="PageFourteen" component={PageFourteen} />
           <Stack.Screen name="PageFifteen" component={PageFifteen} />
+          <Stack.Screen name="PageEnd" component={PageEnd} />
         </Stack.Navigator>
     )
 }
