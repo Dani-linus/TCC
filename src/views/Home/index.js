@@ -16,8 +16,11 @@ export default function HomeView({ navigation }) {
 
     const [showComponent, setShowComponent] = useState(false)
 
-    const { playSound } = useContext(SoundContext);
-    playSound();
+    // const { playSound, isLoaded, isPlaying } = useContext(SoundContext);
+    // if(isLoaded === true && isPlaying === false){
+    //     playSound();
+    //     console.log("HOME VIEW",isPlaying)
+    // }
 
     // adiciona um botão em SOs IOS para sair da aplicação
     function isIOSorOther() {
