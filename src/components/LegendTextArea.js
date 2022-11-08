@@ -5,6 +5,7 @@ import React , {useContext}from "react"
 import * as Animatable from "react-native-animatable";
 import { StyleSheet, PixelRatio } from "react-native";
 
+
 function LegendTextArea(props) {
     return (
         <Animatable.View

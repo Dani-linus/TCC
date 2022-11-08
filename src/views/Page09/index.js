@@ -33,20 +33,16 @@ export default function PageNine({navigation}) {
 
     return (
         <View style={styles.container}>
-            <LottieView
+           <LottieView
                 source={scene9JSON}
                 autoPlay={true}
                 loop={true}
                 resizeMode='cover'
                 />
-
             <LayoutPages>
                 {/* ... */}
-
                 <LegendCaptionArea text={textScene9} />
-                
                 {loadingButtonNavigation &&  <ButtonNavigation  proxRoute="PageTen" navigation={navigation} showComponent={true}/>}
-
             </LayoutPages>
         </View >
     )
