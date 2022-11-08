@@ -10,7 +10,7 @@ function ModalOptions(props) {
 
     // consumir o contexto criado
     const { stopSound, playSound, soundStatus } = useContext(SoundContext);
-    const { setSound, sound, stopSoundNarration,soundStatusNarration } = useContext(SoundNarrationContext);
+    const { stopSoundNarration,soundStatusNarration ,playSoundNarration} = useContext(SoundNarrationContext);
 
     const [modalVisible, setModalVisible] = useState(false);
     const [switchValue, setSwitchOn] = useState(soundStatus);
@@ -41,23 +41,21 @@ function ModalOptions(props) {
     // função do botão recomeçar história 
     const goBack = () => {
         setModalVisible(false)
-        navigation.navigate('PageOne')
-    }
-    // função do botão menu principal
-    const goMenu= ()=>{
-        setModalVisible(false)
         navigation.popToTop();
+        //navigation.navigate('PageOne')
         stopSoundNarration();
     }
+    // função do botão menu principal
+  //  const goMenu= ()=>{
+      //  setModalVisible(false)
+     //   navigation.popToTop();
+      //  stopSoundNarration();
+   // }
 
-    //função para definir quando o botão de recomeçar e menu serão apresentados.
+    //função para definir quando o botão de recomeçar 
     const showComponentButton = props.showComponent ? (
         <View>
-            <TouchableOpacity style={[styles.btn, styles.btn_menu]} onPress={goMenu}>
-                <Text style={[styles.text_black, styles.text_modal_options]}>Menu Principal</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={[styles.btn, styles.btn_restart]} onPress={goBack}>
+        <TouchableOpacity style={[styles.btn, styles.btn_restart]} onPress={goBack}>
                 <Text style={[styles.text_black, styles.text_modal_options]}>Recomeçar história</Text>
             </TouchableOpacity>
         </View>

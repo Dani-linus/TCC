@@ -1,19 +1,41 @@
-import React from 'react';
+import React , { useContext, useEffect , useState} from 'react';
 import { View } from 'react-native';
 import LottieView from 'lottie-react-native';
 import styles from './style';
 import LegendCaptionArea from '../../components/LegendTextArea';
 import ButtonNavigation from '../../components/ButtonNavigation';
 import LayoutPages from '../../components/LayoutPages';
-
+import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { textScene12 } from '../legendTextFile';
 
 const wolfPage12 = require('../../../assets/animations/page12/wolf_page_12.json');
+
+//Sem a narração ainda
+//const narrationScene12 = require('../../../assets/sound/narration/Page12/Page12.mp3');
+
 // const scene12JSON = require('')
 
 export default function PageTwelve({navigation}) {
 
     const animation_wolf = React.createRef();
+    const { initNarrationSound } = useContext(SoundNarrationContext);
+    const [loadingButtonNavigation, setloadingButton] = useState(false);
+
+    /*
+    useEffect(() => {
+        navigation.addListener('focus', () => initNarrationSound(narrationScene12));
+    }, []);
+
+    useEffect(() => {
+        let timer = setTimeout(() => {
+            setloadingButton(true);
+        }, 3500);
+        return () => {
+            clearTimeout(timer);
+        };
+    }, []);
+
+*/
 
     function wolfMotionControl(){
         // lobo sobra tres vezes a casa até cansar
@@ -45,7 +67,7 @@ export default function PageTwelve({navigation}) {
 
                 <LegendCaptionArea text={textScene12} />
                 
-                <ButtonNavigation  proxRoute="PageThirteen" navigation={navigation}showComponent={true}/>
+                {loadingButtonNavigation && <ButtonNavigation  proxRoute="PageThirteen" navigation={navigation}showComponent={true}/>}
 
             </LayoutPages>
         </View >

@@ -31,7 +31,7 @@ function Routes(){
             // gestureDirection: "horizontal",
             cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
           }}>
-            <Stack.Screen name="SplashScreen" component={SplashScreen}/>
+          <Stack.Screen name="SplashScreen" component={SplashScreen}/>
           <Stack.Screen name="ModalOptions" component={ModalOptions} />
           <Stack.Screen name="ModalInfo" component={ModalInfo}/>
           <Stack.Screen name="HomeView" component={HomeView} />

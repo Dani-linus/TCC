@@ -5,21 +5,24 @@ import { Audio } from 'expo-av';
 export const SoundNarrationContext = createContext({});
 
 function SoundNarrationProvider({ children }) {
-
   const audio = useRef(new Audio.Sound());
-  const [sound, setSound] = useState(true);
   const soundStatusNarration = useRef(true);
   const [isLoaded, setIsLoaded] = useState(false);
-
-  const playSound = async () => {
-    await audio.playAsync();
+    
+  const playSoundNarration = async () => {
+     try{
+      await audio.current.playAsync();
+    
+     }catch(error){
+      console.log('Erro ao dar play no audio', error);
+     }
   }
   const stopSoundNarration = async () => {
     let statusSom = await audio.current.getStatusAsync();
     try {
       if (statusSom.isLoaded == true) {
         await audio.current.stopAsync()
-        await audio.current.unloadAsync();
+       // await audio.current.unloadAsync();
       }
     } catch (error) {
       console.log('Erro ao pausar o audio', error)
@@ -31,7 +34,6 @@ function SoundNarrationProvider({ children }) {
   }, [])
 
 
-  //Revendo este metodo pois se mudar de pagina bem rapido ainda está sobreescrevendo
   async function initNarrationSound(som) {
 
     audio.current.unloadAsync();
@@ -48,7 +50,7 @@ function SoundNarrationProvider({ children }) {
   }
 
   return (
-    <SoundNarrationContext.Provider value={{ playSound, stopSoundNarration, initNarrationSound, sound, setSound, soundStatusNarration }}>
+    <SoundNarrationContext.Provider value={{ playSoundNarration, stopSoundNarration, initNarrationSound, soundStatusNarration }}>
       {children}
     </SoundNarrationContext.Provider>
   )
