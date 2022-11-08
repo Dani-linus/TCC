@@ -29,7 +29,12 @@ export default function PageEight({navigation}) {
         };
     }, []);
 
-
+    /**
+     * LOBO ASSOPRANDO A CASA DE PALHA
+     * inicia em 0-145
+     * aguarda toque e vai de 145-299
+     * volta em loop 282-299
+     */
 
     return (
         <View style={styles.container}>

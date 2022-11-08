@@ -29,6 +29,14 @@ export default function PageTen({navigation}) {
         };
     }, []);
 
+    /**
+     * LOBO ASSOPRANDO A CASA DE MADEIRA
+     * inicia em 0-135
+     * ao tocar vai de 135-299
+     * loop para 290-299
+     * 
+     */
+
     return (
         <View style={styles.container}>
             <LottieView
