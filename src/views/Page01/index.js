@@ -28,7 +28,6 @@ export default function PageOne({ navigation }) {
         navigation.addListener('focus', () => initNarrationSound(narrationScene1));
     }, []);
 
-    
     useEffect(() => {
         //Timeout para apresentar o button de navegação
         let timer = setTimeout(() => {
@@ -38,7 +37,6 @@ export default function PageOne({ navigation }) {
             clearTimeout(timer);
         };
     }, []);
-
 
     const animation_pig_mom = useRef();
     const animation_pig_spleeping = useRef();
