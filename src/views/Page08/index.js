@@ -1,5 +1,5 @@
-import React , { useContext, useEffect , useState} from 'react';
-import { View } from 'react-native';
+import React, { useContext, useEffect, useState, useRef } from 'react';
+import { View, TouchableNativeFeedback } from 'react-native';
 import styles from './style';
 import LottieView from 'lottie-react-native';
 import LegendCaptionArea from '../../components/LegendTextArea';
@@ -10,8 +10,9 @@ import { textScene8 } from '../legendTextFile';
 
 const scene8JSON = require('../../../assets/animations/page8/page_8.json');
 const narrationScene8 = require('../../../assets/sound/narration/Page08/Page8.mp3');
+const wolfBlowing = require('../../../assets/animations/page8/wolfBlowingTheStrawHouse.json');
 
-export default function PageEight({navigation}) {
+export default function PageEight({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
@@ -36,6 +37,14 @@ export default function PageEight({navigation}) {
      * volta em loop 282-299
      */
 
+    const animation_wolfBlowing = useRef();
+    
+    animation_wolfBlowing.current?.play(0, 145);
+
+    function start_animation_wolfBlowing() {
+        animation_wolfBlowing.current?.play(145, 299);
+    }
+
     return (
         <View style={styles.container}>
             <LottieView
@@ -43,14 +52,21 @@ export default function PageEight({navigation}) {
                 autoPlay={true}
                 loop={true}
                 resizeMode='cover'
-                />
+            />
 
+            <View style={styles.view_wolfBlowing}>
+                <TouchableNativeFeedback onPress={start_animation_wolfBlowing}>
+                    <LottieView
+                        source={wolfBlowing}
+                        ref={animation_wolfBlowing}
+                        resizeMode='cover'
+                    />
+                </TouchableNativeFeedback>
+            </View>
             <LayoutPages>
-                {/* ... */}
-
                 <LegendCaptionArea text={textScene8} />
-                
-                {loadingButtonNavigation &&  <ButtonNavigation  proxRoute="PageNine" navigation={navigation} showComponent={true}/>}
+
+                {loadingButtonNavigation && <ButtonNavigation proxRoute="PageNine" navigation={navigation} showComponent={true} />}
 
             </LayoutPages>
         </View >
