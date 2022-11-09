@@ -57,8 +57,8 @@ function ModalOptions(props) {
 
     //função para definir quando o botão de recomeçar 
     const showComponentButton = props.showComponent ? (
-        <View>
-        <TouchableOpacity style={[styles.btn, styles.btn_restart]} onPress={goBack}>
+        <View style={{width: '100%'}}>
+            <TouchableOpacity style={[styles.btn, styles.btn_restart]} onPress={goBack}>
                 <Text style={[styles.text_black, styles.text_modal_options]}>Recomeçar história</Text>
             </TouchableOpacity>
         </View>
@@ -77,10 +77,13 @@ function ModalOptions(props) {
                             <Ionicons name='close' size={32} color='black' />
                         </TouchableOpacity>
                     </View>
-                    <Text style={[styles.text_black, styles.text_modal_options]}>Definições</Text>
-                    <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginBottom: 10}}>
+                        <Ionicons name="settings-outline" size={24} color="black" style={{marginEnd: 15}}/>
+                        <Text style={[styles.text_black, styles.text_modal_options]}>Definições e ajustes</Text>
+                    </View>
+                    <View style={styles.viewOptions}>
                         <View style={styles.viewNarration}>
-                            <Ionicons name={iconNarration} size={32} color='black' style={{ marginEnd: 10 }}></Ionicons>
+                            <Ionicons name={iconNarration} size={32} color='black' style={{ marginEnd: 15 }}></Ionicons>
                             <Text style={[styles.text_black, styles.text_modal_options]}>
                                 narração
                             </Text>
@@ -94,7 +97,7 @@ function ModalOptions(props) {
                             </Switch>
                         </View>
                         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <Ionicons name={iconSound} size={32} color='black' style={{ marginEnd: 10 }}></Ionicons>
+                            <Ionicons name={iconSound} size={32} color='black' style={{ marginEnd: 15 }}></Ionicons>
                             <Text style={[styles.text_black, styles.text_modal_options]}>
                                 som ambiente
                             </Text>
@@ -111,7 +114,6 @@ function ModalOptions(props) {
                     {showComponentButton}
                 </View>
             </Modal>
-
             {/* botão para abrir a modal de definições */}
             <TouchableOpacity style={styles.btn_option} onPress={() => { setModalVisible(true) }}>
                 <Ionicons name='menu' size={50} color='white' />
@@ -128,6 +130,7 @@ const styles = StyleSheet.create({
         margin: 10,
         borderRadius: 20,
         padding: 20,
+        alignItems: 'center',
     },
     btn_option: {
         width: 50,
@@ -144,9 +147,9 @@ const styles = StyleSheet.create({
         elevation: 2
     },
     btn_restart: {
-        marginHorizontal: 170,
-        marginTop: 10,
-        padding: 3,
+        marginHorizontal: 150,
+        marginTop: 20,
+        padding: 5,
     },
     text_black: {
         color: "black",
@@ -162,7 +165,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'flex-start',
         alignItems: 'center',
-        marginTop: '5%'
     },
     switchStyle: {
         marginLeft: 10,
@@ -171,6 +173,14 @@ const styles = StyleSheet.create({
         marginHorizontal: 170,
         marginTop: 20,
         padding: 3,
+    },
+    viewOptions: { 
+        width: '100%', 
+        height: '50%', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        backgroundColor: '#E1F5EE', 
+        borderRadius: 20,
     },
 
 });
