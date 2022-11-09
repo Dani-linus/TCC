@@ -23,20 +23,23 @@ export default function PageOne({ navigation }) {
     const { updateVolumSound } = useContext(SoundContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
 
-    useEffect(() => {
-        //Iniciando a narração da página
-        navigation.addListener('focus', () => initNarrationSound(narrationScene1));
-    }, []);
 
-    useEffect(() => {
-        //Timeout para apresentar o button de navegação
+    function timeoutButtonNavegacao(){
         let timer = setTimeout(() => {
             setloadingButton(true);
-        }, 3500);
+        }, 5000);
+    }
+
+    timeoutButtonNavegacao();
+
+    useEffect(() => {
+        //Iniciando a narração da página
+        navigation.addListener('focus', () => initNarrationSound(narrationScene1), timeoutButtonNavegacao());
         return () => {
-            clearTimeout(timer);
+            setloadingButton(false);
         };
     }, []);
+
 
     const animation_pig_mom = useRef();
     const animation_pig_spleeping = useRef();

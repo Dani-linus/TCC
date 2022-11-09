@@ -17,7 +17,7 @@ function LegendTextArea(props) {
                 <Animatable.Text
                     animation="zoomIn"
                     easing={'ease-in-out'}
-                    delay={2000}
+                    delay={3000}
                     duration={500}
                     style={[styles.text_black, styles.text_modal_options]}>
                     {/* prop varia conforme o texto de onde o componente for chamado */}

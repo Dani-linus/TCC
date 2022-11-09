@@ -24,6 +24,18 @@ const styles = StyleSheet.create({
         width: wp(100),
         left: wp(-10.5),
     },
+    toggleView: {
+      width: 30,
+      height: 30,
+      borderRadius: 40,
+      backgroundColor: 'white',
+      opacity: 0.7,
+      position: 'absolute',
+    },
+    toggleCauldron: {
+      left: wp(19),
+      top: wp(36),
+    },
   })
 
 export default styles;

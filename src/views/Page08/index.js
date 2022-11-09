@@ -7,6 +7,7 @@ import ButtonNavigation from '../../components/ButtonNavigation';
 import LayoutPages from '../../components/LayoutPages';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { textScene8 } from '../legendTextFile';
+import * as Animatable from 'react-native-animatable';
 
 const scene8JSON = require('../../../assets/animations/page8/page_8.json');
 const narrationScene8 = require('../../../assets/sound/narration/Page08/Page8.mp3');
@@ -39,10 +40,10 @@ export default function PageEight({ navigation }) {
 
     const animation_wolfBlowing = useRef();
     
-    // animation_wolfBlowing.current?.play(0, 145);
+    animation_wolfBlowing.current?.play(0, 145);
 
     function start_animation_wolfBlowing() {
-        // animation_wolfBlowing.current?.play(145, 299);
+        animation_wolfBlowing.current?.play(145, 299);
     }
 
     return (
@@ -59,14 +60,15 @@ export default function PageEight({ navigation }) {
                 ref={animation_wolfBlowing}
                 autoPlay={true}
                 loop={true}
-                // resizeMode='cover'
+                resizeMode='cover'
                 style={styles.view_wolfBlowing}
             />
-            {/* <View >
-                <TouchableNativeFeedback onPress={start_animation_wolfBlowing}>
-                </TouchableNativeFeedback>
-            </View> */}
             <LayoutPages>
+                 {/* controle de animação 1 */}
+                 <TouchableNativeFeedback onPress={start_animation_wolfBlowing}>
+                    <Animatable.View style={[styles.toggleView, styles.togglebadWolf]} animation="pulse" easing="linear" iterationCount="infinite" />
+                </TouchableNativeFeedback>
+
                 <LegendCaptionArea text={textScene8} />
 
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageNine" navigation={navigation} showComponent={true} />}

@@ -30,7 +30,19 @@ const styles = StyleSheet.create({
         width: wp(80),
         top: wp(1),
         left: wp(15)
-    }
+    },
+     toggleView: {
+      width: 30,
+      height: 30,
+      borderRadius: 50,
+      backgroundColor: 'white',
+      opacity: 0.7,
+      position: 'absolute',
+    },
+    togglebadWolf: {
+      left: wp(44),
+      top: wp(36),
+    },
 })
 
 export default styles;

@@ -18,17 +18,20 @@ export default function PageTwo({navigation}) {
     const animation_pig_father_pig_mom = useRef();
     const {initNarrationSound} = useContext(SoundNarrationContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
-    
-   useEffect(() => {
-        navigation.addListener('focus', ()=> initNarrationSound(narrationScene2));
-    }, []);
-    
-    useEffect(() => {
+
+
+    function timeoutButtonNavegacao(){
         let timer = setTimeout(() => {
             setloadingButton(true);
-        }, 3500);
+        }, 5000);
+    }
+
+    timeoutButtonNavegacao();
+   useEffect(() => {
+        navigation.addListener('focus', ()=> initNarrationSound(narrationScene2) , timeoutButtonNavegacao());
+        
         return () => {
-            clearTimeout(timer);
+            setloadingButton(false);
         };
     }, []);
 
@@ -59,7 +62,7 @@ export default function PageTwo({navigation}) {
 
                 <LegendCaptionArea text={textScene2} />
                 
-                {loadingButtonNavigation && <ButtonNavigation proxRoute="PageThree" navigation={navigation}  showComponent={true}/> }                                   
+                {loadingButtonNavigation && <ButtonNavigation proxRoute="PageSix" navigation={navigation}  showComponent={true}/> }                                   
             </LayoutPages>
         </View >
     )

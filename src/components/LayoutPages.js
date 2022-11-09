@@ -12,7 +12,6 @@ export default function LayoutPages(props){
         <>
             <View style={styles.view_modals}>
                 <ModalOptions showComponent={showComponent} goBackRoute="HomeView"/>
-                <ModalInfo/>
             </View>
 
             {/* childrens */}

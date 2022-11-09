@@ -7,6 +7,7 @@ import ButtonNavigation from '../../components/ButtonNavigation';
 import LayoutPages from '../../components/LayoutPages';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { textScene10 } from '../legendTextFile';
+import * as Animatable from 'react-native-animatable';
 
 const scene10JSON = require('../../../assets/animations/page10/page_10.json');
 const narrationScene10 = require('../../../assets/sound/narration/Page10/Page10.mp3');
@@ -39,10 +40,11 @@ export default function PageTen({ navigation }) {
      */
 
     const animation_wolfBlowing = useRef();
+
     function start_animation_wolfBlowing() {
-        // animation_wolfBlowing.current?.play(135, 299);
+        animation_wolfBlowing.current?.play(135, 299);
     }
-    // animation_wolfBlowing.current?.play(0, 135);
+     animation_wolfBlowing.current?.play(0, 135);
     
     return (
         <View style={styles.container}>
@@ -55,16 +57,15 @@ export default function PageTen({ navigation }) {
             <LottieView
                 source={wolfBlowing}
                 ref={animation_wolfBlowing}
-                autoPlay={true}
                 loop={true}
                 style={styles.view_wolfBlowing}
             />
             <LayoutPages>
-                {/* botoes todos aqui */}
-            {/* <View >
-                <TouchableNativeFeedback onPress={start_animation_wolfBlowing}>
+                  {/* controle de animação 1 */}
+                  <TouchableNativeFeedback onPress={start_animation_wolfBlowing}>
+                    <Animatable.View style={[styles.toggleView, styles.togglewolfBlowing]} animation="pulse" easing="linear" iterationCount="infinite" />
                 </TouchableNativeFeedback>
-            </View> */}
+
                 <LegendCaptionArea text={textScene10} />
 
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageEleven" navigation={navigation} showComponent={true} />}
