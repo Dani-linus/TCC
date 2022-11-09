@@ -1,9 +1,10 @@
-import React , { useContext, useEffect , useState} from 'react';
-import { View } from 'react-native';
+import React , { useContext, useEffect , useState,useRef} from 'react';
+import { View , TouchableNativeFeedback } from 'react-native';
 import styles from './style';
 import LottieView from 'lottie-react-native';
 import LayoutPages from 'components/LayoutPages';
 import LegendCaptionArea from 'components/LegendTextArea';
+import * as Animatable from 'react-native-animatable';
 import ButtonNavigation from 'components/ButtonNavigation';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { textScene6 } from '../legendTextFile';
@@ -36,6 +37,16 @@ export default function PageSix({navigation}) {
      * ao tocar vai de 32-99
      * fica em loop 45-72
      */
+
+     const animation_badWolf = useRef();
+
+     function startbadWolfJSON() {
+        animation_badWolf.current?.play(45,72);
+        
+    }
+
+    animation_badWolf.current?.play(0, 32);
+
     return (
         <View style={styles.container}>
             <LottieView
@@ -44,18 +55,22 @@ export default function PageSix({navigation}) {
                 loop={true}
                 resizeMode='cover'
             />
+             
             <LottieView
                 source={badWolfJSON}
-                autoPlay={true}
+                ref={animation_badWolf}
                 loop={true}
                 resizeMode='cover'
                 style={styles.badWolfStyle}
             />
+            
             <LayoutPages>
-                {/* só tratar o movimento do lobo */}
+                {/* controle de animação 1 */}
+                <TouchableNativeFeedback onPress={startbadWolfJSON}>
+                    <Animatable.View style={[styles.toggleView, styles.togglebadWolf]} animation="pulse" easing="linear" iterationCount="infinite" />
+                </TouchableNativeFeedback>
 
                 <LegendCaptionArea text={textScene6} />
-                
                 {loadingButtonNavigation  && <ButtonNavigation  proxRoute="PageSeven" navigation={navigation} showComponent={true}/>}
 
             </LayoutPages>

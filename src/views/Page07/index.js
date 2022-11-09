@@ -7,6 +7,7 @@ import ButtonNavigation from 'components/ButtonNavigation';
 import LayoutPages from '../../components/LayoutPages';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { textScene7 } from '../legendTextFile';
+import * as Animatable from 'react-native-animatable';
 
 const scene7JSON = require('../../../assets/animations/page7/page_7.json');
 const pig_speak = require('../../../assets/animations/page7/pig_speak.json');
@@ -31,7 +32,7 @@ export default function PageSeven({ navigation }) {
         };
     }, []);
     const animation_wolf = useRef();
-    
+
     function start_animation_wolf() {
         animation_wolf.current?.play();
     }
@@ -48,20 +49,20 @@ export default function PageSeven({ navigation }) {
                 source={pig_speak}
                 autoPlay={true}
                 resizeMode='cover'
-                style={styles.view_pig_speak} 
+                style={styles.view_pig_speak}
             />
             <LottieView
                 source={wolf}
-                resizeMode='cover' 
+                ref={animation_wolf}
+                resizeMode='cover'
                 style={styles.view_wolf}
             />
-
-            {/* <View >
-                <TouchableNativeFeedback onPress={start_animation_wolf}>
-                </TouchableNativeFeedback>
-            </View> */}
-            
             <LayoutPages>
+                {/* controle de animação 1 */}
+                <TouchableNativeFeedback onPress={start_animation_wolf}>
+                    <Animatable.View style={[styles.toggleView, styles.togglebadWolf]} animation="pulse" easing="linear" iterationCount="infinite" />
+                </TouchableNativeFeedback>
+
                 <LegendCaptionArea text={textScene7} />
 
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageEight" navigation={navigation} showComponent={true} />}

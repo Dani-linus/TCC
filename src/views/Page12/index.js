@@ -7,12 +7,10 @@ import ButtonNavigation from '../../components/ButtonNavigation';
 import LayoutPages from '../../components/LayoutPages';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { textScene12 } from '../legendTextFile';
+import * as Animatable from 'react-native-animatable';
 
 const wolfPage12 = require('../../../assets/animations/page12/wolf_page_12.json');
-
-//Sem a narração ainda
-//const narrationScene12 = require('../../../assets/sound/narration/Page12/Page12.mp3');
-
+const narrationScene12 = require('../../../assets/sound/narration/Page12/Page12.mp3');
 const scene12JSON = require('../../../assets/animations/page12/page_12.json')
 
 export default function PageTwelve({ navigation }) {
@@ -21,12 +19,12 @@ export default function PageTwelve({ navigation }) {
     const { initNarrationSound } = useContext(SoundNarrationContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
 
-    /*
+    
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene12));
     }, []);
 
-    */
+    
     useEffect(() => {
         let timer = setTimeout(() => {
             setloadingButton(true);
@@ -40,9 +38,9 @@ export default function PageTwelve({ navigation }) {
     function wolfMotionControl() {
         // lobo sobra tres vezes a casa até cansar
         for (var i = 0; i < 3; i++) {
-            // animation_wolf.current?.play(0, 300);
+            animation_wolf.current?.play(0, 300);
         }
-        // animation_wolf.current?.play();
+     //   animation_wolf.current?.play();
 
     }
     return (
@@ -56,13 +54,13 @@ export default function PageTwelve({ navigation }) {
             <LottieView
                 source={wolfPage12}
                 ref={animation_wolf}
-                autoPlay={true}
-                loop={true}
                 style={styles.view_wolf}
             />
             <LayoutPages>
-                {/* adicionar um botão em volta da animação e chamar esta função wolfMotionControl*/}
-                {/* <TouchableNativeFeedback onPress={wolfMotionControl}></TouchableNativeFeedback> */}
+                  {/* controle de animação 1 */}
+                <TouchableNativeFeedback onPress={wolfMotionControl}>
+                    <Animatable.View style={[styles.toggleView, styles.togglewolf]} animation="pulse" easing="linear" iterationCount="infinite" />
+                </TouchableNativeFeedback>
 
                 <LegendCaptionArea text={textScene12} />
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageThirteen" navigation={navigation} showComponent={true} />}

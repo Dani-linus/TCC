@@ -12,8 +12,8 @@ import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
 const presentationPigJSON =  require('../../../assets/animations/page3/presentation_pig_tuca.json');
 const scene3JSON = require('../../../assets/animations/page3/page_3.json');
-const narrationScene3 =  require('../../../assets/sound/narration/Page03/Page3.mp3');
-const imgCasaTeste = require('../../../assets/img/straw-house.png');
+//const narrationScene3 =  require('../../../assets/sound/narration/Page03/Page3.mp3');
+//const imgCasaTeste = require('../../../assets/img/straw-house.png');
 
 
 export default function PageThree({navigation}) {
@@ -22,6 +22,7 @@ export default function PageThree({navigation}) {
     const [viewImage, setViewImage] =  useState(false);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
 
+
     useEffect(() => {
         navigation.addListener('focus', ()=> initNarrationSound(narrationScene3));
     });
@@ -29,7 +30,7 @@ export default function PageThree({navigation}) {
     useEffect(() => {
         let timer = setTimeout(() => {
             setloadingButton(true);
-        }, 3500);
+        }, 5000);
         return () => {
             clearTimeout(timer);
         };
