@@ -44,19 +44,23 @@ export default function PageSeven({ navigation }) {
                 loop={true}
                 resizeMode='cover'
             />
-            <View style={styles.view_pig_speak}>
-                <LottieView
-                    source={pig_speak}
-                    autoPlay={true}
-                    resizeMode='cover' />
-            </View>
-            <View style={styles.view_wolf}>
+            <LottieView
+                source={pig_speak}
+                autoPlay={true}
+                resizeMode='cover'
+                style={styles.view_pig_speak} 
+            />
+            <LottieView
+                source={wolf}
+                resizeMode='cover' 
+                style={styles.view_wolf}
+            />
+
+            {/* <View >
                 <TouchableNativeFeedback onPress={start_animation_wolf}>
-                    <LottieView
-                        source={wolf}
-                        resizeMode='cover' />
                 </TouchableNativeFeedback>
-            </View>
+            </View> */}
+            
             <LayoutPages>
                 <LegendCaptionArea text={textScene7} />
 

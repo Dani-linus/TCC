@@ -14,7 +14,6 @@ const hp = heightPercent => {
   return PixelRatio.roundToNearestPixel(Height * elemHeight / 100);
 };
 
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,

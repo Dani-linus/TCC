@@ -44,17 +44,19 @@ export default function PageThree({navigation}) {
                 resizeMode='cover'
             ></LottieView>
 
-                <LottieView 
-                    source={presentationPigJSON}
-                    autoPlay
-                    loop={false}
-                    style={{ position: 'absolute', left: -220, bottom: -70}}
-                ></LottieView>
+            <LottieView 
+                source={presentationPigJSON}
+                autoPlay
+                loop={true}
+                style={styles.presentation}
+            ></LottieView>
+
             <LayoutPages>
 
-                <Pressable onPress={() => setViewImage(true)} style={{width: 60, height: 60, borderRadius: 50, backgroundColor: 'white', left: 600, top: 110}}>
+                {/* <Pressable onPress={() => setViewImage(true)} style={{width: 60, height: 60, borderRadius: 50, backgroundColor: 'white', left: 600, top: 110}}>
                 </Pressable>
-                <BuildStrawHouse />
+
+                <BuildStrawHouse /> */}
 
                 <LegendCaptionArea text={textScene3}/>
                 

@@ -9,6 +9,7 @@ import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { textScene6 } from '../legendTextFile';
 
 const scene6JSON = require('../../../assets/animations/page6/page_6.json')
+const badWolfJSON = require('../../../assets/animations/page6/bad-wolf.json')
 const narrationScene6 = require('../../../assets/sound/narration/Page06/Page6.mp3');
 
 export default function PageSix({navigation}) {
@@ -42,10 +43,16 @@ export default function PageSix({navigation}) {
                 autoPlay={true}
                 loop={true}
                 resizeMode='cover'
-                />
-
+            />
+            <LottieView
+                source={badWolfJSON}
+                autoPlay={true}
+                loop={true}
+                resizeMode='cover'
+                style={styles.badWolfStyle}
+            />
             <LayoutPages>
-                {/* ... */}
+                {/* só tratar o movimento do lobo */}
 
                 <LegendCaptionArea text={textScene6} />
                 
