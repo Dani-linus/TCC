@@ -12,7 +12,7 @@ import * as Animatable from "react-native-animatable";
 //Sem a narração ainda
 //const narrationScene14 = require('../../../assets/sound/narration/Page14/Page14.mp3');
 const scene14JSON = require('../../../assets/animations/page14/page_14.json');
-const caldeirao = require('../../../assets/animations/page14/caldeirao.json');
+const cauldronJSON = require('../../../assets/animations/page14/cauldron.json');
 
 export default function PageFourteen({ navigation }) {
     /*
@@ -40,12 +40,12 @@ export default function PageFourteen({ navigation }) {
     3 - interação pra acender o fogo e o lobo descer - 150-300
     4 -  volta em loop no fogo 150-200
     */
-    const animation_caldeirao = useRef();
+    const animation_cauldron = useRef();
 
-    animation_caldeirao.current?.play(0,150);
+    // animation_cauldron?.play(0,150);
 
-    function startCaldeirao() {
-        animation_caldeirao.current?.play(150,300);
+    function startCauldron() {
+        // animation_cauldron?.play(150,300);
     }
 
     return (
@@ -56,16 +56,18 @@ export default function PageFourteen({ navigation }) {
                 loop={true}
                 resizeMode='cover'
             />
-            <View style={styles.view_caldeirao}>
-                <TouchableNativeFeedback onPress={startCaldeirao}>
-                    <LottieView
-                        source={caldeirao}
-                        ref={animation_caldeirao}
-                    ></LottieView>
-                </TouchableNativeFeedback>
-            </View>
+            <LottieView
+                source={cauldronJSON}
+                ref={animation_cauldron}
+                style={styles.view_caldeirao}
+                autoPlay={true}
+            />
         
             <LayoutPages>
+            {/* <View style={styles.view_caldeirao}>
+                <TouchableNativeFeedback onPress={startCaldeirao}>
+                </TouchableNativeFeedback>
+            </View> */}
                 <LegendCaptionArea text={textScene14} />
                 <ButtonNavigation proxRoute="PageFifteen" navigation={navigation} showComponent={true} />
             </LayoutPages>

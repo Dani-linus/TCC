@@ -21,10 +21,9 @@ const styles = StyleSheet.create({
     },
     view_wolf:{
         position: 'absolute',
-        width: wp(80),
-        height: hp(100),
-        top: wp(5),
-        left: wp(-11),
+        width: wp(120),
+        top: wp(-3),
+        left: wp(-12),
     }
 })
 

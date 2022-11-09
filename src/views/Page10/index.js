@@ -40,9 +40,9 @@ export default function PageTen({ navigation }) {
 
     const animation_wolfBlowing = useRef();
     function start_animation_wolfBlowing() {
-        animation_wolfBlowing.current?.play(135, 299);
+        // animation_wolfBlowing.current?.play(135, 299);
     }
-    animation_wolfBlowing.current?.play(0, 135);
+    // animation_wolfBlowing.current?.play(0, 135);
     
     return (
         <View style={styles.container}>
@@ -52,18 +52,19 @@ export default function PageTen({ navigation }) {
                 loop={true}
                 resizeMode='cover'
             />
-            <View style={styles.view_wolfBlowing}>
-                <TouchableNativeFeedback onPress={start_animation_wolfBlowing}>
-                    <LottieView
-                        source={wolfBlowing}
-                        ref={animation_wolfBlowing}
-                    // autoPlay={true}
-                    // loop={true}
-                    // resizeMode='cover'
-                    />
-                </TouchableNativeFeedback>
-            </View>
+            <LottieView
+                source={wolfBlowing}
+                ref={animation_wolfBlowing}
+                autoPlay={true}
+                loop={true}
+                style={styles.view_wolfBlowing}
+            />
             <LayoutPages>
+                {/* botoes todos aqui */}
+            {/* <View >
+                <TouchableNativeFeedback onPress={start_animation_wolfBlowing}>
+                </TouchableNativeFeedback>
+            </View> */}
                 <LegendCaptionArea text={textScene10} />
 
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageEleven" navigation={navigation} showComponent={true} />}

@@ -8,6 +8,7 @@ import LayoutPages from '../../components/LayoutPages';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { textScene15 } from '../legendTextFile';
 
+const scene15JSON = require('../../../assets/animations/page15/page_15.json')
 const narrationScene15 = require('../../../assets/sound/narration/Page15/Page15.mp3');
 
 export default function PageFifteen({navigation}) {
@@ -31,9 +32,15 @@ export default function PageFifteen({navigation}) {
 
     return (
         <View style={styles.container}>
+            <LottieView
+                source={scene15JSON}
+                autoPlay={true}
+                loop={true}
+                resizeMode='cover'
+            />
             <LayoutPages>
                 <LegendCaptionArea text={textScene15} />
-                <ButtonNavigation  proxRoute="PageEnd" navigation={navigation}/> showComponent={true} 
+                <ButtonNavigation  proxRoute="PageEnd" navigation={navigation} showComponent={true}/>  
             </LayoutPages>
         </View >
     )

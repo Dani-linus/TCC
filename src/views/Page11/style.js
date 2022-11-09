@@ -14,7 +14,6 @@ const hp = heightPercent => {
   return PixelRatio.roundToNearestPixel(Height * elemHeight / 100);
 };
 
-
 const styles = StyleSheet.create({
     container:{
         flex: 1,
@@ -22,10 +21,16 @@ const styles = StyleSheet.create({
     },
     view_pigs:{
         position: 'absolute',
-        width: wp(50),
-        height: hp(70),
-        top: wp(21),
-        left: wp(-11),
+        width: wp(80),
+        // height: hp(50),
+        top: wp(3),
+        left: wp(16),
+    },
+    view_wolf:{
+        position: 'absolute',
+        width: wp(32),
+        top: wp(6),
+        left: wp(6),
     },
 })
 

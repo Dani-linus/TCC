@@ -21,17 +21,15 @@ const styles = StyleSheet.create({
     },
     view_wolf:{
         position: 'absolute',
-        width: wp(30),
-        height: hp(50),
-        top: wp(20),
-        left: wp(-7),
+        width: wp(33),
+        top: wp(6),
+        left: wp(11),
     },
     view_pigs:{
         position: 'absolute',
-        width: wp(60),
-        height: hp(50),
-        top: wp(20),
-        left: wp(16)
+        width: wp(80),
+        top: wp(1),
+        left: wp(15)
     }
 })
 

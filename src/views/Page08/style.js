@@ -21,10 +21,10 @@ const styles = StyleSheet.create({
     },
     view_wolfBlowing:{
         position: 'absolute',
-        width: wp(80),
-        height: hp(60),
-        top: wp(15),
-        left: wp(13),
+        width: wp(100),
+        // height: hp(60),
+        top: wp(0),
+        left: wp(3),
     }
 })
 

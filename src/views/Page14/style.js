@@ -21,10 +21,8 @@ const styles = StyleSheet.create({
     },
     view_caldeirao:{
         position: 'absolute',
-        width: wp(50),
-        height: hp(70),
-        top: wp(21),
-        left: wp(-11),
+        width: wp(100),
+        left: wp(-10.5),
     },
   })
 

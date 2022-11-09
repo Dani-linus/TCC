@@ -5,34 +5,38 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        // backgroundColor: 'blue',
     },
     txt1:{
         fontFamily: 'FuzzyBubbles-Bold',
         fontSize: 26,
         lineHeight: 70
-
     },
-    tx2:{
-        fontFamily: 'FuzzyBubbles-Bold',
-        fontSize: 24,
-        lineHeight: 75
+    messageEnd:{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        // backgroundColor: 'green',
     },
-    view_txt:{
-        justifyContent: "center",
-        alignItems: "center",
+    btnEnd:{
+        flex: 1,
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        // backgroundColor: 'red',
     },
     btn: {
-        backgroundColor: '#A8D7F5',
-        borderRadius: 20,
-    },
-    btn_restart: {
-        marginHorizontal: 300,
+        marginHorizontal: 10,
+        padding: 10,
         marginTop: 20,
-        padding: 3,
+        backgroundColor: '#A8D7F5',
+        borderRadius: 15,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     text_black: {
         color: "black",
         fontFamily: 'FuzzyBubbles-Bold',
+        fontSize: 18,
     },
 })
 

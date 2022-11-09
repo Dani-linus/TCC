@@ -36,10 +36,8 @@ export default function PageThirteen({navigation}) {
                 autoPlay={true}
                 loop={true}
                 resizeMode='cover'
-                /> 
+            /> 
             <LayoutPages>
-                {/* ... */}
-
                 <LegendCaptionArea text={textScene13} />
                 
                 {loadingButtonNavigation &&  <ButtonNavigation  proxRoute="PageFourteen" navigation={navigation} showComponent={true}/>}

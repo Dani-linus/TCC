@@ -35,24 +35,28 @@ export default function PageNine({navigation}) {
 //Faltou os frames das animações
     return (
         <View style={styles.container}>
-              <LottieView
+            <LottieView
                 source={scene9JSON}
                 autoPlay={true}
                 loop={true}
                 resizeMode='cover'
-                />
-                <View style={styles.view_wolf}>
-                <LottieView
+            />
+
+            <LottieView
                 source={wolf}
-                resizeMode='cover'
-                />
-                </View>
-                <View style={styles.view_pigs}>
-                <LottieView
+                autoPlay={true}
+                loop={true}
+                style={styles.view_wolf}
+            />
+
+            <LottieView
                 source={pigs}
-                resizeMode='cover'
-                />
-                </View>
+                autoPlay={true}
+                loop={true}
+                style={styles.view_pigs}
+            />
+
+{/* a animação dos porcos precisa esperar o lobo bater na porta e pedir pra abrir */}
             <LayoutPages>
                 <LegendCaptionArea text={textScene9} />
                 {loadingButtonNavigation &&  <ButtonNavigation  proxRoute="PageTen" navigation={navigation} showComponent={true}/>}

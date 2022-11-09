@@ -26,6 +26,7 @@ export default function PageTwelve({ navigation }) {
         navigation.addListener('focus', () => initNarrationSound(narrationScene12));
     }, []);
 
+    */
     useEffect(() => {
         let timer = setTimeout(() => {
             setloadingButton(true);
@@ -35,14 +36,13 @@ export default function PageTwelve({ navigation }) {
         };
     }, []);
 
-*/
 
     function wolfMotionControl() {
         // lobo sobra tres vezes a casa até cansar
         for (var i = 0; i < 3; i++) {
-            animation_wolf.current?.play(0, 300);
+            // animation_wolf.current?.play(0, 300);
         }
-        animation_wolf.current?.play();
+        // animation_wolf.current?.play();
 
     }
     return (
@@ -53,20 +53,17 @@ export default function PageTwelve({ navigation }) {
                 loop={true}
                 resizeMode='cover'
             />
+            <LottieView
+                source={wolfPage12}
+                ref={animation_wolf}
+                autoPlay={true}
+                loop={true}
+                style={styles.view_wolf}
+            />
             <LayoutPages>
                 {/* adicionar um botão em volta da animação e chamar esta função wolfMotionControl*/}
+                {/* <TouchableNativeFeedback onPress={wolfMotionControl}></TouchableNativeFeedback> */}
 
-                <View style={styles.view_wolf}>
-                <TouchableNativeFeedback onPress={wolfMotionControl}>
-                    <LottieView
-                     source={wolfPage12}
-                     ref={animation_wolf}
-                    // autoPlay={true}
-                    // loop={true}
-                    // resizeMode='cover'
-                    />
-                </TouchableNativeFeedback>
-                </View>
                 <LegendCaptionArea text={textScene12} />
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageThirteen" navigation={navigation} showComponent={true} />}
             </LayoutPages>

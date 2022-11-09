@@ -38,17 +38,25 @@ export default function PageEleven({navigation}) {
                 autoPlay={true}
                 loop={true}
                 resizeMode='cover'
-                />
-            <View style={styles.view_pigs}>
+            />
+
             <LottieView
-                     source={pigs}
-                    // autoPlay={true}
-                    // loop={true}
-                    // resizeMode='cover'
-                    />
-                </View>
+                source={pigs}
+                autoPlay={true}
+                loop={true}
+                style={styles.view_pigs}
+            />
+
+            <LottieView
+                source={wolf}
+                autoPlay={true}
+                loop={true}
+                style={styles.view_wolf}
+            />
+
             <LayoutPages>
-                {/* ... */}
+                {/* botoes aqui*/}
+
                 <LegendCaptionArea text={textScene11} />
                 
                 {loadingButtonNavigation && <ButtonNavigation  proxRoute="PageTwelve" navigation={navigation}showComponent={true}/>}

@@ -39,10 +39,10 @@ export default function PageEight({ navigation }) {
 
     const animation_wolfBlowing = useRef();
     
-    animation_wolfBlowing.current?.play(0, 145);
+    // animation_wolfBlowing.current?.play(0, 145);
 
     function start_animation_wolfBlowing() {
-        animation_wolfBlowing.current?.play(145, 299);
+        // animation_wolfBlowing.current?.play(145, 299);
     }
 
     return (
@@ -54,15 +54,18 @@ export default function PageEight({ navigation }) {
                 resizeMode='cover'
             />
 
-            <View style={styles.view_wolfBlowing}>
+            <LottieView
+                source={wolfBlowing}
+                ref={animation_wolfBlowing}
+                autoPlay={true}
+                loop={true}
+                // resizeMode='cover'
+                style={styles.view_wolfBlowing}
+            />
+            {/* <View >
                 <TouchableNativeFeedback onPress={start_animation_wolfBlowing}>
-                    <LottieView
-                        source={wolfBlowing}
-                        ref={animation_wolfBlowing}
-                        resizeMode='cover'
-                    />
                 </TouchableNativeFeedback>
-            </View>
+            </View> */}
             <LayoutPages>
                 <LegendCaptionArea text={textScene8} />
 
