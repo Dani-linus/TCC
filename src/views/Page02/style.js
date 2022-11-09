@@ -24,13 +24,24 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
     },
-    view_pig_father_pig_mom: {
+    pig_father_pig_mom: {
         position: 'absolute',
-        width: wp(50),
-        height: hp(55),
-        top: wp(14),
-        left: wp(-8),
+        width: wp(60),
+        height: hp(60),
+        top: wp(7),
+        left: wp(-6),
     },
-
+    togglePigs:{
+      left: wp(17),
+      top: wp(34),
+    },
+    toggleView:{
+      position: 'absolute', 
+      width: 30, 
+      height: 30, 
+      borderRadius: 50, 
+      backgroundColor: 'white', 
+      opacity: 0.7,
+  },
 });
 export default styles;

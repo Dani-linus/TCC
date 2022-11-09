@@ -38,20 +38,20 @@ const styles = StyleSheet.create({
         // borderWidth: 1
     },
     toggleView:{
-        width: 40, 
-        height: 40, 
+        width: 30, 
+        height: 30, 
         borderRadius: 50, 
         backgroundColor: 'white', 
-        opacity: 0.6,
+        opacity: 0.7,
         position: 'absolute', 
     },
     togglePigMom:{
-        left: wp(34.5),
-        top: wp(35),
+        left: wp(35),
+        top: wp(35.5),
     },
     togglePigSleeping:{
-        top: wp(30),
-        left: wp(77.5),
+        top: wp(31),
+        left: wp(78),
     }
 });
 export default styles;

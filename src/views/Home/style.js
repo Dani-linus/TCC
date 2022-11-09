@@ -1,12 +1,9 @@
-// Arquivo de style da capa do livro (screen Home)
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#56B2EB",
-        // padding: 5,
-        // borderWidth:2, borderColor:'gray'
     },
     btn_dimensoes:{
         width: 50,
@@ -87,6 +84,5 @@ const styles = StyleSheet.create({
     },
 
 });
-
 
 export default styles;

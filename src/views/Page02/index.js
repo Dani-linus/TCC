@@ -1,10 +1,10 @@
-//Página 2 do livro
 import React ,{useContext, useEffect, useRef, useState} from 'react';
 import { View, TouchableNativeFeedback } from 'react-native';
-import styles from './style';
 import LottieView from 'lottie-react-native';
 import LegendCaptionArea from 'components/LegendTextArea';
 import LayoutPages from 'components/LayoutPages';
+import * as Animatable from 'react-native-animatable';
+import styles from './style';
 import ButtonNavigation from 'components/ButtonNavigation'
 import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { textScene2 } from 'views/legendTextFile';
@@ -18,7 +18,6 @@ export default function PageTwo({navigation}) {
     const animation_pig_father_pig_mom = useRef();
     const {initNarrationSound} = useContext(SoundNarrationContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
-
     
    useEffect(() => {
         navigation.addListener('focus', ()=> initNarrationSound(narrationScene2));
@@ -46,16 +45,17 @@ export default function PageTwo({navigation}) {
                     resizeMode='cover'
                 ></LottieView>
 
+                <LottieView
+                    source={pigMomPigFatherJSON}
+                    ref={animation_pig_father_pig_mom}
+                    style={styles.pig_father_pig_mom}
+                ></LottieView>
+
             <LayoutPages>
 
-                <View style={styles.view_pig_father_pig_mom}>
-                    <TouchableNativeFeedback onPress={startAnimationPigFatherPigMom}>
-                        <LottieView
-                            source={pigMomPigFatherJSON}
-                            ref={animation_pig_father_pig_mom}
-                            ></LottieView>
-                    </TouchableNativeFeedback>
-                </View>
+                <TouchableNativeFeedback onPress={startAnimationPigFatherPigMom}>
+                    <Animatable.View style={[styles.toggleView, styles.togglePigs]} animation="pulse" easing="linear" iterationCount="infinite" />
+                </TouchableNativeFeedback>
 
                 <LegendCaptionArea text={textScene2} />
                 

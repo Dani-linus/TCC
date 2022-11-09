@@ -25,11 +25,10 @@ const Stack = createStackNavigator();
 function Routes(){
 
     return(
-        <Stack.Navigator initialRouteName='PageSeven' 
+        <Stack.Navigator initialRouteName='SplashScreen' 
           screenOptions={{
             headerShown: false, 
              gestureEnabled: false,
-            // gestureDirection: "horizontal",
             cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
           }}>
           <Stack.Screen name="SplashScreen" component={SplashScreen}/>
