@@ -1,4 +1,4 @@
-import React ,{ useContext, useEffect , useState} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View } from 'react-native';
 import styles from './style';
 import LottieView from 'lottie-react-native';
@@ -11,23 +11,29 @@ import { textScene15 } from '../legendTextFile';
 const scene15JSON = require('../../../assets/animations/page15/page_15.json')
 const narrationScene15 = require('../../../assets/sound/narration/Page15/Page15.mp3');
 
-export default function PageFifteen({navigation}) {
+export default function PageFifteen({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
+    const [load, setLoad] = useState(true);
 
+    function timeoutButtonNavegacao() {
+        let timer = setTimeout(() => {
+            setloadingButton(true);
+        }, 4500);
+    }
+    //Iniciando a narração
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene15));
     }, []);
 
+    //Definido um timeout para apresentar o button de navegacao
     useEffect(() => {
-        let timer = setTimeout(() => {
-            setloadingButton(true);
-        }, 3500);
+        navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
         return () => {
-            clearTimeout(timer);
+            setloadingButton(false);
         };
-    }, []);
+    }, [navigation, load]);
 
 
     return (
@@ -40,7 +46,7 @@ export default function PageFifteen({navigation}) {
             />
             <LayoutPages>
                 <LegendCaptionArea text={textScene15} />
-                <ButtonNavigation  proxRoute="PageEnd" navigation={navigation} showComponent={true}/>  
+                <ButtonNavigation proxRoute="PageEnd" navigation={navigation} showComponent={true} />
             </LayoutPages>
         </View >
     )

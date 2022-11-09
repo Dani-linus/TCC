@@ -1,5 +1,5 @@
 //página 4 do livro
-import React, { useContext, useEffect , useState} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, Image } from 'react-native';
 import styles from './style';
 import LegendCaptionArea from 'components/LegendTextArea';
@@ -17,46 +17,51 @@ export default function PageFour({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
-      
-    useEffect(() => {
-        navigation.addListener('focus', ()=> initNarrationSound(narrationScene4));
-    }, []);
+    const [load, setLoad] = useState(true);
 
-    
-    useEffect(() => {
+    function timeoutButtonNavegacao() {
         let timer = setTimeout(() => {
             setloadingButton(true);
-        }, 3500);
-        return () => {
-            clearTimeout(timer);
-        };
+        }, 4500);
+    }
+    //Iniciando a narração
+    useEffect(() => {
+        navigation.addListener('focus', () => initNarrationSound(narrationScene4));
     }, []);
+
+    //Definido um timeout para apresentar o button de navegacao
+    useEffect(() => {
+        navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
+        return () => {
+            setloadingButton(false);
+        };
+    }, [navigation, load]);
 
     return (
         <View style={styles.container}>
-                <LottieView
-                    source={scene4JSON}
-                    autoPlay={true}
-                    loop={true}
-                    resizeMode='cover'
-                    style={styles.view_animation_cover}
-                ></LottieView>
+            <LottieView
+                source={scene4JSON}
+                autoPlay={true}
+                loop={true}
+                resizeMode='cover'
+                style={styles.view_animation_cover}
+            ></LottieView>
 
-                <LottieView
-                    source={presentationPig}
-                    autoPlay={true}
-                    loop={true}
-                    resizeMode='cover'
-                    style={styles.presentation}
-                ></LottieView>
+            <LottieView
+                source={presentationPig}
+                autoPlay={true}
+                loop={true}
+                resizeMode='cover'
+                style={styles.presentation}
+            ></LottieView>
 
 
             <LayoutPages>
                 {/* interatividade da casa de madeira */}
-                
+
                 <LegendCaptionArea text={textScene4} />
 
-                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageFive" navigation={navigation} showComponent={true} />}
+                {loadingButtonNavigation && <ButtonNavigation proxRoute="PageFive" navigation={navigation} showComponent={true} />}
 
             </LayoutPages>
         </View>

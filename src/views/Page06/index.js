@@ -1,5 +1,5 @@
-import React , { useContext, useEffect , useState,useRef} from 'react';
-import { View , TouchableNativeFeedback } from 'react-native';
+import React, { useContext, useEffect, useState, useRef } from 'react';
+import { View, TouchableNativeFeedback } from 'react-native';
 import styles from './style';
 import LottieView from 'lottie-react-native';
 import LayoutPages from 'components/LayoutPages';
@@ -13,23 +13,42 @@ const scene6JSON = require('../../../assets/animations/page6/page_6.json')
 const badWolfJSON = require('../../../assets/animations/page6/bad-wolf.json')
 const narrationScene6 = require('../../../assets/sound/narration/Page06/Page6.mp3');
 
-export default function PageSix({navigation}) {
+export default function PageSix({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
+    const [save, setSave] = useState(true);
+    const firstRun = useRef(true);
+    const animation_badWolf = useRef();
+    const [load, setLoad] = useState(true);
+
+    function timeoutButtonNavegacao() {
+        let timer = setTimeout(() => {
+            setloadingButton(true);
+        }, 4500);
+    }
 
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene6));
-    }, []);
+        if (firstRun.current) {
+            if (save) {
+                animation_badWolf.current?.play(0, 32);
+            }
+            firstRun.current = false;
+        } else if (save) {
+            animation_badWolf.current.play(45, 72);
+        } else {
+            animation_badWolf.current.play(32, 99);
+        }
+    }, [save]);
 
+    //Definido um timeout para apresentar o button de navegacao
     useEffect(() => {
-        let timer = setTimeout(() => {
-            setloadingButton(true);
-        }, 3500);
+        navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
         return () => {
-            clearTimeout(timer);
+            setloadingButton(false);
         };
-    }, []);
+    }, [navigation, load]);
 
     /**
      * LOBO APARECENDO NO BOSQUE
@@ -37,15 +56,6 @@ export default function PageSix({navigation}) {
      * ao tocar vai de 32-99
      * fica em loop 45-72
      */
-
-     const animation_badWolf = useRef();
-
-     function startbadWolfJSON() {
-        animation_badWolf.current?.play(45,72);
-        
-    }
-
-    animation_badWolf.current?.play(0, 32);
 
     return (
         <View style={styles.container}>
@@ -55,7 +65,7 @@ export default function PageSix({navigation}) {
                 loop={true}
                 resizeMode='cover'
             />
-             
+
             <LottieView
                 source={badWolfJSON}
                 ref={animation_badWolf}
@@ -63,15 +73,15 @@ export default function PageSix({navigation}) {
                 resizeMode='cover'
                 style={styles.badWolfStyle}
             />
-            
+
             <LayoutPages>
                 {/* controle de animação 1 */}
-                <TouchableNativeFeedback onPress={startbadWolfJSON}>
+                <TouchableNativeFeedback onPress={() => setSave(!save)}>
                     <Animatable.View style={[styles.toggleView, styles.togglebadWolf]} animation="pulse" easing="linear" iterationCount="infinite" />
                 </TouchableNativeFeedback>
 
                 <LegendCaptionArea text={textScene6} />
-                {loadingButtonNavigation  && <ButtonNavigation  proxRoute="PageSeven" navigation={navigation} showComponent={true}/>}
+                {loadingButtonNavigation && <ButtonNavigation proxRoute="PageSeven" navigation={navigation} showComponent={true} />}
 
             </LayoutPages>
         </View >

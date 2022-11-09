@@ -1,4 +1,4 @@
-import React ,{useContext, useEffect, useRef, useState} from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { View, TouchableNativeFeedback } from 'react-native';
 import LottieView from 'lottie-react-native';
 import LegendCaptionArea from 'components/LegendTextArea';
@@ -11,29 +11,33 @@ import { textScene2 } from 'views/legendTextFile';
 
 const pigMomPigFatherJSON = require('../../../assets/animations/page2/pig_father_pig_mom.json');
 const scene2JSON = require('../../../assets/animations/page2/page_2.json');
-const narrationScene2 =  require('../../../assets/sound/narration/Page02/Page2.mp3');
+const narrationScene2 = require('../../../assets/sound/narration/Page02/Page2.mp3');
 
 
-export default function PageTwo({navigation}) {
+export default function PageTwo({ navigation }) {
     const animation_pig_father_pig_mom = useRef();
-    const {initNarrationSound} = useContext(SoundNarrationContext);
+    const { initNarrationSound } = useContext(SoundNarrationContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
+    const [load, setLoad] = useState(true);
 
-
-    function timeoutButtonNavegacao(){
+    function timeoutButtonNavegacao() {
         let timer = setTimeout(() => {
             setloadingButton(true);
-        }, 5000);
+        }, 4500);
     }
+    //Iniciando a narração
+    useEffect(() => {
+        navigation.addListener('focus', () => initNarrationSound(narrationScene2));
+    }, []);
 
-    timeoutButtonNavegacao();
-   useEffect(() => {
-        navigation.addListener('focus', ()=> initNarrationSound(narrationScene2) , timeoutButtonNavegacao());
-        
+    //Definido um timeout para apresentar o button de navegacao
+    useEffect(() => {
+        navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
         return () => {
             setloadingButton(false);
         };
-    }, []);
+    }, [navigation, load]);
+
 
     function startAnimationPigFatherPigMom() {
         animation_pig_father_pig_mom.current?.play();
@@ -41,18 +45,18 @@ export default function PageTwo({navigation}) {
     return (
         <View style={styles.container}>
 
-                <LottieView
-                    source={scene2JSON}
-                    autoPlay={true}
-                    loop={true}
-                    resizeMode='cover'
-                ></LottieView>
+            <LottieView
+                source={scene2JSON}
+                autoPlay={true}
+                loop={true}
+                resizeMode='cover'
+            ></LottieView>
 
-                <LottieView
-                    source={pigMomPigFatherJSON}
-                    ref={animation_pig_father_pig_mom}
-                    style={styles.pig_father_pig_mom}
-                ></LottieView>
+            <LottieView
+                source={pigMomPigFatherJSON}
+                ref={animation_pig_father_pig_mom}
+                style={styles.pig_father_pig_mom}
+            ></LottieView>
 
             <LayoutPages>
 
@@ -61,8 +65,8 @@ export default function PageTwo({navigation}) {
                 </TouchableNativeFeedback>
 
                 <LegendCaptionArea text={textScene2} />
-                
-                {loadingButtonNavigation && <ButtonNavigation proxRoute="PageSix" navigation={navigation}  showComponent={true}/> }                                   
+
+                {loadingButtonNavigation && <ButtonNavigation proxRoute="PageSix" navigation={navigation} showComponent={true} />}
             </LayoutPages>
         </View >
     )

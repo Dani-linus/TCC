@@ -17,19 +17,25 @@ export default function PageEight({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
+    const [load, setLoad] = useState(true);
 
+    function timeoutButtonNavegacao() {
+        let timer = setTimeout(() => {
+            setloadingButton(true);
+        }, 4500);
+    }
+    //Iniciando a narração
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene8));
     }, []);
 
+    //Definido um timeout para apresentar o button de navegacao
     useEffect(() => {
-        let timer = setTimeout(() => {
-            setloadingButton(true);
-        }, 3500);
+        navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
         return () => {
-            clearTimeout(timer);
+            setloadingButton(false);
         };
-    }, []);
+    }, [navigation, load]);
 
     /**
      * LOBO ASSOPRANDO A CASA DE PALHA
@@ -39,7 +45,7 @@ export default function PageEight({ navigation }) {
      */
 
     const animation_wolfBlowing = useRef();
-    
+
     animation_wolfBlowing.current?.play(0, 145);
 
     function start_animation_wolfBlowing() {
@@ -64,8 +70,8 @@ export default function PageEight({ navigation }) {
                 style={styles.view_wolfBlowing}
             />
             <LayoutPages>
-                 {/* controle de animação 1 */}
-                 <TouchableNativeFeedback onPress={start_animation_wolfBlowing}>
+                {/* controle de animação 1 */}
+                <TouchableNativeFeedback onPress={start_animation_wolfBlowing}>
                     <Animatable.View style={[styles.toggleView, styles.togglebadWolf]} animation="pulse" easing="linear" iterationCount="infinite" />
                 </TouchableNativeFeedback>
 

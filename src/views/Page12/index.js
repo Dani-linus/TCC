@@ -18,29 +18,32 @@ export default function PageTwelve({ navigation }) {
     const animation_wolf = React.createRef();
     const { initNarrationSound } = useContext(SoundNarrationContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
+    const [load, setLoad] = useState(true);
 
-    
+    function timeoutButtonNavegacao() {
+        let timer = setTimeout(() => {
+            setloadingButton(true);
+        }, 4500);
+    }
+    //Iniciando a narração
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene12));
     }, []);
 
-    
+    //Definido um timeout para apresentar o button de navegacao
     useEffect(() => {
-        let timer = setTimeout(() => {
-            setloadingButton(true);
-        }, 3500);
+        navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
         return () => {
-            clearTimeout(timer);
+            setloadingButton(false);
         };
-    }, []);
-
+    }, [navigation, load]);
 
     function wolfMotionControl() {
         // lobo sobra tres vezes a casa até cansar
         for (var i = 0; i < 3; i++) {
             animation_wolf.current?.play(0, 300);
         }
-     //   animation_wolf.current?.play();
+        //   animation_wolf.current?.play();
 
     }
     return (
@@ -57,7 +60,7 @@ export default function PageTwelve({ navigation }) {
                 style={styles.view_wolf}
             />
             <LayoutPages>
-                  {/* controle de animação 1 */}
+                {/* controle de animação 1 */}
                 <TouchableNativeFeedback onPress={wolfMotionControl}>
                     <Animatable.View style={[styles.toggleView, styles.togglewolf]} animation="pulse" easing="linear" iterationCount="infinite" />
                 </TouchableNativeFeedback>

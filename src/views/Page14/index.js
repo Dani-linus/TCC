@@ -18,19 +18,26 @@ export default function PageFourteen({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
+    const [load, setLoad] = useState(true);
 
+    function timeoutButtonNavegacao() {
+        let timer = setTimeout(() => {
+            setloadingButton(true);
+        }, 4500);
+    }
+    //Iniciando a narração
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene14));
     }, []);
 
+    //Definido um timeout para apresentar o button de navegacao
     useEffect(() => {
-        let timer = setTimeout(() => {
-            setloadingButton(true);
-        }, 3500);
+        navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
         return () => {
-            clearTimeout(timer);
+            setloadingButton(false);
         };
-    }, []);
+    }, [navigation, load]);
+
     // frames do caldeirão
     /*
     1- não fica em loop

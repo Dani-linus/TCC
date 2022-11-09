@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState , useRef} from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import { View, TouchableNativeFeedback } from 'react-native';
 import styles from './style';
 import LottieView from 'lottie-react-native';
@@ -19,25 +19,32 @@ export default function PageEleven({ navigation }) {
     const { initNarrationSound } = useContext(SoundNarrationContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
 
+    const [load, setLoad] = useState(true);
+
+    function timeoutButtonNavegacao() {
+        let timer = setTimeout(() => {
+            setloadingButton(true);
+        }, 4500);
+    }
+    //Iniciando a narração
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene11));
     }, []);
 
+    //Definido um timeout para apresentar o button de navegacao
     useEffect(() => {
-        let timer = setTimeout(() => {
-            setloadingButton(true);
-        }, 3500);
+        navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
         return () => {
-            clearTimeout(timer);
+            setloadingButton(false);
         };
-    }, []);
+    }, [navigation, load]);
 
     const animation_wolf = useRef();
 
     function start_animation_wolf() {
         animation_wolf.current?.play();
     }
-    
+
 
     return (
         <View style={styles.container}>

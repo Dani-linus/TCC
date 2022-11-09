@@ -1,6 +1,6 @@
 //página 3 do livro
-import React, { useRef, useState , useContext, useEffect } from 'react';
-import { View, Image} from 'react-native';
+import React, { useRef, useState, useContext, useEffect } from 'react';
+import { View, Image } from 'react-native';
 import styles from './style';
 import LottieView from 'lottie-react-native';
 import LegendCaptionArea from 'components/LegendTextArea';
@@ -10,31 +10,35 @@ import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { textScene3 } from 'views/legendTextFile';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
-const presentationPigJSON =  require('../../../assets/animations/page3/presentation_pig_tuca.json');
+const presentationPigJSON = require('../../../assets/animations/page3/presentation_pig_tuca.json');
 const scene3JSON = require('../../../assets/animations/page3/page_3.json');
 //const narrationScene3 =  require('../../../assets/sound/narration/Page03/Page3.mp3');
 //const imgCasaTeste = require('../../../assets/img/straw-house.png');
 
+export default function PageThree({ navigation }) {
 
-export default function PageThree({navigation}) {
-    
     const { initNarrationSound } = useContext(SoundNarrationContext);
-    const [viewImage, setViewImage] =  useState(false);
+    const [viewImage, setViewImage] = useState(false);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
+    const [load, setLoad] = useState(true);
 
-
-    useEffect(() => {
-        navigation.addListener('focus', ()=> initNarrationSound(narrationScene3));
-    });
-
-    useEffect(() => {
+    function timeoutButtonNavegacao() {
         let timer = setTimeout(() => {
             setloadingButton(true);
-        }, 5000);
-        return () => {
-            clearTimeout(timer);
-        };
+        }, 4500);
+    }
+    //Iniciando a narração
+    useEffect(() => {
+        navigation.addListener('focus', () => initNarrationSound(narrationScene3));
     }, []);
+
+    //Definido um timeout para apresentar o button de navegacao
+    useEffect(() => {
+        navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
+        return () => {
+            setloadingButton(false);
+        };
+    }, [navigation, load]);
 
     return (
         <View style={styles.container}>
@@ -45,7 +49,7 @@ export default function PageThree({navigation}) {
                 resizeMode='cover'
             ></LottieView>
 
-            <LottieView 
+            <LottieView
                 source={presentationPigJSON}
                 autoPlay
                 loop={true}
@@ -59,19 +63,19 @@ export default function PageThree({navigation}) {
 
                 <BuildStrawHouse /> */}
 
-                <LegendCaptionArea text={textScene3}/>
-                
-                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageFour" navigation={navigation} showComponent={true}/>}
+                <LegendCaptionArea text={textScene3} />
+
+                {loadingButtonNavigation && <ButtonNavigation proxRoute="PageFour" navigation={navigation} showComponent={true} />}
             </LayoutPages>
         </View>
     )
 }
 
 // função para renderizar a imagem da casa.
-function BuildStrawHouse(){
-    return(
+function BuildStrawHouse() {
+    return (
         <View>
-            <Image source={imgCasaTeste} style={{width: 150, height: 150,}}/>
+            <Image source={imgCasaTeste} style={{ width: 150, height: 150, }} />
         </View>
     )
 }

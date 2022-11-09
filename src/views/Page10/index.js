@@ -17,19 +17,25 @@ export default function PageTen({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
+    const [load, setLoad] = useState(true);
 
+    function timeoutButtonNavegacao() {
+        let timer = setTimeout(() => {
+            setloadingButton(true);
+        }, 4500);
+    }
+    //Iniciando a narração
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene10));
     }, []);
 
+    //Definido um timeout para apresentar o button de navegacao
     useEffect(() => {
-        let timer = setTimeout(() => {
-            setloadingButton(true);
-        }, 3500);
+        navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
         return () => {
-            clearTimeout(timer);
+            setloadingButton(false);
         };
-    }, []);
+    }, [navigation, load]);
 
     /**
      * LOBO ASSOPRANDO A CASA DE MADEIRA
@@ -44,8 +50,8 @@ export default function PageTen({ navigation }) {
     function start_animation_wolfBlowing() {
         animation_wolfBlowing.current?.play(135, 299);
     }
-     animation_wolfBlowing.current?.play(0, 135);
-    
+    animation_wolfBlowing.current?.play(0, 135);
+
     return (
         <View style={styles.container}>
             <LottieView
@@ -61,8 +67,8 @@ export default function PageTen({ navigation }) {
                 style={styles.view_wolfBlowing}
             />
             <LayoutPages>
-                  {/* controle de animação 1 */}
-                  <TouchableNativeFeedback onPress={start_animation_wolfBlowing}>
+                {/* controle de animação 1 */}
+                <TouchableNativeFeedback onPress={start_animation_wolfBlowing}>
                     <Animatable.View style={[styles.toggleView, styles.togglewolfBlowing]} animation="pulse" easing="linear" iterationCount="infinite" />
                 </TouchableNativeFeedback>
 

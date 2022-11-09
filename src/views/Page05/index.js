@@ -1,4 +1,4 @@
-import React ,{ useContext, useEffect , useState} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View } from 'react-native';
 import styles from './style';
 import LottieView from 'lottie-react-native';
@@ -9,7 +9,7 @@ import { textScene5 } from 'views/legendTextFile';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
 
 const scene5JSON = require('../../../assets/animations/page5/page_5.json');
-const presentationPigJSON =  require('../../../assets/animations/page5/presentation_pig_beto.json')
+const presentationPigJSON = require('../../../assets/animations/page5/presentation_pig_beto.json')
 const narrationScene5 = require('../../../assets/sound/narration/Page05/Page5.mp3');
 
 export default function PageFive({ navigation }) {
@@ -17,20 +17,25 @@ export default function PageFive({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
+    const [load, setLoad] = useState(true);
 
+    function timeoutButtonNavegacao() {
+        let timer = setTimeout(() => {
+            setloadingButton(true);
+        }, 4500);
+    }
+    //Iniciando a narração
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene5));
     }, []);
 
-
+    //Definido um timeout para apresentar o button de navegacao
     useEffect(() => {
-        let timer = setTimeout(() => {
-            setloadingButton(true);
-        }, 3500);
+        navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
         return () => {
-            clearTimeout(timer);
+            setloadingButton(false);
         };
-    }, []);
+    }, [navigation, load]);
 
     return (
         <View style={styles.container}>

@@ -1,5 +1,5 @@
 //Página 1 do livro
-import React, { useRef, useContext, useEffect , useState} from 'react';
+import React, { useRef, useContext, useEffect, useState } from 'react';
 import { View, TouchableNativeFeedback } from 'react-native';
 import styles from './style';
 import * as Animatable from 'react-native-animatable';
@@ -22,24 +22,25 @@ export default function PageOne({ navigation }) {
     const { initNarrationSound } = useContext(SoundNarrationContext);
     const { updateVolumSound } = useContext(SoundContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
+    const [load, setLoad] = useState(true);
 
-
-    function timeoutButtonNavegacao(){
+    function timeoutButtonNavegacao() {
         let timer = setTimeout(() => {
             setloadingButton(true);
-        }, 5000);
+        }, 4500);
     }
-
-    timeoutButtonNavegacao();
-
+    //Iniciando a narração
     useEffect(() => {
-        //Iniciando a narração da página
-        navigation.addListener('focus', () => initNarrationSound(narrationScene1), timeoutButtonNavegacao());
+        navigation.addListener('focus', () => initNarrationSound(narrationScene1));
+    }, []);
+
+    //Definido um timeout para apresentar o button de navegacao
+    useEffect(() => {
+        navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
         return () => {
             setloadingButton(false);
         };
-    }, []);
-
+    }, [navigation, load]);
 
     const animation_pig_mom = useRef();
     const animation_pig_spleeping = useRef();
@@ -61,6 +62,8 @@ export default function PageOne({ navigation }) {
         //de 148 a 300 - reação a interação, estado 1.
         animation_pig_spleeping.current?.play(148, 300);
     }
+
+
     return (
 
         <View style={styles.container}>
