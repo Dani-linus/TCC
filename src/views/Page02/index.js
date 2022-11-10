@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { View, TouchableNativeFeedback } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import LottieView from 'lottie-react-native';
 import LegendCaptionArea from 'components/LegendTextArea';
 import LayoutPages from 'components/LayoutPages';
@@ -33,7 +33,6 @@ export default function PageTwo({ navigation }) {
         updateVolumSound();
     }, []);
 
-    //Definido um timeout para apresentar o button de navegacao
     useEffect(() => {
         navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
         return () => {
@@ -41,9 +40,14 @@ export default function PageTwo({ navigation }) {
         };
     }, [navigation, load]);
 
+    animation_pig_father_pig_mom.current?.play(0, 140);
 
     function startAnimationPigFatherPigMom() {
-        animation_pig_father_pig_mom.current?.play();
+        animation_pig_father_pig_mom.current?.play(140, 299);
+        setTimeout(() => {
+            animation_pig_father_pig_mom.current?.reset()
+            animation_pig_father_pig_mom.current?.play(0, 140);
+        }, 5000);
     }
     return (
         <View style={styles.container}>
@@ -63,9 +67,9 @@ export default function PageTwo({ navigation }) {
 
             <LayoutPages>
 
-                <TouchableNativeFeedback onPress={startAnimationPigFatherPigMom}>
+                <TouchableOpacity onPress={startAnimationPigFatherPigMom}>
                     <Animatable.View style={[styles.toggleView, styles.togglePigs]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableNativeFeedback>
+                </TouchableOpacity>
 
                 <LegendCaptionArea text={textScene2} />
 

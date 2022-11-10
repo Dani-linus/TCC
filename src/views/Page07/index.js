@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
-import { View, TouchableNativeFeedback } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import styles from './style';
 import LottieView from 'lottie-react-native';
 import LegendCaptionArea from 'components/LegendTextArea';
@@ -21,19 +21,20 @@ export default function PageSeven({ navigation }) {
     const { updateVolumSound } = useContext(SoundContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const [load, setLoad] = useState(true);
+    const animation_wolf = useRef();
+    const animation_pig = useRef();
 
     function timeoutButtonNavegacao() {
         setTimeout(() => {
             setloadingButton(true);
         }, 4500);
     }
-    //Iniciando a narração
+
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene7));
         updateVolumSound();
     }, []);
 
-    //Definido um timeout para apresentar o button de navegacao
     useEffect(() => {
         navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
         return () => {
@@ -41,10 +42,15 @@ export default function PageSeven({ navigation }) {
         };
     }, [navigation, load]);
 
-    const animation_wolf = useRef();
-
+    animation_wolf.current?.play(210, 299);
+    
     function start_animation_wolf() {
-        animation_wolf.current?.play();
+        animation_wolf.current?.play(0, 299);
+        setTimeout(() => {
+            animation_pig.current?.play();
+            animation_wolf.current?.reset();
+            animation_wolf.current?.play(210, 299);
+        }, 7000);
     }
 
     return (
@@ -57,26 +63,23 @@ export default function PageSeven({ navigation }) {
             />
             <LottieView
                 source={pig_speak}
-                autoPlay={true}
-                resizeMode='cover'
+                loop={false}
+                ref={animation_pig}
                 style={styles.view_pig_speak}
             />
             <LottieView
                 source={wolf}
                 ref={animation_wolf}
-                resizeMode='cover'
                 style={styles.view_wolf}
             />
             <LayoutPages>
-                {/* controle de animação 1 */}
-                <TouchableNativeFeedback onPress={start_animation_wolf}>
+                <TouchableOpacity onPress={start_animation_wolf}>
                     <Animatable.View style={[styles.toggleView, styles.togglebadWolf]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableNativeFeedback>
+                </TouchableOpacity>
 
                 <LegendCaptionArea text={textScene7} />
 
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageEight" navigation={navigation} showComponent={true} />}
-
             </LayoutPages>
         </View >
     )

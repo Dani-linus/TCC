@@ -1,11 +1,12 @@
 //página 4 do livro
 import React, { useContext, useEffect, useState } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, TouchableOpacity } from 'react-native';
 import styles from './style';
 import LegendCaptionArea from 'components/LegendTextArea';
 import LottieView from 'lottie-react-native';
 import LayoutPages from 'components/LayoutPages';
 import ButtonNavigation from 'components/ButtonNavigation';
+import * as Animatable from 'react-native-animatable';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { SoundContext } from 'contextAPI/sound';
 import { textScene4 } from 'views/legendTextFile';
@@ -13,16 +14,19 @@ import { textScene4 } from 'views/legendTextFile';
 const scene4JSON = require('../../../assets/animations/page4/page_4.json');
 const presentationPig = require('../../../assets/animations/page4/presentation_pig_kako.json')
 const narrationScene4 = require('../../../assets/sound/narration/Page04/Page4.mp3');
+const woodHouseIMG =  require('../../../assets/img/woodHouse.png')
 
 export default function PageFour({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
     const { updateVolumSound } = useContext(SoundContext);
+
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const [load, setLoad] = useState(true);
+    const [img, setImg] = useState(false);
 
     function timeoutButtonNavegacao() {
-        let timer = setTimeout(() => {
+        setTimeout(() => {
             setloadingButton(true);
         }, 4500);
     }
@@ -53,14 +57,19 @@ export default function PageFour({ navigation }) {
             <LottieView
                 source={presentationPig}
                 autoPlay={true}
-                loop={true}
+                loop={false}
                 resizeMode='cover'
                 style={styles.presentation}
             ></LottieView>
 
 
             <LayoutPages>
-                {/* interatividade da casa de madeira */}
+
+                <TouchableOpacity onPress={() => setImg(true)}>
+                    <Animatable.View style={[styles.toggleView, styles.toggleHouse]} animation="pulse" easing="linear" iterationCount="infinite" />
+                </TouchableOpacity>
+
+                <BuildWoodHouse showComponent={img}/>
 
                 <LegendCaptionArea text={textScene4} />
 
@@ -69,4 +78,15 @@ export default function PageFour({ navigation }) {
             </LayoutPages>
         </View>
     )
+}
+
+function BuildWoodHouse(props) {
+
+    const buildHouse = props.showComponent ? (
+        <View>
+            <Image source={woodHouseIMG} style={styles.woodHouse} />
+        </View>
+    ): null;
+
+    return buildHouse;
 }

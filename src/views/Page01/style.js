@@ -26,32 +26,32 @@ const styles = StyleSheet.create({
         position: 'absolute',
         width: wp(32),
         height: hp(52),
-        left: wp(21),
-        top: wp(23),
+        left: wp(10),
+        top: wp(11.5),
     },
     view_pig_sleepling: {
         position: 'absolute',
         width: wp(40),
         height: hp(60),
-        top: wp(7.5),
-        left: wp(60),
-        // borderWidth: 1
+        top: wp(4),
+        left: wp(30),
     },
     toggleView:{
-        width: 30, 
-        height: 30, 
+        position: 'absolute', 
+        width: 20, 
+        height: 20, 
         borderRadius: 50, 
         backgroundColor: 'white', 
-        opacity: 0.7,
-        position: 'absolute', 
+        elevation: 2,
+        opacity: 0.8,
     },
     togglePigMom:{
-        left: wp(35),
-        top: wp(35.5),
+        left: wp(34.5),
+        top: wp(30),
     },
     togglePigSleeping:{
-        top: wp(31),
-        left: wp(78),
+        top: wp(27),
+        left: wp(78.5),
     }
 });
 export default styles;

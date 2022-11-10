@@ -22,27 +22,27 @@ const styles = StyleSheet.create({
     view_pigs:{
         position: 'absolute',
         width: wp(80),
-        // height: hp(50),
         top: wp(3),
         left: wp(16),
     },
     view_wolf:{
         position: 'absolute',
-        width: wp(32),
-        top: wp(6),
-        left: wp(6),
+        width: wp(28),
+        top: wp(7),
+        left: wp(8),
     },
     toggleView: {
+      position: 'absolute',
+      backgroundColor: 'white',
       width: 30,
       height: 30,
       borderRadius: 50,
-      backgroundColor: 'white',
-      opacity: 0.7,
-      position: 'absolute',
+      opacity: 0.8,
+      elevation: 2,
     },
     togglewolf: {
-      left: wp(34),
-      top: wp(36),
+      left: wp(35),
+      top: wp(24),
     },
 })
 

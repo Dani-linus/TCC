@@ -1,4 +1,3 @@
-//página 3 do livro
 import React, { useRef, useState, useContext, useEffect } from 'react';
 import { View, Image, TouchableWithoutFeedback } from 'react-native';
 import styles from './style';
@@ -6,10 +5,10 @@ import LottieView from 'lottie-react-native';
 import LegendCaptionArea from 'components/LegendTextArea';
 import LayoutPages from 'components/LayoutPages';
 import ButtonNavigation from 'components/ButtonNavigation';
+import * as Animatable from 'react-native-animatable';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { SoundContext } from 'contextAPI/sound';
 import { textScene3 } from 'views/legendTextFile';
-import * as Animatable from 'react-native-animatable';
 
 const presentationPigJSON = require('../../../assets/animations/page3/presentation_pig_tuca.json');
 const scene3JSON = require('../../../assets/animations/page3/page_3.json');
@@ -35,7 +34,6 @@ export default function PageThree({ navigation }) {
         updateVolumSound();
     }, []);
 
-    //Definido um timeout para apresentar o button de navegacao
     useEffect(() => {
         navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
         return () => {
@@ -55,6 +53,7 @@ export default function PageThree({ navigation }) {
             <LottieView
                 source={presentationPigJSON}
                 autoPlay={true}
+                loop={false}
                 style={styles.presentation}
             ></LottieView>
 

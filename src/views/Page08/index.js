@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
-import { View, TouchableNativeFeedback } from 'react-native';
+import { View, TouchableNativeFeedback, TouchableOpacity } from 'react-native';
 import styles from './style';
 import LottieView from 'lottie-react-native';
 import LegendCaptionArea from '../../components/LegendTextArea';
@@ -20,19 +20,19 @@ export default function PageEight({ navigation }) {
     const { updateVolumSound } = useContext(SoundContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const [load, setLoad] = useState(true);
+    const animation_wolfBlowing = useRef();
 
     function timeoutButtonNavegacao() {
         setTimeout(() => {
             setloadingButton(true);
         }, 4500);
     }
-    //Iniciando a narração
+
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene8));
         updateVolumSound();
     }, []);
 
-    //Definido um timeout para apresentar o button de navegacao
     useEffect(() => {
         navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
         return () => {
@@ -40,19 +40,16 @@ export default function PageEight({ navigation }) {
         };
     }, [navigation, load]);
 
-    /**
-     * LOBO ASSOPRANDO A CASA DE PALHA
-     * inicia em 0-145
-     * aguarda toque e vai de 145-299
-     * volta em loop 282-299
-     */
-
-    const animation_wolfBlowing = useRef();
-
-    animation_wolfBlowing.current?.play(0, 145);
+    for (let i = 0; i < 1; i++) {
+        animation_wolfBlowing.current?.play(0, 70);
+    }
+    animation_wolfBlowing.current?.play(70, 145);
 
     function start_animation_wolfBlowing() {
         animation_wolfBlowing.current?.play(145, 299);
+        setTimeout(() => {
+            animation_wolfBlowing.current?.play(290, 299);
+        }, 4000);
     }
 
     return (
@@ -67,16 +64,14 @@ export default function PageEight({ navigation }) {
             <LottieView
                 source={wolfBlowing}
                 ref={animation_wolfBlowing}
-                autoPlay={true}
                 loop={true}
-                resizeMode='cover'
                 style={styles.view_wolfBlowing}
             />
+
             <LayoutPages>
-                {/* controle de animação 1 */}
-                <TouchableNativeFeedback onPress={start_animation_wolfBlowing}>
+                <TouchableOpacity onPress={start_animation_wolfBlowing}>
                     <Animatable.View style={[styles.toggleView, styles.togglebadWolf]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableNativeFeedback>
+                </TouchableOpacity>
 
                 <LegendCaptionArea text={textScene8} />
 

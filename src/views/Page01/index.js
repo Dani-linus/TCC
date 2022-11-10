@@ -1,6 +1,6 @@
 //Página 1 do livro
 import React, { useRef, useContext, useEffect, useState } from 'react';
-import { View, TouchableNativeFeedback, TouchableWithoutFeedback } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import styles from './style';
 import * as Animatable from 'react-native-animatable';
 import LegendCaptionArea from 'components/LegendTextArea';
@@ -46,70 +46,61 @@ export default function PageOne({ navigation }) {
     const animation_pig_mom = useRef();
     const animation_pig_spleeping = useRef();
 
-    //Iniciando o estado 0 das animações
-    animation_pig_spleeping.current?.play(0, 148);
+    // estado 0 das animações
+    animation_pig_spleeping.current?.play(0, 120);
     animation_pig_mom.current?.play(0, 48);
 
-    // Inicia a animação da mamãe porca
     function startAnimationPigMom() {
-        // adicionar verificação de cliques
-        // Adicionar loop baseado nos frames (isso eu preciso verificar direito no viewer do Lottie files)
-        animation_pig_mom.current?.play();
+        animation_pig_mom.current?.play(48, 100);
+        setTimeout(() => {
+            animation_pig_mom.current?.reset()
+            animation_pig_mom.current?.play(0, 48);
+        }, 5450);
     }
 
-    // Inicia a animação do porco dormindo
     function startAnimationPigSleeping() {
-        //de 0 a 148 - pig dormindo, ou seja, estado zero (isso fica em looping até que seja interagido)
-        //de 148 a 300 - reação a interação, estado 1.
-        animation_pig_spleeping.current?.play(148, 300);
+        animation_pig_spleeping.current?.play(120, 299);
+        setTimeout(() => {
+            animation_pig_spleeping.current?.reset()
+            animation_pig_spleeping.current?.play(0, 120);
+        }, 4500);
     }
-
 
     return (
 
         <View style={styles.container}>
-            {/* animação de fundo */}
             <LottieView
                 source={scene1JSON}
                 autoPlay={true}
                 loop={true}
                 resizeMode='cover'
-                style={{ flexGrow: 1 }}
+            />
+
+            <LottieView
+                source={pigMomJSON}
+                ref={animation_pig_mom}
+                style={styles.view_pig_mom}
+            />
+            <LottieView
+                source={pigSleepingJSON}
+                ref={animation_pig_spleeping}
+                style={styles.view_pig_sleepling}
             />
 
             <LayoutPages navigation={navigation}>
 
-                {/* Elemento de interação 1 */}
-                <View style={styles.view_pig_mom}>
-                    <LottieView
-                        source={pigMomJSON}
-                        ref={animation_pig_mom}>
-                    </LottieView>
-                </View>
-
                 {/* controle de animação 1 */}
-                <TouchableNativeFeedback onPress={startAnimationPigMom}>
+                <TouchableOpacity onPress={startAnimationPigMom}>
                     <Animatable.View style={[styles.toggleView, styles.togglePigMom]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableNativeFeedback>
+                </TouchableOpacity>
 
-                {/* Elemento de interação 2 */}
-                <View style={styles.view_pig_sleepling}>
-                    <LottieView
-                        source={pigSleepingJSON}
-                        ref={animation_pig_spleeping}>
-                    </LottieView>
-                </View>
-
-                {/* controle de animação do item 2 */}
-                <TouchableNativeFeedback onPress={startAnimationPigSleeping}>
+                {/* controle de animação 2 */}
+                <TouchableOpacity onPress={startAnimationPigSleeping}>
                     <Animatable.View style={[styles.toggleView, styles.togglePigSleeping]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableNativeFeedback>
+                </TouchableOpacity>
 
-
-                {/* legenda da historia desta pagina */}
                 <LegendCaptionArea text={textScene1} />
 
-                {/* botao para navegação entre as páginas */}
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageTwo" navigation={navigation} showComponent={false} />}
             </LayoutPages>
         </View >

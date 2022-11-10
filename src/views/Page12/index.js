@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { View, TouchableNativeFeedback } from 'react-native';
+import React, { useContext, useEffect, useState, useRef } from 'react';
+import { View, TouchableOpacity } from 'react-native';
 import LottieView from 'lottie-react-native';
 import styles from './style';
 import LegendCaptionArea from '../../components/LegendTextArea';
@@ -16,7 +16,7 @@ const scene12JSON = require('../../../assets/animations/page12/page_12.json')
 
 export default function PageTwelve({ navigation }) {
 
-    const animation_wolf = React.createRef();
+    const animation_wolfBlowing = useRef();
     const { initNarrationSound } = useContext(SoundNarrationContext);
     const { updateVolumSound } = useContext(SoundContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
@@ -41,14 +41,21 @@ export default function PageTwelve({ navigation }) {
         };
     }, [navigation, load]);
 
-    function wolfMotionControl() {
-        // lobo sobra tres vezes a casa até cansar
-        for (var i = 0; i < 3; i++) {
-            animation_wolf.current?.play(0, 300);
-        }
-        //   animation_wolf.current?.play();
-
+    /**
+     * Controle de animação do lobo assoprando a casa
+     */
+    for (let i = 0; i < 1; i++) {
+        animation_wolfBlowing.current?.play(0, 70);
     }
+    animation_wolfBlowing.current?.play(70, 145);
+    
+    function start_animation_wolfBlowing() {
+        animation_wolfBlowing.current?.play(145, 299);
+        setTimeout(() => {
+            animation_wolfBlowing.current?.play(290, 299);
+        }, 4000);
+    }
+
     return (
         <View style={styles.container}>
             <LottieView
@@ -59,14 +66,14 @@ export default function PageTwelve({ navigation }) {
             />
             <LottieView
                 source={wolfPage12}
-                ref={animation_wolf}
+                ref={animation_wolfBlowing}
+                loop={true}
                 style={styles.view_wolf}
             />
             <LayoutPages>
-                {/* controle de animação 1 */}
-                <TouchableNativeFeedback onPress={wolfMotionControl}>
+                <TouchableOpacity onPress={start_animation_wolfBlowing}>
                     <Animatable.View style={[styles.toggleView, styles.togglewolf]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableNativeFeedback>
+                </TouchableOpacity>
 
                 <LegendCaptionArea text={textScene12} />
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageThirteen" navigation={navigation} showComponent={true} />}
