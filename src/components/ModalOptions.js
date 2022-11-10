@@ -8,7 +8,6 @@ import { SoundNarrationContext } from "../contextAPI/soundNarration";
 function ModalOptions(props) {
     const navigation = useNavigation();
 
-    // consumir o contexto criado
     const { stopSound, playSound, isPlaying } = useContext(SoundContext);
     const { stopSoundNarration, soundStatusNarration ,playSoundNarration} = useContext(SoundNarrationContext);
 
@@ -23,11 +22,11 @@ function ModalOptions(props) {
         if(soundStatusNarration.current === false){
             stopSoundNarration();
         }
-    })
+    });
 
     useEffect(() =>{
         setSwitchSoundValue(isPlaying)
-    }, [isPlaying])
+    }, [isPlaying]);
 
     const toggleSwitchSound = () => {
         setSwitchSoundValue(previousState => !previousState);
@@ -45,15 +44,8 @@ function ModalOptions(props) {
     const goBack = () => {
         setModalVisible(false)
         navigation.popToTop();
-        //navigation.navigate('PageOne')
         stopSoundNarration();
     }
-    // função do botão menu principal
-  //  const goMenu= ()=>{
-      //  setModalVisible(false)
-     //   navigation.popToTop();
-      //  stopSoundNarration();
-   // }
 
     //função para definir quando o botão de recomeçar 
     const showComponentButton = props.showComponent ? (
@@ -87,7 +79,6 @@ function ModalOptions(props) {
                             <Text style={[styles.text_black, styles.text_modal_options]}>
                                 narração
                             </Text>
-                            {/* adicionar componente de controle volume da narração */}
                             <Switch
                                 trackColor={{ false: '#f4f3f4', true: '#56B2EB' }}
                                 thumbColor={switchValueNarration ? "#56B2EB" : "#ddd"}
@@ -101,7 +92,6 @@ function ModalOptions(props) {
                             <Text style={[styles.text_black, styles.text_modal_options]}>
                                 som ambiente
                             </Text>
-                            {/* adicionar componente de controle volume do som ambiente */}
                             <Switch
                                 trackColor={{ false: '#f4f3f4', true: '#56B2EB' }}
                                 thumbColor={switchSoundValue ? "#56B2EB" : "#ddd"}
@@ -159,7 +149,6 @@ const styles = StyleSheet.create({
         fontSize: 24,
         textTransform: 'uppercase',
         textAlign: 'center',
-
     },
     viewNarration: {
         flexDirection: 'row',
@@ -182,5 +171,4 @@ const styles = StyleSheet.create({
         backgroundColor: '#E1F5EE', 
         borderRadius: 20,
     },
-
 });

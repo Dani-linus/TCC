@@ -60,7 +60,6 @@ export default function PageThree({ navigation }) {
 
             <LayoutPages>
 
-                {/* <BuildStrawHouse />  */}
                 <TouchableWithoutFeedback onPress={() => setImg(true)}>
                     <Animatable.View style={[styles.toggleView, styles.toggleHouse]} animation="pulse" easing="linear" iterationCount="infinite" />
                 </TouchableWithoutFeedback>
