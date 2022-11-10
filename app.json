@@ -27,10 +27,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/icons/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.savitzki.bookApp_os-três-porquinhos"
     },
     "web": {
       "favicon": "./assets/icons/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c876e678-8ecb-4f7d-9c90-7f325fc66794"
+      }
     }
   }
 }
