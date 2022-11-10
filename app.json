@@ -6,10 +6,17 @@
     "orientation": "landscape",
     "icon": "./assets/icons/icon.png",
     "userInterfaceStyle": "light",
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "androidNavigationBar": {
-      "visible": "immersive"
+      "visible": "false"
     },
-    "splash": {
+    "androidStatusBar" : {
+      "hidden": "false"
+    },
+    "splash": { 
       "image": "./assets/icons/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#56B2EB"
@@ -28,7 +35,7 @@
         "foregroundImage": "./assets/icons/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.savitzki.bookApp_os-três-porquinhos"
+      "package": "com.savitzki.bookApp_littlePigs"
     },
     "web": {
       "favicon": "./assets/icons/favicon.png"

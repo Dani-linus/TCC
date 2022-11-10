@@ -9,7 +9,6 @@ import styles from './style';
 const size =  Dimensions.get('window').width * 0.5;
 
 const splashJSON = require('../../../assets/animations/splash/splash_sapo.json')
-
 const patrickHand = require('../../../assets/font/PatrickHand-Regular.ttf')
 const fuzzyBubbles = require('../../../assets/font/FuzzyBubbles-Bold.ttf')
 
