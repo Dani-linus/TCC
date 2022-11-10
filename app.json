@@ -6,10 +6,17 @@
     "orientation": "landscape",
     "icon": "./assets/icons/icon.png",
     "userInterfaceStyle": "light",
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "androidNavigationBar": {
-      "visible": "immersive"
+      "visible": "false"
     },
-    "splash": {
+    "androidStatusBar" : {
+      "hidden": "false"
+    },
+    "splash": { 
       "image": "./assets/icons/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#56B2EB"
@@ -27,10 +34,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/icons/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.savitzki.bookApp_littlePigs"
     },
     "web": {
       "favicon": "./assets/icons/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c876e678-8ecb-4f7d-9c90-7f325fc66794"
+      }
     }
   }
 }
