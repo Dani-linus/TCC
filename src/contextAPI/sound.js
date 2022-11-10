@@ -1,37 +1,38 @@
 // Contexto do som ambiente
-import React, { createContext, useState, useEffect, useRef} from "react";
+import React, { createContext, useState, useEffect, useRef } from "react";
 import { Audio } from 'expo-av';
 
 export const SoundContext = createContext({});
 
-function SoundProvider({children}){
-    
+function SoundProvider({ children }) {
+
     const audioObject = useRef(new Audio.Sound());
+    const soundEffects = useRef(new Audio.Sound());
     const [isLoaded, setIsLoaded] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
-    
-    async function playSound () {
+
+    async function playSound() {
         try {
-            if(isPlaying === false && isLoaded === true){
+            if (isPlaying === false && isLoaded === true) {
                 console.log("play sound >>>")
                 await audioObject.current.playAsync();
                 setIsPlaying(true);
             }
-            } catch (error) {
-                console.log("erro no play sound >>>")
-                setIsPlaying(false);
-                console.log(error)
-            }
+        } catch (error) {
+            console.log("erro no play sound >>>")
+            setIsPlaying(false);
+            console.log(error)
+        }
     }
 
-    async function updateVolumSound(){
+    async function updateVolumSound() {
         audioObject.current.setVolumeAsync(0.2);
     }
 
     // pause audio
-    async function stopSound (){
+    async function stopSound() {
         try {
-            if(isPlaying === true){
+            if (isPlaying === true) {
                 await audioObject.current.stopAsync();
                 console.log("stop sound >>>")
                 setIsPlaying(false);
@@ -41,24 +42,48 @@ function SoundProvider({children}){
         }
     }
 
-    async function initSound(){
+    async function initSound() {
         try {
-            if(isLoaded === false){
+            if (isLoaded === false) {
                 console.log("init sound object>>>")
-                await audioObject.current.loadAsync(require('../../assets/sound/ambientSound/ambient_sound_two.mp3'), {shouldPlay: true, isLooping: true, volume: 1});
+                await audioObject.current.loadAsync(require('../../assets/sound/ambientSound/ambient_sound_two.mp3'), { shouldPlay: true, isLooping: true, volume: 1 });
                 setIsLoaded(true);
                 setIsPlaying(true);
-                }
-            } catch (error) {
-                console.log('INIT SOUND: Não é possível concluir a operação porque o som não está carregado');
             }
+        } catch (error) {
+            console.log('INIT SOUND: Não é possível concluir a operação porque o som não está carregado');
+        }
     }
 
-    return(
-        <SoundContext.Provider value={{playSound, stopSound, initSound, updateVolumSound, isLoaded, isPlaying}}>
-            {children}
-        </SoundContext.Provider>
-    )
-}
+    async function initSoundEffects() {
 
-export default SoundProvider;
+        let statusSom = await soundEffects.current.getStatusAsync();
+        try {
+            if (statusSom.isLoaded === false) {
+                console.log("init sound object>>>")
+                await soundEffects.current.loadAsync(require('../../assets/sound/soundEffects/blowing.mp3'), { shouldPlay: true, volume: 0.5 });
+            }
+        } catch (error) {
+            console.log('INIT SOUND: Não é possível concluir a operação porque o som não está carregado');
+        }
+    }
+
+    async function playSoundEffects() {
+        soundEffects.current.unloadAsync();
+        try {
+            setTimeout(() => {
+                soundEffects.current.loadAsync(require('../../assets/sound/soundEffects/blowing.mp3'), { volume: 0.5, shouldPlay: true });
+            }, 2000);
+            soundEffects.current.unloadAsync();
+        } catch (error) {
+            console.log('Erro ao executar audio:', error)
+        }
+    }
+        return (
+            <SoundContext.Provider value={{ playSound, stopSound, initSound, updateVolumSound, isLoaded, isPlaying, initSoundEffects, playSoundEffects }}>
+                {children}
+            </SoundContext.Provider>
+        )
+    }
+
+    export default SoundProvider;

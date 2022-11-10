@@ -73,7 +73,7 @@ export default function PageTwo({ navigation }) {
 
                 <LegendCaptionArea text={textScene2} />
 
-                {loadingButtonNavigation && <ButtonNavigation proxRoute="PageThree" navigation={navigation} showComponent={true} />}
+                {loadingButtonNavigation && <ButtonNavigation proxRoute="PageTen" navigation={navigation} showComponent={true} />}
             </LayoutPages>
         </View >
     )

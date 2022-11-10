@@ -12,7 +12,7 @@ import { textScene3 } from 'views/legendTextFile';
 
 const presentationPigJSON = require('../../../assets/animations/page3/presentation_pig_tuca.json');
 const scene3JSON = require('../../../assets/animations/page3/page_3.json');
-//const narrationScene3 =  require('../../../assets/sound/narration/Page03/Page3.mp3');
+const narrationScene3 =  require('../../../assets/sound/narration/Page03/Page3.mp3');
 const strawHouseIMG = require('../../../assets/img/strawHouse.png');
 
 export default function PageThree({ navigation }) {
@@ -30,7 +30,7 @@ export default function PageThree({ navigation }) {
     }
     //Iniciando a narração
     useEffect(() => {
-        // navigation.addListener('focus', () => initNarrationSound(narrationScene3));
+        navigation.addListener('focus', () => initNarrationSound(narrationScene3));
         updateVolumSound();
     }, []);
 
