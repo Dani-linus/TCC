@@ -12,8 +12,8 @@ import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { textScene1 } from 'views/legendTextFile';
 
 // imports dos arquivos JSON das animações
-const pigMomJSON = require('../../../assets/animations/page1/pigMom.json');
-const pigSleepingJSON = require('../../../assets/animations/page1/pigSleeping.json');
+const pigMomJSON = require('../../../assets/animations/page1/pig_mom.json');
+const pigSleepingJSON = require('../../../assets/animations/page1/pig_sleepling.json');
 const scene1JSON = require('../../../assets/animations/page1/page_1.json');
 const narrationScene1 = require('../../../assets/sound/narration/Page01/Page1.mp3');
 
