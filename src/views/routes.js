@@ -25,7 +25,7 @@ const Stack = createStackNavigator();
 function Routes(){
 
     return(
-        <Stack.Navigator initialRouteName='SplashScreen' 
+        <Stack.Navigator initialRouteName='PageThree' 
           screenOptions={{
             headerShown: false, 
              gestureEnabled: false,

@@ -74,16 +74,29 @@ function SoundProvider({ children }) {
             setTimeout(() => {
                 soundEffects.current.loadAsync(require('../../assets/sound/soundEffects/blowing.mp3'), { volume: 0.5, shouldPlay: true });
             }, 2000);
-            soundEffects.current.unloadAsync();
         } catch (error) {
             console.log('Erro ao executar audio:', error)
         }
     }
-        return (
-            <SoundContext.Provider value={{ playSound, stopSound, initSound, updateVolumSound, isLoaded, isPlaying, initSoundEffects, playSoundEffects }}>
-                {children}
-            </SoundContext.Provider>
-        )
-    }
 
-    export default SoundProvider;
+    // pause audio soundEffects
+    async function stopSoundEffects() {
+
+        let statusSom = await soundEffects.current.getStatusAsync();
+        try {
+            if (statusSom.isLoaded == true) {
+                await soundEffects.current.stopAsync();
+                soundEffects.current.unloadAsync();
+            }
+        } catch (error) {
+            console.log('STOP SOUND: Não foi possivel pausar o audio:', error)
+        }
+    }
+    return (
+        <SoundContext.Provider value={{ playSound, stopSound, initSound, updateVolumSound, isLoaded, isPlaying, initSoundEffects, playSoundEffects,stopSoundEffects}}>
+            {children}
+        </SoundContext.Provider>
+    )
+}
+
+export default SoundProvider;
