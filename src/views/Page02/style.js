@@ -32,15 +32,16 @@ const styles = StyleSheet.create({
     },
     togglePigs:{
       left: wp(17),
-      top: wp(34),
+      top: wp(29),
     },
     toggleView:{
       position: 'absolute', 
-      width: 30, 
-      height: 30, 
+      width: 20, 
+      height: 20, 
       borderRadius: 50, 
       backgroundColor: 'white', 
-      opacity: 0.7,
+      elevation: 2,
+      opacity: 0.8,
   },
 });
 export default styles;

@@ -41,5 +41,25 @@ const styles = StyleSheet.create({
         bottom: wp(-5),
         right: wp(-10),
     },
+    woodHouse:{
+        resizeMode: 'contain',
+        height: hp(51),
+        position: 'absolute',
+        left: wp(6),
+        top: wp(3),
+    },
+    toggleView:{
+        position: 'absolute', 
+        backgroundColor: 'white', 
+        width: 30, 
+        height: 30, 
+        borderRadius: 50, 
+        opacity: 0.8,
+        elevation: 2,
+    },
+    toggleHouse:{
+        left: wp(36),
+        top: wp(15),
+    },
 });
 export default styles;

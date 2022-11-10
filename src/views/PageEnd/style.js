@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        // backgroundColor: 'blue',
     },
     txt1:{
         fontFamily: 'FuzzyBubbles-Bold',
@@ -16,13 +15,11 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'flex-end',
-        // backgroundColor: 'green',
     },
     btnEnd:{
         flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
-        // backgroundColor: 'red',
     },
     btn: {
         marginHorizontal: 10,

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
-import { View, TouchableNativeFeedback } from 'react-native';
+import { View, TouchableNativeFeedback, TouchableOpacity } from 'react-native';
 import styles from './style';
 import LottieView from 'lottie-react-native';
 import LegendCaptionArea from '../../components/LegendTextArea';
@@ -20,6 +20,8 @@ export default function PageEleven({ navigation }) {
     const { initNarrationSound } = useContext(SoundNarrationContext);
     const { updateVolumSound } = useContext(SoundContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
+    const animation_wolf = useRef();
+    const animation_pigs = useRef();
 
     const [load, setLoad] = useState(true);
 
@@ -42,13 +44,18 @@ export default function PageEleven({ navigation }) {
         };
     }, [navigation, load]);
 
-    const animation_wolf = useRef();
 
+    animation_wolf.current?.play(210, 299);
+    
     function start_animation_wolf() {
-        animation_wolf.current?.play();
+        animation_wolf.current?.play(0, 299);
+        setTimeout(() => {
+            animation_pigs.current?.play();
+            animation_wolf.current?.reset();
+            animation_wolf.current?.play(210, 299);
+        }, 7000);
     }
-
-
+    
     return (
         <View style={styles.container}>
             <LottieView
@@ -60,9 +67,9 @@ export default function PageEleven({ navigation }) {
 
             <LottieView
                 source={pigs}
-                autoPlay={true}
-                loop={true}
+                loop={false}
                 style={styles.view_pigs}
+                ref={animation_pigs}
             />
 
             <LottieView
@@ -73,11 +80,9 @@ export default function PageEleven({ navigation }) {
             />
 
             <LayoutPages>
-
-                {/* controle de animação 1 */}
-                <TouchableNativeFeedback onPress={start_animation_wolf}>
+                <TouchableOpacity onPress={start_animation_wolf}>
                     <Animatable.View style={[styles.toggleView, styles.togglewolf]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableNativeFeedback>
+                </TouchableOpacity>
 
                 <LegendCaptionArea text={textScene11} />
 

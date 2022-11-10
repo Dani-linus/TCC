@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
-import { View, TouchableNativeFeedback } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import LottieView from 'lottie-react-native';
 import LegendCaptionArea from '../../components/LegendTextArea';
 import ButtonNavigation from '../../components/ButtonNavigation';
@@ -22,19 +22,20 @@ export default function PageNine({ navigation }) {
     const { updateVolumSound } = useContext(SoundContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const [load, setLoad] = useState(true);
+    const animation_wolf = useRef();
+    const animation_pigs = useRef();
 
     function timeoutButtonNavegacao() {
         setTimeout(() => {
             setloadingButton(true);
         }, 4500);
     }
-    //Iniciando a narração
+
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene9));
         updateVolumSound();
     }, []);
 
-    //Definido um timeout para apresentar o button de navegacao
     useEffect(() => {
         navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
         return () => {
@@ -42,20 +43,17 @@ export default function PageNine({ navigation }) {
         };
     }, [navigation, load]);
 
-
-    const animation_wolf = useRef();
-    const animation_pigs = useRef();
-
-    function start_animation_pigs() {
-        animation_pigs.current?.play();
-    }
-
+    animation_wolf.current?.play(210, 299);
+    
     function start_animation_wolf() {
-        animation_wolf.current?.play();
+        animation_wolf.current?.play(0, 299);
         setTimeout(() => {
             animation_pigs.current?.play();
-        }, 6000);
+            animation_wolf.current?.reset();
+            animation_wolf.current?.play(210, 299);
+        }, 7000);
     }
+    
     return (
         <View style={styles.container}>
             <LottieView
@@ -68,21 +66,21 @@ export default function PageNine({ navigation }) {
             <LottieView
                 source={wolf}
                 ref={animation_wolf}
+                loop={true}
                 style={styles.view_wolf}
             />
 
             <LottieView
                 source={pigs}
                 ref={animation_pigs}
+                loop={false}
                 style={styles.view_pigs}
             />
 
-            {/* a animação dos porcos precisa esperar o lobo bater na porta e pedir pra abrir */}
             <LayoutPages>
-                {/* controle de animação 1 */}
-                <TouchableNativeFeedback onPress={start_animation_wolf}>
+                <TouchableOpacity onPress={start_animation_wolf}>
                     <Animatable.View style={[styles.toggleView, styles.togglebadWolf]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableNativeFeedback>
+                </TouchableOpacity>
 
                 <LegendCaptionArea text={textScene9} />
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageTen" navigation={navigation} showComponent={true} />}

@@ -25,17 +25,27 @@ const styles = StyleSheet.create({
         left: wp(-10.5),
     },
     toggleView: {
+      position: 'absolute',
+      backgroundColor: 'white',
       width: 30,
       height: 30,
       borderRadius: 40,
-      backgroundColor: 'white',
-      opacity: 0.7,
-      position: 'absolute',
+      opacity: 0.8,
+      elevation: 2,
     },
     toggleCauldron: {
-      left: wp(19),
-      top: wp(36),
+      left: wp(23),
+      top: wp(29),
     },
-  })
+    shout:{
+      flex: 1,
+      justifyContent: 'flex-end',
+    },
+    txt1:{
+      fontFamily: 'FuzzyBubbles-Bold',
+      fontSize: 26,
+      lineHeight: 70
+    },
+  });
 
 export default styles;

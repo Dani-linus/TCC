@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
-import { View, TouchableNativeFeedback } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import styles from './style';
 import LottieView from 'lottie-react-native';
 import LayoutPages from 'components/LayoutPages';
@@ -33,19 +33,8 @@ export default function PageSix({ navigation }) {
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene6));
         updateVolumSound();
-        if (firstRun.current) {
-            if (save) {
-                animation_badWolf.current?.play(0, 32);
-            }
-            firstRun.current = false;
-        } else if (save) {
-            animation_badWolf.current.play(45, 72);
-        } else {
-            animation_badWolf.current.play(32, 99);
-        }
-    }, [save]);
+    }, []);
 
-    //Definido um timeout para apresentar o button de navegacao
     useEffect(() => {
         navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
         return () => {
@@ -53,12 +42,15 @@ export default function PageSix({ navigation }) {
         };
     }, [navigation, load]);
 
-    /**
-     * LOBO APARECENDO NO BOSQUE
-     * inicia em loop em 0-32
-     * ao tocar vai de 32-99
-     * fica em loop 45-72
-     */
+   
+    animation_badWolf.current?.play(0, 29);
+
+    function startAnimationWolf() {
+        animation_badWolf.current?.play(29, 99);
+        setTimeout(() => {
+            animation_badWolf.current?.play(40, 99);
+        }, 7000);
+    }
 
     return (
         <View style={styles.container}>
@@ -78,10 +70,9 @@ export default function PageSix({ navigation }) {
             />
 
             <LayoutPages>
-                {/* controle de animação 1 */}
-                <TouchableNativeFeedback onPress={() => setSave(!save)}>
+                <TouchableOpacity onPress={startAnimationWolf}>
                     <Animatable.View style={[styles.toggleView, styles.togglebadWolf]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableNativeFeedback>
+                </TouchableOpacity>
 
                 <LegendCaptionArea text={textScene6} />
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageSeven" navigation={navigation} showComponent={true} />}
