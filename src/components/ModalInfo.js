@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Text, View, TouchableOpacity, Modal, StyleSheet, Image, Dimensions} from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-const helpIMG = require('../help.png');
+const helpIMG = require('../../assets/img/help.png');
+
 function ModalInfo(){
     const [modalVisible, setModalVisible] =  useState(false);
 
@@ -41,7 +42,6 @@ function ModalInfo(){
 export default ModalInfo;
 
 const styles = StyleSheet.create({
-
     btn_info:{
         width: 50,
         height: 50,
@@ -65,5 +65,4 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         elevation: 2
     }
-
 });
