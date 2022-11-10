@@ -6,6 +6,7 @@ import LegendCaptionArea from '../../components/LegendTextArea';
 import ButtonNavigation from '../../components/ButtonNavigation';
 import LayoutPages from '../../components/LayoutPages';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
+import { SoundContext } from 'contextAPI/sound';
 import { textScene11 } from '../legendTextFile';
 import * as Animatable from 'react-native-animatable';
 
@@ -17,18 +18,20 @@ const wolf = require('../../../assets/animations/page11/wolf.json');
 export default function PageEleven({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
+    const { updateVolumSound } = useContext(SoundContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
 
     const [load, setLoad] = useState(true);
 
     function timeoutButtonNavegacao() {
-        let timer = setTimeout(() => {
+        setTimeout(() => {
             setloadingButton(true);
         }, 4500);
     }
     //Iniciando a narração
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene11));
+        updateVolumSound();
     }, []);
 
     //Definido um timeout para apresentar o button de navegacao

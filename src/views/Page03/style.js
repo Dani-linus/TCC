@@ -42,5 +42,24 @@ const styles = StyleSheet.create({
         borderRadius: 14,
         backgroundColor: '#00FF30',
     },
+    strawHouse:{
+        resizeMode: 'contain',
+        height: hp(51),
+        position: 'absolute',
+        left: wp(47),
+        top: wp(3.7),
+    },
+    toggleView:{
+        width: 30, 
+        height: 30, 
+        borderRadius: 50, 
+        backgroundColor: 'white', 
+        opacity: 0.7,
+        position: 'absolute', 
+    },
+    toggleHouse:{
+        left: wp(77),
+        top: wp(23),
+    },
 });
 export default styles;

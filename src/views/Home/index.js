@@ -1,28 +1,18 @@
 //Primeira tela - capa do livro e inicio da aplicação
-import React, { useContext, useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, Platform, BackHandler, Image, Dimensions, PixelRatio, Alert } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View, TouchableOpacity, Platform, BackHandler, Alert } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styles from './style';
 import ModalInfo from 'components/ModalInfo';
 import ModalOptions from 'components/ModalOptions';
 import LottieView from 'lottie-react-native';
-import { SoundContext } from 'contextAPI/sound';
 
 const homePageJSON = require('../../../assets/animations/bookHomePage.json');
-
-const { height, width } = Dimensions.get('window')
 
 export default function HomeView({ navigation }) {
 
     const [showComponent, setShowComponent] = useState(false)
 
-    // const { playSound, isLoaded, isPlaying } = useContext(SoundContext);
-    // if(isLoaded === true && isPlaying === false){
-    //     playSound();
-    //     console.log("HOME VIEW",isPlaying)
-    // }
-
-    // adiciona um botão em SOs IOS para sair da aplicação
     function isIOSorOther() {
         if (Platform.OS === "ios") {
             return (
@@ -32,6 +22,7 @@ export default function HomeView({ navigation }) {
             )
         }
     }
+
     //Tratando o botão de voltar do Android
     const backAction = () => {
         Alert.alert("Atenção!", "Você realmente deseja sair do aplicativo ?", [
@@ -47,13 +38,13 @@ export default function HomeView({ navigation }) {
         ]);
         return true;
     };
+
     useEffect(() => {
         BackHandler.addEventListener("hardwareBackPress", backAction);
 
         return () =>
             BackHandler.removeEventListener("hardwareBackPress", backAction);
     }, []);
-
 
     return (
         <View style={styles.container}>
@@ -79,11 +70,11 @@ export default function HomeView({ navigation }) {
                     <Text style={[styles.text_white, styles.text_2]}> porquinhos</Text>
                 </View>
 
-                <TouchableOpacity style={styles.btn_play}
-                    onPress={() => navigation.navigate("PageOne")}>
+                <TouchableOpacity style={styles.btn_play} onPress={() => navigation.navigate("PageOne")}>
                     <Ionicons name='play' size={120} color='white' />
                 </TouchableOpacity>
 
+                {/* Botão de sair para IOS */}
                 {isIOSorOther()}
             </View>
         </View>

@@ -7,6 +7,7 @@ import LottieView from 'lottie-react-native';
 import LayoutPages from 'components/LayoutPages';
 import ButtonNavigation from 'components/ButtonNavigation';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
+import { SoundContext } from 'contextAPI/sound';
 import { textScene4 } from 'views/legendTextFile';
 
 const scene4JSON = require('../../../assets/animations/page4/page_4.json');
@@ -16,6 +17,7 @@ const narrationScene4 = require('../../../assets/sound/narration/Page04/Page4.mp
 export default function PageFour({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
+    const { updateVolumSound } = useContext(SoundContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const [load, setLoad] = useState(true);
 
@@ -27,6 +29,7 @@ export default function PageFour({ navigation }) {
     //Iniciando a narração
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene4));
+        updateVolumSound();
     }, []);
 
     //Definido um timeout para apresentar o button de navegacao

@@ -1,24 +1,26 @@
 //página 3 do livro
 import React, { useRef, useState, useContext, useEffect } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, TouchableWithoutFeedback } from 'react-native';
 import styles from './style';
 import LottieView from 'lottie-react-native';
 import LegendCaptionArea from 'components/LegendTextArea';
 import LayoutPages from 'components/LayoutPages';
 import ButtonNavigation from 'components/ButtonNavigation';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
+import { SoundContext } from 'contextAPI/sound';
 import { textScene3 } from 'views/legendTextFile';
-import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
+import * as Animatable from 'react-native-animatable';
 
 const presentationPigJSON = require('../../../assets/animations/page3/presentation_pig_tuca.json');
 const scene3JSON = require('../../../assets/animations/page3/page_3.json');
 //const narrationScene3 =  require('../../../assets/sound/narration/Page03/Page3.mp3');
-//const imgCasaTeste = require('../../../assets/img/straw-house.png');
+const strawHouseIMG = require('../../../assets/img/strawHouse.png');
 
 export default function PageThree({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
-    const [viewImage, setViewImage] = useState(false);
+    const { updateVolumSound } = useContext(SoundContext);
+    const [img, setImg] = useState(false);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const [load, setLoad] = useState(true);
 
@@ -29,7 +31,8 @@ export default function PageThree({ navigation }) {
     }
     //Iniciando a narração
     useEffect(() => {
-        navigation.addListener('focus', () => initNarrationSound(narrationScene3));
+        // navigation.addListener('focus', () => initNarrationSound(narrationScene3));
+        updateVolumSound();
     }, []);
 
     //Definido um timeout para apresentar o button de navegacao
@@ -51,17 +54,18 @@ export default function PageThree({ navigation }) {
 
             <LottieView
                 source={presentationPigJSON}
-                autoPlay
-                loop={true}
+                autoPlay={true}
                 style={styles.presentation}
             ></LottieView>
 
             <LayoutPages>
 
-                {/* <Pressable onPress={() => setViewImage(true)} style={{width: 60, height: 60, borderRadius: 50, backgroundColor: 'white', left: 600, top: 110}}>
-                </Pressable>
+                {/* <BuildStrawHouse />  */}
+                <TouchableWithoutFeedback onPress={() => setImg(true)}>
+                    <Animatable.View style={[styles.toggleView, styles.toggleHouse]} animation="pulse" easing="linear" iterationCount="infinite" />
+                </TouchableWithoutFeedback>
 
-                <BuildStrawHouse /> */}
+                <BuildStrawHouse showComponent={img}/>
 
                 <LegendCaptionArea text={textScene3} />
 
@@ -72,10 +76,13 @@ export default function PageThree({ navigation }) {
 }
 
 // função para renderizar a imagem da casa.
-function BuildStrawHouse() {
-    return (
+function BuildStrawHouse(props) {
+
+    const buildHouse = props.showComponent ? (
         <View>
-            <Image source={imgCasaTeste} style={{ width: 150, height: 150, }} />
+            <Image source={strawHouseIMG} style={styles.strawHouse} />
         </View>
-    )
+    ): null;
+
+    return buildHouse;
 }

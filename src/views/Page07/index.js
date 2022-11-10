@@ -6,6 +6,7 @@ import LegendCaptionArea from 'components/LegendTextArea';
 import ButtonNavigation from 'components/ButtonNavigation';
 import LayoutPages from '../../components/LayoutPages';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
+import { SoundContext } from 'contextAPI/sound';
 import { textScene7 } from '../legendTextFile';
 import * as Animatable from 'react-native-animatable';
 
@@ -17,17 +18,19 @@ const narrationScene7 = require('../../../assets/sound/narration/Page07/Page7.mp
 export default function PageSeven({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
+    const { updateVolumSound } = useContext(SoundContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const [load, setLoad] = useState(true);
 
     function timeoutButtonNavegacao() {
-        let timer = setTimeout(() => {
+        setTimeout(() => {
             setloadingButton(true);
         }, 4500);
     }
     //Iniciando a narração
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene7));
+        updateVolumSound();
     }, []);
 
     //Definido um timeout para apresentar o button de navegacao

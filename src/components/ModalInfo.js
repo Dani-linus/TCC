@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Text, View, TouchableOpacity, Modal, StyleSheet} from "react-native";
+import { Text, View, TouchableOpacity, Modal, StyleSheet, Image, Dimensions} from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-
+const helpIMG = require('../help.png');
 function ModalInfo(){
     const [modalVisible, setModalVisible] =  useState(false);
 
@@ -20,11 +20,13 @@ function ModalInfo(){
                             <Ionicons name='close' size={32} color='black'/>
                         </TouchableOpacity>
                     </View>
-                    <View style={{flex: 1}}>
-                        <Text>-adicionar instruções de uso</Text>
-                    </View>
-                    <View style={{alignSelf:'flex-end', alignContent: 'flex-end'}}>
-                        <Text style={styles.text_black}>Desenvolvido por{'\n'}Daniele & Marina{'\n'}2022 - Trabalho de conclusão de curso{'\n'}Ciência da Computação - IFSC - Lages-SC</Text>
+                    <View style={{flex:1, flexDirection: 'row'}}>
+                        <View style={{flex: 1}} >
+                            <Image source={helpIMG} style={{ height: '100%', resizeMode: 'contain', alignSelf: 'center'}}/>
+                        </View>
+                        <View style={{alignSelf:'flex-end', alignContent: 'flex-end'}}>
+                            <Text style={styles.text_black}>Desenvolvido por{'\n'}Daniele & Marina{'\n'}2022 - Trabalho de conclusão de curso{'\n'}Ciência da Computação - IFSC - Lages-SC</Text>
+                        </View>
                     </View>
                 </View>
             </Modal>

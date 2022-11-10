@@ -7,6 +7,7 @@ import LegendCaptionArea from 'components/LegendTextArea';
 import * as Animatable from 'react-native-animatable';
 import ButtonNavigation from 'components/ButtonNavigation';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
+import { SoundContext } from 'contextAPI/sound';
 import { textScene6 } from '../legendTextFile';
 
 const scene6JSON = require('../../../assets/animations/page6/page_6.json')
@@ -16,6 +17,7 @@ const narrationScene6 = require('../../../assets/sound/narration/Page06/Page6.mp
 export default function PageSix({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
+    const { updateVolumSound } = useContext(SoundContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const [save, setSave] = useState(true);
     const firstRun = useRef(true);
@@ -23,13 +25,14 @@ export default function PageSix({ navigation }) {
     const [load, setLoad] = useState(true);
 
     function timeoutButtonNavegacao() {
-        let timer = setTimeout(() => {
+        setTimeout(() => {
             setloadingButton(true);
         }, 4500);
     }
 
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene6));
+        updateVolumSound();
         if (firstRun.current) {
             if (save) {
                 animation_badWolf.current?.play(0, 32);

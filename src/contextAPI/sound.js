@@ -25,7 +25,7 @@ function SoundProvider({children}){
     }
 
     async function updateVolumSound(){
-        audioObject.current.setVolumeAsync(0.1);
+        audioObject.current.setVolumeAsync(0.2);
     }
 
     // pause audio

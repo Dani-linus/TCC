@@ -1,6 +1,6 @@
 //Página 1 do livro
 import React, { useRef, useContext, useEffect, useState } from 'react';
-import { View, TouchableNativeFeedback } from 'react-native';
+import { View, TouchableNativeFeedback, TouchableWithoutFeedback } from 'react-native';
 import styles from './style';
 import * as Animatable from 'react-native-animatable';
 import LegendCaptionArea from 'components/LegendTextArea';
@@ -32,6 +32,7 @@ export default function PageOne({ navigation }) {
     //Iniciando a narração
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene1));
+        updateVolumSound()
     }, []);
 
     //Definido um timeout para apresentar o button de navegacao
@@ -45,7 +46,7 @@ export default function PageOne({ navigation }) {
     const animation_pig_mom = useRef();
     const animation_pig_spleeping = useRef();
 
-    // //Iniciando o estado 0 das animações
+    //Iniciando o estado 0 das animações
     animation_pig_spleeping.current?.play(0, 148);
     animation_pig_mom.current?.play(0, 48);
 

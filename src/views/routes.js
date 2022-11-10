@@ -29,7 +29,7 @@ function Routes(){
           screenOptions={{
             headerShown: false, 
              gestureEnabled: false,
-            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
+            // cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
           }}>
           <Stack.Screen name="SplashScreen" component={SplashScreen}/>
           <Stack.Screen name="ModalOptions" component={ModalOptions} />
