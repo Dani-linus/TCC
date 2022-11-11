@@ -28,7 +28,7 @@ export default function PageThree({ navigation }) {
             setloadingButton(true);
         }, 4500);
     }
-    //Iniciando a narração
+    //Iniciando a narração  
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene3));
         updateVolumSound();
@@ -67,7 +67,7 @@ export default function PageThree({ navigation }) {
 
                 <LegendCaptionArea text={textScene3} />
 
-                {loadingButtonNavigation && <ButtonNavigation proxRoute="PageThree" navigation={navigation} showComponent={true} />}
+                {loadingButtonNavigation && <ButtonNavigation proxRoute="PageFour" navigation={navigation} showComponent={true} />}
             </LayoutPages>
         </View>
     )
