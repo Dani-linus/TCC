@@ -18,7 +18,7 @@ export default function PageTwelve({ navigation }) {
 
     const animation_wolfBlowing = useRef();
     const { initNarrationSound } = useContext(SoundNarrationContext);
-    const { updateVolumSound,stopSoundEffects} = useContext(SoundContext);
+    const { updateVolumSound,stopSoundEffects,playSoundEffects} = useContext(SoundContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const [load, setLoad] = useState(true);
 
@@ -55,6 +55,7 @@ export default function PageTwelve({ navigation }) {
     
     function start_animation_wolfBlowing() {
         animation_wolfBlowing.current?.play(145, 299);
+        playSoundEffects();
         setTimeout(() => {
             animation_wolfBlowing.current?.play(290, 299);
         }, 4000);

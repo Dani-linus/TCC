@@ -17,7 +17,7 @@ const wolfBlowing = require('../../../assets/animations/page8/wolfBlowingTheStra
 export default function PageEight({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
-    const { updateVolumSound } = useContext(SoundContext);
+    const { updateVolumSound, playSoundEffects } = useContext(SoundContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const [load, setLoad] = useState(true);
     const animation_wolfBlowing = useRef();
@@ -47,6 +47,7 @@ export default function PageEight({ navigation }) {
 
     function start_animation_wolfBlowing() {
         animation_wolfBlowing.current?.play(145, 299);
+        playSoundEffects();
         setTimeout(() => {
             animation_wolfBlowing.current?.play(290, 299);
         }, 4000);

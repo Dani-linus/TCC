@@ -11,12 +11,12 @@
       "android"
     ],
     "androidNavigationBar": {
-      "visible": "false"
+      "visible": "immersive"
     },
-    "androidStatusBar" : {
-      "hidden": "false"
+    "androidStatusBar": {
+      "hidden": true
     },
-    "splash": { 
+    "splash": {
       "image": "./assets/icons/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#56B2EB"
@@ -28,7 +28,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "."
     },
     "android": {
       "adaptiveIcon": {
