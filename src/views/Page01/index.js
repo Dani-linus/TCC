@@ -29,11 +29,13 @@ export default function PageOne({ navigation }) {
             setloadingButton(true);
         }, 4500);
     }
-    //Iniciando a narração
-    useEffect(() => {
-        navigation.addListener('focus', () => initNarrationSound(narrationScene1));
-        updateVolumSound()
-    }, []);
+
+    
+  //Iniciando a narração
+   useEffect(() => {
+    navigation.addListener('focus', () => initNarrationSound(narrationScene1));
+    updateVolumSound();
+}, []);
 
     //Definido um timeout para apresentar o button de navegacao
     useEffect(() => {
@@ -42,6 +44,16 @@ export default function PageOne({ navigation }) {
             setloadingButton(false);
         };
     }, [navigation, load]);
+
+
+
+    //Definido um timeout para apresentar o button de navegacao
+   // useEffect(() => {
+    //    navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
+       // return () => {
+       //     setloadingButton(false);
+        //};
+   // }, [navigation, load]);
 
     const animation_pig_mom = useRef();
     const animation_pig_spleeping = useRef();

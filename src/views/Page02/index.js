@@ -26,18 +26,20 @@ export default function PageTwo({ navigation }) {
             setloadingButton(true);
         }, 4500);
     }
-    //Iniciando a narração
-    useEffect(() => {
-        navigation.addListener('focus', () => initNarrationSound(narrationScene2));
-        updateVolumSound();
-    }, []);
-
-    useEffect(() => {
+   //Iniciando a narração
+   useEffect(() => {
+    navigation.addListener('focus', () => initNarrationSound(narrationScene2));
+    updateVolumSound();
+}, []);
+       //Definido um timeout para apresentar o button de navegacao
+   useEffect(() => {
         navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
         return () => {
             setloadingButton(false);
         };
     }, [navigation, load]);
+
+
 
     animation_pig_father_pig_mom.current?.play(0, 140);
 
