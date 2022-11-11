@@ -5,9 +5,12 @@ import { useNavigation } from '@react-navigation/native';
 import { SoundContext } from "../contextAPI/sound";
 import { SoundNarrationContext } from "../contextAPI/soundNarration";
 import { StatusBar } from 'expo-status-bar';
+import SystemNavigationBar from 'react-native-system-navigation-bar';
+
 
 function ModalOptions(props) {
     
+    SystemNavigationBar.fullScreen(true);
     const navigation = useNavigation();
 
     const { stopSound, playSound, isPlaying } = useContext(SoundContext);
