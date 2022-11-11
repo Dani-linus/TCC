@@ -14,7 +14,6 @@ const pigMomPigFatherJSON = require('../../../assets/animations/page2/pig_father
 const scene2JSON = require('../../../assets/animations/page2/page_2.json');
 const narrationScene2 = require('../../../assets/sound/narration/Page02/Page2.mp3');
 
-
 export default function PageTwo({ navigation }) {
     const animation_pig_father_pig_mom = useRef();
     const { initNarrationSound } = useContext(SoundNarrationContext);
