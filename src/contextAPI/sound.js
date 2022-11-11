@@ -1,4 +1,3 @@
-// Contexto do som ambiente
 import React, { createContext, useState, useEffect, useRef } from "react";
 import { Audio } from 'expo-av';
 
@@ -14,12 +13,10 @@ function SoundProvider({ children }) {
     async function playSound() {
         try {
             if (isPlaying === false && isLoaded === true) {
-                console.log("play sound >>>")
                 await audioObject.current.playAsync();
                 setIsPlaying(true);
             }
         } catch (error) {
-            console.log("erro no play sound >>>")
             setIsPlaying(false);
             console.log(error)
         }
@@ -34,7 +31,6 @@ function SoundProvider({ children }) {
         try {
             if (isPlaying === true) {
                 await audioObject.current.stopAsync();
-                console.log("stop sound >>>")
                 setIsPlaying(false);
             }
         } catch (error) {
@@ -45,7 +41,6 @@ function SoundProvider({ children }) {
     async function initSound() {
         try {
             if (isLoaded === false) {
-                console.log("init sound object>>>")
                 await audioObject.current.loadAsync(require('../../assets/sound/ambientSound/ambient_sound_two.mp3'), { shouldPlay: true, isLooping: true, volume: 1 });
                 setIsLoaded(true);
                 setIsPlaying(true);
@@ -60,7 +55,6 @@ function SoundProvider({ children }) {
         let statusSom = await soundEffects.current.getStatusAsync();
         try {
             if (statusSom.isLoaded === false) {
-                console.log("init sound object>>>")
                 await soundEffects.current.loadAsync(require('../../assets/sound/soundEffects/blowing.mp3'), { shouldPlay: true, volume: 0.5 });
             }
         } catch (error) {

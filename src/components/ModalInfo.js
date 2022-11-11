@@ -1,17 +1,22 @@
 import React, { useState } from "react";
-import { Text, View, TouchableOpacity, Modal, StyleSheet, Image, Dimensions} from "react-native";
+import { Text, View, TouchableOpacity, Modal, StyleSheet, Image} from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { StatusBar } from 'expo-status-bar';
+import * as NavigationBar from 'expo-navigation-bar';
 
 const helpIMG = require('../../assets/img/help.png');
 
 function ModalInfo(){
+    
+    NavigationBar.setVisibilityAsync('hidden');
+
     const [modalVisible, setModalVisible] =  useState(false);
 
     return(
-        <View style={styles.center}>           
+        <View style={styles.center}>   
+        <StatusBar hidden={modalVisible}/>        
             <Modal 
                 onRequestClose={() => setModalVisible(false)}
-                transparent
                 supportedOrientations={['portrait', 'landscape']}
                 visible={modalVisible}>
 

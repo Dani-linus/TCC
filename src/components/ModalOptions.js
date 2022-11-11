@@ -4,12 +4,17 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { SoundContext } from "../contextAPI/sound";
 import { SoundNarrationContext } from "../contextAPI/soundNarration";
+import { setStatusBarHidden, StatusBar } from 'expo-status-bar';
+import * as NavigationBar from 'expo-navigation-bar';
 
 function ModalOptions(props) {
+
+    setStatusBarHidden(true, 'none');
+    NavigationBar.setVisibilityAsync('hidden');
     const navigation = useNavigation();
 
     const { stopSound, playSound, isPlaying } = useContext(SoundContext);
-    const { stopSoundNarration, soundStatusNarration ,playSoundNarration} = useContext(SoundNarrationContext);
+    const { stopSoundNarration, soundStatusNarration } = useContext(SoundNarrationContext);
 
     const [modalVisible, setModalVisible] = useState(false);
     const [switchValueNarration, setSwitchOnNarration] = useState(soundStatusNarration.current);
@@ -22,15 +27,24 @@ function ModalOptions(props) {
         if(soundStatusNarration.current === false){
             stopSoundNarration();
         }
+        if(soundStatusNarration.current === true){
+            setIconNarration("mic")
+        }else{
+            setIconNarration("mic-off")
+        }
     });
 
     useEffect(() =>{
         setSwitchSoundValue(isPlaying)
+        if(isPlaying === true){
+            setIconSound("volume-high")
+        }else{
+            setIconSound("volume-mute")
+        }
     }, [isPlaying]);
 
     const toggleSwitchSound = () => {
         setSwitchSoundValue(previousState => !previousState);
-        console.log("isPlaying na modal",isPlaying)
         switchSoundValue ? stopSound() : playSound();
         switchSoundValue ? setIconSound("volume-mute") : setIconSound("volume-high");
     }
@@ -58,10 +72,13 @@ function ModalOptions(props) {
 
     return (
         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+            <StatusBar hidden={true}/>
             <Modal
                 onRequestClose={() => setModalVisible(false)}
-                transparent
-                supportedOrientations={['portrait', 'landscape']}
+                animationType={'fade'}
+                statusBarTranslucent={true}
+                presentationStyle={'fullScreen'}
+                supportedOrientations={['landscape']}
                 visible={modalVisible}>
                 <View style={styles.modal_view}>
                     <View style={[styles.btn, styles.btn_close]}>

@@ -11,10 +11,10 @@
       "android"
     ],
     "androidNavigationBar": {
-      "visible": "false"
+      "visible": "immersive"
     },
     "androidStatusBar" : {
-      "hidden": "false"
+      "hidden": true
     },
     "splash": { 
       "image": "./assets/icons/icon.png",

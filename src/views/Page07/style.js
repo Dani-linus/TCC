@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
     toggleView: {
       position: 'absolute',
       backgroundColor: 'white',
-      width: 20,
-      height: 20,
+      width: 30,
+      height: 30,
       borderRadius: 50,
       opacity: 0.8,
       elevation: 2,

@@ -50,12 +50,13 @@ const styles = StyleSheet.create({
         top: wp(3.7),
     },
     toggleView:{
+        position: 'absolute', 
+        backgroundColor: 'white', 
         width: 30, 
         height: 30, 
         borderRadius: 50, 
-        backgroundColor: 'white', 
-        opacity: 0.7,
-        position: 'absolute', 
+        opacity: 0.8,
+        elevation: 2,
     },
     toggleHouse:{
         left: wp(77),
