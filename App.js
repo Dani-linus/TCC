@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { setStatusBarHidden, StatusBar } from 'expo-status-bar';
+import { StatusBar } from 'expo-status-bar';
 import Routes from './src/views/routes';
 import SoundProvider from './src/contextAPI/sound';
 import SoundNarrationProvider from './src/contextAPI/soundNarration';

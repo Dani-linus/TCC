@@ -4,13 +4,10 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { SoundContext } from "../contextAPI/sound";
 import { SoundNarrationContext } from "../contextAPI/soundNarration";
-import { setStatusBarHidden, StatusBar } from 'expo-status-bar';
-import * as NavigationBar from 'expo-navigation-bar';
+import { StatusBar } from 'expo-status-bar';
 
 function ModalOptions(props) {
-
-    setStatusBarHidden(true, 'none');
-    NavigationBar.setVisibilityAsync('hidden');
+    
     const navigation = useNavigation();
 
     const { stopSound, playSound, isPlaying } = useContext(SoundContext);
