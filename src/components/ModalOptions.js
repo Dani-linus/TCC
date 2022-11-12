@@ -7,21 +7,20 @@ import { SoundNarrationContext } from "../contextAPI/soundNarration";
 import { StatusBar } from 'expo-status-bar';
 import SystemNavigationBar from 'react-native-system-navigation-bar';
 
-
 function ModalOptions(props) {
     
     SystemNavigationBar.fullScreen(true);
     const navigation = useNavigation();
-
+    
     const { stopSound, playSound, isPlaying } = useContext(SoundContext);
     const { stopSoundNarration, soundStatusNarration } = useContext(SoundNarrationContext);
-
+    
     const [modalVisible, setModalVisible] = useState(false);
     const [switchValueNarration, setSwitchOnNarration] = useState(soundStatusNarration.current);
     const [iconSound, setIconSound] = useState("volume-high");
     const [iconNarration, setIconNarration] = useState("mic");
     const [switchSoundValue, setSwitchSoundValue] = useState(true);
-
+    
     useEffect(() => {
         setSwitchOnNarration(soundStatusNarration.current);
         if(soundStatusNarration.current === false){
@@ -32,6 +31,7 @@ function ModalOptions(props) {
         }else{
             setIconNarration("mic-off")
         }
+        modalVisible ? SystemNavigationBar.fullScreen(true) : SystemNavigationBar.fullScreen(false);
     });
 
     useEffect(() =>{

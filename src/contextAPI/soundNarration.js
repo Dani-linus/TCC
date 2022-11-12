@@ -17,12 +17,12 @@ function SoundNarrationProvider({ children }) {
       console.log('Erro ao dar play no audio', error);
      }
   }
+
   const stopSoundNarration = async () => {
     let statusSom = await audio.current.getStatusAsync();
     try {
       if (statusSom.isLoaded == true) {
         await audio.current.stopAsync()
-       // await audio.current.unloadAsync();
       }
     } catch (error) {
       console.log('Erro ao pausar o audio', error)
@@ -33,6 +33,16 @@ function SoundNarrationProvider({ children }) {
     return () => audio.current.unloadAsync();
   }, [])
 
+  const unloadSoundNarration = async () => {
+    let statusSom = await audio.current.getStatusAsync();
+    try {
+      if (statusSom.isLoaded == true) {
+        await audio.current.unloadAsync();
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   async function initNarrationSound(som) {
 
@@ -41,7 +51,7 @@ function SoundNarrationProvider({ children }) {
       if (soundStatusNarration.current === true) {
         setTimeout(() => {
           audio.current.loadAsync((som), { volume: 1, shouldPlay: true });
-        }, 4000);
+        }, 3000);
         audio.current.unloadAsync();
       }
     } catch (error) {
@@ -50,7 +60,7 @@ function SoundNarrationProvider({ children }) {
   }
 
   return (
-    <SoundNarrationContext.Provider value={{ playSoundNarration, stopSoundNarration, initNarrationSound, soundStatusNarration }}>
+    <SoundNarrationContext.Provider value={{ playSoundNarration, stopSoundNarration, initNarrationSound, soundStatusNarration, unloadSoundNarration }}>
       {children}
     </SoundNarrationContext.Provider>
   )

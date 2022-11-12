@@ -25,10 +25,9 @@ export default function PageThirteen({ navigation }) {
         }, 4500);
     }
     //Iniciando a narração
-    useEffect(() => {
-        navigation.addListener('focus', () => initNarrationSound(narrationScene13));
-        updateVolumSound();
-    }, []);
+    // useEffect(() => {
+    //     navigation.addListener('focus', () => initNarrationSound(narrationScene13));
+    // }, []);
 
     //Definido um timeout para apresentar o button de navegacao
     useEffect(() => {

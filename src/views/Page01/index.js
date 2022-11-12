@@ -23,19 +23,19 @@ export default function PageOne({ navigation }) {
     const { updateVolumSound } = useContext(SoundContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const [load, setLoad] = useState(true);
+    const animation_pig_mom = useRef();
+    const animation_pig_spleeping = useRef();
 
     function timeoutButtonNavegacao() {
-        let timer = setTimeout(() => {
+        setTimeout(() => {
             setloadingButton(true);
         }, 4500);
     }
 
-    
-  //Iniciando a narração
    useEffect(() => {
-    navigation.addListener('focus', () => initNarrationSound(narrationScene1));
-    updateVolumSound();
-}, []);
+        navigation.addListener('focus', () => initNarrationSound(narrationScene1));
+        updateVolumSound();
+    }, []);
 
     //Definido um timeout para apresentar o button de navegacao
     useEffect(() => {
@@ -45,27 +45,12 @@ export default function PageOne({ navigation }) {
         };
     }, [navigation, load]);
 
-
-
-    //Definido um timeout para apresentar o button de navegacao
-   // useEffect(() => {
-    //    navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
-       // return () => {
-       //     setloadingButton(false);
-        //};
-   // }, [navigation, load]);
-
-    const animation_pig_mom = useRef();
-    const animation_pig_spleeping = useRef();
-
-    // estado 0 das animações
     animation_pig_spleeping.current?.play(0, 120);
     animation_pig_mom.current?.play(0, 48);
 
     function startAnimationPigMom() {
         animation_pig_mom.current?.play(48, 100);
         setTimeout(() => {
-            animation_pig_mom.current?.reset()
             animation_pig_mom.current?.play(0, 48);
         }, 5450);
     }
@@ -73,7 +58,6 @@ export default function PageOne({ navigation }) {
     function startAnimationPigSleeping() {
         animation_pig_spleeping.current?.play(120, 299);
         setTimeout(() => {
-            animation_pig_spleeping.current?.reset()
             animation_pig_spleeping.current?.play(0, 120);
         }, 4500);
     }

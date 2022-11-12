@@ -8,8 +8,7 @@ const styles = StyleSheet.create({
     },
     txt1:{
         fontFamily: 'FuzzyBubbles-Bold',
-        fontSize: 26,
-        lineHeight: 70
+        fontSize: 30,
     },
     messageEnd:{
         flex: 1,

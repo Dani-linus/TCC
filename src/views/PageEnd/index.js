@@ -5,17 +5,21 @@ import LottieView from 'lottie-react-native';
 import * as Animatable from "react-native-animatable";
 import { useNavigation } from '@react-navigation/native';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
+import { SoundContext } from 'contextAPI/sound';
 const end = require('../../../assets/animations/end/fireworks.json');
 const text = 'EBAAAAA... VOCÊ TERMINOU A LEITURA DA HISTÓRIA';
+const soundFile =  require('../../../assets/sound/soundEffects/firewokrs.mp3')
 
 export default function PageEnd() {
 
-    const { initNarrationSound,stopSoundNarration } = useContext(SoundNarrationContext);
+    const { stopSoundNarration } = useContext(SoundNarrationContext);
+    const { stopSound, initSoundEffects } = useContext(SoundContext);
     
     const navigation = useNavigation();
 
-   //Parando a narração
     stopSoundNarration();
+    stopSound();
+    initSoundEffects(soundFile)
 
     const goBack = () => {
         navigation.popToTop();

@@ -26,20 +26,18 @@ export default function PageTwo({ navigation }) {
             setloadingButton(true);
         }, 4500);
     }
-   //Iniciando a narração
-   useEffect(() => {
-    navigation.addListener('focus', () => initNarrationSound(narrationScene2));
-    updateVolumSound();
-}, []);
+
+    useEffect(() => {
+        navigation.addListener('focus', () => initNarrationSound(narrationScene2));
+    }, []);
+
        //Definido um timeout para apresentar o button de navegacao
-   useEffect(() => {
+    useEffect(() => {
         navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
         return () => {
             setloadingButton(false);
         };
     }, [navigation, load]);
-
-
 
     animation_pig_father_pig_mom.current?.play(0, 140);
 
@@ -50,6 +48,7 @@ export default function PageTwo({ navigation }) {
             animation_pig_father_pig_mom.current?.play(0, 140);
         }, 5000);
     }
+
     return (
         <View style={styles.container}>
 
@@ -67,16 +66,19 @@ export default function PageTwo({ navigation }) {
             ></LottieView>
 
             <LayoutPages>
-
-                <TouchableOpacity onPress={startAnimationPigFatherPigMom}>
-                    <Animatable.View style={[styles.toggleView, styles.togglePigs]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableOpacity>
-
+                <InteractionButton show={loadingButtonNavigation} action={startAnimationPigFatherPigMom} />
                 <LegendCaptionArea text={textScene2} />
-
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageThree" navigation={navigation} showComponent={true} />}
             </LayoutPages>
         </View >
     )
 }
 
+function InteractionButton(props){
+    const button = props.show ? (
+        <TouchableOpacity onPress={props.action}>
+            <Animatable.View style={[styles.toggleView, styles.togglePigs]} animation="pulse" easing="linear" iterationCount="infinite" />
+        </TouchableOpacity>
+    ) : null;
+    return button;
+}

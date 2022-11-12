@@ -17,7 +17,6 @@
       "hidden": true
     },
     "splash": {
-      "image": "./assets/icons/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#56B2EB"
     },

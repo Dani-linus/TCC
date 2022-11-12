@@ -8,7 +8,6 @@ import LayoutPages from 'components/LayoutPages';
 import ButtonNavigation from 'components/ButtonNavigation';
 import * as Animatable from 'react-native-animatable';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
-import { SoundContext } from 'contextAPI/sound';
 import { textScene4 } from 'views/legendTextFile';
 
 const scene4JSON = require('../../../assets/animations/page4/page_4.json');
@@ -19,7 +18,6 @@ const woodHouseIMG =  require('../../../assets/img/woodHouse.png')
 export default function PageFour({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
-    const { updateVolumSound } = useContext(SoundContext);
 
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const [load, setLoad] = useState(true);
@@ -33,7 +31,6 @@ export default function PageFour({ navigation }) {
     //Iniciando a narração
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene4));
-        updateVolumSound();
     }, []);
 
     //Definido um timeout para apresentar o button de navegacao
@@ -62,31 +59,30 @@ export default function PageFour({ navigation }) {
                 style={styles.presentation}
             ></LottieView>
 
-
             <LayoutPages>
-
-                <TouchableOpacity onPress={() => setImg(true)}>
-                    <Animatable.View style={[styles.toggleView, styles.toggleHouse]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableOpacity>
-
+                <InteractionButton show={loadingButtonNavigation} action={() => setImg(true)} />
                 <BuildWoodHouse showComponent={img}/>
-
                 <LegendCaptionArea text={textScene4} />
-
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageFive" navigation={navigation} showComponent={true} />}
-
             </LayoutPages>
         </View>
     )
 }
 
 function BuildWoodHouse(props) {
-
     const buildHouse = props.showComponent ? (
         <View>
             <Image source={woodHouseIMG} style={styles.woodHouse} />
         </View>
     ): null;
-
     return buildHouse;
+}
+
+function InteractionButton(props){
+    const button = props.show ? (
+        <TouchableOpacity onPress={props.action}>
+            <Animatable.View style={[styles.toggleView, styles.toggleHouse]} animation="pulse" easing="linear" iterationCount="infinite" />
+        </TouchableOpacity>
+    ) : null;
+    return button;
 }

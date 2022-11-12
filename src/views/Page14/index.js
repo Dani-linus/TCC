@@ -6,7 +6,6 @@ import LegendCaptionArea from '../../components/LegendTextArea';
 import ButtonNavigation from '../../components/ButtonNavigation';
 import LayoutPages from '../../components/LayoutPages';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
-import { SoundContext } from 'contextAPI/sound';
 import { textScene14 } from '../legendTextFile';
 import * as Animatable from "react-native-animatable";
 
@@ -17,30 +16,27 @@ const cauldronJSON = require('../../../assets/animations/page14/cauldron.json');
 export default function PageFourteen({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
-    const { updateVolumSound } = useContext(SoundContext);
-    const [loadingButtonNavigation, setloadingButton] = useState(false);
+    const [loadingButtonNavigation, setloadingButton] = useState(true);
     const [click, setClick] = useState(false);
     const [load, setLoad] = useState(true);
     const animation_cauldron = useRef();
 
-    function timeoutButtonNavegacao() {
-        setTimeout(() => {
-            setloadingButton(true);
-        }, 4500);
-    }
-    //Iniciando a narração
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene14));
-        updateVolumSound();
     }, []);
 
-    //Definido um timeout para apresentar o button de navegacao
     useEffect(() => {
         navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
         return () => {
             setloadingButton(false);
         };
     }, [navigation, load]);
+
+    function timeoutButtonNavegacao() {
+        setTimeout(() => {
+            setloadingButton(true);
+        }, 4500);
+    }
 
     animation_cauldron.current?.play(0, 140);
 
@@ -51,8 +47,6 @@ export default function PageFourteen({ navigation }) {
             animation_cauldron.current?.play(162, 190);
         }, 6000);
     }
-
-
 
     return (
         <View style={styles.container}>
@@ -65,22 +59,30 @@ export default function PageFourteen({ navigation }) {
             <LottieView
                 source={cauldronJSON}
                 ref={animation_cauldron}
+                autoPlay={false}
                 loop={true}
                 style={styles.view_caldeirao}
             />
 
             <LayoutPages>
-                <TouchableOpacity onPress={startCauldron}>
-                    <Animatable.View style={[styles.toggleView, styles.toggleCauldron]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableOpacity>
+                <InteractionButton show={loadingButtonNavigation} action={startCauldron}/>
                 
                 <Shout showComponent={click}/>
 
                 <LegendCaptionArea text={textScene14} />
-                <ButtonNavigation proxRoute="PageFifteen" navigation={navigation} showComponent={true} />
+                {loadingButtonNavigation && <ButtonNavigation proxRoute="PageFifteen" navigation={navigation} showComponent={true} />}
             </LayoutPages>
         </View >
     )
+}
+
+function InteractionButton(props){
+        const button = props.show ? (
+        <TouchableOpacity onPress={props.action}>
+            <Animatable.View style={[styles.toggleView, styles.toggleCauldron]} animation="pulse" easing="linear" iterationCount="infinite" />
+        </TouchableOpacity>
+    ) : null;
+    return button;
 }
 
 function Shout(props) {
@@ -90,7 +92,6 @@ function Shout(props) {
                 <Animatable.Text
                     animation="zoomIn"
                     easing={'ease-in-out'}
-                    delay={1000}
                     duration={1000}
                     style={styles.txt1}>
                         Aii
@@ -101,7 +102,7 @@ function Shout(props) {
                 <Animatable.Text
                     animation="zoomIn"
                     easing={'ease-in-out'}
-                    delay={2000}
+                    delay={500}
                     duration={1000}
                     style={styles.txt1}>
                         Ai

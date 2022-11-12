@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
-import { View, TouchableNativeFeedback, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import styles from './style';
 import LottieView from 'lottie-react-native';
 import LegendCaptionArea from '../../components/LegendTextArea';
@@ -17,7 +17,7 @@ const wolfBlowing = require('../../../assets/animations/page8/wolfBlowingTheStra
 export default function PageEight({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
-    const { updateVolumSound, playSoundEffects } = useContext(SoundContext);
+    const { playSoundEffects } = useContext(SoundContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const [load, setLoad] = useState(true);
     const animation_wolfBlowing = useRef();
@@ -30,7 +30,6 @@ export default function PageEight({ navigation }) {
 
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene8));
-        updateVolumSound();
     }, []);
 
     useEffect(() => {
@@ -49,7 +48,7 @@ export default function PageEight({ navigation }) {
         animation_wolfBlowing.current?.play(145, 299);
         playSoundEffects();
         setTimeout(() => {
-            animation_wolfBlowing.current?.play(290, 299);
+            animation_wolfBlowing.current?.play(290, 290);
         }, 4000);
     }
 
@@ -70,15 +69,19 @@ export default function PageEight({ navigation }) {
             />
 
             <LayoutPages>
-                <TouchableOpacity onPress={start_animation_wolfBlowing}>
-                    <Animatable.View style={[styles.toggleView, styles.togglebadWolf]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableOpacity>
-
+                <InteractionButton show={loadingButtonNavigation} action={start_animation_wolfBlowing} />
                 <LegendCaptionArea text={textScene8} />
-
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageNine" navigation={navigation} showComponent={true} />}
-
             </LayoutPages>
         </View >
     )
+}
+
+function InteractionButton(props){
+    const button = props.show ? (
+        <TouchableOpacity onPress={props.action}>
+            <Animatable.View style={[styles.toggleView, styles.togglebadWolf]} animation="pulse" easing="linear" iterationCount="infinite" />
+        </TouchableOpacity>
+    ) : null;
+    return button;
 }

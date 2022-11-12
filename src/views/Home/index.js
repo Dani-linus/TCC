@@ -1,4 +1,3 @@
-//Primeira tela - capa do livro e inicio da aplicação
 import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, Platform, BackHandler, Alert } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -14,10 +13,10 @@ export default function HomeView({ navigation }) {
     const [showComponent, setShowComponent] = useState(false)
 
     function isIOSorOther() {
-        if (Platform.OS === "ios") {
+        if (Platform.OS === "ios" || Platform.OS === 'android') {
             return (
                 <TouchableOpacity style={styles.btn_exitIOS} onPress={() => { BackHandler.exitApp() }}>
-                    <Ionicons name='exit' size={30} color='black' />
+                    <Ionicons name='exit' size={30} color='white' />
                 </TouchableOpacity>
             )
         }
@@ -41,14 +40,12 @@ export default function HomeView({ navigation }) {
 
     useEffect(() => {
         BackHandler.addEventListener("hardwareBackPress", backAction);
-
         return () =>
             BackHandler.removeEventListener("hardwareBackPress", backAction);
     }, []);
 
     return (
         <View style={styles.container}>
-            {/* <Image source={file} style={{width: width , height: height, alignSelf:'center' }}/> */}
             <LottieView
                 source={homePageJSON}
                 autoPlay={true}

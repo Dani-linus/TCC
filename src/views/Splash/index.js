@@ -15,7 +15,7 @@ const fuzzyBubbles = require('../../../assets/font/FuzzyBubbles-Bold.ttf')
 export default function SplashScreen() {
 
     const navigation = useNavigation();
-    const { initSound, playSound , initSoundEffects } = useContext(SoundContext);
+    const { initSound } = useContext(SoundContext);
 
     const [fontsLoaded] = useFonts({
         'PatrickHand': patrickHand,

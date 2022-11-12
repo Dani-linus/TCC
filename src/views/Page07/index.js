@@ -6,7 +6,6 @@ import LegendCaptionArea from 'components/LegendTextArea';
 import ButtonNavigation from 'components/ButtonNavigation';
 import LayoutPages from '../../components/LayoutPages';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
-import { SoundContext } from 'contextAPI/sound';
 import { textScene7 } from '../legendTextFile';
 import * as Animatable from 'react-native-animatable';
 
@@ -18,7 +17,6 @@ const narrationScene7 = require('../../../assets/sound/narration/Page07/Page7.mp
 export default function PageSeven({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
-    const { updateVolumSound } = useContext(SoundContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const [load, setLoad] = useState(true);
     const animation_wolf = useRef();
@@ -32,7 +30,6 @@ export default function PageSeven({ navigation }) {
 
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene7));
-        updateVolumSound();
     }, []);
 
     useEffect(() => {
@@ -48,7 +45,6 @@ export default function PageSeven({ navigation }) {
         animation_wolf.current?.play(0, 299);
         setTimeout(() => {
             animation_pig.current?.play();
-            animation_wolf.current?.reset();
             animation_wolf.current?.play(210, 299);
         }, 7000);
     }
@@ -69,18 +65,25 @@ export default function PageSeven({ navigation }) {
             />
             <LottieView
                 source={wolf}
+                loop={true}
                 ref={animation_wolf}
                 style={styles.view_wolf}
             />
             <LayoutPages>
-                <TouchableOpacity onPress={start_animation_wolf}>
-                    <Animatable.View style={[styles.toggleView, styles.togglebadWolf]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableOpacity>
-
+                <InteractionButton show={loadingButtonNavigation} action={start_animation_wolf} />
                 <LegendCaptionArea text={textScene7} />
 
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageEight" navigation={navigation} showComponent={true} />}
             </LayoutPages>
         </View >
     )
+}
+
+function InteractionButton(props){
+    const button = props.show ? (
+        <TouchableOpacity onPress={props.action}>
+            <Animatable.View style={[styles.toggleView, styles.togglebadWolf]} animation="pulse" easing="linear" iterationCount="infinite" />
+        </TouchableOpacity>
+    ) : null;
+    return button;
 }

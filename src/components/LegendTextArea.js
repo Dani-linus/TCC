@@ -1,26 +1,31 @@
 import React , {useContext}from "react"
 import * as Animatable from "react-native-animatable";
-import { StyleSheet, PixelRatio } from "react-native";
+import { StyleSheet, PixelRatio, View, Text } from "react-native";
 
 function LegendTextArea(props) {
     return (
-        <Animatable.View
-            animation="zoomIn"
-            delay={1000}
-            easing={'ease-in'}
-            duration={500}
-            style={[styles.viewtxt]}>
-                <Animatable.Text
-                    animation="zoomIn"
-                    easing={'ease-in-out'}
-                    delay={3000}
-                    duration={500}
-                    style={[styles.text_black, styles.text_modal_options]}>
+        // <Animatable.View
+        //     animation="zoomIn"
+        //     delay={1000}
+        //     easing={'ease-in'}
+        //     duration={500}
+        //     style={[styles.viewtxt]}>
+        //         <Animatable.Text
+        //             animation="zoomIn"
+        //             easing={'ease-in-out'}
+        //             delay={3000}
+        //             duration={500}
+        //             style={[styles.text_black, styles.text_modal_options]}>
 
+        //             {props.text}
+        //         </Animatable.Text>
+        // </Animatable.View>
+
+        <View style={[styles.viewtxt]}>
+              <Text style={[styles.text_black, styles.text_modal_options]}>
                     {props.text}
-                </Animatable.Text>
-        </Animatable.View>
-        
+                </Text>
+        </View>
     )
 }
 export default LegendTextArea;

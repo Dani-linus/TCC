@@ -18,7 +18,7 @@ export default function PageTwelve({ navigation }) {
 
     const animation_wolfBlowing = useRef();
     const { initNarrationSound } = useContext(SoundNarrationContext);
-    const { updateVolumSound,stopSoundEffects,playSoundEffects} = useContext(SoundContext);
+    const { stopSoundEffects, playSoundEffects} = useContext(SoundContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const [load, setLoad] = useState(true);
 
@@ -34,7 +34,6 @@ export default function PageTwelve({ navigation }) {
     //Iniciando a narração
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene12));
-        updateVolumSound();
     }, []);
 
     //Definido um timeout para apresentar o button de navegacao
@@ -48,16 +47,12 @@ export default function PageTwelve({ navigation }) {
     /**
      * Controle de animação do lobo assoprando a casa
      */
-    for (let i = 0; i < 1; i++) {
-        animation_wolfBlowing.current?.play(0, 70);
-    }
-    animation_wolfBlowing.current?.play(70, 145);
+    animation_wolfBlowing.current?.play(0, 35);
     
     function start_animation_wolfBlowing() {
-        animation_wolfBlowing.current?.play(145, 299);
-        playSoundEffects();
+        animation_wolfBlowing.current?.play(0, 299);
         setTimeout(() => {
-            animation_wolfBlowing.current?.play(290, 299);
+            playSoundEffects();
         }, 4000);
     }
 
@@ -76,13 +71,19 @@ export default function PageTwelve({ navigation }) {
                 style={styles.view_wolf}
             />
             <LayoutPages>
-                <TouchableOpacity onPress={start_animation_wolfBlowing}>
-                    <Animatable.View style={[styles.toggleView, styles.togglewolf]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableOpacity>
-
+                <InteractionButton show={loadingButtonNavigation} action={start_animation_wolfBlowing}/>
                 <LegendCaptionArea text={textScene12} />
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageThirteen" navigation={navigation} showComponent={true} />}
             </LayoutPages>
         </View >
     )
+}
+
+function InteractionButton(props){
+    const button = props.show ? (
+        <TouchableOpacity onPress={props.action}>
+            <Animatable.View style={[styles.toggleView, styles.togglewolf]} animation="pulse" easing="linear" iterationCount="infinite" />
+        </TouchableOpacity>
+    ) : null;
+    return button;
 }

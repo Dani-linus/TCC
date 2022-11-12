@@ -6,7 +6,6 @@ import LegendCaptionArea from '../../components/LegendTextArea';
 import ButtonNavigation from '../../components/ButtonNavigation';
 import LayoutPages from '../../components/LayoutPages';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
-import { SoundContext } from 'contextAPI/sound';
 import { textScene15 } from '../legendTextFile';
 
 const scene15JSON = require('../../../assets/animations/page15/page_15.json')
@@ -15,7 +14,6 @@ const narrationScene15 = require('../../../assets/sound/narration/Page15/Page15.
 export default function PageFifteen({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
-    const { updateVolumSound } = useContext(SoundContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const [load, setLoad] = useState(true);
 
@@ -27,7 +25,6 @@ export default function PageFifteen({ navigation }) {
     //Iniciando a narração
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene15));
-        updateVolumSound();
     }, []);
 
     //Definido um timeout para apresentar o button de navegacao

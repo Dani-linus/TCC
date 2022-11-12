@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { View, Image, TouchableWithoutFeedback } from 'react-native';
 import styles from './style';
 import LottieView from 'lottie-react-native';
@@ -7,7 +7,6 @@ import LayoutPages from 'components/LayoutPages';
 import ButtonNavigation from 'components/ButtonNavigation';
 import * as Animatable from 'react-native-animatable';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
-import { SoundContext } from 'contextAPI/sound';
 import { textScene3 } from 'views/legendTextFile';
 
 const presentationPigJSON = require('../../../assets/animations/page3/presentation_pig_tuca.json');
@@ -18,20 +17,18 @@ const strawHouseIMG = require('../../../assets/img/strawHouse.png');
 export default function PageThree({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
-    const { updateVolumSound } = useContext(SoundContext);
     const [img, setImg] = useState(false);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const [load, setLoad] = useState(true);
 
     function timeoutButtonNavegacao() {
-        let timer = setTimeout(() => {
+        setTimeout(() => {
             setloadingButton(true);
         }, 4500);
     }
-    //Iniciando a narração  
+
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene3));
-        updateVolumSound();
     }, []);
 
     useEffect(() => {
@@ -58,15 +55,9 @@ export default function PageThree({ navigation }) {
             ></LottieView>
 
             <LayoutPages>
-
-                <TouchableWithoutFeedback onPress={() => setImg(true)}>
-                    <Animatable.View style={[styles.toggleView, styles.toggleHouse]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableWithoutFeedback>
-
+                <InteractionButton show={loadingButtonNavigation} action={() => setImg(true)} />
                 <BuildStrawHouse showComponent={img}/>
-
                 <LegendCaptionArea text={textScene3} />
-
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageFour" navigation={navigation} showComponent={true} />}
             </LayoutPages>
         </View>
@@ -75,12 +66,19 @@ export default function PageThree({ navigation }) {
 
 // função para renderizar a imagem da casa.
 function BuildStrawHouse(props) {
-
     const buildHouse = props.showComponent ? (
         <View>
             <Image source={strawHouseIMG} style={styles.strawHouse} />
         </View>
     ): null;
-
     return buildHouse;
+}
+
+function InteractionButton(props){
+    const button = props.show ? (
+        <TouchableWithoutFeedback onPress={props.action}>
+            <Animatable.View style={[styles.toggleView, styles.toggleHouse]} animation="pulse" easing="linear" iterationCount="infinite" />
+        </TouchableWithoutFeedback>
+    ) : null;
+    return button;
 }

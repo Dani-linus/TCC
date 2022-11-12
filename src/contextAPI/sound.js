@@ -23,9 +23,8 @@ function SoundProvider({ children }) {
     }
 
     async function updateVolumSound() {
-        audioObject.current.setVolumeAsync(0.2);
+        audioObject.current.setVolumeAsync(0.1);
     }
-
     // pause audio
     async function stopSound() {
         try {
@@ -50,15 +49,15 @@ function SoundProvider({ children }) {
         }
     }
 
-    async function initSoundEffects() {
+    async function initSoundEffects(soundEffect) {
 
         let statusSom = await soundEffects.current.getStatusAsync();
         try {
             if (statusSom.isLoaded === false) {
-                await soundEffects.current.loadAsync(require('../../assets/sound/soundEffects/blowing.mp3'), { shouldPlay: true, volume: 0.5 });
+                await soundEffects.current.loadAsync(soundEffect, { shouldPlay: true, isLooping: true });
             }
         } catch (error) {
-            console.log('INIT SOUND: Não é possível concluir a operação porque o som não está carregado');
+            console.log(error);
         }
     }
 
@@ -67,7 +66,7 @@ function SoundProvider({ children }) {
         try {
             setTimeout(() => {
                 soundEffects.current.loadAsync(require('../../assets/sound/soundEffects/blowing.mp3'), { volume: 0.5, shouldPlay: true });
-            }, 2000);
+            }, 1500);
         } catch (error) {
             console.log('Erro ao executar audio:', error)
         }
@@ -87,7 +86,7 @@ function SoundProvider({ children }) {
         }
     }
     return (
-        <SoundContext.Provider value={{ playSound, stopSound, initSound, updateVolumSound, isLoaded, isPlaying, initSoundEffects, playSoundEffects,stopSoundEffects}}>
+        <SoundContext.Provider value={{ playSound, stopSound, initSound, updateVolumSound, isLoaded, isPlaying, playSoundEffects, stopSoundEffects, initSoundEffects}}>
             {children}
         </SoundContext.Provider>
     )

@@ -6,7 +6,6 @@ import LegendCaptionArea from '../../components/LegendTextArea';
 import ButtonNavigation from '../../components/ButtonNavigation';
 import LayoutPages from '../../components/LayoutPages';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
-import { SoundContext } from 'contextAPI/sound';
 import { textScene11 } from '../legendTextFile';
 import * as Animatable from 'react-native-animatable';
 
@@ -18,7 +17,6 @@ const wolf = require('../../../assets/animations/page11/wolf.json');
 export default function PageEleven({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
-    const { updateVolumSound } = useContext(SoundContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const animation_wolf = useRef();
     const animation_pigs = useRef();
@@ -33,7 +31,6 @@ export default function PageEleven({ navigation }) {
     //Iniciando a narração
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene11));
-        updateVolumSound();
     }, []);
 
     //Definido um timeout para apresentar o button de navegacao
@@ -51,7 +48,6 @@ export default function PageEleven({ navigation }) {
         animation_wolf.current?.play(0, 299);
         setTimeout(() => {
             animation_pigs.current?.play();
-            animation_wolf.current?.reset();
             animation_wolf.current?.play(210, 299);
         }, 7000);
     }
@@ -80,15 +76,19 @@ export default function PageEleven({ navigation }) {
             />
 
             <LayoutPages>
-                <TouchableOpacity onPress={start_animation_wolf}>
-                    <Animatable.View style={[styles.toggleView, styles.togglewolf]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableOpacity>
-
+                <InteractionButton show={loadingButtonNavigation} action={start_animation_wolf}/>
                 <LegendCaptionArea text={textScene11} />
-
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageTwelve" navigation={navigation} showComponent={true} />}
-
             </LayoutPages>
         </View >
     )
+}
+
+function InteractionButton(props){
+    const button = props.show ? (
+        <TouchableOpacity onPress={props.action}>
+            <Animatable.View style={[styles.toggleView, styles.togglewolf]} animation="pulse" easing="linear" iterationCount="infinite" />
+        </TouchableOpacity>
+    ) : null;
+    return button;
 }
