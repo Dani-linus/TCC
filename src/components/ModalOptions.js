@@ -4,12 +4,12 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { SoundContext } from "../contextAPI/sound";
 import { SoundNarrationContext } from "../contextAPI/soundNarration";
-import { StatusBar } from 'expo-status-bar';
 import SystemNavigationBar from 'react-native-system-navigation-bar';
 
 function ModalOptions(props) {
     
-    SystemNavigationBar.fullScreen(true);
+    SystemNavigationBar.immersive();
+
     const navigation = useNavigation();
     
     const { stopSound, playSound, isPlaying } = useContext(SoundContext);
@@ -31,7 +31,6 @@ function ModalOptions(props) {
         }else{
             setIconNarration("mic-off")
         }
-        modalVisible ? SystemNavigationBar.fullScreen(true) : SystemNavigationBar.fullScreen(false);
     });
 
     useEffect(() =>{
@@ -72,7 +71,6 @@ function ModalOptions(props) {
 
     return (
         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-            <StatusBar hidden={true}/>
             <Modal
                 onRequestClose={() => setModalVisible(false)}
                 animationType={'fade'}
