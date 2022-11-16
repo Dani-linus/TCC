@@ -1,18 +1,6 @@
-import { Dimensions, StyleSheet,  PixelRatio } from "react-native";
+import { StyleSheet } from "react-native";
 
-let Width = Dimensions.get('window').width;
-let Height = Dimensions.get('window').height;
-
-const wp = widthPercent => {
-  const elemWidth = typeof widthPercent === "number" ? widthPercent : parseFloat(widthPercent);
-  return PixelRatio.roundToNearestPixel(Width * elemWidth / 100);
-};
-
-const hp = heightPercent => {
-  const elemHeight = typeof heightPercent === "number" ? heightPercent : parseFloat(heightPercent);
-
-  return PixelRatio.roundToNearestPixel(Height * elemHeight / 100);
-};
+import { wp, hp } from '../CustomStyleFunction';
 
 const styles = StyleSheet.create({
     container: {
@@ -44,10 +32,10 @@ const styles = StyleSheet.create({
     },
     strawHouse:{
         resizeMode: 'contain',
-        height: hp(51),
+        height: hp("51%"),
         position: 'absolute',
-        left: wp(47),
-        top: wp(3.7),
+        left: wp("47%"),
+        top: wp("3.7%"),
     },
     toggleView:{
         position: 'absolute', 
@@ -59,8 +47,8 @@ const styles = StyleSheet.create({
         elevation: 2,
     },
     toggleHouse:{
-        left: wp(77),
-        top: wp(23),
+        left: wp("77%"),
+        top: wp("23%"),
     },
 });
 export default styles;
