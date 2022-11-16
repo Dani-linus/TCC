@@ -32,10 +32,10 @@ const styles = StyleSheet.create({
     },
     strawHouse:{
         resizeMode: 'contain',
-        height: hp("51%"),
+        height:190,
         position: 'absolute',
-        left: wp("45%"),
-        top: wp("3.2%"),
+        left: 320,
+        top:20,
     },
     toggleView:{
         position: 'absolute', 

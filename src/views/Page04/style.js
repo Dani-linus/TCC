@@ -31,10 +31,10 @@ const styles = StyleSheet.create({
     },
     woodHouse:{
         resizeMode: 'contain',
-        height: hp(51),
+        height: 185,
         position: 'absolute',
-        left: wp(6),
-        top: wp(3),
+        left: 23,
+        top: 16,
     },
     toggleView:{
         position: 'absolute', 
