@@ -11,7 +11,7 @@ export default function App() {
   NavigationBar.setVisibilityAsync('hidden');
   return (
     <NavigationContainer>
-      {/* <StatusBar hidden/> */}
+     <StatusBar hidden/>
       <SoundProvider>
         <SoundNarrationProvider>
           <Routes />

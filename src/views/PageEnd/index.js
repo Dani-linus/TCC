@@ -23,6 +23,7 @@ export default function PageEnd() {
 
     const goBack = () => {
         navigation.popToTop();
+        stopSoundEffects();
     }
 
     return (
