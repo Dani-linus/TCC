@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         height: hp("51%"),
         position: 'absolute',
-        left: wp("47%"),
-        top: wp("3.7%"),
+        left: wp("45%"),
+        top: wp("3.2%"),
     },
     toggleView:{
         position: 'absolute', 
