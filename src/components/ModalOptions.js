@@ -4,11 +4,11 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { SoundContext } from "../contextAPI/sound";
 import { SoundNarrationContext } from "../contextAPI/soundNarration";
-// import SystemNavigationBar from 'react-native-system-navigation-bar';
+import SystemNavigationBar from 'react-native-system-navigation-bar';
 
 function ModalOptions(props) {
     
-    // SystemNavigationBar.immersive();
+    SystemNavigationBar.immersive();
 
     const navigation = useNavigation();
     
