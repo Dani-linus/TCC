@@ -44,7 +44,7 @@ export default function PageFourteen({ navigation }) {
         animation_cauldron.current?.play(140, 300);
         setTimeout(() => {
             setClick(true);
-            animation_cauldron.current?.play(162, 190);
+            animation_cauldron.current?.play(165, 190);
         }, 6000);
     }
 

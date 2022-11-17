@@ -45,7 +45,6 @@ function SoundNarrationProvider({ children }) {
   }
 
   async function initNarrationSound(som) {
-
     audio.current.unloadAsync();
     try {
       if (soundStatusNarration.current === true) {

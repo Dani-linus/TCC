@@ -32,22 +32,22 @@ const styles = StyleSheet.create({
     },
     strawHouse:{
         position: 'absolute',
-        width: wp(107),
-        left: wp(-0.4),
-        top: wp(-2.5),
+        width: wp(109),
+        left: wp(-1),
+        top: wp(-2.8),
     },
     toggleView:{
         position: 'absolute', 
         backgroundColor: 'white', 
-        width: 30, 
-        height: 30, 
+        width: 40, 
+        height: 40, 
         borderRadius: 50, 
         opacity: 0.8,
         elevation: 2,
     },
     toggleHouse:{
-        left: wp("77%"),
-        top: wp("23%"),
+        left: wp(76),
+        top: wp(22),
     },
 });
 export default styles;
