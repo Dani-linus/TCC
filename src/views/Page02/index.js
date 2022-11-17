@@ -7,17 +7,17 @@ import * as Animatable from 'react-native-animatable';
 import styles from './style';
 import ButtonNavigation from 'components/ButtonNavigation'
 import { SoundNarrationContext } from "contextAPI/soundNarration";
-import { SoundContext } from 'contextAPI/sound';
 import { textScene2 } from 'views/legendTextFile';
 
 const pigMomPigFatherJSON = require('../../../assets/animations/page2/pig_father_pig_mom.json');
+// const pigMomPigFatherJSON = require('../../../assets/animations/page2/pigMomAndPigFather.json');
 const scene2JSON = require('../../../assets/animations/page2/page_2.json');
+// const scene2JSON = require('../../../assets/animations/page2/page2.json');
 const narrationScene2 = require('../../../assets/sound/narration/Page02/Page2.mp3');
 
 export default function PageTwo({ navigation }) {
     const animation_pig_father_pig_mom = useRef();
     const { initNarrationSound } = useContext(SoundNarrationContext);
-    const { updateVolumSound } = useContext(SoundContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const [load, setLoad] = useState(true);
 

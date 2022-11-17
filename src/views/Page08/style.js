@@ -10,15 +10,14 @@ const styles = StyleSheet.create({
     view_wolfBlowing:{
         position: 'absolute',
         width: wp(100),
-        // height: hp(60),
         top: wp(0),
         left: wp(3),
     } ,
      toggleView: {
       position: 'absolute',
       backgroundColor: 'white',
-      width: 30,
-      height: 30,
+      width: 40,
+      height: 40,
       borderRadius: 50,
       opacity: 0.8,
       elevation: 5,

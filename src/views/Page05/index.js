@@ -12,7 +12,6 @@ import { SoundNarrationContext } from "contextAPI/soundNarration";
 const scene5JSON = require('../../../assets/animations/page5/page_5.json');
 const presentationPigJSON = require('../../../assets/animations/page5/presentation_pig_beto.json')
 const narrationScene5 = require('../../../assets/sound/narration/Page05/Page5.mp3')
-const brickHouseIMG = require('../../../assets/img/brickHouse.png')
 const brickHouseJSON = require('../../../assets/animations/page5/brickHouse.json');
 
 export default function PageFive({ navigation }) {

@@ -1,6 +1,6 @@
 //página 4 do livro
 import React, { useContext, useEffect, useState } from 'react';
-import { View, Image, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import styles from './style';
 import LegendCaptionArea from 'components/LegendTextArea';
 import LottieView from 'lottie-react-native';
@@ -71,9 +71,7 @@ export default function PageFour({ navigation }) {
 
 function BuildWoodHouse(props) {
     const buildHouse = props.showComponent ? (
-        
-            <LottieView source={woodHouseJSON} style={styles.woodHouse} />
-           
+        <LottieView source={woodHouseJSON} style={styles.woodHouse} />
     ): null;
     return buildHouse;
 }

@@ -11,7 +11,7 @@ import * as Animatable from 'react-native-animatable';
 
 const scene7JSON = require('../../../assets/animations/page7/page_7.json');
 const pig_speak = require('../../../assets/animations/page7/pig_speak.json');
-const wolf = require('../../../assets/animations/page7/wolf.json');
+const wolf = require('../../../assets/animations/page7/badWolf.json');
 const narrationScene7 = require('../../../assets/sound/narration/Page07/Page7.mp3');
 
 export default function PageSeven({ navigation }) {

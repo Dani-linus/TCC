@@ -19,13 +19,13 @@ const styles = StyleSheet.create({
         left: wp(-6),
     },
     togglePigs:{
-      left: wp(17),
-      top: wp(29),
+      left: wp(16),
+      top: wp(28),
     },
     toggleView:{
       position: 'absolute', 
-      width: 30, 
-      height: 30, 
+      width: 40, 
+      height: 40, 
       borderRadius: 50, 
       backgroundColor: 'white', 
       elevation: 2,
