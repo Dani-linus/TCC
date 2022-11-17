@@ -13,7 +13,7 @@ import { textScene4 } from 'views/legendTextFile';
 const scene4JSON = require('../../../assets/animations/page4/page_4.json');
 const presentationPig = require('../../../assets/animations/page4/presentation_pig_kako.json')
 const narrationScene4 = require('../../../assets/sound/narration/Page04/Page4.mp3');
-const woodHouseIMG =  require('../../../assets/img/woodHouse.png')
+const woodHouseJSON = require('../../../assets/animations/page4/WoodHouse.json');
 
 export default function PageFour({ navigation }) {
 
@@ -71,9 +71,9 @@ export default function PageFour({ navigation }) {
 
 function BuildWoodHouse(props) {
     const buildHouse = props.showComponent ? (
-        <View>
-            <Image source={woodHouseIMG} style={styles.woodHouse} />
-        </View>
+        
+            <LottieView source={woodHouseJSON} style={styles.woodHouse} />
+           
     ): null;
     return buildHouse;
 }

@@ -16,9 +16,9 @@ const styles = StyleSheet.create({
     },
     brickHouse:{
       position: 'absolute',
-      height: hp(60.5),
-      left: wp(-8.4),
-      top: wp(4.8),
+      height: wp(60),
+      left: wp(0.1),
+      top: wp(-2.6),
   },
     toggleView:{
       position: 'absolute', 

@@ -31,9 +31,9 @@ const styles = StyleSheet.create({
     },
     woodHouse:{
         position: 'absolute',
-        height: 185,
-        left: 23,
-        top: 16,
+        height: wp(61),
+        left: wp(-0.3),
+        top: wp(-5.3),
     },
     toggleView:{
         position: 'absolute', 
