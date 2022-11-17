@@ -31,11 +31,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#00FF30',
     },
     strawHouse:{
-        resizeMode: 'contain',
-        height:190,
         position: 'absolute',
-        left: 320,
-        top:20,
+        width: wp(107),
+        left: wp(-0.4),
+        top: wp(-2.5),
     },
     toggleView:{
         position: 'absolute', 

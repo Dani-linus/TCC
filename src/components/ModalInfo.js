@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 import { Text, View, TouchableOpacity, Modal, StyleSheet, Image} from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { StatusBar } from 'expo-status-bar';
 
 const helpIMG = require('../../assets/img/help.png');
 
 function ModalInfo(){
     
-
     const [modalVisible, setModalVisible] =  useState(false);
 
     return(
         <View style={styles.center}>   
-        <StatusBar hidden={modalVisible}/>        
             <Modal 
                 onRequestClose={() => setModalVisible(false)}
                 animationType={'fade'}

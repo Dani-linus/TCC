@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
         left: wp(-14),
     },
     brickHouse:{
-      resizeMode: 'contain',
       position: 'absolute',
       height: hp(60.5),
       left: wp(-8.4),

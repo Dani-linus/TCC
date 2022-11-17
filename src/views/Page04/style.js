@@ -30,9 +30,8 @@ const styles = StyleSheet.create({
         right: wp(-10),
     },
     woodHouse:{
-        resizeMode: 'contain',
-        height: 185,
         position: 'absolute',
+        height: 185,
         left: 23,
         top: 16,
     },

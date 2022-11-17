@@ -13,7 +13,7 @@ const soundFile =  require('../../../assets/sound/soundEffects/firewokrs.mp3')
 export default function PageEnd() {
 
     const { stopSoundNarration } = useContext(SoundNarrationContext);
-    const { stopSound, initSoundEffects } = useContext(SoundContext);
+    const { stopSound, initSoundEffects, stopSoundEffects} = useContext(SoundContext);
     
     const navigation = useNavigation();
 
