@@ -1,6 +1,6 @@
 //página 4 do livro
 import React, { useContext, useEffect, useState } from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableWithoutFeedback } from 'react-native';
 import styles from './style';
 import LegendCaptionArea from 'components/LegendTextArea';
 import LottieView from 'lottie-react-native';
@@ -78,9 +78,9 @@ function BuildWoodHouse(props) {
 
 function InteractionButton(props){
     const button = props.show ? (
-        <TouchableOpacity onPress={props.action}>
+        <TouchableWithoutFeedback onPress={props.action}>
             <Animatable.View style={[styles.toggleView, styles.toggleHouse]} animation="pulse" easing="linear" iterationCount="infinite" />
-        </TouchableOpacity>
+        </TouchableWithoutFeedback>
     ) : null;
     return button;
 }

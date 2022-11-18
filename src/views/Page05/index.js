@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { View, TouchableOpacity, Image} from 'react-native';
+import { View, TouchableWithoutFeedback} from 'react-native';
 import styles from './style';
 import LottieView from 'lottie-react-native';
 import LayoutPages from 'components/LayoutPages';
@@ -76,9 +76,9 @@ function BuildBrickHouse(props) {
 
 function InteractionButton(props){
     const button = props.show ? (
-        <TouchableOpacity onPress={props.action}>
+        <TouchableWithoutFeedback onPress={props.action}>
             <Animatable.View style={[styles.toggleView, styles.toggleHouse]} animation="pulse" easing="linear" iterationCount="infinite" />
-        </TouchableOpacity>
+        </TouchableWithoutFeedback>
     ) : null;
     return button;
 }

@@ -1,6 +1,6 @@
 //Página 1 do livro
 import React, { useRef, useContext, useEffect, useState } from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableWithoutFeedback } from 'react-native';
 import styles from './style';
 import * as Animatable from 'react-native-animatable';
 import LegendCaptionArea from 'components/LegendTextArea';
@@ -94,14 +94,14 @@ export default function PageOne({ navigation }) {
             <LayoutPages navigation={navigation}>
 
                 {/* controle de animação 1 */}
-                <TouchableOpacity onPress={startAnimationPigMom}>
+                <TouchableWithoutFeedback onPress={startAnimationPigMom}>
                     <Animatable.View style={[styles.toggleView, styles.togglePigMom]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableOpacity>
+                </TouchableWithoutFeedback>
 
                 {/* controle de animação 2 */}
-                 <TouchableOpacity onPress={startAnimationPigSleeping}>
+                 <TouchableWithoutFeedback onPress={startAnimationPigSleeping}>
                     <Animatable.View style={[styles.toggleView, styles.togglePigSleeping]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableOpacity> 
+                </TouchableWithoutFeedback> 
 
                 <LegendCaptionArea text={textScene1} />
 

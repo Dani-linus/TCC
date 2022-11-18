@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { View, Image, TouchableWithoutFeedback } from 'react-native';
+import { View, TouchableWithoutFeedback } from 'react-native';
 import styles from './style';
 import LottieView from 'lottie-react-native';
 import LegendCaptionArea from 'components/LegendTextArea';

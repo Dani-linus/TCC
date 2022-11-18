@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableWithoutFeedback } from 'react-native';
 import LottieView from 'lottie-react-native';
 import LegendCaptionArea from 'components/LegendTextArea';
 import LayoutPages from 'components/LayoutPages';
@@ -79,9 +79,9 @@ export default function PageTwo({ navigation }) {
 
 function InteractionButton(props){
     const button = props.show ? (
-        <TouchableOpacity onPress={props.action}>
+        <TouchableWithoutFeedback onPress={props.action}>
             <Animatable.View style={[styles.toggleView, styles.togglePigs]} animation="pulse" easing="linear" iterationCount="infinite" />
-        </TouchableOpacity>
+        </TouchableWithoutFeedback>
     ) : null;
     return button;
 }
