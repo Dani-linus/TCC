@@ -9,8 +9,8 @@ import * as Animatable from 'react-native-animatable';
 import { textScene5 } from 'views/legendTextFile';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
 
-const scene5JSON = require('../../../assets/animations/page5/page_5.json');
-const presentationPigJSON = require('../../../assets/animations/page5/presentation_pig_beto.json')
+const scene5JSON = require('../../../assets/animations/page5/page5.json');
+const presentationPigJSON = require('../../../assets/animations/page5/presentationPig3.json')
 const narrationScene5 = require('../../../assets/sound/narration/Page05/Page5.mp3')
 const brickHouseJSON = require('../../../assets/animations/page5/brickHouse.json');
 

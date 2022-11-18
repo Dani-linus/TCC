@@ -10,9 +10,9 @@ import { SoundContext } from 'contextAPI/sound';
 import { textScene12 } from '../legendTextFile';
 import * as Animatable from 'react-native-animatable';
 
-const wolfPage12 = require('../../../assets/animations/page12/wolf_page_12.json');
+const wolfPage12 = require('../../../assets/animations/page12/wolfBlowingBrickHouse.json');
 const narrationScene12 = require('../../../assets/sound/narration/Page12/Page12.mp3');
-const scene12JSON = require('../../../assets/animations/page12/page_12.json')
+const scene12JSON = require('../../../assets/animations/page12/page12.json')
 
 export default function PageTwelve({ navigation }) {
 
@@ -67,7 +67,6 @@ export default function PageTwelve({ navigation }) {
             <LottieView
                 source={wolfPage12}
                 ref={animation_wolfBlowing}
-                loop={true}
                 style={styles.view_wolf}
             />
             <LayoutPages>

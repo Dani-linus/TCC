@@ -12,11 +12,11 @@ import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { textScene1 } from 'views/legendTextFile';
 
 // imports dos arquivos JSON das animações
-const pigMomJSON = require('../../../assets/animations/page1/pig_mom.json');
+const pigMomJSON = require('../../../assets/animations/page1/pigMom.json');
 // const pigMomJSON = require('../../../assets/animations/page1/pigmom.json');
-const pigSleepingJSON = require('../../../assets/animations/page1/pig_sleepling.json');
+const pigSleepingJSON = require('../../../assets/animations/page1/pigSleeping.json');
 // const pigSleepingJSON = require('../../../assets/animations/page1/pig.json');
-const scene1JSON = require('../../../assets/animations/page1/page_1.json');
+const scene1JSON = require('../../../assets/animations/page1/page1.json');
 // const scene1JSON = require('../../../assets/animations/page1/cena1.json');
 const narrationScene1 = require('../../../assets/sound/narration/Page01/Page1.mp3');
 
@@ -93,14 +93,14 @@ export default function PageOne({ navigation }) {
             <LayoutPages navigation={navigation}>
 
                 {/* controle de animação 1 */}
-                {/* <TouchableOpacity onPress={startAnimationPigMom}>
+                <TouchableOpacity onPress={startAnimationPigMom}>
                     <Animatable.View style={[styles.toggleView, styles.togglePigMom]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableOpacity> */}
+                </TouchableOpacity>
 
                 {/* controle de animação 2 */}
-                {/* <TouchableOpacity onPress={startAnimationPigSleeping}>
+                 <TouchableOpacity onPress={startAnimationPigSleeping}>
                     <Animatable.View style={[styles.toggleView, styles.togglePigSleeping]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableOpacity> */}
+                </TouchableOpacity> 
 
                 <LegendCaptionArea text={textScene1} />
 

@@ -9,7 +9,7 @@ import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { textScene13 } from '../legendTextFile';
 
 const narrationScene13 = require('../../../assets/sound/narration/Page13/Page13.mp3');
-const scene13JSON = require('../../../assets/animations/page13/page_13.json');
+const scene13JSON = require('../../../assets/animations/page13/page13.json');
 
 export default function PageThirteen({ navigation }) {
 

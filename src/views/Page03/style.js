@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
     strawHouse:{
         position: 'absolute',
         width: wp(109),
-        left: wp(-1),
-        top: wp(-2.8),
+        left: wp(-1.3),
+        top: wp(-1.8),
     },
     toggleView:{
         position: 'absolute', 

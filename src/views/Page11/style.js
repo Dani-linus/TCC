@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
       elevation: 2,
     },
     togglewolf: {
-      left: wp(35),
+      left: wp(34),
       top: wp(24),
     },
 })

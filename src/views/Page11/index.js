@@ -9,10 +9,10 @@ import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { textScene11 } from '../legendTextFile';
 import * as Animatable from 'react-native-animatable';
 
-const scene11JSON = require('../../../assets/animations/page11/page_11.json');
+const scene11JSON = require('../../../assets/animations/page11/page11.json');
 const narrationScene11 = require('../../../assets/sound/narration/Page11/Page11.mp3');
-const pigs = require('../../../assets/animations/page11/pigs.json');
-const wolf = require('../../../assets/animations/page11/badWolf.json');
+const pigs = require('../../../assets/animations/page11/pigsSpeakingFinal.json');
+const wolf = require('../../../assets/animations/page11/wolfDoor.json');
 
 export default function PageEleven({ navigation }) {
 

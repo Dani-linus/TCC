@@ -9,9 +9,9 @@ import ButtonNavigation from 'components/ButtonNavigation'
 import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { textScene2 } from 'views/legendTextFile';
 
-const pigMomPigFatherJSON = require('../../../assets/animations/page2/pig_father_pig_mom.json');
+const pigMomPigFatherJSON = require('../../../assets/animations/page2/pigParents.json');
 // const pigMomPigFatherJSON = require('../../../assets/animations/page2/pigMomAndPigFather.json');
-const scene2JSON = require('../../../assets/animations/page2/page_2.json');
+const scene2JSON = require('../../../assets/animations/page2/page2.json');
 // const scene2JSON = require('../../../assets/animations/page2/page2.json');
 const narrationScene2 = require('../../../assets/sound/narration/Page02/Page2.mp3');
 
