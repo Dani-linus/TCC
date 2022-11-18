@@ -15,8 +15,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
         width: wp(60),
         height: hp(60),
-        top: wp(7),
-        left: wp(-6),
+        top: wp(6.4),
+        left: wp(-7),
     },
     togglePigs:{
       left: wp(16),

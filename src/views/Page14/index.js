@@ -20,9 +20,11 @@ export default function PageFourteen({ navigation }) {
     const [click, setClick] = useState(false);
     const [load, setLoad] = useState(true);
     const animation_cauldron = useRef();
+    const [isInteraction, setInteraction] = useState(false);
 
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene14));
+        animation_cauldron.current?.reset();
     }, []);
 
     useEffect(() => {
@@ -35,13 +37,15 @@ export default function PageFourteen({ navigation }) {
     function timeoutButtonNavegacao() {
         setTimeout(() => {
             setloadingButton(true);
+            setInteraction(true);
         }, 4500);
     }
 
-    animation_cauldron.current?.play(0, 140);
+    // animation_cauldron.current?.play(0, 140);
 
     function startCauldron() {
         animation_cauldron.current?.play(140, 300);
+        setInteraction(false);
         setTimeout(() => {
             setClick(true);
             animation_cauldron.current?.play(165, 190);
@@ -65,7 +69,7 @@ export default function PageFourteen({ navigation }) {
             />
 
             <LayoutPages>
-                <InteractionButton show={loadingButtonNavigation} action={startCauldron}/>
+                <InteractionButton show={isInteraction} action={startCauldron}/>
                 
                 <Shout showComponent={click}/>
 

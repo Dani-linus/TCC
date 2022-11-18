@@ -9,9 +9,9 @@ const styles = StyleSheet.create({
     },
     view_wolf:{
         position: 'absolute',
-        width: wp(30),
-        top: wp(5),
-        left: wp(6),
+        width: wp(26),
+        top: wp(6),
+        left: wp(14),
     },
     view_pigs:{
         position: 'absolute',
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
       elevation: 2,
     },
     togglebadWolf: {
-      left: wp(31),
+      left: wp(45),
       top: wp(24),
     },
 })

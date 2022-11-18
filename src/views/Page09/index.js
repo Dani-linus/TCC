@@ -22,10 +22,12 @@ export default function PageNine({ navigation }) {
     const [load, setLoad] = useState(true);
     const animation_wolf = useRef();
     const animation_pigs = useRef();
+    const [isInteraction, setInteraction] = useState(false);
 
     function timeoutButtonNavegacao() {
         setTimeout(() => {
             setloadingButton(true);
+            setInteraction(true);
         }, 4500);
     }
 
@@ -40,10 +42,11 @@ export default function PageNine({ navigation }) {
         };
     }, [navigation, load]);
 
-    animation_wolf.current?.play(210, 299);
+    // animation_wolf.current?.play(210, 299);
     
     function start_animation_wolf() {
         animation_wolf.current?.play(0, 299);
+        setInteraction(false);
         setTimeout(() => {
             animation_pigs.current?.play();
             animation_wolf.current?.play(210, 299);
@@ -74,7 +77,7 @@ export default function PageNine({ navigation }) {
             />
 
             <LayoutPages>
-                <InteractionButton show={loadingButtonNavigation} action={start_animation_wolf}/>
+                <InteractionButton show={isInteraction} action={start_animation_wolf}/>
                 <LegendCaptionArea text={textScene9} />
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageTen" navigation={navigation} showComponent={true} />}
             </LayoutPages>

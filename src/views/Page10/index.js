@@ -21,15 +21,18 @@ export default function PageTen({ navigation }) {
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const [load, setLoad] = useState(true);
     const animation_wolfBlowing = useRef();
+    const [isInteraction, setInteraction] = useState(false);
 
     function timeoutButtonNavegacao() {
         setTimeout(() => {
             setloadingButton(true);
+            setInteraction(true);
         }, 4500);
     }
 
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene10));
+        animation_wolfBlowing.current?.reset();
     }, []);
 
     useEffect(() => {
@@ -42,14 +45,15 @@ export default function PageTen({ navigation }) {
     /**
      * Controle de animação do lobo assoprando a casa
      */
-    animation_wolfBlowing.current?.play(70, 145);
+    // animation_wolfBlowing.current?.play(70, 145);
 
     function start_animation_wolfBlowing() {
         animation_wolfBlowing.current?.play(145, 299);
         playSoundEffects();
-        setTimeout(() => {
-            animation_wolfBlowing.current?.play(290, 290);
-        }, 4000);
+        setInteraction(false);
+        // setTimeout(() => {
+        //     animation_wolfBlowing.current?.play(290, 290);
+        // }, 4000);
     }
     return (
         <View style={styles.container}>
@@ -66,7 +70,7 @@ export default function PageTen({ navigation }) {
                 style={styles.view_wolfBlowing}
             />
             <LayoutPages>
-                <InteractionButton show={loadingButtonNavigation} action={start_animation_wolfBlowing}/>
+                <InteractionButton show={isInteraction} action={start_animation_wolfBlowing}/>
                 <LegendCaptionArea text={textScene10} />
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageEleven" navigation={navigation} showComponent={true} />}
             </LayoutPages>

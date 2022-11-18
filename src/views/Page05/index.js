@@ -48,16 +48,19 @@ export default function PageFive({ navigation }) {
                 loop={true}
                 resizeMode='cover'
             />
+            
             <LottieView
                 source={presentationPigJSON}
                 autoPlay={true}
                 loop={false}
                 style={styles.presentation}
             />
-
+            
             <LayoutPages>
                 <InteractionButton show={loadingButtonNavigation} action={() => setImg(true)} />
                 <BuildBrickHouse showComponent={img}/>
+
+
                 <LegendCaptionArea text={textScene5} />
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageSix" navigation={navigation} showComponent={true} />}
             </LayoutPages>

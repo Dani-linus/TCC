@@ -20,17 +20,21 @@ export default function PageEleven({ navigation }) {
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const animation_wolf = useRef();
     const animation_pigs = useRef();
+    const [isInteraction, setInteraction] = useState(false);
 
     const [load, setLoad] = useState(true);
 
     function timeoutButtonNavegacao() {
         setTimeout(() => {
             setloadingButton(true);
+            setInteraction(true);
         }, 4500);
     }
     //Iniciando a narração
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene11));
+        animation_pigs.current?.reset();
+        animation_wolf.current?.reset();
     }, []);
 
     //Definido um timeout para apresentar o button de navegacao
@@ -42,10 +46,11 @@ export default function PageEleven({ navigation }) {
     }, [navigation, load]);
 
 
-    animation_wolf.current?.play(210, 299);
+    // animation_wolf.current?.play(210, 299);
     
     function start_animation_wolf() {
         animation_wolf.current?.play(0, 299);
+        setInteraction(false);
         setTimeout(() => {
             animation_pigs.current?.play();
             animation_wolf.current?.play(210, 299);
@@ -76,7 +81,7 @@ export default function PageEleven({ navigation }) {
             />
 
             <LayoutPages>
-                <InteractionButton show={loadingButtonNavigation} action={start_animation_wolf}/>
+                <InteractionButton show={isInteraction} action={start_animation_wolf}/>
                 <LegendCaptionArea text={textScene11} />
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageTwelve" navigation={navigation} showComponent={true} />}
             </LayoutPages>

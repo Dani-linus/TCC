@@ -20,15 +20,18 @@ export default function PageSix({ navigation }) {
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const animation_badWolf = useRef();
     const [load, setLoad] = useState(true);
+    const [isInteraction, setInteraction] = useState(false);
 
     function timeoutButtonNavegacao() {
         setTimeout(() => {
             setloadingButton(true);
+            setInteraction(true);
         }, 4500);
     }
 
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene6));
+        animation_badWolf.current?.reset();
     }, []);
 
     useEffect(() => {
@@ -38,13 +41,14 @@ export default function PageSix({ navigation }) {
         };
     }, [navigation, load]);
 
-    animation_badWolf.current?.play(0, 29);
+    // animation_badWolf.current?.play(0, 29);
 
     function startAnimationWolf() {
         animation_badWolf.current?.play(29, 99);
-        setTimeout(() => {
-            animation_badWolf.current?.play(40, 99);
-        }, 7000);
+        setInteraction(false);
+        // setTimeout(() => {
+        //     animation_badWolf.current?.play(40, 99);
+        // }, 7000);
     }
 
     return (
@@ -59,13 +63,13 @@ export default function PageSix({ navigation }) {
             <LottieView
                 source={badWolfJSON}
                 ref={animation_badWolf}
-                loop={true}
+                loop={false}
                 resizeMode='cover'
                 style={styles.badWolfStyle}
             />
 
             <LayoutPages>
-                <InteractionButton show={loadingButtonNavigation} action={startAnimationWolf} />
+                <InteractionButton show={isInteraction} action={startAnimationWolf} />
                 <LegendCaptionArea text={textScene6} />
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageSeven" navigation={navigation} showComponent={true} />}
             </LayoutPages>

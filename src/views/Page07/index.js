@@ -21,15 +21,19 @@ export default function PageSeven({ navigation }) {
     const [load, setLoad] = useState(true);
     const animation_wolf = useRef();
     const animation_pig = useRef();
+    const [isInteraction, setInteraction] = useState(false);
 
     function timeoutButtonNavegacao() {
         setTimeout(() => {
             setloadingButton(true);
+            setInteraction(true);
         }, 4500);
     }
 
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene7));
+        animation_wolf.current?.reset();
+        animation_pig.current?.reset();
     }, []);
 
     useEffect(() => {
@@ -39,10 +43,11 @@ export default function PageSeven({ navigation }) {
         };
     }, [navigation, load]);
 
-    animation_wolf.current?.play(210, 299);
+    // animation_wolf.current?.play(210, 299);
     
     function start_animation_wolf() {
         animation_wolf.current?.play(0, 299);
+        setInteraction(false);
         setTimeout(() => {
             animation_pig.current?.play();
             animation_wolf.current?.play(210, 299);
@@ -70,7 +75,7 @@ export default function PageSeven({ navigation }) {
                 style={styles.view_wolf}
             />
             <LayoutPages>
-                <InteractionButton show={loadingButtonNavigation} action={start_animation_wolf} />
+                <InteractionButton show={isInteraction} action={start_animation_wolf} />
                 <LegendCaptionArea text={textScene7} />
 
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageEight" navigation={navigation} showComponent={true} />}

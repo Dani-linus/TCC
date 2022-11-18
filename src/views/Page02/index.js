@@ -20,15 +20,18 @@ export default function PageTwo({ navigation }) {
     const { initNarrationSound } = useContext(SoundNarrationContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const [load, setLoad] = useState(true);
+    const [isInteraction, setInteraction] = useState(false);
 
     function timeoutButtonNavegacao() {
-        let timer = setTimeout(() => {
+        setTimeout(() => {
             setloadingButton(true);
+            setInteraction(true);
         }, 4500);
     }
 
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene2));
+        animation_pig_father_pig_mom.current?.reset();
     }, []);
 
        //Definido um timeout para apresentar o button de navegacao
@@ -39,14 +42,14 @@ export default function PageTwo({ navigation }) {
         };
     }, [navigation, load]);
 
-    animation_pig_father_pig_mom.current?.play(0, 140);
+    // animation_pig_father_pig_mom.current?.play(0, 140);
 
     function startAnimationPigFatherPigMom() {
-        animation_pig_father_pig_mom.current?.play(140, 299);
-        setTimeout(() => {
-            animation_pig_father_pig_mom.current?.reset()
-            animation_pig_father_pig_mom.current?.play(0, 140);
-        }, 5000);
+        animation_pig_father_pig_mom.current?.play();
+        setInteraction(false);
+        // setTimeout(() => {
+        //     animation_pig_father_pig_mom.current?.play(0, 140);
+        // }, 5000);
     }
 
     return (
@@ -66,7 +69,7 @@ export default function PageTwo({ navigation }) {
             ></LottieView>
 
             <LayoutPages>
-                <InteractionButton show={loadingButtonNavigation} action={startAnimationPigFatherPigMom} />
+                <InteractionButton show={isInteraction} action={startAnimationPigFatherPigMom} />
                 <LegendCaptionArea text={textScene2} />
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageThree" navigation={navigation} showComponent={true} />}
             </LayoutPages>

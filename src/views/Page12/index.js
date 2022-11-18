@@ -21,10 +21,12 @@ export default function PageTwelve({ navigation }) {
     const { stopSoundEffects, playSoundEffects} = useContext(SoundContext);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const [load, setLoad] = useState(true);
+    const [isInteraction, setInteraction] = useState(false);
 
     function timeoutButtonNavegacao() {
         setTimeout(() => {
             setloadingButton(true);
+            setInteraction(true);
         }, 4500);
     }
 
@@ -34,6 +36,7 @@ export default function PageTwelve({ navigation }) {
     //Iniciando a narração
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene12));
+        animation_wolfBlowing.current?.reset();
     }, []);
 
     //Definido um timeout para apresentar o button de navegacao
@@ -47,10 +50,11 @@ export default function PageTwelve({ navigation }) {
     /**
      * Controle de animação do lobo assoprando a casa
      */
-    animation_wolfBlowing.current?.play(0, 35);
+    // animation_wolfBlowing.current?.play(0, 35);
     
     function start_animation_wolfBlowing() {
         animation_wolfBlowing.current?.play(0, 299);
+        setInteraction(false);
         setTimeout(() => {
             playSoundEffects();
         }, 4000);
@@ -70,7 +74,7 @@ export default function PageTwelve({ navigation }) {
                 style={styles.view_wolf}
             />
             <LayoutPages>
-                <InteractionButton show={loadingButtonNavigation} action={start_animation_wolfBlowing}/>
+                <InteractionButton show={isInteraction} action={start_animation_wolfBlowing}/>
                 <LegendCaptionArea text={textScene12} />
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageThirteen" navigation={navigation} showComponent={true} />}
             </LayoutPages>
