@@ -14,7 +14,8 @@ export default function HomeView({ navigation }) {
     const [showComponent, setShowComponent] = useState(false)
 
     function isIOSorOther() {
-        if (Platform.OS === "ios" || Platform.OS === 'android') {
+    //    || Platform.OS === 'android'
+        if (Platform.OS === "ios") {
             return (
                 <TouchableOpacity style={styles.btn_exitIOS} onPress={() => { BackHandler.exitApp() }}>
                     <Ionicons name='exit' size={30} color='white' />

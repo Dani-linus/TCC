@@ -36,6 +36,7 @@ export default function PageFive({ navigation }) {
         navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
         return () => {
             setloadingButton(false);
+            setImg(false); //Resetando a imagem
         };
     }, [navigation, load]);
 
