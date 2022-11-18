@@ -38,6 +38,7 @@ export default function PageFour({ navigation }) {
         navigation.addListener('focus', () => setLoad(!load), timeoutButtonNavegacao());
         return () => {
             setloadingButton(false);
+            setImg(false); //Resetando a imagem
         };
     }, [navigation, load]);
 
