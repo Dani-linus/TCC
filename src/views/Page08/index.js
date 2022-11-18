@@ -21,15 +21,18 @@ export default function PageEight({ navigation }) {
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     const [load, setLoad] = useState(true);
     const animation_wolfBlowing = useRef();
+    const [isInteraction, setInteraction] = useState(false);
 
     function timeoutButtonNavegacao() {
         setTimeout(() => {
             setloadingButton(true);
+            setInteraction(true);
         }, 4500);
     }
 
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene8));
+        animation_wolfBlowing.current?.reset();
     }, []);
 
     useEffect(() => {
@@ -39,17 +42,15 @@ export default function PageEight({ navigation }) {
         };
     }, [navigation, load]);
 
-    for (let i = 0; i < 1; i++) {
-        animation_wolfBlowing.current?.play(0, 70);
-    }
-    animation_wolfBlowing.current?.play(70, 145);
+    // animation_wolfBlowing.current?.play(70, 145);
 
     function start_animation_wolfBlowing() {
         animation_wolfBlowing.current?.play(145, 299);
         playSoundEffects();
-        setTimeout(() => {
-            animation_wolfBlowing.current?.play(290, 290);
-        }, 4000);
+        setInteraction(false);
+        // setTimeout(() => {
+        //     animation_wolfBlowing.current?.play(290, 290);
+        // }, 4000);
     }
 
     return (
@@ -69,7 +70,7 @@ export default function PageEight({ navigation }) {
             />
 
             <LayoutPages>
-                <InteractionButton show={loadingButtonNavigation} action={start_animation_wolfBlowing} />
+                <InteractionButton show={isInteraction} action={start_animation_wolfBlowing} />
                 <LegendCaptionArea text={textScene8} />
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageNine" navigation={navigation} showComponent={true} />}
             </LayoutPages>

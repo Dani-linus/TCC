@@ -27,7 +27,6 @@ export default function SplashScreen() {
         setTimeout(() => {
            initSound();
             if (fontsLoaded) {
-                console.log(fontsLoaded)
                 navigation.reset({
                     index: 0,
                     routes: [{ name: 'HomeView' }]
