@@ -9,8 +9,8 @@ const styles = StyleSheet.create({
     },
     view_wolfBlowing:{
         position: 'absolute',
-        width: wp(100),
-        top: wp(0),
+        width: wp(98),
+        top: wp(-1),
         left: wp(-1),
     },
     toggleView: {

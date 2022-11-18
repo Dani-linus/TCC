@@ -8,7 +8,7 @@ import LayoutPages from '../../components/LayoutPages';
 import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { textScene15 } from '../legendTextFile';
 
-const scene15JSON = require('../../../assets/animations/page15/page_15.json')
+const scene15JSON = require('../../../assets/animations/page15/page15.json')
 const narrationScene15 = require('../../../assets/sound/narration/Page15/Page15.mp3');
 
 export default function PageFifteen({ navigation }) {

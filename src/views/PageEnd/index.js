@@ -18,7 +18,7 @@ export default function PageEnd() {
     const navigation = useNavigation();
 
     stopSoundNarration();
-    stopSound();
+    // stopSound();
     initSoundEffects(soundFile)
 
     const goBack = () => {
