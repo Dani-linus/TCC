@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         fontFamily: 'FuzzyBubbles-Bold',
     },
     text_modal_options:{
-        fontSize: 14 * PixelRatio.getFontScale(),
+        fontSize: 14,
         textTransform: 'uppercase',
         textAlign: 'center',
     }
