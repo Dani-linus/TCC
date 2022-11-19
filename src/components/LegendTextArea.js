@@ -1,6 +1,6 @@
-import React , {useContext}from "react"
+import React from "react"
 import * as Animatable from "react-native-animatable";
-import { StyleSheet, PixelRatio, View, Text } from "react-native";
+import { StyleSheet } from "react-native";
 
 function LegendTextArea(props) {
     return (
@@ -20,12 +20,6 @@ function LegendTextArea(props) {
                     {props.text}
                 </Animatable.Text>
         </Animatable.View>
-
-        // <View style={[styles.viewtxt]}>
-        //       <Text style={[styles.text_black, styles.text_modal_options]}>
-        //             {props.text}
-        //         </Text>
-        // </View>
     )
 }
 export default LegendTextArea;
@@ -37,7 +31,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         alignSelf: 'center',
         margin: 10,
-        marginHorizontal: '10%',
+        marginHorizontal: '9%',
         position: 'absolute'
     },
     text_black: {
@@ -45,7 +39,7 @@ const styles = StyleSheet.create({
         fontFamily: 'FuzzyBubbles-Bold',
     },
     text_modal_options:{
-        fontSize: 14,
+        fontSize: 12,
         textTransform: 'uppercase',
         textAlign: 'center',
     }
