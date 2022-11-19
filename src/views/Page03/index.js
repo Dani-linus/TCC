@@ -13,7 +13,6 @@ const presentationPigJSON = require('../../../assets/animations/page3/presentati
 const scene3JSON = require('../../../assets/animations/page3/page3.json');
 const narrationScene3 =  require('../../../assets/sound/narration/Page03/Page3.mp3');
 const strawHouseJSON = require('../../../assets/animations/page3/strawHouse.json');
-const [isInteraction, setInteraction] = useState(false);
 
 export default function PageThree({ navigation }) {
 
@@ -21,7 +20,6 @@ export default function PageThree({ navigation }) {
     const [img, setImg] = useState(false);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     
-
     function timeoutButtonNavegacao() {
         setTimeout(() => {
             setloadingButton(true);

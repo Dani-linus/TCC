@@ -98,8 +98,8 @@ export default function PageOne({ navigation }) {
 
             <LayoutPages navigation={navigation}>
 
-            <InteractionButton show={isInteraction} action={startAnimationPigMom} />
-            <InteractionButton1 show={isInteraction1} action={startAnimationPigSleeping} />
+                <InteractionButton show={isInteraction} action={startAnimationPigMom} />
+                <InteractionButton1 show={isInteraction1} action={startAnimationPigSleeping} />
 
                 <LegendCaptionArea text={textScene1} />
 
@@ -111,21 +111,19 @@ export default function PageOne({ navigation }) {
 function InteractionButton(props){
     const button = props.show ? (
         <TouchableWithoutFeedback onPress={props.action}>
-        <Animatable.View style={[styles.toggleView, styles.togglePigMom]} animation="pulse" easing="linear" iterationCount="infinite" />
-         </TouchableWithoutFeedback>
+            <Animatable.View style={[styles.toggleView, styles.togglePigMom]} animation="pulse" easing="linear" iterationCount="infinite" />
+        </TouchableWithoutFeedback>
     ) : null;
     return button;
 }
 
 function InteractionButton1(props){
-    const button1 = props.show ? (
-       
+    const button = props.show ? (
         <TouchableWithoutFeedback onPress={props.action}>
-        <Animatable.View style={[styles.toggleView, styles.togglePigSleeping]} animation="pulse" easing="linear" iterationCount="infinite" />
-      </TouchableWithoutFeedback> 
-
+            <Animatable.View style={[styles.toggleView, styles.togglePigSleeping]} animation="pulse" easing="linear" iterationCount="infinite" />
+        </TouchableWithoutFeedback> 
     ) : null;
-    return button1;
+    return button;
 }
 
 
