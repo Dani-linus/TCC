@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     },
     togglewolf: {
       left: wp(34),
-      top: wp(24),
+      top: wp(30),
     },
 })
 

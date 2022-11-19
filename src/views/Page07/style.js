@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     },
     togglebadWolf: {
       left: wp(44),
-      top: wp(27),
+      top: wp(35),
     },
 })
 

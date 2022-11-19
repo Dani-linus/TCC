@@ -10,7 +10,6 @@ import { SoundNarrationContext } from "contextAPI/soundNarration";
 import { textScene6 } from '../legendTextFile';
 
 const scene6JSON = require('../../../assets/animations/page6/page6.json')
-// const badWolfJSON = require('../../../assets/animations/page6/bad-wolf.json')
 const badWolfJSON = require('../../../assets/animations/page6/badWolf.json')
 const narrationScene6 = require('../../../assets/sound/narration/Page06/Page6.mp3');
 

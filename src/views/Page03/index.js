@@ -17,13 +17,13 @@ const strawHouseJSON = require('../../../assets/animations/page3/strawHouse.json
 export default function PageThree({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
-    const [img, setImg] = useState(false);
+    const [file, setFile] = useState(false);
+    const [load, setLoad] = useState(true);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
     
     function timeoutButtonNavegacao() {
         setTimeout(() => {
             setloadingButton(true);
-            setInteraction(true);
         }, 4500);
     }
 
@@ -37,7 +37,7 @@ export default function PageThree({ navigation }) {
         
         return () => {
             setloadingButton(false);
-            setImg(false); //Resetando a imagem
+            setFile(false); //Resetando a imagem
         };
     }, [navigation, load]);
 
@@ -58,8 +58,8 @@ export default function PageThree({ navigation }) {
             ></LottieView>
 
             <LayoutPages>
-                <InteractionButton show={loadingButtonNavigation} action={() => setImg(true)} />
-                <BuildStrawHouse showComponent={img}/>
+                <InteractionButton show={loadingButtonNavigation} action={() => setFile(true)} />
+                <BuildStrawHouse showComponent={file}/>
                 <LegendCaptionArea text={textScene3} />
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageFour" navigation={navigation} showComponent={true} />}
             </LayoutPages>
