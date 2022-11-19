@@ -29,6 +29,7 @@ export default function PageThree({ navigation }) {
 
     useEffect(() => {
         navigation.addListener('focus', () => initNarrationSound(narrationScene3));
+        
     }, []);
 
     useEffect(() => {

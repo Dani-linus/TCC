@@ -34,11 +34,11 @@ const styles = StyleSheet.create({
         opacity: 0.8,
     },
     togglePigMom:{
-        left: wp(34.5),
-        top: wp(30),
+        left: wp(34),
+        top: wp(35),
     },
     togglePigSleeping:{
-        top: wp(27),
+        top: wp(31),
         left: wp(78.5),
     }
 });
