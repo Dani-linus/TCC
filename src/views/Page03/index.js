@@ -13,17 +13,19 @@ const presentationPigJSON = require('../../../assets/animations/page3/presentati
 const scene3JSON = require('../../../assets/animations/page3/page3.json');
 const narrationScene3 =  require('../../../assets/sound/narration/Page03/Page3.mp3');
 const strawHouseJSON = require('../../../assets/animations/page3/strawHouse.json');
+const [isInteraction, setInteraction] = useState(false);
 
 export default function PageThree({ navigation }) {
 
     const { initNarrationSound } = useContext(SoundNarrationContext);
     const [img, setImg] = useState(false);
     const [loadingButtonNavigation, setloadingButton] = useState(false);
-    const [load, setLoad] = useState(true);
+    
 
     function timeoutButtonNavegacao() {
         setTimeout(() => {
             setloadingButton(true);
+            setInteraction(true);
         }, 4500);
     }
 
@@ -75,6 +77,7 @@ function BuildStrawHouse(props) {
 }
 
 function InteractionButton(props){
+
     const button = props.show ? (
         <TouchableWithoutFeedback onPress={props.action}>
             <Animatable.View style={[styles.toggleView, styles.toggleHouse]} animation="pulse" easing="linear" iterationCount="infinite" />

@@ -25,10 +25,14 @@ export default function PageOne({ navigation }) {
     const [load, setLoad] = useState(true);
     const animation_pig_mom = useRef();
     const animation_pig_spleeping = useRef();
-
+    const [isInteraction, setInteraction] = useState(false);
+    const [isInteraction1, setInteraction1] = useState(false);
+    
     function timeoutButtonNavegacao() {
         setTimeout(() => {
             setloadingButton(true);
+            setInteraction(true);
+            setInteraction1(true);
         }, 4500);
     }
 
@@ -53,6 +57,7 @@ export default function PageOne({ navigation }) {
     function startAnimationPigMom() {
         // animation_pig_mom.current?.play(48, 100);
         animation_pig_mom.current?.play();
+        setInteraction(false);
         // setTimeout(() => {
         //     animation_pig_mom.current?.play(0, 48);
         // }, 5450);
@@ -61,6 +66,7 @@ export default function PageOne({ navigation }) {
     function startAnimationPigSleeping() {
         // animation_pig_spleeping.current?.play(120, 299);
         animation_pig_spleeping.current?.play();
+        setInteraction1(false);
         // setTimeout(() => {
         //     animation_pig_spleeping.current?.play(0, 120);
         // }, 4500);
@@ -93,15 +99,8 @@ export default function PageOne({ navigation }) {
 
             <LayoutPages navigation={navigation}>
 
-                {/* controle de animação 1 */}
-                <TouchableWithoutFeedback onPress={startAnimationPigMom}>
-                    <Animatable.View style={[styles.toggleView, styles.togglePigMom]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableWithoutFeedback>
-
-                {/* controle de animação 2 */}
-                 <TouchableWithoutFeedback onPress={startAnimationPigSleeping}>
-                    <Animatable.View style={[styles.toggleView, styles.togglePigSleeping]} animation="pulse" easing="linear" iterationCount="infinite" />
-                </TouchableWithoutFeedback> 
+            <InteractionButton show={isInteraction} action={startAnimationPigMom} />
+            <InteractionButton1 show={isInteraction1} action={startAnimationPigSleeping} />
 
                 <LegendCaptionArea text={textScene1} />
 
@@ -110,4 +109,24 @@ export default function PageOne({ navigation }) {
         </View >
     )
 }
+function InteractionButton(props){
+    const button = props.show ? (
+        <TouchableWithoutFeedback onPress={props.action}>
+        <Animatable.View style={[styles.toggleView, styles.togglePigMom]} animation="pulse" easing="linear" iterationCount="infinite" />
+         </TouchableWithoutFeedback>
+    ) : null;
+    return button;
+}
+
+function InteractionButton1(props){
+    const button1 = props.show ? (
+       
+        <TouchableWithoutFeedback onPress={props.action}>
+        <Animatable.View style={[styles.toggleView, styles.togglePigSleeping]} animation="pulse" easing="linear" iterationCount="infinite" />
+      </TouchableWithoutFeedback> 
+
+    ) : null;
+    return button1;
+}
+
 
