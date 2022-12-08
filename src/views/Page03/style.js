@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     img_door:{
-    resizeMode: 'cover',
-    width:60,
+        resizeMode: 'cover',
+        width:60,
     },
     pointStyle: {
         height: 22,
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     strawHouse:{
         position: 'absolute',
         width: wp(109),
-        left: wp(-1.3),
+        left: wp(-1.5),
         top: wp(-1.8),
     },
     toggleView:{

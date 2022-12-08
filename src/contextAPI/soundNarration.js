@@ -10,12 +10,10 @@ function SoundNarrationProvider({ children }) {
   const [isLoaded, setIsLoaded] = useState(false);
     
   const playSoundNarration = async () => {
-     try{
+    try{
       await audio.current.playAsync();
-    
-     }catch(error){
-      console.log('Erro ao dar play no audio', error);
-     }
+    }catch(error){
+    }
   }
 
   const stopSoundNarration = async () => {
@@ -25,7 +23,6 @@ function SoundNarrationProvider({ children }) {
         await audio.current.stopAsync()
       }
     } catch (error) {
-      console.log('Erro ao pausar o audio', error)
     }
   }
 
@@ -40,7 +37,6 @@ function SoundNarrationProvider({ children }) {
         await audio.current.unloadAsync();
       }
     } catch (error) {
-      console.log(error)
     }
   }
 
@@ -54,7 +50,6 @@ function SoundNarrationProvider({ children }) {
         audio.current.unloadAsync();
       }
     } catch (error) {
-      console.log('Erro ao executar audio:', error)
     }
   }
 

@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
     toggleHouse:{
       left: wp(42),
-      top: wp(19),
+      top: wp(22),
   },
 })
 

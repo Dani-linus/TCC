@@ -18,7 +18,7 @@ function SoundProvider({ children }) {
             }
         } catch (error) {
             setIsPlaying(false);
-            console.log(error)
+            // console.log(error)
         }
     }
 
@@ -33,7 +33,8 @@ function SoundProvider({ children }) {
                 setIsPlaying(false);
             }
         } catch (error) {
-            console.log('STOP SOUND: Não foi possivel pausar o audio:', error)
+            setIsPlaying(false);
+            // console.log('STOP SOUND: Não foi possivel pausar o audio:', error)
         }
     }
 
@@ -45,7 +46,9 @@ function SoundProvider({ children }) {
                 setIsPlaying(true);
             }
         } catch (error) {
-            console.log('INIT SOUND: Não é possível concluir a operação porque o som não está carregado');
+            // await audioObject.current.unloadAsync();
+            setIsPlaying(false);
+            // console.log('INIT SOUND: Não é possível concluir a operação porque o som não está carregado');
         }
     }
 
@@ -57,7 +60,7 @@ function SoundProvider({ children }) {
                 await soundEffects.current.loadAsync(soundEffect, { shouldPlay: true, isLooping: true });
             }
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     }
 
@@ -68,7 +71,7 @@ function SoundProvider({ children }) {
                 soundEffects.current.loadAsync(require('../../assets/sound/soundEffects/blowing.mp3'), { volume: 0.5, shouldPlay: true });
             }, 1500);
         } catch (error) {
-            console.log('Erro ao executar audio:', error)
+            // console.log('Erro ao executar audio:', error)
         }
     }
 
@@ -82,7 +85,7 @@ function SoundProvider({ children }) {
                 soundEffects.current.unloadAsync();
             }
         } catch (error) {
-            console.log('STOP SOUND: Não foi possivel pausar o audio:', error)
+            // console.log('STOP SOUND: Não foi possivel pausar o audio:', error)
         }
     }
     return (

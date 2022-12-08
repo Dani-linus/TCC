@@ -60,7 +60,6 @@ export default function PageFive({ navigation }) {
                 <InteractionButton show={loadingButtonNavigation} action={() => setImg(true)} />
                 <BuildBrickHouse showComponent={img}/>
 
-
                 <LegendCaptionArea text={textScene5} />
                 {loadingButtonNavigation && <ButtonNavigation proxRoute="PageSix" navigation={navigation} showComponent={true} />}
             </LayoutPages>

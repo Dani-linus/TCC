@@ -7,7 +7,6 @@ import ModalOptions from 'components/ModalOptions';
 import LottieView from 'lottie-react-native';
 
 const homePageJSON = require('../../../assets/animations/homePage.json');
-// const homePageJSON = require('../../../assets/animations/data.json');
 
 export default function HomeView({ navigation }) {
 

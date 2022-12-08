@@ -18,6 +18,7 @@ function LegendTextArea(props) {
                     style={[styles.text_black, styles.text_modal_options]}>
 
                     {props.text}
+                    
                 </Animatable.Text>
         </Animatable.View>
     )
