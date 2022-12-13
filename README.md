@@ -11,7 +11,7 @@ npm install
 
 Para executar o projeto
 
-OBS: necessário aplicativo Expo Go para emulado o projeto em Emuladores ou no próprio dispositivo
+OBS: necessário aplicativo Expo Go para emular o projeto em Emuladores ou no próprio dispositivo
 
 ```
 expo start
